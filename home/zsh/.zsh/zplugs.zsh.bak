@@ -1,0 +1,34 @@
+#  ______     ______   __         __  __     ______
+# /\___  \   /\  == \ /\ \       /\ \/\ \   /\  ___\
+# \/_/  /__  \ \  _-/ \ \ \____  \ \ \_\ \  \ \ \__ \
+#   /\_____\  \ \_\    \ \_____\  \ \_____\  \ \_____\
+#   \/_____/   \/_/     \/_____/   \/_____/   \/_____/
+#
+
+source ~/.zplug/init.zsh
+#zplug "oh-my-zsh"
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/colored-man",   from:oh-my-zsh
+zplug "plugins/tmux",   from:oh-my-zsh
+# zplug "cusxio/delta-prompt", use:delta.zsh
+# zplug "xero/dotfiles", as:theme, use:zsh/.zsh/prompt.zsh
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zdharma/fast-syntax-highlighting"
+zplug "mafredri/zsh-async", from:github
+zplug "git.delifer.ca/alex/pure", use:pure.zsh, as:theme
+zplug "zsh-users/zsh-history-substring-search"
+zplug "junegunn/fzf", use:shell/key-bindings.zsh
+
+
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load #--verbose

@@ -20,7 +20,7 @@ stow-home:
 	cd $(DOTFILES)/home && for i in *; do \
 			if [ -d $$i ]; then \
 			echo "PACKAGE: $$i"; \
-				stow -R -v -t "$(HOME)" "$$i"; \
+				stow -R --override -v -t "$(HOME)" "$$i"; \
 			fi \
 	done
 

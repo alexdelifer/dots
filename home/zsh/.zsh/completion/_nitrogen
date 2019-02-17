@@ -1,0 +1,19 @@
+#compdef nitrogen
+
+_arguments \
+         '*:file:_files' \
+		'--restore[Restores previously saved pictures to the root displays.]' \
+		'--no-recurse[Do not recurse into subdirectories of DIRECTORY.]' \
+		'--sort[Sorts the background list by the given option.]' \
+		'--set-auto[Set the background specified by DIRECTORY using the automatic size setting.]' \
+		'--set-centered[Set the background specified by DIRECTORY using the centered size setting.]' \
+		'--set-scaled[Set the background specified by DIRECTORY using the scaled size setting.]' \
+		'--set-tiled[Set the background specified by DIRECTORY using the tiled size setting.]' \
+		'--set-zoom[Set the background specified by DIRECTORY using the zoom size setting.]' \
+		'--set-zoom-fill[Set the background specified by DIRECTORY using the zoom fill size setting.]' \
+		'--save[Saves the background permanently in the config.]' \
+		'--set-color[Sets background color in hex, #000000 by default.]' \
+		'--random[Choose random background from config or given directory.]' \
+		'--head[Select Xinerama/multihead display in GUI, 0.]' \
+		'--force-setter[DEBUG: Forces the background setting engine to use a specific backend.]' \
+		'--help[I'"'"'m just here so I won'"'"'t get fined.  FILES ~/. config/nitrogen/.]'

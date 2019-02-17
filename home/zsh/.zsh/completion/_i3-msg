@@ -1,0 +1,9 @@
+#compdef i3-msg
+
+_arguments \
+         '*:file:_files' \
+		{-q,--quiet}'[Only send ipc message and suppress the output of the response.]' \
+		{-v,--version}'[Display version number and exit.]' \
+		{-h,--help}'[Display a short help-message and exit.]' \
+		{-s,--socket}'[i3-msg will use the environment variable I3SOCK or the socket path given here.]' \
+		'-t[Send ipc message, see below. This option defaults to "command".]'

@@ -1,0 +1,25 @@
+#compdef 7z
+
+_arguments \
+         '*:file:_files' \
+		'-'ai[r[-'[Include archives.]' \
+		'-'ax[r[-'[eXclude archives.]' \
+		'-bd[Disable percentage indicator.]' \
+		'-'i[r[-'[Include filenames.]' \
+		'-l[don'"'"'t store symlinks; store the files/directories they point to (CAUTION : th…]' \
+		'-mhe[7z format only : enables or disables archive header encryption (Default : off…]' \
+		'-'r[-'[Recurse subdirectories (CAUTION: this flag does not do what you think, avoid …]' \
+		'-sfx[Create SFX archive.]' \
+		'-si[Read data from StdIn (eg: tar cf - directory | 7z a -si directory. tar. 7z).]' \
+		'-so[Write data to StdOut (eg: % echo foo | 7z a dummy -tgzip -si -so > /dev/null).]' \
+		'-slt[Sets technical mode for l (list) command.]' \
+		'-u[Update options.]' \
+		'-w[Set Working directory.]' \
+		'-'x[r[-'[Exclude filenames.]' \
+		'-y[Assume Yes on all queries.]' \
+		'-t7z[7z archive.]' \
+		'-m0[lzma method.]' \
+		'-mx[level of compression = 9 (Ultra).]' \
+		'-mfb[number of fast bytes for LZMA = 64.]' \
+		'-md[dictionary size = 32 megabytes.]' \
+		'-ms[solid archive = on EXAMPLE 2 7z a -sfx archive.]'

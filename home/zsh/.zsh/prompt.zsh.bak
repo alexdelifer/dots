@@ -1,0 +1,92 @@
+#  ______   ______     ______     __    __     ______   ______
+# /\  == \ /\  == \   /\  __ \   /\ "-./  \   /\  == \ /\__  _\
+# \ \  _-/ \ \  __<   \ \ \/\ \  \ \ \-./\ \  \ \  _-/ \/_/\ \/
+#  \ \_\    \ \_\ \_\  \ \_____\  \ \_\ \ \_\  \ \_\      \ \_\
+#   \/_/     \/_/ /_/   \/_____/   \/_/  \/_/   \/_/       \/_/
+#
+# Graciously ripped from xero
+ICO_GIT=""
+#ICO_DIRTY="⚡"
+#ICO_DIRTY="↯"
+ICO_DIRTY=" %F{yellow}%f"
+#ICO_DIRTY="✚"
+ICO_AHEAD=" %F{blue}⇡%f"
+#ICO_AHEAD="▲"
+#ICO_BEHIND="↓"
+ICO_BEHIND="%F{red}⇣%f"
+#ICO_BEHIND="▼"
+ICO_DIVERGED="%F{purple}⥮5f"
+COLOR_ROOT="%F{red}"
+COLOR_USER="%F{cyan}"
+COLOR_NORMAL="%B%F{white}"
+PROMPT_STYLE="classic"
+
+
+#█▓▒░ allow functions in the prompt
+setopt PROMPT_SUBST
+autoload -Uz colors && colors
+
+#█▓▒░ colors for permissions
+if [[ "$EUID" -ne "0" ]]
+then  # if user is not root
+	USER_LEVEL="${COLOR_USER}"
+else # root!
+	USER_LEVEL="${COLOR_ROOT}"
+fi
+
+#█▓▒░ git prompt
+GIT_PROMPT() {
+  test=$(git rev-parse --is-inside-work-tree 2> /dev/null)
+  if [ ! "$test" ]
+  then
+    case "$PROMPT_STYLE" in
+      ascii)
+        echo "$reset_color%F{cyan}▒░"
+      ;;
+      arrows)
+        echo "$reset_color%F{cyan}"
+      ;;
+    esac
+    return
+  fi
+  ref="$ICO_GIT $(git name-rev --name-only HEAD | sed 's!remotes/!!' 2> /dev/null)"
+  dirty="" && [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && dirty=$ICO_DIRTY
+  stat=$(git status | sed -n 2p)
+  case "$stat" in
+    *ahead*)
+      stat="$ICO_AHEAD "
+    ;;
+    *behind*)
+      stat="$ICO_BEHIND "
+    ;;
+    *diverged*)
+      stat="$ICO_DIVERGED "
+    ;;
+    *)
+      stat=""
+    ;;
+  esac
+  case "$PROMPT_STYLE" in
+    ninja)
+      echo "${COLOR_NORMAL}${ref}${dirty}${stat}"
+    ;;
+    *)
+            echo "${USER_LEVEL}─[${COLOR_NORMAL}"${ref}${dirty}${stat}$(git_commits_ahead)"${USER_LEVEL}]"
+    ;;
+  esac
+}
+case "$PROMPT_STYLE" in
+#█▓▒░ ninja
+ninja)
+PROMPT='%F{white}
+        ▟▙  ${USER_LEVEL}%~   %F{white}$(GIT_PROMPT) %F{white}
+▟▒${USER_LEVEL}░░░░░░░%F{white}▜▙▜████████████████████████████████▛
+▜▒${USER_LEVEL}░░░░░░░%F{white}▟▛▟▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▛
+        ▜▛  
+            %f'
+;;
+#█▓▒░ classic
+*)
+PROMPT='%B${USER_LEVEL}[${COLOR_NORMAL}%~${USER_LEVEL}]$(GIT_PROMPT)── - %f%b'
+;;
+esac
