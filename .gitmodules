@@ -5,3 +5,6 @@
 	path = doom/.emacs.d
 	url = https://github.com/hlissner/doom-emacs
 	branch = develop
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
