@@ -1,0 +1,42 @@
+#! /bin/bash
+
+USAGE='git rebase-since [commit] [filepath]
+ 
+  Rebase since a specific commit or since the last change to a file.
+  Passing neither commit or filepath will start a rebase since the oldest
+  "fixup!" commit in the repo.'
+
+while getopts 'h' options
+do
+	case $options in
+		h ) echo "$USAGE" && exit 1;;
+	esac
+done
+shift $((OPTIND-1))
+
+
+if [[ $# -eq 1 ]]; then
+	# attempt to guess if the param is a commit id
+	if git cat-file -e "$1"; then
+		# rebase only commits since supplied commit id
+		COMMIT_ID=$(git rev-parse "$1")
+
+	else
+		# find last commit where $1 was last modified - excluding fixup! commits
+		COMMIT_ID=$(git log --format='%h %s' -- "$1" | awk '! /(fixup|squash)!/ {print $1}' | head -1)
+	fi
+
+elif [[ $# -eq 0 ]]; then
+	# extract list of hashes of all fixup! commits
+	ALL_FIXUPS="$(git log --format='%s' | awk '/^(fixup|squash)!/ {print $2}')"
+	if [[ -z $ALL_FIXUPS ]]; then
+		echo 'Nothing to do'
+		exit 0
+	fi
+
+	# rebase since oldest commit specified by a fixup! commit
+	COMMIT_ID=$(git log --pretty=oneline | grep -F "$ALL_FIXUPS" | grep -v -G '^fixup!' | tac | head -1 | cut -d\  -f 1)
+fi
+
+# calculate number of commits since HEAD and start rebase
+git rebase -i "HEAD~$(git rev-list "$COMMIT_ID^..HEAD" | wc -l | tr -d ' ')"

@@ -1,0 +1,11 @@
+[user]
+	name = alex
+	email = alex@delifer.ca
+[color]
+	diff = auto
+	status = auto
+    branch = auto
+    ui = auto
+
+[credential "https://git.delifer.ca"]
+	username = alex

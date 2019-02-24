@@ -1,0 +1,7 @@
+[submodule "nvim/.config/nvim/autoload"]
+	path = nvim/.config/nvim/autoload
+	url = https://github.com/junegunn/vim-plug
+[submodule "doom/.emacs.d"]
+	path = doom/.emacs.d
+	url = https://github.com/hlissner/doom-emacs
+	branch = develop

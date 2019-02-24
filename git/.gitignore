@@ -1,0 +1,5 @@
+*.swp
+*.tar.xz
+*.pkg.tar.xz
+*.tar.gz
+*.log
