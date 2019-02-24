@@ -13,20 +13,26 @@ K := $(foreach exec,$(EXECUTABLES),\
         $(if $(shell which $(exec)),some string,$(error "No $(exec) in PATH")))
 
 # Config dependencies go here.
-deps:
-	yay -Syyu -q "$(DEPENDENCIES)"
+deps-home:
+	yay -Syyu -q "$(HOMEDOTDEPENDENCIES)"
 
-stow-home:
-	cd $(DOTFILES)/home && for i in *; do \
+deps-root:
+	yay -Syyu -q "$(ROOTDOTDEPENDENCIES)"
+
+stow-home: deps-home
+	mkdir -p \
+			$(HOME)/.local/share/ \
+			$(HOME)/.config/
+	cd $(DOTFILES)/home && for i in */; do \
 			if [ -d $$i ]; then \
 			echo "PACKAGE: $$i"; \
-				stow -R --override -v -t "$(HOME)" "$$i"; \
+				stow -R -v -t "$(HOME)" "$$i"; \
 			fi \
 	done
 
 
-stow-root:
-	cd $(DOTFILES)/root && for i in *; do \
+stow-root: deps-root
+	cd $(DOTFILES)/root && for i in */; do \
 			if [ -d $$i ]; then \
 			echo "PACKAGE: $$i"; \
 				sudo stow -R -v -t "/" "$$i"; \
@@ -48,3 +54,10 @@ spacemacs:
 		else \
 				cd $(HOME)/.emacs.d && git pull; \
 				fi && echo "PACKAGE: spacemacs installed"
+
+doom-emacs: 
+		if [ ! -d $(HOME)/.emacs.d ]; then \
+				git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d; \
+		else \
+				cd $(HOME)/.emacs.d && git pull; \
+				fi && echo "PACKAGE: doom-emacs installed"

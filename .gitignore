@@ -3,6 +3,7 @@
 /home/tmux/.tmux/plugins/*
 !/home/tmux/.tmux/plugins/tpm
 !/home/tmux/.tmux/plugins/tpm/*
+/home/nvim/.config/nvim/plugged/*
 /home/vim/.vim/plugged/*
 /home/vim/.vim/.netrwhist
 /home/vim/.vim/undo/*

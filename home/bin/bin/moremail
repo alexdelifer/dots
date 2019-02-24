@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Get the mail
+mbsync "$@"
+notmuch new
+notify-send "moremail $*: $(notmuch search tag:unread | wc -l) unread emails."

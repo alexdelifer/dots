@@ -1,0 +1,2 @@
+#!/bin/bash
+startx > $HOME/startx.log 2>&1

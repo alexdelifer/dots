@@ -5,6 +5,8 @@
 #   \/_/\/_/   \/_____/   \/_/   \/_/\/_/   \/_____/
 #
 # General
+alias e="emacsclient"
+#alias e="emacsclient --tty -a '' -c"
 alias dig="dig +nocookie +noedns"
 alias vi="nvim"
 alias vim="nvim"
@@ -37,6 +39,7 @@ alias grep='grep --color=auto'
 
 alias -g F="| fzf"
 alias -g P="| peco"
+alias -g E="| fzf | e"
 
 alias fsSL="curl -fsSL"
 alias mp="mpv --input-ipc-server=/tmp/mpvsocket"
