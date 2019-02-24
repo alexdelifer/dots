@@ -14,10 +14,10 @@ K := $(foreach exec,$(EXECUTABLES),\
 
 # Config dependencies go here.
 deps-home:
-	yay -Syyu -q "$(HOMEDOTDEPENDENCIES)"
+	yay -Syyu -q --needed $(HOMEDOTDEPENDENCIES)
 
 deps-root:
-	yay -Syyu -q "$(ROOTDOTDEPENDENCIES)"
+	yay -Syyu -q --needed $(ROOTDOTDEPENDENCIES)
 
 stow-home: deps-home
 	mkdir -p \
