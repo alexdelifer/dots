@@ -100,12 +100,15 @@ do
 		if [[ $DRY_RUN -eq 1 ]]; then DR='-n'; else DR=''; fi
 
 		# use stow to create symlinks in $HOME
-		stow -v --ignore='install.sh' --ignore='.md$' "$app" $RESTOW --target="$HOME" $DR
+		stow -v --ignore='install.sh' --ignore='post-install.sh' --ignore='.md$' "$app" $RESTOW --target="$HOME" $DR
 
 		if [[ $? -ne 0 && $DRY_RUN -eq 0 ]]; then
 			echo 'Stow returned a non-zero result. You may want to re-run with -f (force)'
 		fi
 	fi
+    # use per-app post-install.sh, or just symlink with stow
+    if [[ -x $app/post-install.sh ]]; then
+        "./$app/post-install.sh" $FORCE $DRY_RUN
+    fi
 done
 
-if [ ! -d ~/.doom.d/ ]; then mkdir ~/.doom.d/; fi

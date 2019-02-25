@@ -35,3 +35,5 @@ if [[ $? -eq 0 ]]; then
         doom/.emacs.d/bin/doom quickstart
 	fi
 fi
+
+if [ ! -d ~/.doom.d/ ]; then mkdir ~/.doom.d/; fi
