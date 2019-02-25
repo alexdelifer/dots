@@ -107,3 +107,5 @@ do
 		fi
 	fi
 done
+
+if [ ! -d ~/.doom.d/ ]; then mkdir ~/.doom.d/; fi
