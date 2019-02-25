@@ -22,7 +22,7 @@ if ! zgen saved; then
   zgen load "zsh-users/zsh-completions"
   zgen load "zdharma/fast-syntax-highlighting"
   zgen load "mafredri/zsh-async"
-  zgen load "https://git.delifer.ca/alex/pure"
+  zgen load "sindresorhus/pure"
   zgen load "zsh-users/zsh-history-substring-search"
   zgen load "junegunn/fzf"
   zgen load "liangguohuan/fzf-extends"
