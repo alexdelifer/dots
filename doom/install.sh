@@ -30,9 +30,9 @@ git submodule update --init doom/.emacs.d
 if [[ $? -eq 0 ]]; then
 	# if either stdin or stdout is missing, redirect output
 	if [[ ! -t 0 || ! -t 1 ]]; then
-        y | doom/.emacs.d/bin/doom quickstart &>/dev/null
+        doom/.emacs.d/bin/doom -y quickstart &>/dev/null
 	else
-        doom/.emacs.d/bin/doom quickstart
+        doom/.emacs.d/bin/doom -y quickstart
 	fi
 fi
 
