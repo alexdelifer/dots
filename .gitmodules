@@ -1,10 +1,10 @@
 [submodule "nvim/.config/nvim/autoload"]
 	path = nvim/.config/nvim/autoload
 	url = https://github.com/junegunn/vim-plug
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
 [submodule "doom/.emacs.d"]
 	path = doom/.emacs.d
 	url = https://github.com/hlissner/doom-emacs
 	branch = develop
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
