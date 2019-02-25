@@ -106,9 +106,11 @@ do
 			echo 'Stow returned a non-zero result. You may want to re-run with -f (force)'
 		fi
 	fi
-    # use per-app post-install.sh, or just symlink with stow
+
+    # use per-app post-install.sh, useful when something needs to be stowed first.
     if [[ -x $app/post-install.sh ]]; then
         "./$app/post-install.sh" $FORCE $DRY_RUN
     fi
+
 done
 

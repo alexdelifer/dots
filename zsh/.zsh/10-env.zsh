@@ -4,12 +4,9 @@
 #  \ \_____\  \ \_\\"\_\  \ \__|
 #   \/_____/   \/_/ \/_/   \/_/
 #
-# AppMenu Garbage
 
-
-if [ -z "$UBUNTU_MENUPROXY" ]; then
-    UBUNTU_MENUPROXY=1
-fi
+# Doom Emacs
+PATH=$PATH:~/.emacs.d/bin
 
 if [ "$TERM" = "xterm-termite" ]; then
     export TERM=xterm-256color
