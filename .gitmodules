@@ -4,7 +4,10 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "doom/.emacs.d"]
-	path = doom/.emacs.d
-	url = https://github.com/hlissner/doom-emacs
+[submodule "spacemacs/.emacs.d"]
+	path = spacemacs/.emacs.d
+	url = https://github.com/syl20bnr/spacemacs
 	branch = develop
+[submodule "spacemacs/.spacemacs.d/layers/exwm"]
+	path = spacemacs/.spacemacs.d/layers/exwm
+	url = https://github.com/timor/spacemacsOS
