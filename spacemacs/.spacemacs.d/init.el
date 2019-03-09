@@ -458,9 +458,12 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; Cleanup stupid spacemacs buffer
+  (kill-buffer "*spacemacs*")
   (fancy-battery-mode)
   (require 'exwm-systemtray)
   (exwm-systemtray-enable)
+  (setq exwm-workspace-number 4)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
