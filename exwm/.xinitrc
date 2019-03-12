@@ -20,11 +20,17 @@ export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 export CLUTTER_IM_MODULE=xim
 
+# If Emacs is started in server mode, `emacsclient` is a convenient way to edit
+# files in place (used by e.g. `git commit`)
+export VISUAL=emacsclient
+export EDITOR="$VISUAL"
+
 nm-applet &
+blueman-applet &
 kdeconnect-indicator &
 sxhkd &
 compton &
 
 
 # Finally start Emacs
-exec dbus-launch --exit-with-session emacs --eval "(exwm-init)"
+exec emacs

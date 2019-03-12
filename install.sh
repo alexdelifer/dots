@@ -47,6 +47,7 @@ if ! command -v stow >/dev/null 2>&1; then
 	if [[ $(uname) == 'Darwin' ]]; then
 		brew install stow
 	else
+      # not everything is arch linux...
 		$SUDO pacman -Syu stow
 	fi
 fi
