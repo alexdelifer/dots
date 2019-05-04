@@ -99,7 +99,7 @@ bindsym $mod+Shift+Return exec alacritty -t floaterm
 
 bindsym $mod+Shift+x kill
 bindsym $mod+n exec networkmanager_dmenu
-bindsym $mod+b exec polybar-msg cmd toggle
+#bindsym $mod+b exec polybar-msg cmd toggle
 
 # Open
 bindsym $mod+Shift+z exec ~/bin/phonesend.sh share-url "$(xclip -o)"
@@ -261,20 +261,20 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bar {
-    status_command i3status
-    position top
-    font pango:SF Mono 10
-
-        colors {
-        background #000000
-        separator #757575
-        #                  border             background         text
-        focused_workspace  $bg-color          $bg-color          $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-    }
-}
-
+#bar {
+#    status_command i3status
+#    position top
+#    font pango:SF Mono 10
+#
+#        colors {
+#        background #000000
+#        separator #757575
+#        #                  border             background         text
+#        focused_workspace  $bg-color          $bg-color          $text-color
+#        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#    }
+#}
+#
 
 exec --no-startup-id i3-msg "workspace $WS1"

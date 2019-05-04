@@ -33,4 +33,4 @@ compton &
 
 
 # Finally start Emacs
-exec emacs
+exec i3
