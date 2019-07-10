@@ -35,4 +35,3 @@ reload # reload completions
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/find-the-command/ftc.zsh

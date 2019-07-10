@@ -203,7 +203,7 @@ It should only modify the values of Spacemacs settings."
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
    ;; dotspacemacs-mode-line-theme '(doom :separator alternate :separator-scale 1.5)
-   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(doom :separator arrow :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -478,7 +478,7 @@ before packages are loaded."
   (exwm-input-set-key (kbd "C-'") #'spacemacs/default-pop-shell)
   (exwm-input-set-key (kbd "s-b") 'helm-exwm)
   ;; Shouldn't cause trouble if wm already running.
-  (exwm-init)
+  ;;(exwm-init)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

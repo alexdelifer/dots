@@ -49,7 +49,6 @@ alias r="whence -pm '*' | fzf | sh"
 alias fuck='sudo $(fc -ln -1)'
 alias ag="ag --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
 alias tree='tree -CAFa -I "CVS|*.*.package|.svn|.git|.hg|node_modules|bower_components" --dirsfirst'
-alias systemctl="sudo systemctl"
 alias pacman="sudo pacman"
 alias mutt="neomutt"
 alias lol="base64 </dev/urandom | lolcat"

@@ -1,10 +1,3 @@
-# Set user-defined locale
-# export LANG=$(locale -uU)
-
-#
-# if running zsh
-if [ -n "${ZSH_VERSION}" ]; then
-  if [ -f "${HOME}/.zshrc" ]; then
-    source "${HOME}/.zshrc"
-  fi
-fi
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1
+#export QT_QPA_PLATFORM=wayland
