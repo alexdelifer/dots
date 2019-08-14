@@ -20,11 +20,6 @@ done
 shift $((OPTIND-1))
 
 
-if [[ $(id -u) -gt 0 ]] && ! command -v sudo >/dev/null 2>&1; then
-	echo 'Please install sudo and try again'
-	exit 44
-fi
-
 # retrieve all repo submodules
 git submodule update --init --recursive
 
@@ -48,7 +43,7 @@ if ! command -v stow >/dev/null 2>&1; then
 		brew install stow
 	else
       # not everything is arch linux...
-		$SUDO pacman -Syu stow
+		sudo pacman -Syu stow
 	fi
 fi
 
