@@ -41,6 +41,9 @@ alias -g F="| fzf"
 alias -g P="| peco"
 alias -g E="| fzf | e"
 
+alias zt="sudo zerotier-cli"
+alias ztr='sudo systemctl restart zerotier-one'
+
 alias fsSL="curl -fsSL"
 alias mp="mpv --input-ipc-server=/tmp/mpvsocket"
 

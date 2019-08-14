@@ -24,7 +24,6 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
-#source ~/.zsh/keys.zsh # to be sure
 unalias s
 
 bindkey -e

@@ -3,6 +3,8 @@
 ;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
+  ;; emacs doesn't seem to like the @ in my username. putting this here fixes it early enough for spacemacs to load.
+  (setenv "HOME" "/home/alex@delifer.ca/")
   "Layer configuration:
 This function should only modify configuration layer settings."
   (setq-default
@@ -466,19 +468,6 @@ before packages are loaded."
   ;; Cleanup stupid spacemacs buffer
   (kill-buffer "*spacemacs*")
   (fancy-battery-mode)
-  (require 'exwm-systemtray)
-  (exwm-systemtray-enable)
-  (setq exwm-workspace-number 9)
-  ;; Keybindings
-  ;; these are accessible from anywhere with exwm
-  ;; (exwm-input-set-key (kbd "s-") 'do-something)
-  (exwm-input-set-key (kbd "s-;") 'helm-M-x)
-  (exwm-input-set-key (kbd "s-:") 'evil-ex)
-  (exwm-input-set-key (kbd "s-d") #'spacemacs/exwm-app-launcher)
-  (exwm-input-set-key (kbd "C-'") #'spacemacs/default-pop-shell)
-  (exwm-input-set-key (kbd "s-b") 'helm-exwm)
-  ;; Shouldn't cause trouble if wm already running.
-  ;;(exwm-init)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
