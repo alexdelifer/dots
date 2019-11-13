@@ -5,9 +5,10 @@
 #   \/_/\/_/   \/_____/   \/_/   \/_/\/_/   \/_____/
 #
 # General
-alias e="emacsclient"
+alias e="em"
 #alias e="emacsclient --tty -a '' -c"
 alias dig="dig +nocookie +noedns"
+alias nvim="em"
 alias vi="nvim"
 alias vim="nvim"
 alias ga="git add"

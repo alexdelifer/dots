@@ -1,0 +1,4 @@
+#!/bin/bash
+# 15 Minute Timer
+xset s 870 900
+xss-lock -n "notify-send 'Locking screen in 30 secs...'" -- ~/bin/lock

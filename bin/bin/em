@@ -1,10 +1,8 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
-# Checks if there's a frame open
-emacsclient -n -e “(if (> (length (frame-list)) 1) ‘t)” 2> /dev/null | grep t &> /dev/null
-
-if [ “$?” -eq “1” ]; then
- emacsclient -a ‘’ -nqc “$@” &> /dev/null
+emacsclient -n -e "(if (> (length (frame-list)) 1) 't)" | grep -q t
+if [ "$?" = "1" ]; then
+    emacsclient -c -n -a "" "$@"
 else
- emacsclient -nq “$@” &> /dev/null
+    emacsclient -n -a "" "$@"
 fi

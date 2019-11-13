@@ -18,20 +18,20 @@ set $WS9 9
 set $WS10 0
 
 # Autostarts
-exec --no-startup-id xsetroot -cursor_name left_ptr
-exec --no-startup-id setxkbmap -option ctrl:nocaps
+#exec --no-startup-id xsetroot -cursor_name left_ptr
+#exec --no-startup-id setxkbmap -option ctrl:nocaps
 
 # Lifestyle
 exec --no-startup-id devmon
 exec --no-startup-id unclutter
-exec --no-startup-id compton -b
+#exec --no-startup-id compton -b
 
 # Applets
-exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id nm-applet
-exec --no-startup-id caffeine
-exec --no-startup-id blueman-applet
-exec --no-startup-id pasystray
+#exec --no-startup-id kdeconnect-indicator
+#exec --no-startup-id nm-applet
+#exec --no-startup-id caffeine
+#exec --no-startup-id blueman-applet
+#exec --no-startup-id pasystray
 
 # Aesthetics
 # font pango:Iosevka Term 10
@@ -40,8 +40,9 @@ font pango:SF Mono 10
 #gaps outer 6
 gaps inner 0
 gaps outer 0
-new_window pixel 4
-new_float pixel 4
+# new_window pixel 4
+default_border pixel 4
+default_floating_border pixel 4
 
 # xresource colors
 #set_from_resource $color0 color0 
@@ -98,6 +99,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec alacritty -t floaterm
 
 bindsym $mod+Shift+x kill
+bindsym $mod+Shift+q kill
 bindsym $mod+n exec networkmanager_dmenu
 bindsym $mod+b exec polybar-msg cmd toggle
 
@@ -108,7 +110,7 @@ bindsym $mod+z exec ~/bin/open "$(xclip -o)"
 # Apps
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+q exec physlock
+bindsym $mod+q exec sway
 
 # XF86
 bindsym XF86MonBrightnessUp exec intelbacklight -inc 488
@@ -122,6 +124,8 @@ bindsym XF86AudioMicMute exec amixer sset Capture,0 toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -182,7 +186,7 @@ bindsym $mod+comma scratchpad show
 
 bindsym $mod+Shift+c reload
 #bindsym $mod+Shift+r restart
-bindsym $mod+Shift+r exec "i3 restart"
+bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Rules

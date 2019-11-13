@@ -1,15 +1,23 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Use yay-bin so we don't need go deps
 YAYURL="https://aur.archlinux.org/yay-bin.git"
-YAYPATH="/tmp/yay"
+TMPPATH="/tmp/yay"
 
-if $(git clone "$YAYURL" "$YAYPATH"); then
-    cd "$YAYPATH"
+if [ -f "$(which yay)" ]; then
+        echo "YAY!"
+        exit
+fi
+
+echo "yay not in PATH, installing now."
+
+if $(git clone "$YAYURL" "$TMPPATH"); then
+    cd "$TMPPATH"
     makepkg -si
-    rm -rf "$YAYPATH"
-    echo "See you later ;)"
+    rm -rf "$TMPPATH"
 else
     which git
 fi
+
+echo "See you later ;)"
 

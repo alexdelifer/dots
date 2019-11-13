@@ -1,0 +1,42 @@
+type fyrerc 2>&1 > /dev/null && {
+    test ! -z "$DISPLAY" && {
+        . fyrerc
+
+        alias quit="power --exit"
+        alias lock="power --lock"
+        alias reboot="power --reboot"
+        alias poweroff="power --power"
+        alias editfyre="$EDITOR $FYREDIR/config"
+
+        function lswg {
+        for g in /tmp/fyre/groups/group.*; do
+                echo "$g"
+                for i in $(cat $g); do
+                        echo -n "$i | "
+                        xprop -id "$i" WM_NAME
+                done
+        done
+        }
+        function lswn {
+                for g in $(lsw "$@"); do
+                        echo "WID = $g"
+                        xprop -id $g WM_NAME
+                        xprop -id $g WM_CLASS
+                        echo ""
+                done
+        }
+        function lswf {
+                for g in /tmp/fyre/groups/group.*; do
+                        echo "$g"
+                        for i in $(cat $g); do
+                                echo -n "$i"
+                                if [ $(wname $i) ]; then
+                                        echo " # $(wname $i)"
+                                else;
+                                        echo " # no name"
+                                fi
+                        done
+                done
+        }
+    }
+}

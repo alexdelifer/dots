@@ -1,0 +1,17 @@
+#!/bin/sh
+revert() {
+  xset dpms 0 0 0
+}
+trap revert HUP INT TERM
+xset +dpms dpms 5 5 5
+i3lock -n -B=100000 -m \
+       --insidevercolor=#29adffbf \
+       --insidewrongcolor=#ff8000bf \
+       --insidecolor=#ffffffbf \
+       --ringvercolor=#29adffff \
+       --ringwrongcolor=#29adffff \
+       --ringcolor=#29adffff \
+       --linecolor=#29adffff \
+       --keyhlcolor=#29adffff \
+       --bshlcolor=#ff8000ff
+revert

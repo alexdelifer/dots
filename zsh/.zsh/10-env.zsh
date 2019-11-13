@@ -6,7 +6,7 @@
 #
 
 # Doom Emacs
-PATH=$PATH:~/.emacs.d/bin
+PATH=$PATH:~/bin
 
 if [ "$TERM" = "xterm-termite" ]; then
     export TERM=xterm-256color

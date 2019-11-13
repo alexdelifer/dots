@@ -20,6 +20,12 @@ set $WS10 0
 # Autostarts
 exec --no-startup-id xsetroot -cursor_name left_ptr
 exec --no-startup-id setxkbmap -option ctrl:nocaps
+exec --no-startup-id dunst
+exec --no-startup-id emacs --daemon
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id ~/bin/autorotate
+exec --no-startup-id ~/bin/autolock
 
 # Lifestyle
 exec --no-startup-id devmon
@@ -27,11 +33,11 @@ exec --no-startup-id unclutter
 exec --no-startup-id compton -b
 
 # Applets
-exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id nm-applet
-exec --no-startup-id caffeine
-exec --no-startup-id blueman-applet
-exec --no-startup-id pasystray
+#exec --no-startup-id kdeconnect-indicator
+#exec --no-startup-id nm-applet
+#exec --no-startup-id caffeine
+#exec --no-startup-id blueman-applet
+#exec --no-startup-id pasystray
 
 # Aesthetics
 # font pango:Iosevka Term 10
@@ -98,6 +104,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec alacritty -t floaterm
 
 bindsym $mod+Shift+x kill
+bindsym $mod+Shift+q kill
 bindsym $mod+n exec networkmanager_dmenu
 #bindsym $mod+b exec polybar-msg cmd toggle
 
@@ -108,11 +115,11 @@ bindsym $mod+z exec ~/bin/open "$(xclip -o)"
 # Apps
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+q exec physlock
+bindsym $mod+q exec ~/bin/lock
 
 # XF86
-bindsym XF86MonBrightnessUp exec intelbacklight -inc 488
-bindsym XF86MonBrightnessDown exec intelbacklight -dec 488
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym XF86KbdBrightnessUp exec 
 bindsym XF86KbdBrightnessDown exec
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && amixer -D pulse sset Master unmute
@@ -202,7 +209,9 @@ for_window [instance="vmware"] floating enable
 
 # Assign workspaces
 for_window [class="Firefox"] move container to workspace $WS2
+for_window [class="emacs"] move container to workspace $WS3
 for_window [class="Thunderbird"] move container to workspace $WS4
+for_window [class="Evolution"] move container to workspace $WS4
 for_window [class="Remmina"] move container to workspace $WS5
 for_window [class="Steam"] move container to workspace $WS7
 for_window [class="Spotify"] move container to workspace $WS8
