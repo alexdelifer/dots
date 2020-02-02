@@ -100,8 +100,11 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Terminal
-bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec alacritty -t floaterm
+#bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
+
+#bindsym $mod+Shift+Return exec alacritty -t floaterm
+bindsym $mod+Shift+Return exec kitty -T floaterm --class floaterm
 
 bindsym $mod+Shift+x kill
 bindsym $mod+Shift+q kill

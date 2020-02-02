@@ -12,6 +12,9 @@ if [ "$TERM" = "xterm-termite" ]; then
     export TERM=xterm-256color
 fi 
 
+# Fix Alacritty?
+# "Disable" HIDPI
+export WINIT_HIDPI_FACTOR=1
 
 export GTK_MODULES
 export UBUNTU_MENUPROXY
