@@ -5,10 +5,10 @@
 #   \/_/\/_/   \/_____/   \/_/   \/_/\/_/   \/_____/
 #
 # General
-alias e="em"
-alias nvim="em"
-alias vi="em"
-alias vim="em"
+#alias e="em"
+#alias nvim="em"
+#alias vi="em"
+#alias vim="em"
 alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
