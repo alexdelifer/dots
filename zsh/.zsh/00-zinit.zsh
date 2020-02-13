@@ -20,36 +20,62 @@ autoload -Uz _zinit
 ### End of Zinit installer's chunk
 
 
+# Theme
+# Do not touch
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
+# AutoSuggest
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
-zinit light zsh-users/zsh-completions
-zinit light mafredri/zsh-async
-
-zinit light zdharma/fast-syntax-highlighting
-zinit load zdharma/history-search-multi-word
-
+# Binaries
 zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
 zinit load docker/compose
 
-zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
-zinit light trapd00r/LS_COLORS
 
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 
 zinit ice mv"httpstat.sh -> httpstat" \
         pick"httpstat" as"program"
 zinit snippet \
-    https://github.com/b4b4r07/httpstat/blob/master/httpstat.sh
+	https://github.com/b4b4r07/httpstat/blob/master/httpstat.sh
 
-zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+zinit ice pick"capture.zsh" as"program"
+zinit snippet \
+	https://github.com/Valodim/zsh-capture-completion/blob/master/capture.zsh
 
-zinit load liangguohuan/fzf-extends
+# General
+zinit wait lucid for \
+	mafredri/zsh-async \
+	liangguohuan/fzf-extends \
+
+	#zdharma/history-search-multi-word \
+
+# Completions go here
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+	zsh-users/zsh-completions
+
+zinit wait lucid as"completion" for \
+	OMZ::plugins/docker/_docker \
+    	OMZ::plugins/adb/_adb \
+    	OMZ::plugins/ripgrep/_ripgrep \
+
+zinit wait lucid atinit"zpcompinit" for \
+	zdharma/fast-syntax-highlighting
+
+zinit wait lucid for \
+	OMZ::plugins/git/git.plugin.zsh \
+	OMZ::plugins/tmux/tmux.plugin.zsh \
+	OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh \
+	OMZ::plugins/colorize/colorize.plugin.zsh \
+	OMZ::plugins/cp/cp.plugin.zsh \
+	OMZ::plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh \
+	#OMZ::plugins/vi-mode/vi-mode.plugin.zsh \ # Overloads Ctrl-R...
+
+
+# Zinit Packages
+zinit pack for \
+	fzf \
+	ls_colors
 
 autoload -Uz compinit
 compinit

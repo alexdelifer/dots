@@ -1,4 +1,5 @@
 #!/bin/bash
+export GDK_BACKEND=wayland
 
 emacsclient -n -e "(if (> (length (frame-list)) 1) 't)" | grep -q t
 if [ "$?" = "1" ]; then

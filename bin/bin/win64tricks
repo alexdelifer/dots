@@ -1,0 +1,2 @@
+#!/bin/sh
+WINEARCH=win64 WINEPREFIX=~/.win64 winetricks $@

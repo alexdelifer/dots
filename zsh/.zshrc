@@ -1,3 +1,4 @@
+
 # ______     ______     __  __     ______     ______    
 #/\___  \   /\  ___\   /\ \_\ \   /\  == \   /\  ___\   
 #\/_/  /__  \ \___  \  \ \  __ \  \ \  __<   \ \ \____  
@@ -13,4 +14,6 @@ for z in "$HOME"/.zsh/*.zsh; do
         source "$z"
 done
 
-reload # reload completions
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

@@ -19,6 +19,9 @@ export WINIT_HIDPI_FACTOR=1
 export GTK_MODULES
 export UBUNTU_MENUPROXY
 
+# Enable firefox multitouch
+export MOZ_USE_XINPUT2=1
+
 # Enviroment Variables
 export CLICOLOR=1 #what is this from again?
 export EDITOR="vim"
