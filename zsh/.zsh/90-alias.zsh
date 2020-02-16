@@ -89,7 +89,10 @@ function p {
 	# Run proxychains with our config file and command
 	# Gotta put the config variable here as it's no good past 
 	# it's expansion.
-	PROXYCHAINS_CONF_FILE=<(echo -n "$CONFIG") proxychains ${@}
+	rm -f /tmp/proxychains.$PORT.conf
+	echo -n "$CONFIG" > /tmp/proxychains.$PORT.conf
+	#PROXYCHAINS_CONF_FILE=<(echo -n "$CONFIG") proxychains ${@}
+	PROXYCHAINS_CONF_FILE=/tmp/proxychains.$PORT.conf proxychains ${@}
 	
 }
 alias start-proxy-work="ssh -CnfND 5555 dt-delifera"
