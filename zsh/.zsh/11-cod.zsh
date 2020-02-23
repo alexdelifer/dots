@@ -1,0 +1,1 @@
+source <(cod init $$ zsh)

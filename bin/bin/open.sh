@@ -9,7 +9,8 @@
 
 #ENVIRONMENT="dev"
 #DB_PATH="/data/db"
-MYBROWSER="firefox"
+MYBROWSER="firefox-nightly"
+MYTERM="kitty"
 function usage()
 {
     echo "if this was a real script you would see something useful here"
@@ -48,7 +49,7 @@ while [ "$1" != "" ]; do
             #mpv --geometry=50% --loop=inf "$@" &
             ;;
         *reddit.com*)
-            alacritty -e rtv "$@" &
+            $MYTERM rtv "$@" &
             ;;
         *.doc|*.docx)
             ~/bin/winword "$@" &

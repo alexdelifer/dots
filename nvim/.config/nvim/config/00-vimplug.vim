@@ -7,6 +7,10 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'Yggdroot/indentLine'
+"Plug 'osyo-manga/vim-over' " incccommand
 
 " TMUX
 Plug 'jszakmeister/vim-togglecursor'

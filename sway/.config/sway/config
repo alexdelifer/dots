@@ -6,40 +6,47 @@ set $down j
 set $left h
 set $right l
 
-set $WS1 1
-set $WS2 2
-set $WS3 3
-set $WS4 4
-set $WS5 5
-set $WS6 6
-set $WS7 7
-set $WS8 8
-set $WS9 9
-set $WS10 0
+
+set $WS1 "1:term"
+set $WS2 "2:web"
+set $WS3 "3:code"
+set $WS4 "4:work"
+set $WS5 "5:music"
+set $WS6 "6:docs"
+set $WS7 "7:7"
+set $WS8 "8:8"
+set $WS9 "9:9"
+set $WS10 "10:10"
+
+#set $WS1 1
+#set $WS2 2
+#set $WS3 3
+#set $WS4 4
+#set $WS5 5
+#set $WS6 6
+#set $WS7 7
+#set $WS8 8
+#set $WS9 9
+#set $WS10 0
 
 # Autostarts
-#exec --no-startup-id xsetroot -cursor_name left_ptr
-#exec --no-startup-id setxkbmap -option ctrl:nocaps
+exec --no-startup-id mako
+exec --no-startup-id waybar
+exec --no-startup-id blueman-applet
+exec --no-startup-id ~/bin/signal-daemon
 
 # Lifestyle
-exec --no-startup-id devmon
-exec --no-startup-id unclutter
-#exec --no-startup-id compton -b
 
 # Applets
-#exec --no-startup-id kdeconnect-indicator
-#exec --no-startup-id nm-applet
-#exec --no-startup-id caffeine
-#exec --no-startup-id blueman-applet
-#exec --no-startup-id pasystray
 
 # Aesthetics
 # font pango:Iosevka Term 10
-font pango:SF Mono 10
-#gaps inner 8
-#gaps outer 6
-gaps inner 0
-gaps outer 0
+font pango:Iosevka Nerd Font 14
+#font pango:SF Mono 10
+gaps inner 8
+gaps outer 6
+#gaps inner 0
+#gaps outer 0
 # new_window pixel 4
 default_border pixel 4
 default_floating_border pixel 4
@@ -97,35 +104,58 @@ bindsym $mod+space focus mode_toggle
 # Terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec alacritty -t floaterm
+#bindsym $mod+Return exec kitty
+#bindsym $mod+Shift+Return exec kitty -T floaterm --class floaterm
 
-bindsym $mod+Shift+x kill
+#bindsym $mod+Shift+x kill
 bindsym $mod+Shift+q kill
-bindsym $mod+n exec networkmanager_dmenu
+#bindsym $mod+n exec networkmanager_dmenu
+bindsym $mod+n exec makoctl dismiss
+bindsym $mod+Shift+n exec makoctl dismiss -a
 bindsym $mod+b exec polybar-msg cmd toggle
 
-# Open
-bindsym $mod+Shift+z exec ~/bin/phonesend.sh share-url "$(xclip -o)"
-bindsym $mod+z exec ~/bin/open "$(xclip -o)"
+# Send Clipboard to Phone
+bindsym $mod+Shift+z exec ~/bin/phonesend.sh "$(wl-paste)"
+bindsym $mod+z exec ~/bin/open.sh "$(wl-paste)"
 
 # Apps
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+Tab exec rofi -show window
-bindsym $mod+q exec sway
+
+# Rofi thru Alacritty
+for_window [title="swaylauncher"]    floating enable, resize set 800 300
+bindsym $mod+d exec alacritty -t swaylauncher -e \
+		bash -c 'compgen -c | grep -v fzf \
+		| sort -u | fzf --layout=reverse \
+		| xargs -r swaymsg -t command exec'
+
+#bindsym $mod+Tab exec rofi -show window
+
+# Pixelated Lock Screen
+bindsym $mod+q exec grim /tmp/swaylock && \
+		convert -resize 10% /tmp/swaylock /tmp/swaylock && \
+		convert -resize 1000% /tmp/swaylock /tmp/swaylock && \
+		swaylock -F -e -i /tmp/swaylock
+
+# Screenshot to clipboard for wayland
+bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
+bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
 
 # XF86
-bindsym XF86MonBrightnessUp exec intelbacklight -inc 488
-bindsym XF86MonBrightnessDown exec intelbacklight -dec 488
-bindsym XF86KbdBrightnessUp exec 
-bindsym XF86KbdBrightnessDown exec
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && amixer -D pulse sset Master unmute
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && amixer -D pulse sset Master unmute
-bindsym XF86AudioMute exec amixer -D pulse sset Master mute
+#bindsym XF86MonBrightnessUp exec intelbacklight -inc 488
+#bindsym XF86MonBrightnessDown exec intelbacklight -dec 488
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+#bindsym XF86KbdBrightnessUp exec 
+#bindsym XF86KbdBrightnessDown exec
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && \
+					amixer -D pulse sset Master unmute
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && \
+					amixer -D pulse sset Master unmute
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 bindsym XF86AudioMicMute exec amixer sset Capture,0 toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -192,24 +222,26 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Rules
 # Floating
 for_window [class="Alacritty"] border pixel 3
-for_window [class="floaterm" instance="floaterm"] floating enable border pixel 3
-for_window [class="floaterm"] floating enable border pixel 3
-for_window [instance="floaterm"] floating enable border pixel 3
-for_window [title="floaterm"] floating enable border pixel 3
+
+for_window [class="floaterm"] 	 floating enable
+for_window [instance="floaterm"] floating enable
+for_window [title="floaterm"] 	 floating enable
+
 for_window [instance="termite"] border pixel 3
 for_window [class="Clock-applet"] floating enable
 for_window [class="Adobe Photoshop CS6"] floating enable
 for_window [instance="keybase"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-for_window [instance="vmware"] floating enable 
+#for_window [instance="vmware"] floating enable 
 
 # Assign workspaces
 for_window [class="Firefox"] move container to workspace $WS2
 for_window [class="Thunderbird"] move container to workspace $WS4
-for_window [class="Remmina"] move container to workspace $WS5
+for_window [class="Evolution"] move container to workspace $WS4
+for_window [class="Remmina"] move container to workspace $WS4
 for_window [class="Steam"] move container to workspace $WS7
-for_window [class="Spotify"] move container to workspace $WS8
+for_window [class="Spotify"] move container to workspace $WS5
 for_window [class="keepassxc"] move container to workspace $WS9
 
 # Modes
@@ -265,20 +297,20 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bar {
-    status_command i3status
-    position top
-    font pango:SF Mono 10
+#bar {
+#    status_command i3status
+#    position top
+#    font pango:SF Mono 10
 
-        colors {
-        background #000000
-        separator #757575
+#        colors {
+#        background #000000
+#        separator #757575
         #                  border             background         text
         #focused_workspace  $bg-color          $bg-color          $text-color
         #inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
         #urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-    }
-}
+#    }
+#}
 
 
 exec --no-startup-id i3-msg "workspace $WS1"

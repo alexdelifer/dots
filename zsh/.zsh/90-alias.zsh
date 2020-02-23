@@ -15,10 +15,16 @@ alias rdp="xfreerdp /dynamic-resolution /h:800 /w:1280"
 alias fj="firejail --apparmor --env=LD_PRELOAD='/usr/lib/libhardened_malloc.so'"
 alias dig="dig +nocookie +noedns"
 alias ls="ls -hF --color=auto"
+alias watch="watch -c"
 alias cp="cp -r"
 alias scp="scp -r"
 alias mkdir="mkdir -p"
 alias grep='grep --color=auto'
+alias systemctl='sudo systemctl'
+alias userctl='/usr/bin/systemctl --user'
+alias openvpn='sudo openvpn'
+alias ovpn='openvpn'
+alias lsblk='lsblk -o NAME,PARTLABEL,RO,TYPE,SIZE,FSUSE%,MOUNTPOINT'
 
 
 # Proxychains
@@ -98,6 +104,7 @@ function p {
 alias start-proxy-work="ssh -CnfND 5555 dt-delifera"
 alias proxy-tor="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.tor.conf proxychains"
 alias proxy-5555="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.5555.conf proxychains"
+alias proxy-6666="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.6666.conf proxychains"
 alias proxy-nam="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.nam.conf proxychains"
 alias proxy-multi="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.multi.conf proxychains"
 alias proxy-work="proxy-5555"

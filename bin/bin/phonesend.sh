@@ -1,6 +1,6 @@
 #!/bin/bash
 # send to signal
-s me "$2"
+s me "$1"
 # sent to phone directly if kdeconnect is reachable
-mconnectctl "$1" /org/mconnect/device/0 "$2"
-notify-send "$2 sent to my phone."
+mconnectctl share-url /org/mconnect/device/0 "$1"
+notify-send "phonesend.sh -> \"$1\""

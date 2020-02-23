@@ -22,6 +22,9 @@ export UBUNTU_MENUPROXY
 # Enable firefox multitouch
 export MOZ_USE_XINPUT2=1
 
+# AppIndicator Support 
+export XDG_CURRENT_DESKTOP=Unity
+
 # Enviroment Variables
 export CLICOLOR=1 #what is this from again?
 export EDITOR="vim"
@@ -64,7 +67,7 @@ export LESS='-R '
 #fi
 
 # Vi Mode
-set -o vi
+# set -o vi
 
 # History
 HISTFILE=~/.zsh_history         # where to store zsh config

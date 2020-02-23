@@ -38,11 +38,13 @@ BACKUP_TAG=systemd.timer
 
 # Set all environment variables like
 # B2_ACCOUNT_ID, B2_ACCOUNT_KEY, RESTIC_REPOSITORY etc.
-source /etc/restic/rclone_env.sh
+#source /etc/restic/rclone_env.sh
+export RESTIC_REPOSITORY=rclone:crypt:Backups/Restic
+export RESTIC_PASSWORD_FILE=/home/alex/.restic-pass
 
 # How many network connections to set up to B2. Default is 5.
 #B2_CONNECTIONS=50
-RCLONE_BWLIMIT=8000k
+#RCLONE_BWLIMIT=8000k
 
 # NOTE start all commands in background and wait for them to finish.
 # Reason: bash ignores any signals while child process is executing and thus my trap exit hook is not triggered.

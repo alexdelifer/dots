@@ -1,3 +1,3 @@
 #!/bin/bash
-mkinitcpio -p linux
-build_efi_kernels
+mkinitcpio -P
+sbupdate
