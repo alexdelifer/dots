@@ -2,7 +2,7 @@ rofi.modi:                           window,run,ssh
 rofi.width:                          50
 rofi.lines:                          15
 rofi.columns:                        1
-rofi.font:                           SF Mono 14
+rofi.font:                           Fira Code Nerd Font 16
 rofi.color-normal:                   #0E0D1B, #d9cedd, #0E0D1B, #914a81, #d9cedd
 rofi.color-urgent:                   #0E0D1B, #d6b48d, #22231D, #d6b48d, #d9cedd
 rofi.color-active:                   #0E0D1B, #6A92B6, #0E0D1B, #6A92B6, #0E0D1B
@@ -13,7 +13,7 @@ rofi.padding:                        5
 rofi.yoffset:                        0
 rofi.xoffset:                        0
 rofi.fixed-num-lines:                true
-rofi.terminal:                       rofi-sensible-terminal
+rofi.terminal:                       alacritty -e
 rofi.ssh-client:                     ssh
 rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
 rofi.run-command:                    {cmd}

@@ -12,6 +12,9 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'Yggdroot/indentLine'
 "Plug 'osyo-manga/vim-over' " incccommand
 
+" SYNTAX
+Plug 'ycm-core/YouCompleteMe'
+
 " TMUX
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'tmux-plugins/vim-tmux'

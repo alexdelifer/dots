@@ -47,6 +47,7 @@ zinit snippet \
 zinit wait lucid for \
 	mafredri/zsh-async \
 	liangguohuan/fzf-extends \
+	supercrabtree/k
 
 	#zdharma/history-search-multi-word \
 

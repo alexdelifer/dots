@@ -6,6 +6,38 @@ set $down j
 set $left h
 set $right l
 
+# Display Outputs
+# Laptop
+
+set $laptop eDP-1
+set $usb-c  DP-1
+set $hdmi   HDMI-A-2
+#bindswitch --reload lid:on output $laptop disable
+#bindswitch --reload lid:off output $laptop enable
+
+#output $laptop     pos 0    0 res 1920x1080 
+#output $hdmi	   pos 1920 0 res 1920x1080
+#output $usb-c      pos 3840 0 res 1920x1080
+
+# Wallpaper
+
+output "*" bg /home/alex/Pictures/Hysteresis.png fill
+
+
+# Keyboard
+input type:keyboard {
+    xkb_layout us
+    xkb_options caps:escape
+}
+
+# Thinkpad Touchpad
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    dwt enabled
+    tap disabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
 
 set $WS1 "1:term"
 set $WS2 "2:web"
@@ -18,62 +50,29 @@ set $WS8 "8:8"
 set $WS9 "9:9"
 set $WS10 "10:10"
 
-#set $WS1 1
-#set $WS2 2
-#set $WS3 3
-#set $WS4 4
-#set $WS5 5
-#set $WS6 6
-#set $WS7 7
-#set $WS8 8
-#set $WS9 9
-#set $WS10 0
-
 # Autostarts
-exec --no-startup-id mako
-exec --no-startup-id waybar
-exec --no-startup-id blueman-applet
-exec --no-startup-id ~/bin/signal-daemon
+# kill then exec to restart when $mod+Shift+r for reload 
+exec_always pkill swayidle;		exec ~/.config/sway/idle
+exec_always pkill mako;			exec mako
+exec_always pkill wayvnc;		exec wayvnc 127.0.0.1
+exec_always pkill mpris-proxy;		exec mpris-proxy
+exec_always pkill ydotoold;		exec ydotoold
+exec_always pkill waybar; 		exec waybar
+exec_always pkill flashfocus;		exec flashfocus
+exec_always pkill nm-applet;		exec nm-applet --indicator
+exec_always pkill mconnectd;		exec mconnect -d
+exec_always pkill blueman-applet;	exec blueman-applet
+exec_always pkill kanshi;		exec kanshi
+exec_always pkill signal-daemon;	exec ~/bin/signal-daemon
 
-# Lifestyle
-
-# Applets
 
 # Aesthetics
-# font pango:Iosevka Term 10
-font pango:Iosevka Nerd Font 14
-#font pango:SF Mono 10
-gaps inner 8
-gaps outer 6
-#gaps inner 0
-#gaps outer 0
-# new_window pixel 4
+# font pango:Iosevka Nerd Font 14
+font pango:Fira Code Nerd Font Bold 10
+gaps inner 14
+gaps outer 0
 default_border pixel 4
 default_floating_border pixel 4
-
-# xresource colors
-#set_from_resource $color0 color0 
-#set_from_resource $color1 color1 
-#set_from_resource $color2 color2 
-#set_from_resource $color3 color3 
-#set_from_resource $color4 color4 
-#set_from_resource $color5 color5 
-#set_from_resource $color6 color6 
-#set_from_resource $color7 color7 
-#set_from_resource $color8 color8 
-#set_from_resource $color9 color9 
-#set_from_resource $color10 color10 
-#set_from_resource $color11 color11 
-#set_from_resource $color12 color12 
-#set_from_resource $color13 color13 
-#set_from_resource $color14 color14 
-#set_from_resource $color15 color15 
-#set_from_resource $color16 color16 
-#set_from_resource $color17 color17 
-#set_from_resource $color18 color18 
-#set_from_resource $color19 color19 
-#set_from_resource $color20 color20 
-#set_from_resource $color21 color21 
 
 
 # class                 border  backgr. text    indicator child_border
@@ -85,15 +84,6 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 #
 client.background       #ffffff
 
-# class                 border  backgr. text    indicator child_border
-#client.focused          $color21 #5f676a $color15 $color5 $color6
-#client.focused_inactive #333333 #5f676a $color15 #484e50   #5f676a
-#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-#client.urgent           #2f343a $color1  $color15 $color1    $color1
-#client.placeholder      $color0  #0c0c0c $color15 $color0   #0c0c0c
-
-#client.background       color15
-
 # Keybinds
 
 # crutch aka floating mode 
@@ -103,13 +93,11 @@ bindsym $mod+space focus mode_toggle
 
 # Terminal
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec alacritty -t floaterm
+bindsym $mod+Shift+Return exec alacritty -t floaterm -d 80 24
 #bindsym $mod+Return exec kitty
-#bindsym $mod+Shift+Return exec kitty -T floaterm --class floaterm
+#bindsym $mod+Shift+Return exec kitty -T floaterm --class floaterm 
 
-#bindsym $mod+Shift+x kill
 bindsym $mod+Shift+q kill
-#bindsym $mod+n exec networkmanager_dmenu
 bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss -a
 bindsym $mod+b exec polybar-msg cmd toggle
@@ -122,35 +110,60 @@ bindsym $mod+z exec ~/bin/open.sh "$(wl-paste)"
 
 # Rofi thru Alacritty
 for_window [title="swaylauncher"]    floating enable, resize set 800 300
+
+#bindsym $mod+d exec alacritty -t swaylauncher -e \
+#		bash -c 'compgen -c | grep -v fzf \
+#		| sort -u | fzf --layout=reverse \
+#		| xargs -r swaymsg -t command exec'
+
 bindsym $mod+d exec alacritty -t swaylauncher -e \
-		bash -c 'compgen -c | grep -v fzf \
-		| sort -u | fzf --layout=reverse \
+		bash -c 'i3-dmenu-desktop --dmenu=fzf \
 		| xargs -r swaymsg -t command exec'
 
-#bindsym $mod+Tab exec rofi -show window
+#bindsym $mod+d 	 exec rofi -show drun
+bindsym $mod+Tab exec rofi -show window
 
-# Pixelated Lock Screen
-bindsym $mod+q exec grim /tmp/swaylock && \
-		convert -resize 10% /tmp/swaylock /tmp/swaylock && \
-		convert -resize 1000% /tmp/swaylock /tmp/swaylock && \
-		swaylock -F -e -i /tmp/swaylock
+# Corrupt Lock Screen
+
+bindsym --release $mod+q exec ~/.config/sway/lock
+bindsym --release $mod+Escape exec ~/.config/sway/lock
+bindsym --release $mod+Shift+Escape exec swaylock -i ~/.wallpaper-lock
 
 # Screenshot to clipboard for wayland
 bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
 bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
 
 # XF86
-#bindsym XF86MonBrightnessUp exec intelbacklight -inc 488
-#bindsym XF86MonBrightnessDown exec intelbacklight -dec 488
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+
+# Wob
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
+
+bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && \
+	pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec pamixer -ud 2 && \
+	pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioMute exec pamixer --toggle-mute && \
+	( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || \
+	pamixer --get-volume > $SWAYSOCK.wob
+
+bindsym XF86MonBrightnessUp exec light -A 5 && \
+	light -G | cut -d'.' -f1 > $SWAYSOCK.wob
+bindsym XF86MonBrightnessDown exec light -U 5 && \
+	light -G | cut -d'.' -f1 > $SWAYSOCK.wob
+
+#bindsym XF86MonBrightnessUp exec light -A 10
+#bindsym XF86MonBrightnessDown exec light -U 10
+
 #bindsym XF86KbdBrightnessUp exec 
 #bindsym XF86KbdBrightnessDown exec
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && \
-					amixer -D pulse sset Master unmute
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && \
-					amixer -D pulse sset Master unmute
-bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
+#
+
+#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && \
+#					amixer -D pulse sset Master unmute
+#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && \
+#					amixer -D pulse sset Master unmute
+#bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
+
 bindsym XF86AudioMicMute exec amixer sset Capture,0 toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -217,23 +230,22 @@ bindsym $mod+comma scratchpad show
 bindsym $mod+Shift+c reload
 #bindsym $mod+Shift+r restart
 bindsym $mod+Shift+r reload
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Rules
 # Floating
-for_window [class="Alacritty"] border pixel 3
+for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+    floating enable, move position 877 450, sticky enable
 
-for_window [class="floaterm"] 	 floating enable
-for_window [instance="floaterm"] floating enable
-for_window [title="floaterm"] 	 floating enable
+for_window [title="floaterm"] resize set 640 480, floating enable
 
-for_window [instance="termite"] border pixel 3
+#for_window [instance="termite"] border pixel 3
 for_window [class="Clock-applet"] floating enable
 for_window [class="Adobe Photoshop CS6"] floating enable
 for_window [instance="keybase"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-#for_window [instance="vmware"] floating enable 
 
 # Assign workspaces
 for_window [class="Firefox"] move container to workspace $WS2
@@ -241,6 +253,7 @@ for_window [class="Thunderbird"] move container to workspace $WS4
 for_window [class="Evolution"] move container to workspace $WS4
 for_window [class="Remmina"] move container to workspace $WS4
 for_window [class="Steam"] move container to workspace $WS7
+for_window [instance="vmware"] move container to workspace $WS8
 for_window [class="Spotify"] move container to workspace $WS5
 for_window [class="keepassxc"] move container to workspace $WS9
 

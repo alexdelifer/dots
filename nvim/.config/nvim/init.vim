@@ -21,6 +21,8 @@ set hlsearch 		" Highlight search
 set termguicolors 	" Enable 256 color support
 let ayucolor="dark"
 colorscheme ayu
+" Override bg color to transparant :)
+hi Normal guibg=NONE ctermbg=NONE
 
 " Lightline Theme
 let g:lightline = {

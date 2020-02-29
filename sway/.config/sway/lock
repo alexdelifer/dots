@@ -1,0 +1,30 @@
+#!/bin/bash
+ 
+# Dependencies:
+# imagemagick
+# swaylock
+# grim
+# corrupter (https://github.com/r00tman/corrupter)
+ 
+IMAGE=/tmp/swaylock.png
+LOCK=~/.config/sway/lock2.png
+CORRUPTERARGS="-mag 3 \
+	       -boffset 5 \
+	       -meanabber 20"
+LOCKARGS=""
+
+notify-send -t 2000 -a "swaylock" "Locking Screen!"
+
+for OUTPUT in $(swaymsg -t get_outputs | jq -r '.[] | select(.active == true) | .name')
+do
+    IMAGE=/tmp/$OUTPUT-lock.png
+    grim -o $OUTPUT $IMAGE
+    corrupter $CORRUPTERARGS $IMAGE $IMAGE
+    composite -gravity center $LOCK $IMAGE $IMAGE
+    LOCKARGS="${LOCKARGS} --image ${OUTPUT}:${IMAGE}"
+    IMAGES="${IMAGES} ${IMAGE}"
+done
+
+swaylock $LOCKARGS
+
+rm $IMAGES

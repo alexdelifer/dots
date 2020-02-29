@@ -25,18 +25,23 @@ export MOZ_USE_XINPUT2=1
 # AppIndicator Support 
 export XDG_CURRENT_DESKTOP=Unity
 
+# Wayland Java Support
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Enviroment Variables
 export CLICOLOR=1 #what is this from again?
-export EDITOR="vim"
-export BROWSER=firefox
+export EDITOR="nvim"
+export BROWSER=firefox-nightly
 export TERMINAL=alacritty
 export PAGER=less
+
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+export QT_QPA_PLATFORMTHEME=wayland
 
 fpath=(~/.zsh/completion $fpath)
 
 # begin hidpi hell
 #export QT_AUTO_SCREEN_SCALE_FACTOR=-1 
-export QT_QPA_PLATFORMTHEME=qt5ct
 #export GDK_SCALE=2 
 #export GDK_DPI_SCALE=-1 
 #export XCURSOR_SIZE=48 

@@ -10,6 +10,9 @@
 alias vi="nvim"
 alias vim="nvim"
 
+alias ssh="TERM=xterm-256color ssh"
+alias ghetto-ssh="TERM=xterm ssh -oKexAlgorithms=+diffie-hellman-group1-sha1"
+
 # Sane Defaults :)
 alias rdp="xfreerdp /dynamic-resolution /h:800 /w:1280"
 alias fj="firejail --apparmor --env=LD_PRELOAD='/usr/lib/libhardened_malloc.so'"
@@ -25,6 +28,7 @@ alias userctl='/usr/bin/systemctl --user'
 alias openvpn='sudo openvpn'
 alias ovpn='openvpn'
 alias lsblk='lsblk -o NAME,PARTLABEL,RO,TYPE,SIZE,FSUSE%,MOUNTPOINT'
+alias kali='sudo arch-chroot /kali su - kali'
 
 
 # Proxychains
@@ -176,3 +180,13 @@ if [[ -n $TMUX ]]; then
 fi
 
 #alias ig="lftp ftp://install:weasel@ftp.installgentoo.com"
+
+export MANPATH=/usr/share/man
+function man-find() {
+    f=$(fd . $MANPATH/man${1:-1} -t f -x echo {/.} | fzf) && man $f
+}
+
+function fman() {
+    man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+}
+

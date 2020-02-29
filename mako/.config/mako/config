@@ -1,0 +1,16 @@
+font=Fira Code Nerd Font
+background-color=#00000090
+border-color=#99999999
+text-color=#ffffffff
+progress-color=over #00000044
+margin=12,12
+padding=10
+width=350
+border-size=8
+default-timeout=8000
+max-visible=9
+format=<span font='9'><i>%a</i></span>\n<b>%s</b>\n%b
+layer=overlay
+group-by=summary
+icon-path=/usr/share/icons/Test:/usr/share/icons/Adwaita
+max-icon-size=48

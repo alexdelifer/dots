@@ -1,0 +1,25 @@
+#!/bin/bash
+# Lock Script to be execd by swayconfig
+# Use loginctl lock-screen to lock
+
+lock_timeout=300 # 5 Minutes
+lock_notify=290
+dim_timeout=1800 # 30 Minutes
+
+# convert -resize 10% \
+#		-resize 1000% \
+#		"$image" "$image" && \
+#lockcmd="grim $image; \
+#	corrupter $image $image; \
+#	swaylock -f -F -e -i $image"
+
+lockcmd="~/.config/sway/lock"
+
+swayidle -w \
+	timeout $lock_timeout "$lockcmd" \
+	timeout $lock_notify 'notify-send "Locking screen due to inactivity in 10 secs"' \
+	after-resume 'swaymsg "output * dpms on"'  \
+	before-sleep "$lockcmd" \
+        lock "$lockcmd"
+        #timeout $dim_timeout 'swaymsg "output * dpms off"' \
+

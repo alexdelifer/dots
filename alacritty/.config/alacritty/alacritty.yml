@@ -8,7 +8,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use 'alacritty' if it is
   # available, otherwise 'xterm-256color' is used.
-  TERM: xterm-256color
+  TERM: alacritty
 
 window:
   # Window dimensions (changes require restart)
@@ -18,7 +18,6 @@ window:
   dimensions:
     columns: 80
     lines: 24
-
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
@@ -28,7 +27,7 @@ window:
     y: 15
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
@@ -88,24 +87,25 @@ tabspaces: 8
 font:
   # Normal (roman) font face
   normal:
-    family: Iosevka Nerd Font
+    #family: Iosevka Nerd Font
+    family: Fira Code Nerd Font Mono
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Retina
 
   # Bold font face
   bold:
-    family: Iosevka Nerd Font
+    family: Fira Code Nerd Font Mono
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
   italic:
-    family: Iosevka Nerd Font
+    family: Fira Code Nerd Font Mono
     # The `style` can be specified to pick a specific face.
     style: Italic
 
   # Point size
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -124,65 +124,31 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
-
-# Colors (Tomorrow Night Bright)
+# Colors (Molokai Dark)
 colors:
-  # Default colors
   primary:
     background: '0x000000'
-    foreground: '0xeaeaea'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
-
+    foreground: '0xF8F8F2'
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0xb9ca4a'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0xffffff'
-
+    black:   '0x333333'
+    red:     '0xC4265E'
+    green:   '0x86B42B'
+    yellow:  '0xB3B42B'
+    blue:    '0x6A7EC8'
+    magenta: '0x8C6BC8'
+    cyan:    '0x56ADBC'
+    white:   '0xE3E3DD'
   # Bright colors
   bright:
     black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
-    white:   '0xffffff'
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  dim:
-    black:   '0x333333'
-    red:     '0xf2777a'
-    green:   '0x99cc99'
-    yellow:  '0xffcc66'
-    blue:    '0x6699cc'
-    magenta: '0xcc99cc'
-    cyan:    '0x66cccc'
-    white:   '0xdddddd'
+    red:     '0xF92672'
+    green:   '0xA6E22E'
+    yellow:  '0xE2E22E'
+    blue:    '0x819AFF'
+    magenta: '0xAE81FF'
+    cyan:    '0x66D9EF'
+    white:   '0xF8F8F2'
 
   # Indexed Colors
   #
@@ -214,13 +180,13 @@ colors:
 # Specifying a `duration` of `0` will disable the visual bell.
 visual_bell:
   animation: EaseOutExpo
-  duration: 0
+  duration: 1
 
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.8
 
 # Mouse bindings
 #
@@ -271,7 +237,7 @@ selection:
   # When set to `true`, selected text will be copied to both the primary and
   # the selection clipboard. Otherwise, it will only be copied to the selection
   # clipboard.
-  save_to_clipboard: false
+  save_to_clipboard: true
 
 dynamic_title: true
 
