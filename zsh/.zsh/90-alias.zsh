@@ -105,7 +105,7 @@ function p {
 	PROXYCHAINS_CONF_FILE=/tmp/proxychains.$PORT.conf proxychains ${@}
 	
 }
-alias start-proxy-work="ssh -CnfND 5555 dt-delifera"
+alias start-proxy-work="ssh -CnfND 5555 pve-delifera"
 alias proxy-tor="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.tor.conf proxychains"
 alias proxy-5555="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.5555.conf proxychains"
 alias proxy-6666="PROXYCHAINS_CONF_FILE=~/.proxychains/proxychains.6666.conf proxychains"
@@ -149,8 +149,6 @@ alias rmrf="rm -rf"
 alias psef="ps -ef"
 
 alias -g F="| fzf"
-alias -g P="| peco"
-alias -g E="| fzf | e"
 
 alias zt="sudo zerotier-cli"
 alias ztr='sudo systemctl restart zerotier-one'
@@ -188,5 +186,15 @@ function man-find() {
 
 function fman() {
     man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+
 }
+
+alias fzf-install="yay -Slq \
+	| fzf -m --preview 'yay -Si {1}'\
+	| xargs -ro yay -S"
+alias fzf-remove="yay -Qeq \
+	| fzf -m --preview 'yay -Qi {1}' \
+	| xargs -ro yay -Rs"
+
+alias showcerts="openssl s_client -showcerts -connect"
 

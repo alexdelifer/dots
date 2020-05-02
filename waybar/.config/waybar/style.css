@@ -93,6 +93,7 @@ window#waybar {
 }
 
 #custom-spotify {
+    font-weight: bold;
     color: rgb(102, 220, 105);
 }
 

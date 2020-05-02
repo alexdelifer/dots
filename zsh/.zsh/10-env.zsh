@@ -13,6 +13,7 @@ if [ "$TERM" = "xterm-termite" ]; then
 fi 
 
 # Fix Alacritty?
+export MESA_LOADER_DRIVER_OVERRIDE=i965 # Iris is a buggy mess
 # "Disable" HIDPI
 export WINIT_HIDPI_FACTOR=1
 
@@ -33,15 +34,19 @@ export CLICOLOR=1 #what is this from again?
 export EDITOR="nvim"
 export BROWSER=firefox-nightly
 export TERMINAL=alacritty
+export TERMINAL_COMMAND="alacritty -e"
 export PAGER=less
 
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-export QT_QPA_PLATFORMTHEME=wayland
+export QT_QPA_PLATFORMTHEME=gnome
 
 fpath=(~/.zsh/completion $fpath)
 
-# begin hidpi hell
-#export QT_AUTO_SCREEN_SCALE_FACTOR=-1 
+# HIDPI SUX
+export QT_FONT_DPI=96
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCALE_FACTOR=1
+export QT_SCREEN_SCALE_FACTORS=1
 #export GDK_SCALE=2 
 #export GDK_DPI_SCALE=-1 
 #export XCURSOR_SIZE=48 

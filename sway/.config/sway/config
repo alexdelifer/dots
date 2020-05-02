@@ -52,7 +52,7 @@ set $WS10 "10:10"
 
 # Autostarts
 # kill then exec to restart when $mod+Shift+r for reload 
-exec_always pkill swayidle;		exec ~/.config/sway/idle
+exec_always pkill swayidle;		exec ~/.config/sway/locker -w
 exec_always pkill mako;			exec mako
 exec_always pkill wayvnc;		exec wayvnc 127.0.0.1
 exec_always pkill mpris-proxy;		exec mpris-proxy
@@ -111,23 +111,29 @@ bindsym $mod+z exec ~/bin/open.sh "$(wl-paste)"
 # Rofi thru Alacritty
 for_window [title="swaylauncher"]    floating enable, resize set 800 300
 
+bindsym $mod+Shift+d exec alacritty -t swaylauncher -e \
+		bash -c 'compgen -c \
+		| grep -v fzf \
+		| sort -u \
+		| fzf --layout=reverse \
+		| xargs -r swaymsg -t command exec'
+
 #bindsym $mod+d exec alacritty -t swaylauncher -e \
-#		bash -c 'compgen -c | grep -v fzf \
-#		| sort -u | fzf --layout=reverse \
+#		bash -c 'i3-dmenu-desktop --dmenu=fzf \
 #		| xargs -r swaymsg -t command exec'
 
-bindsym $mod+d exec alacritty -t swaylauncher -e \
-		bash -c 'i3-dmenu-desktop --dmenu=fzf \
-		| xargs -r swaymsg -t command exec'
+
+bindsym $mod+d exec alacritty -t swaylauncher \
+		-e "$HOME/.config/sway/sway-launcher-desktop.sh"
 
 #bindsym $mod+d 	 exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
 
 # Corrupt Lock Screen
 
-bindsym --release $mod+q exec ~/.config/sway/lock
-bindsym --release $mod+Escape exec ~/.config/sway/lock
-bindsym --release $mod+Shift+Escape exec swaylock -i ~/.wallpaper-lock
+bindsym $mod+q exec loginctl lock-session
+bindsym $mod+Escape exec loginctl lock-session
+bindsym $mod+Shift+Escape exec swaylock -i ~/.wallpaper-lock
 
 # Screenshot to clipboard for wayland
 bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
@@ -138,31 +144,37 @@ bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
 # Wob
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 
-bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && \
-	pamixer --get-volume > $SWAYSOCK.wob
-bindsym XF86AudioLowerVolume exec pamixer -ud 2 && \
-	pamixer --get-volume > $SWAYSOCK.wob
-bindsym XF86AudioMute exec pamixer --toggle-mute && \
-	( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || \
-	pamixer --get-volume > $SWAYSOCK.wob
 
-bindsym XF86MonBrightnessUp exec light -A 5 && \
-	light -G | cut -d'.' -f1 > $SWAYSOCK.wob
-bindsym XF86MonBrightnessDown exec light -U 5 && \
-	light -G | cut -d'.' -f1 > $SWAYSOCK.wob
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute \
+	&& amixer sget Master \
+	| grep 'Right:' \
+	| awk -F'[][]' '{ print substr($2, 0, length($2)-1) }' \
+	> $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute \
+	&& amixer sget Master \
+	| grep 'Right:' \
+	| awk -F'[][]' '{ print substr($2, 0, length($2)-1) }' \
+	> $SWAYSOCK.wob
+bindsym XF86AudioMute exec (amixer get Master \
+	| grep off > /dev/null \
+	&& amixer -q set Master unmute \
+	&& amixer sget Master \
+	| grep 'Right:' \
+	| awk -F'[][]' '{ print substr($2, 0, length($2)-1) }' \
+	> $SWAYSOCK.wob) \
+	|| (amixer -q set Master mute && echo 0 \
+	> $SWAYSOCK.wob)
 
-#bindsym XF86MonBrightnessUp exec light -A 10
-#bindsym XF86MonBrightnessDown exec light -U 10
 
-#bindsym XF86KbdBrightnessUp exec 
-#bindsym XF86KbdBrightnessDown exec
-#
+bindsym XF86MonBrightnessUp exec light -A 5 \
+	&& light -G \
+	| cut -d'.' -f1 \
+	> $SWAYSOCK.wob
+bindsym XF86MonBrightnessDown exec light -U 5 \
+	&& light -G \
+	| cut -d'.' -f1 \
+	> $SWAYSOCK.wob
 
-#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && \
-#					amixer -D pulse sset Master unmute
-#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && \
-#					amixer -D pulse sset Master unmute
-#bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
 
 bindsym XF86AudioMicMute exec amixer sset Capture,0 toggle
 bindsym XF86AudioPlay exec playerctl play-pause
