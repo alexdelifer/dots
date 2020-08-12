@@ -40,7 +40,7 @@ LOCKSESSION="loginctl lock-session $XDG_SESSION_ID"
 
 function lock(){
 	
-	#notify-send -t 2000 -a "swaylock" "Locking Screen!"
+	notify-send -t 2000 -a "swaylock" "Locking Screen!"
 	
 	if pgrep swaylock; then 
 		echo "Already Locked." 
@@ -53,8 +53,8 @@ function lock(){
 	do
 	    IMAGE=/tmp/$OUTPUT-lock.png
 	    grim -o $OUTPUT $IMAGE
-	    ~/bin/corrupter $CORRUPTERARGS $IMAGE $IMAGE
-	    #composite -gravity center $LOCKLOGO $IMAGE $IMAGE
+	    corrupter $CORRUPTERARGS $IMAGE $IMAGE
+	    composite -gravity center $LOCKLOGO $IMAGE $IMAGE
 	    LOCKARGS="${LOCKARGS} --image ${OUTPUT}:${IMAGE}"
 	    IMAGES="${IMAGES} ${IMAGE}"
 	done

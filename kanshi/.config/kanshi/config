@@ -1,30 +1,30 @@
 # Laptop: eDP-1 
 
-Solo {
+{
 	output eDP-1 mode 1920x1080 position 0,0
 	exec notify-send -a Kanshi "Solo Output Profile"
 }
 
-Home {
+{
 	output eDP-1 mode 1920x1080 position 0,1440
 	output "Ancor Communications Inc ROG PG279Q H3LMQS005468" mode 2560x1440 position 0,0
 	exec notify-send -a Kanshi "Home Output Profile"
 }
 
-Work {
+{
 	output eDP-1 mode 1920x1080 position 0,0 
 	output "Dell Inc. DELL P2419H VJT1P9880ENB" mode 1920x1080 position 1920,0
 	output "Dell Inc. DELL P2419H VJT1P9880CXB" mode 1920x1080 position 03840,0
 	exec notify-send -a Kanshi "Work Output Profile"
 }
 
-HDMI {
+{
 	output eDP-1 mode 1920x1080 position 0,0 
 	output HDMI-A-2 mode 1920x1080 position 1920,0
 	exec notify-send -a Kanshi "HDMI OUT"
 }
 
-USB-C {
+{
 	output eDP-1 mode 1920x1080 position 0,0
 	output DP-1 mode 1920x1080 position 1920,0
 	exec notify-send -a Kanshi "USB-C OUT"

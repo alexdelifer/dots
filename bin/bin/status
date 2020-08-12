@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Settings
+ALSADEVICE="Master"
+
+# Date & Time
+TIMEFORMAT="+%X"    # 01:45:56 PM
+DATEFORMAT="+%a %x" # Sat 08/08/2020
+TIME=$(date "$TIMEFORMAT")
+DATE=$(date "$DATEFORMAT")
+
+# Volume
+VOLUME=$(amixer get Master | \
+	grep "Front Left: Playback" | \
+	cut -d "[" -f2 | cut -d "]" -f1)
+
+VOLUME="$VOLUME " # Padded
+
+# Mute 
+MUTE=$(amixer get $ALSADEVICE | \
+	grep "Front Left: Playback" | \
+	cut -d "[" -f3 | cut -d "]" -f1)
+if [[ $MUTE -eq "on" ]]; then
+	MUTE=""
+else
+	MUTE="MUTED " # Padded
+fi
+
+BATTERY=$(acpi)
+BATTERY=${BATTERY#"Battery 0: "}
+
+IP=$(ip route get 1.1.1.1 | head -1 | cut -d' ' -f7)
+
+# Formatting
+HIGHLIGHT=$(tput setaf 6; tput bold)
+NORMAL=$(tput setaf 0; tput rmso)
+
+# Output
+
+printf "%s" "
+${HIGHLIGHT}Time:    ${NORMAL}$TIME
+${HIGHLIGHT}Date:    ${NORMAL}$DATE
+${HIGHLIGHT}Volume:  ${NORMAL}$VOLUME$MUTE$ALSADEVICE
+${HIGHLIGHT}Network: ${NORMAL}$IP
+${HIGHLIGHT}Battery: ${NORMAL}$BATTERY
+"
+
+
+

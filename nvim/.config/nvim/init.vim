@@ -17,6 +17,9 @@ set nu 			" Line Numbers
 set inccommand=nosplit 	" Realtime update
 set hlsearch 		" Highlight search 
 
+" Fix Clipboard
+set clipboard+=unnamedplus
+
 " Theme
 set termguicolors 	" Enable 256 color support
 let ayucolor="dark"

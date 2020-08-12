@@ -1,8 +1,8 @@
-rofi.modi:                           window,run,ssh
+rofi.modi:                           run,ssh,drun
 rofi.width:                          50
 rofi.lines:                          15
 rofi.columns:                        1
-rofi.font:                           Fira Code Nerd Font 16
+rofi.font:                           CaskaydiaCove Nerd Font 16
 rofi.color-normal:                   #0E0D1B, #d9cedd, #0E0D1B, #914a81, #d9cedd
 rofi.color-urgent:                   #0E0D1B, #d6b48d, #22231D, #d6b48d, #d9cedd
 rofi.color-active:                   #0E0D1B, #6A92B6, #0E0D1B, #6A92B6, #0E0D1B

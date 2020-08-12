@@ -13,7 +13,8 @@ Plug 'Yggdroot/indentLine'
 "Plug 'osyo-manga/vim-over' " incccommand
 
 " SYNTAX
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " TMUX
 Plug 'jszakmeister/vim-togglecursor'

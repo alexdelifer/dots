@@ -68,6 +68,6 @@ bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
 
 bindkey '^ ' autosuggest-accept # accept zsh-autosuggest
-bindkey '^X' fzf-completion
+#bindkey '^X' fzf-completion
 
 # bindkey '^s' emoji::cli
