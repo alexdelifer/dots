@@ -1,52 +1,75 @@
 # Variables
-set $mod Mod1
 
-set $up k
-set $down j
-set $left h
-set $right l
+set $WALLPAPER ~/Dank/Pictures/Walls/Verge/The_Verge_Hysteresis_Wallpaper_Landscape.0.png
 
-set $WS1 1
-set $WS2 2
-set $WS3 3
-set $WS4 4
-set $WS5 5
-set $WS6 6
-set $WS7 7
-set $WS8 8
-set $WS9 9
-set $WS10 0
+
+set $KAS 	exec_always --no-startup-id pkill -9
+set $ENID 	exec --no-startup-id
+
+set $mod 	Mod1
+
+set $left 	h
+set $down 	j
+set $up 	k
+set $right 	l
+
+set $WS1 "1:TERM"
+set $WS2 "2:WEB"
+set $WS3 "3:TEXT"
+set $WS4 "4:MAIL"
+set $WS5 "5:RDP"
+set $WS6 "6:ETC"
+set $WS7 "7:GAME"
+set $WS8 "8:MUSIC"
+set $WS9 "9:PASS"
+set $WS10 "0:DAEMON"
+
+# Always set wallpaper :)
+exec_always --no-startup-id hsetroot -full $WALLPAPER
 
 # OneShot
-exec --no-startup-id xsetroot -cursor_name left_ptr
-exec --no-startup-id setxkbmap -option ctrl:nocaps
+$ENID xsetroot -cursor_name left_ptr
+$ENID setxkbmap -option ctrl:nocaps
 
-# Tablet
-# exec --no-startup-id ~/bin/autolock
+# Screen and Auto Lock
+$ENID xset s 60 30
+$ENID xset dpms 120
 
-# Quality of Life
-exec --no-startup-id picom --experimental-backends
-exec --no-startup-id devmon
-exec --no-startup-id unclutter
-exec --no-startup-id picom -b
-exec --no-startup-id dunst
-exec --no-startup-id redshift
-exec --no-startup-id flashfocus
-exec --no-startup-id mpris-proxy
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id python ~/.config/xob/pulse-volume-watcher.py | xob
+
+# Gnome Sweet Gnome
+$ENID /usr/bin/gnome-keyring-daemon --start --components=secrets
+$ENID /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# POLYBAR
+$KAS polybar; ~/.config/polybar/launch.sh &
+
+#$KAS redshift; redshift &
+$KAS picom; sleep 1; picom &
+$KAS dunst; dunst &
+$KAS flashfocus; flashfocus &
+$KAS libinput-gestures; libinput-gestures-setup start &
+$KAS devmon; devmon &
+#$KAS deadd-notification-center; deadd-notification-center &
+
+# LOCK
+$KAS xss-lock;  xss-lock -n ~/.config/i3/dim-screen.sh -- ~/.config/i3/i3lock-fancy-multimonitor &
+
+$ENID unclutter
+$ENID mpris-proxy
 
 # Applets
-#exec --no-startup-id kdeconnect-indicator
-#exec --no-startup-id nm-applet
-#exec --no-startup-id caffeine
-#exec --no-startup-id blueman-applet
-#exec --no-startup-id pasystray
+$KAS nm-applet; nm-applet &
+$KAS pasystray; pasystray &
+
+
+# XOB
+exec --no-startup-id mkfifo $I3SOCK.xob && tail -f $I3SOCK.xob | xob
 
 # Aesthetics
 font pango:CaskaydiaCove Nerd Font Mono 10
-gaps inner 14
-#gaps outer 6
+#smart_gaps on
+gaps inner 24
+gaps outer 6
 new_window pixel 4
 new_float pixel 4
 
@@ -60,76 +83,123 @@ client.background       #ffffff
 
 # Keybinds
 
+
+bindsym Print --release exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Shift+Print exec "scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+
 # crutch aka floating mode 
-floating_modifier $mod
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+floating_modifier 		$mod
+bindsym $mod+Shift+space 	floating toggle
+bindsym $mod+space 		focus mode_toggle
 
 # Terminal
-bindsym $mod+Return exec alacritty
-#bindsym $mod+Return exec kitty
+bindsym $mod+Return 		exec --no-startup-id alacritty
+bindsym $mod+Shift+Return 	exec --no-startup-id alacritty -t floaterm
 
-bindsym $mod+Shift+Return exec alacritty -t floaterm
-#bindsym $mod+Shift+Return exec kitty -T floaterm --class floaterm
-
-bindsym $mod+Shift+x kill
-bindsym $mod+Shift+q kill
-bindsym $mod+n exec networkmanager_dmenu
+bindsym $mod+Shift+x 	kill
+bindsym $mod+Shift+q 	kill
+bindsym $mod+n 		exec --no-startup-id networkmanager_dmenu
 
 # Open
-bindsym $mod+Shift+z exec ~/bin/phonesend.sh share-url "$(xclip -o)"
-bindsym $mod+z exec ~/bin/open "$(xclip -o)"
+bindsym $mod+Shift+z 	exec --no-startup-id ~/bin/phonesend.sh share-url "$(xclip -o)"
+bindsym $mod+z 		exec --no-startup-id ~/bin/open "$(xclip -o)"
 
 # Apps
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+Tab exec rofi -show window
-bindsym $mod+q exec ~/bin/lock
+bindsym $mod+d 		exec --no-startup-id rofi -show drun
+bindsym $mod+Tab 	exec --no-startup-id rofi -show window
+bindsym $mod+q 		exec --no-startup-id loginctl lock-session
 
 # XF86
-bindsym XF86MonBrightnessUp 	exec light -A 5
-bindsym XF86MonBrightnessDown 	exec light -U 5
-bindsym XF86AudioRaiseVolume 	exec amixer -D pulse sset Master 5%+ && \
-				amixer -D pulse sset Master unmute
-bindsym XF86AudioLowerVolume 	exec amixer -D pulse sset Master 5%- && \
-				amixer -D pulse sset Master unmute
-bindsym XF86AudioMute 		exec amixer -D pulse sset Master toggle
-bindsym XF86AudioMicMute 	exec amixer sset Capture,0 toggle
-bindsym XF86AudioPlay 		exec playerctl play-pause
-bindsym XF86AudioNext 		exec playerctl next
-bindsym XF86AudioPrev 		exec playerctl previous
+#bindsym XF86MonBrightnessUp 	exec --no-startup-id light -A 5
+#bindsym XF86MonBrightnessDown 	exec --no-startup-id light -U 5
+#bindsym XF86AudioRaiseVolume 	exec --no-startup-id amixer -D pulse sset Master 5%+ && \
+#				amixer -D pulse sset Master unmute
+#bindsym XF86AudioLowerVolume 	exec --no-startup-id amixer -D pulse sset Master 5%- && \
+#				amixer -D pulse sset Master unmute
+#bindsym XF86AudioMute 		exec --no-startup-id amixer -D pulse sset Master toggle
+#bindsym XF86AudioMicMute 	exec --no-startup-id amixer sset Capture,0 toggle
+#bindsym XF86AudioPlay 		exec --no-startup-id playerctl play-pause
+#bindsym XF86AudioNext 		exec --no-startup-id playerctl next
+#bindsym XF86AudioPrev 		exec --no-startup-id playerctl previous
 
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
 
-bindsym $mod+Shift+$left move left 150
-bindsym $mod+Shift+$down move down 150
-bindsym $mod+Shift+$up move up 150
-bindsym $mod+Shift+$right move right 150
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute && amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print substr($2, 0, length($2)-1) }' > $I3SOCK.xob
+#
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute \
+#	&& amixer sget Master \
+#	| grep 'Right:' \
+#	| awk -F'[][]' '{ print substr($2, 0, length($2)-1) }' \
+#	> $I3SOCK.xob
+#
+#bindsym XF86AudioMute exec (amixer get Master \
+#	| grep off > /dev/null \
+#	&& amixer -q set Master unmute \
+#	&& amixer sget Master \
+#	| grep 'Right:' \
+#	| awk -F'[][]' '{ print substr($2, 0, length($2)-1) }' \
+#	> $I3SOCK.xob) \
+#	|| (amixer -q set Master mute && echo 0 \
+#	> $I3SOCK.xob)
 
-bindsym Mod4+$left resize shrink width 10 px or 10 ppt
-bindsym Mod4+$down resize grow height 10 px or 10 ppt
-bindsym Mod4+$up resize shrink height 10 px or 10 ppt
-bindsym Mod4+$right resize grow width 10 px or 10 ppt
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --allow-boost -ui 2 && pamixer --get-volume > $I3SOCK.xob
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --allow-boost -ud 2 && pamixer --get-volume > $I3SOCK.xob
+bindsym XF86AudioMute exec --no-startup-id pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $I3SOCK.xob ) || pamixer --get-volume > $SWAYSOCK.wob
 
-bindsym $mod+u split h
-bindcode $mod+20 split v
 
-bindsym $mod+v split v
-bindcode $mod+Shift+51 split h
-bindcode $mod+51 split h
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 \
+	&& light -G \
+	| cut -d'.' -f1 \
+	> $I3SOCK.xob
 
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 \
+	&& light -G \
+	| cut -d'.' -f1 \
+	> $I3SOCK.xob
 
-bindsym $mod+a focus parent
 
-bindsym $mod+bracketleft workspace prev
-bindsym $mod+bracketright workspace next
+bindsym XF86AudioMicMute 	exec --no-startup-id "amixer sset Capture,0 toggle"
+bindsym XF86AudioPlay 		exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext 		exec --no-startup-id playerctl next
+bindsym XF86AudioPrev 		exec --no-startup-id playerctl previous
 
+bindsym XF86Display exec --no-startup-id autorandr --change; restart
+
+bindsym $mod+$left 	focus left
+bindsym $mod+$down 	focus down
+bindsym $mod+$up 	focus up
+bindsym $mod+$right 	focus right
+
+bindsym $mod+Shift+$left 	move left 150
+bindsym $mod+Shift+$down 	move down 150
+bindsym $mod+Shift+$up 		move up 150
+bindsym $mod+Shift+$right 	move right 150
+
+bindsym Mod4+$left 	resize shrink width 10 px or 10 ppt
+bindsym Mod4+$down 	resize grow height 10 px or 10 ppt
+bindsym Mod4+$up 	resize shrink height 10 px or 10 ppt
+bindsym Mod4+$right 	resize grow width 10 px or 10 ppt
+
+bindsym $mod+v 		split v
+bindcode $mod+20 	split v
+
+bindsym $mod+u 		split h
+bindcode $mod+Shift+51 	split h
+bindcode $mod+51 	split h
+
+bindsym $mod+Shift+f 	sticky toggle
+bindsym $mod+f 		fullscreen toggle
+
+bindsym $mod+s 		layout stacking
+bindsym $mod+w 		layout tabbed
+bindsym $mod+e 		layout toggle split
+
+bindsym $mod+a 		focus parent
+
+bindsym $mod+bracketleft 	workspace prev
+bindsym $mod+bracketright 	workspace next
+
+# Multi Monitor Workspace Bliss
 bindsym $mod+1 exec --no-startup-id ~/.config/i3/switch-workspace.py $WS1
 bindsym $mod+2 exec --no-startup-id ~/.config/i3/switch-workspace.py $WS2
 bindsym $mod+3 exec --no-startup-id ~/.config/i3/switch-workspace.py $WS3
@@ -157,11 +227,14 @@ bindsym $mod+comma scratchpad show
 
 bindsym $mod+Shift+c reload
 #bindsym $mod+Shift+r restart
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "swaynag -e top -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? ' -b 'Yes, exit sway' 'swaymsg exit'"
+#bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec autorandr --change; restart
+#bindsym $mod+Shift+e exec "swaynag -e top -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? ' -b 'Yes, exit sway' 'swaymsg exit'"
 
 # Rules
 # Floating
+#for_window [class="Plank"] gaps inner set 0 gaps outer set 0
+
 for_window [class="Alacritty"] border pixel 3
 for_window [class="floaterm" instance="floaterm"] floating enable border pixel 3
 for_window [class="floaterm"] floating enable border pixel 3
@@ -255,3 +328,4 @@ mode "$mode_gaps_outer" {
 #
 
 exec --no-startup-id i3-msg "workspace $WS1"
+#workspace $WS1

@@ -3,6 +3,7 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'SirVer/ultisnips'

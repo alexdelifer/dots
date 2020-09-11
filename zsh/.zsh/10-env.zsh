@@ -27,6 +27,9 @@ export MESA_LOADER_DRIVER_OVERRIDE=i965 # Iris is a buggy mess
 # Enable firefox multitouch
 export MOZ_USE_XINPUT2=1
 
+# VA-API X11
+export MOZ_X11_EGL=1
+
 # QT Platform Theme
 export QT_QPA_PLATFORMTHEME=gnome
 

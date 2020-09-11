@@ -8,7 +8,7 @@
     monitor = 0
     follow = mouse
 
-    geometry = "540x5-14+14"
+    geometry = "540x5-24+45"
     indicate_hidden = yes
     shrink = yes
     transparency = 0
