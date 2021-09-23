@@ -1,8 +1,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "CaskaydiaCove Nerd Font";
-    font-size: 14px;
+    font-family: "Ubuntu Nerd Font";
+    font-size: 16px;
     min-height: 0;
 }
 
@@ -14,8 +14,8 @@ window#waybar {
 #window {
     font-weight: bold;
     border-radius: 0;
-    font-family: "CaskaydiaCove Nerd Font";
-    font-size: 14px;
+    font-family: "Ubuntu";
+    /* font-size: 18px; */
     min-height: 0;
 }
 /*
@@ -42,7 +42,7 @@ window#waybar {
 }
 
 #clock, #battery, #idle_inhibitor, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    padding: 0 3px;
+    padding: 4px 2px;
     margin: 0 2px;
 }
 
@@ -55,6 +55,7 @@ window#waybar {
 
 #battery icon {
     color: red;
+    padding: 0px 0px;
 }
 
 #battery.charging {
