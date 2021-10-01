@@ -29,7 +29,8 @@ set formatoptions+=2 " Use indent from 2nd line of a paragraph
 set formatoptions+=l " Don't break lines that are already long
 set formatoptions+=1 " Break before 1-letter words
 set gdefault " By default add g flag to search/replace. Add g to toggle
-set guicursor= " Disable cursor style changes in Neovim
+"set guicursor= " Disable cursor style changes in Neovim
+set guifont=CaskaydiaCove\ Nerd\ Font:h16
 set hidden " When a buffer is brought to foreground, remember undo history and marks
 set history=500 " Increase history from 20 default to 1000
 set hlsearch " Highlight searches
@@ -93,7 +94,9 @@ set hlsearch 		" Highlight search
 set clipboard+=unnamedplus
 
 " Theme
-set termguicolors 	" Enable 256 color support
+if (has("termguicolors"))
+    set termguicolors
+endif
 let ayucolor="dark"
 colorscheme ayu
 " Override bg color to transparant :)
@@ -120,4 +123,12 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
+
+let mapleader = " "
+nnoremap <leader>pv :Vex<CR>
+nnoremap <leader>pf :Files<CR>
+inoremap jk <esc>:w<CR>
+nnoremap <C-p> :GFiles<CR>
+
+
 
