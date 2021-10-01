@@ -65,12 +65,15 @@ zinit wait lucid atinit"zpcompinit" for \
 
 zinit wait lucid for \
 	OMZ::plugins/git/git.plugin.zsh \
-	OMZ::plugins/tmux/tmux.plugin.zsh \
 	OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh \
 	OMZ::plugins/colorize/colorize.plugin.zsh \
 	OMZ::plugins/cp/cp.plugin.zsh \
 	OMZ::plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh \
 	#OMZ::plugins/vi-mode/vi-mode.plugin.zsh \ # Overloads Ctrl-R...
+	#OMZ::plugins/tmux/tmux.plugin.zsh \
+
+
+zinit light olets/zsh-window-title
 
 
 # Zinit Packages

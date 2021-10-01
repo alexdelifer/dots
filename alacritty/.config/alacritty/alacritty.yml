@@ -61,9 +61,9 @@ window:
   #   - SimpleFullscreen
   #startup_mode: Windowed
   # Window title
-  #title: Alacritty
+  title: Terminal
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
   # Window class (Linux/BSD only):
   #class:
   # Application instance name
@@ -94,7 +94,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: CaskaydiaCove Nerd Font Mono
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Book
@@ -105,7 +105,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CaskaydiaCove Nerd Font Mono
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Bold
@@ -116,7 +116,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CaskaydiaCove Nerd Font Mono
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
@@ -127,13 +127,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CaskaydiaCove Nerd Font Mono
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 18.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -246,12 +246,12 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.60
+background_opacity: 0.80
 #selection:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
 # When set to `true`, selected text will be copied to the primary clipboard.
-#save_to_clipboard: false
+save_to_clipboard: false
 
 #cursor:
 # Cursor style
@@ -272,7 +272,7 @@ background_opacity: 0.60
 
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
-#unfocused_hollow: true
+unfocused_hollow: true
 
 # Thickness of the cursor relative to the cell width as floating point number
 # from `0.0` to `1.0`.
