@@ -46,7 +46,7 @@ $ENID /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $KAS polybar; ~/.config/polybar/launch.sh &
 
 #$KAS redshift; redshift &
-$KAS picom; sleep 1; picom &
+#$KAS picom; sleep 1; picom &
 $KAS dunst; dunst &
 $KAS flashfocus; flashfocus &
 $KAS libinput-gestures; libinput-gestures-setup start &
@@ -62,6 +62,8 @@ $ENID mpris-proxy
 # Applets
 $KAS nm-applet; nm-applet &
 $KAS pasystray; pasystray &
+
+# Autorandr
 
 
 # XOB
@@ -149,6 +151,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --allow-boost -ud 2 &&
 bindsym XF86AudioMute exec --no-startup-id pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $I3SOCK.xob ) || pamixer --get-volume > $SWAYSOCK.wob
 
 
+
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 \
 	&& light -G \
 	| cut -d'.' -f1 \
@@ -230,7 +233,9 @@ bindsym $mod+comma scratchpad show
 bindsym $mod+Shift+c reload
 #bindsym $mod+Shift+r restart
 #bindsym $mod+Shift+r restart
-bindsym $mod+Shift+r exec autorandr --change; restart
+#bindsym $mod+Shift+r exec autorandr --change; restart
+bindsym $mod+Shift+r exec autorandr i3; restart
+
 #bindsym $mod+Shift+e exec "swaynag -e top -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? ' -b 'Yes, exit sway' 'swaymsg exit'"
 
 # Rules
@@ -313,21 +318,29 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-#bar {
-#    status_command i3status
-#    position top
-#    font pango:SF Mono 10
-#
-#        colors {
-#        background #000000
-#        separator #757575
-#        #                  border             background         text
-#        focused_workspace  $bg-color          $bg-color          $text-color
-#        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-#        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#    }
-#}
-#
+bar {
+   status_command i3status
+   position top
+   font pango:SF Mono 10
+
+       colors {
+       background #000000
+       separator #757575
+       #                  border             background         text
+       #focused_workspace  $bg-color          $bg-color          $text-color
+       #inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+       #urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+   }
+}
+
 
 exec --no-startup-id i3-msg "workspace $WS1"
-#workspace $WS1
+exec --no-startup-id nvidia-settings --load-config-only
+exec --no-startup-id autorandr i3
+#restart
+workspace $WS1 output DP-2
+workspace $WS2 output DP-0
+workspace $WS3 output DP-4
+workspace $WS4 output DP1
+workspace $WS5 output HDMI1
+

@@ -12,12 +12,19 @@ set $right l
 set $laptop eDP-1
 set $usb-c  DP-1
 set $hdmi   HDMI-A-2
+
 #bindswitch --reload lid:on output $laptop disable
 #bindswitch --reload lid:off output $laptop enable
 
 #output $laptop     pos 0    0 res 1920x1080 
 #output $hdmi	   pos 1920 0 res 1920x1080
 #output $usb-c      pos 3840 0 res 1920x1080
+
+output DP-4     pos 640 0     res 1920x1080@60Hz
+output DP-2     pos 2560 1080 res 2560x1440@165Hz
+output DP-3     pos 0 1080    res 2560x1440@144Hz
+output DP-1     pos 5120 0    res 1920x1080@60Hz
+output HDMI-A-1 pos 5120 1080 res 1920x1080@60Hz
 
 # Wallpaper
 
@@ -31,17 +38,17 @@ input type:keyboard {
     #xkb_options "caps:escape"
 }
 
-# Thinkpad Touchpad
-input "2:7:SynPS/2_Synaptics_TouchPad" {
-    dwt enabled
-    tap disabled
-    natural_scroll enabled
-    middle_emulation enabled
-}
+# # Thinkpad Touchpad
+# input "2:7:SynPS/2_Synaptics_TouchPad" {
+#     dwt enabled
+#     tap disabled
+#     natural_scroll enabled
+#     middle_emulation enabled
+# }
 
 # Thinkpad Touchscreen
-input 1386:20915:Wacom_Pen_and_multitouch_sensor_Finger map_to_output eDP-1
-input 1386:20915:Wacom_Pen_and_multitouch_sensor_Pen    map_to_output eDP-1
+#input 1386:20915:Wacom_Pen_and_multitouch_sensor_Finger map_to_output eDP-1
+#input 1386:20915:Wacom_Pen_and_multitouch_sensor_Pen    map_to_output eDP-1
 
 
 set $WS1 "1:term"
@@ -131,10 +138,10 @@ bindsym $mod+Shift+d exec alacritty -t swaylauncher -e \
 #		| xargs -r swaymsg -t command exec'
 
 
-bindsym $mod+d exec alacritty -t swaylauncher \
-		-e "$HOME/.config/sway/sway-launcher-desktop.sh"
+# bindsym $mod+d exec alacritty -t swaylauncher 
+#     -e "$HOME/.config/sway/sway-launcher-desktop.sh"
 
-#bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec rofi -show drun
 
 # Corrupt Lock Screen
 

@@ -1,5 +1,5 @@
 [user]
-	name = alex
+	name = Alexandre Delifer
 	email = alex@delifer.ca
 [color]
 	diff = auto
@@ -7,5 +7,5 @@
     branch = auto
     ui = auto
 
-[credential "https://git.delifer.ca"]
-	username = alex
+[credential "https://gitlab.zimmercas.com"]
+	username = delifera
