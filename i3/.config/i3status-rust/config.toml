@@ -1,0 +1,121 @@
+theme = "plain"
+icons = "awesome"
+#icons_format = "<span font_family='NotoSans Nerd Font'>{icon}</span>"
+#icons = "material"
+
+[[block]]
+block = "music"
+on_collapsed_click = "spotify"
+buttons = ["play", "next"]
+
+[[block]]
+block = "bluetooth"
+mac = "70:26:05:56:1C:C9"
+format = "SONY XM2"
+#format = "SONY {percentage}"
+format_unavailable = "SONY x"
+hide_disconnected = true
+
+[[block]]
+block = "bluetooth"
+mac = "94:DB:56:DA:A2:87"
+format = "SONY XM3"
+#format = "SONY {percentage}"
+format_unavailable = "SONY x"
+hide_disconnected = true
+
+[[block]]
+block = "bluetooth"
+mac = "E4:17:D8:20:F9:7B"
+format = "SN30 Pro+"
+#format = "sony {percentage}"
+format_unavailable = "sn30 pro x"
+hide_disconnected = true
+
+[[block]]
+block = "bluetooth"
+mac = "E4:17:D8:13:8B:7A"
+format = "GBros"
+#format = "sony {percentage}"
+format_unavailable = "sn30 pro x"
+hide_disconnected = true
+
+# [[block]]
+# block = "maildir"
+# interval = 60
+# inboxes = ["/home/alex/Mail/alex@delifer.ca/mail", "/home/alex/Mail/alex.delifer@zimmerbiomet.com/INBOX"]
+# threshold_warning = 1
+# threshold_critical = 10
+# display_type = "new"
+[[block]]
+block = "custom"
+command = '''echo -n " "; notmuch count tag:unread '''
+on_click = "~/.config/neomutt/scripts/get-mail.sh"
+interval = 10
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = "{icon} {available}"
+
+
+[[block]]
+block = "networkmanager"
+primary_only = true
+device_format = " {ips}"
+connection_format = "{devices}"
+on_click = "alacritty -e nmtui"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+", "zt\\.*"]
+interface_name_include = []
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "nvidia_gpu"
+label = "RTX 2080"
+show_memory = false
+show_clocks = false
+interval = 1
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "pacman"
+interval = 600
+format = "{pacman}"
+format_singular = "{pacman}"
+format_up_to_date = "up to date"
+# If a linux update is availble, but no ZFS package, it won't be possible to
+# actually perform a system upgrade, so we show a warning.
+warning_updates_regex = "(linux|linux-lts|linux-zen)"
+# If ZFS is available, we know that we can and should do an upgrade, so we show
+# the status as critical.
+critical_updates_regex = "(zfs|zfs-lts|zfs-linux-zen)"
+
+[[block]]
+block = "kdeconnect"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %I:%M %p"

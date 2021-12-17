@@ -1,0 +1,11 @@
+[Unit]
+Description=Restart GDM Once on Boot
+After=gdm.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/restart-gdm
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Set ZimmerCAS DNS on ZeroTier
+Requires=set-zcasdns.service
+
+[Timer]
+Unit=set-zcasdns.service
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target

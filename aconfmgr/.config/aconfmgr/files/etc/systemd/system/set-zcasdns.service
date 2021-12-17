@@ -1,0 +1,11 @@
+[Unit]
+Description=Configure ZimmerCAS DNS on ZeroTier
+After=zerotier-one.service
+
+[Service]
+Type=oneshot
+#RemainAfterExit=yes
+ExecStart=/usr/local/bin/set-zcasdns
+
+[Install]
+WantedBy=multi-user.target

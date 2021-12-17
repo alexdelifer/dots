@@ -96,7 +96,11 @@ do
 		if [[ $DRY_RUN -eq 1 ]]; then DR='-n'; else DR=''; fi
 
 		# use stow to create symlinks in $HOME
-		stow -v --ignore='install.sh' --ignore='post-install.sh' --ignore='.md$' "$app" $RESTOW --target="$HOME" $DR
+		stow -v --ignore='install.sh' \
+      --ignore='post-install.sh' \
+      --ignore='.md$' \
+      "$app" $RESTOW \
+      --target="$HOME" $DR
 
 		if [[ $? -ne 0 && $DRY_RUN -eq 0 ]]; then
 			echo 'Stow returned a non-zero result. You may want to re-run with -f (force)'

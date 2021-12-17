@@ -9,8 +9,8 @@
 
 #ENVIRONMENT="dev"
 #DB_PATH="/data/db"
-MYBROWSER="firefox-nightly"
-MYTERM="kitty"
+MYBROWSER="google-chrome"
+MYTERM="alacritty"
 function usage()
 {
     echo "if this was a real script you would see something useful here"
@@ -23,6 +23,8 @@ function mpvimage()
 {
     mpv --geometry=50% --loop=inf "$@" &
 }
+
+notify-send "Opening $@"
 
 while [ "$1" != "" ]; do
     PARAM=`echo $1 | awk -F= '{print $1}'`

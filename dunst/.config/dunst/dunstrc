@@ -8,7 +8,7 @@
     monitor = 0
     follow = mouse
 
-    geometry = "540x5-24+45"
+    geometry = "540x5+100+100"
     indicate_hidden = yes
     shrink = yes
     transparency = 0
@@ -24,7 +24,7 @@
     idle_threshold = 120
 
     ### Text ###
-    font = sf mono 14
+    font = CaskaydiaCove Nerd Font Mono 10
     line_height = 0
 
     markup = full
