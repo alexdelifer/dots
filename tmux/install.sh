@@ -23,6 +23,6 @@ if ! command -v tmux >/dev/null 2>&1; then
 	fi
 fi
 
-tmux -f tmux/.tmux.conf new-session \
+nohup script -q -O /dev/null tmux -f tmux/.tmux.conf new-session \
 	"tmux run-shell tmux/.tmux/plugins/tpm/bindings/install_plugins" \
-	&& echo "tmux installed."
+	</dev/null >/dev/null 2>&1 & 

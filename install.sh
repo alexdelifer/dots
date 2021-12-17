@@ -1,9 +1,10 @@
 #!/bin/bash
 
-usage='Usage: ./install.sh [-n] [-f] app1 [app2 app3 ..]
+usage='Usage: ./install.sh [-n] [-f] [-q] app1 [app2 app3 ..]
 
-  -n   dry-run; no filesystem changes
-  -f   force overwrite of existing symlinks'
+	-n   dry-run; no filesystem changes
+	-f   force overwrite of existing symlinks
+'
 
 DRY_RUN=0
 FORCE=0
@@ -58,8 +59,8 @@ function delete_symlinks {
 	done
 }
 
-for app in "$@"
-do
+for app in "$@"; do
+	echo "$app :: Started"
 	if [[ $FORCE -eq 1 ]]; then
 		# forcefully delete any conflicts in stow
 		IFS=$(echo -en "\n\b")
@@ -83,8 +84,9 @@ do
 	fi
 
 	# use per-app install.sh, or just symlink with stow
-	if [[ -x $app/install.sh ]]; then
-		"./$app/install.sh" $FORCE $DRY_RUN
+	if [[ -f $app/install.sh ]]; then
+		echo "$app :: $app/install.sh"
+		"./$app/install.sh" $FORCE $DRY_RUN &
 	fi
 
 	# per-app install scripts can return 255 to indicate that the
@@ -96,11 +98,13 @@ do
 		if [[ $DRY_RUN -eq 1 ]]; then DR='-n'; else DR=''; fi
 
 		# use stow to create symlinks in $HOME
-		stow -v --ignore='install.sh' \
+		stow -v \
+		--ignore='README' \
+		--ignore='install.sh' \
 		--ignore='post-install.sh' \
 		--ignore='.md$' \
 		"$app" $RESTOW \
-		--target="$HOME" $DR
+		--target="$HOME" $DR > /dev/null
 
 		if [[ $? -ne 0 && $DRY_RUN -eq 0 ]]; then
 			echo 'Stow returned a non-zero result. You may want to re-run with -f (force)'
@@ -108,9 +112,17 @@ do
 	fi
 
     # use per-app post-install.sh, useful when something needs to be stowed first.
-    if [[ -x $app/post-install.sh ]]; then
-        "./$app/post-install.sh" $FORCE $DRY_RUN
+    if [[ -f $app/post-install.sh ]]; then
+		echo "$app :: $app/post-install.sh"
+        "./$app/post-install.sh" $FORCE $DRY_RUN &
     fi
+
+	echo "$app :: Done"
 
 done
 
+sleep 0.5
+echo "Waiting for background jobs..."
+wait < <(jobs -p)
+#test -f fail && echo Calculation failed.
+#rm fail

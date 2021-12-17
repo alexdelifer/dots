@@ -157,6 +157,8 @@ CopyFile /etc/pacman.d/mirrorlist
 # sysctl
 CopyFile /etc/sysctl.d/10-network.conf
 
+# fancy issue
+CopyFile /etc/issue
 
 # basic shit
 CopyFile /etc/vconsole.conf

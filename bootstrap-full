@@ -1,7 +1,0 @@
-#! /bin/bash
-if ! command -v git >/dev/null 2>&1; then
-	pacman -S git
-fi
-git clone --recursive somegitrepo "$HOME/dots"
-cd "$HOME/dots" || exit 2
-bash "$HOME/dots/bootstrap"

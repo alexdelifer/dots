@@ -1,1 +1,0 @@
-zsh neovim tmux python-neovim fasd find-the-command i3-gaps i3status compton dunst figlet htop rofi

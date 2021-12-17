@@ -1,2 +1,0 @@
-#! /bin/bash -e
-./install.sh zsh nvim git tmux inputrc

@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "Rebuilding Font Cache."
-fc-cache -r -v
+echo "fonts :: Rebuilding Font Cache."
+fc-cache -r -v > /dev/null
