@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 usage='Usage: ./install.sh [-n] [-f] app1 [app2 app3 ..]
 
@@ -42,7 +42,7 @@ if ! command -v stow >/dev/null 2>&1; then
 	if [[ $(uname) == 'Darwin' ]]; then
 		brew install stow
 	else
-      # not everything is arch linux...
+		# not everything is arch linux...
 		sudo pacman -Syu stow
 	fi
 fi
@@ -97,10 +97,10 @@ do
 
 		# use stow to create symlinks in $HOME
 		stow -v --ignore='install.sh' \
-      --ignore='post-install.sh' \
-      --ignore='.md$' \
-      "$app" $RESTOW \
-      --target="$HOME" $DR
+		--ignore='post-install.sh' \
+		--ignore='.md$' \
+		"$app" $RESTOW \
+		--target="$HOME" $DR
 
 		if [[ $? -ne 0 && $DRY_RUN -eq 0 ]]; then
 			echo 'Stow returned a non-zero result. You may want to re-run with -f (force)'
