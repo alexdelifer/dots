@@ -1,0 +1,9 @@
+# dots
+
+All the magic is contained in `install.sh`
+
+```bash
+git clone https://github.com/alexdelifer/dots ~/dots
+cd ~/dots 
+./install.sh bin i3 zsh
+```
