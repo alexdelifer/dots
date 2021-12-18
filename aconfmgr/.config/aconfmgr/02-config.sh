@@ -8,8 +8,8 @@ MODULES=(
     ## drivers
     nvidia
     intel
-    zfs
-    btrfs
+    #zfs
+    #btrfs
 
     ## functions
     gaming
@@ -19,7 +19,7 @@ MODULES=(
 
     ## desktop environment
     i3wm
-    #gnome
+    gnome
     #sway
 
     ## other

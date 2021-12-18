@@ -76,7 +76,7 @@ CheckNvidiaGPU() {
 
 CheckIntelGPU() {
     NAME="$1"
-    INTEL=$(lspci | grep ' Intel Corporation HD Graphics ')
+    INTEL=$(lspci | grep 'HD Graphics ')
     if [ -z "$INTEL" ]; then
         echo "::: ${NAME}: HARDWARE: $(tput setaf 3)$(tput bold)NOT FOUND$(tput sgr0)"
         return 1

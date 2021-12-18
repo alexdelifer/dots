@@ -7,6 +7,7 @@
 #   \/_/   \/_____/   \/_/ \/_/   \/_____/   \/_/ /_/   \/_____/   \/_____/
 
 IgnorePath '**.pacnew'
+IgnorePath '**.pacsave'
 
 IgnorePath '/etc/hostname'
 IgnorePath '/etc/machine-id'
@@ -70,3 +71,13 @@ IgnorePath '/etc/ca-certificates/extracted/*'
 IgnorePath '/usr/share/*'
 IgnorePath '/usr/lib/*'
 IgnorePath '/usr/lib32/*'
+
+IgnorePath '/cloud/*'
+IgnorePath '/kali/*'
+
+IgnorePath '/etc/brlapi.key'
+IgnorePath '/etc/crypttab'
+
+IgnorePath '/etc/ipsec.secrets'
+IgnorePath '/lost+found'
+IgnorePath 'mnt_uefi'

@@ -81,4 +81,4 @@ AddPackage grilo-plugins # A collection of plugins for the Grilo framework
 AddPackage gimp # GNU Image Manipulation Program
 
 
-CopyFile /etc/gdm/custom.conf
+#CopyFile /etc/gdm/custom.conf

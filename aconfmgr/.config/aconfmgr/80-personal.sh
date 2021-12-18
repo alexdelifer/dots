@@ -178,4 +178,3 @@ AddPackage chaotic-mirrorlist # Chaotic-AUR mirrorlist to use with Pacman
 
 
 
-CopyFile /etc/default/grub
