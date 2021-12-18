@@ -50,6 +50,9 @@ commit:
 push:
 	@git push
 
+pull:
+	@git pull
+
 find-old:
 	@echo "$$(tput setaf 1)$$(tput bold)Unused Files:$$(tput sgr0)"
 	@aconfmgr check 2>&1 | grep Unused | cut -d':' -f 6 | sed 's/^ //g'
