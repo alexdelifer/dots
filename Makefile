@@ -16,7 +16,7 @@ help:
 	@echo "$$(tput setaf 4)$$(tput bold)delifer dotfiles$$(tput sgr0)"
 	@echo "$$(tput bold)Commands:$$(tput sgr0)"
 	@echo "  $$(tput setaf 2)$$(tput bold)aconfmgr$$(tput sgr0)"
-	@echo "    install, save, diff, apply, check"
+	@echo "    install, save, diff, apply, check, find-old"
 	@echo "  $$(tput setaf 2)$$(tput bold)git$$(tput sgr0)"
 	@echo "    status, add, commit, push"
 
@@ -24,25 +24,29 @@ install:
 	$(DOTFILES)/install.sh $(ALLPKGS)
 
 save:
-	aconfmgr save
+	@aconfmgr save
 
 diff:
-	aconfmgr --skip-checksums diff /
+	@aconfmgr --skip-checksums diff /
 
 apply:
-	aconfmgr --skip-checksums apply
+	@aconfmgr --skip-checksums apply
 
 check:
-	aconfmgr check
+	@aconfmgr check
 
 status:
-	git status
+	@git status
 
 add:
-	git add -i .
+	@git add -i .
 
 commit:
-	git commit -m "Auto: $(DATE)"
+	@git commit -m "Auto: $(DATE)"
 
 push:
-	git push
+	@git push
+
+find-old:
+	@echo "$$(tput setaf 1)$$(tput bold)Unused Files:$$(tput sgr0)"
+	@aconfmgr check 2>&1 | grep Unused | cut -d':' -f 6 | sed 's/^ //g'
