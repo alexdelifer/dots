@@ -1,5 +1,6 @@
 DOTFILES := $(shell pwd)
 ALLPKGS := $(shell find $$DOTFILES -maxdepth 1 -not -path '*/\.*' -not -path '.' -type d -printf '%f\n' )
+DATE := $(shell date)
 
 .PHONY: install save diff apply check status add commit push
 
@@ -41,7 +42,7 @@ add:
 	git add -i .
 
 commit:
-	git commit -m "Auto: $$(date)"
+	git commit -m "Auto: $(DATE)"
 
 push:
 	git push
