@@ -20,7 +20,7 @@ AddPackage needrestart # Restart daemons after library updates.
 # bootloader
 AddPackage grub # GNU GRand Unified Bootloader (2)
 AddPackage os-prober # Utility to detect other OSes on a set of drives
-CopyFileTo "/etc/default/grub-${HOSTNAME}" "/etc/default/grub"
+CopyFileTo "/etc/default/grub-$(cat /etc/hostname)" "/etc/default/grub"
 
 # meme
 AddPackage cowsay # Configurable talking cow (and a few other creatures)

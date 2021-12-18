@@ -1,28 +1,29 @@
 MODULES=(
-    # general
+    ## general
     kernel
     base
-    #dev
-    #hacker
-    # drivers
-    #nvidia
+    dev
+    hacker
+
+    ## drivers
+    nvidia
     intel
     #zfs
     #btrfs
-    # functions
-    #gaming
-    #work
+
+    ## functions
+    gaming
+    work
     pipewire
     bluetooth
-    # graphical
+
+    ## desktop environment
     i3wm
     #gnome
     #sway
-    # host specific
-    #laptop
-    #desktop
-    # other
-    #personal
+
+    ## other
+    personal
     theme
     harden
 )

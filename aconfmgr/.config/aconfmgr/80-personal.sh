@@ -114,8 +114,8 @@ CreateLink /etc/systemd/system/sockets.target.wants/libvirtd-ro.socket /usr/lib/
 CreateLink /etc/systemd/system/sockets.target.wants/libvirtd.socket /usr/lib/systemd/system/libvirtd.socket
 CreateLink /etc/systemd/system/sockets.target.wants/virtlockd.socket /usr/lib/systemd/system/virtlockd.socket
 CreateLink /etc/systemd/system/sockets.target.wants/virtlogd.socket /usr/lib/systemd/system/virtlogd.socket
-CopyFile /etc/libvirt/qemu/networks/default.xml
-CreateDir /etc/libvirt/secrets 700
+#CopyFile /etc/libvirt/qemu/networks/default.xml
+#CreateDir /etc/libvirt/secrets 700
 
 # filesystems
 AddPackage udevil # Mount and unmount without password

@@ -17,6 +17,6 @@ AddPackage linux-zen-headers # Headers and scripts for building modules for the 
 AddPackage efibootmgr # Linux user-space application to modify the EFI Boot Manager
 
 # mkinitcpio configs
-CopyFile /etc/mkinitcpio-$(hostname).conf
+CopyFile /etc/mkinitcpio-$(cat /etc/hostname).conf
 CopyFile /etc/mkinitcpio.d/linux-xanmod-tt.preset
 CopyFile /etc/mkinitcpio.d/linux-zen.preset

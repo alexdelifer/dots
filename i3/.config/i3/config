@@ -59,9 +59,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec_always --no-startup-id pkill -9 polybar; ~/.config/polybar/launch.sh &
 
 #exec_always --no-startup-id pkill -9 redshift; redshift &
-#exec_always --no-startup-id pkill -9 picom; sleep 1; picom &
+exec_always --no-startup-id pkill -9 picom; sleep 1; picom &
 exec_always --no-startup-id pkill -9 dunst; dunst &
-#exec_always --no-startup-id pkill -9 flashfocus; flashfocus &
+exec_always --no-startup-id pkill -9 flashfocus; flashfocus -o 0.9 &
 #exec_always --no-startup-id pkill -9 libinput-gestures; libinput-gestures-setup start &
 exec_always --no-startup-id pkill -9 devmon; devmon &
 #exec_always --no-startup-id pkill -9 deadd-notification-center; deadd-notification-center &
