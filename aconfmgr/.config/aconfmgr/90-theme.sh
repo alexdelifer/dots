@@ -11,7 +11,11 @@ AddPackage --foreign sweet-folders-icons-git # Folder icons from the Sweet GTK T
 AddPackage sweet-gtk-theme-dark # Light and dark colorful Gtk3.20+ theme
 AddPackage elementary-icon-theme # Named, vector icons for elementary OS
 AddPackage xcursor-openzone # OpenZone X11 cursor theme
+AddPackage arc-gtk-theme # A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell
 
+AddPackage ttf-font-awesome # Iconic font designed for Bootstrap
+AddPackage ttf-ubuntu-font-family # Ubuntu font family
+AddPackage ttf-iosevka-nerd # Typeface family designed for coding, terminal use and technical documents (Nerd Fonts)
 AddPackage noto-color-emoji-fontconfig # Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed
 AddPackage noto-fonts-emoji # Google Noto emoji fonts
 AddPackage ttc-iosevka # Typeface family designed for coding, terminal use and technical documents.
@@ -22,6 +26,9 @@ AddPackage ttf-dejavu # Font family based on the Bitstream Vera Fonts with a wid
 AddPackage ttf-ms-fonts # Core TTF Fonts from Microsoft
 AddPackage --foreign fonts-meta-extended-lt # Extended font collection meta package, ported from Infinality (lite version).
 
+# infinality mode!
+CopyFile /etc/profile.d/freetype2.sh
+CreateLink /etc/fonts/conf.d/70-no-bitmaps.conf /etc/fonts/conf.avail/70-no-bitmaps.conf
 CreateLink /etc/fonts/conf.d/10-hinting-slight.conf /usr/share/fontconfig/conf.default/10-hinting-slight.conf
 CreateLink /etc/fonts/conf.d/10-scale-bitmap-fonts.conf /usr/share/fontconfig/conf.default/10-scale-bitmap-fonts.conf
 CreateLink /etc/fonts/conf.d/10-sub-pixel-rgb.conf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf

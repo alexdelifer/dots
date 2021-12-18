@@ -40,3 +40,6 @@ AddPackage dotnet-sdk # The .NET Core SDK
 
 # shell
 AddPackage shellcheck-bin # Shell script analysis tool (binary release)
+
+# android
+AddPackage android-tools # Android platform tools

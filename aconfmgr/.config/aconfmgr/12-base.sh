@@ -16,6 +16,8 @@ AddPackage pacman-cleanup-hook # hook to cleanup pacman cache keeping only the i
 AddPackage grub-hook # Pacman hook to update GRUB after a kernel update
 AddPackage kernel-modules-hook # Keeps your system fully functional after a kernel upgrade
 AddPackage needrestart # Restart daemons after library updates.
+AddPackage etc-update # CLI to interactively merge .pacnew configuration files
+CreateLink /etc/systemd/system/basic.target.wants/linux-modules-cleanup.service /usr/lib/systemd/system/linux-modules-cleanup.service
 
 # bootloader
 AddPackage grub # GNU GRand Unified Bootloader (2)
@@ -53,6 +55,17 @@ AddPackage which # A utility to show the full path of commands
 AddPackage wget # Network utility to retrieve files from the Web
 AddPackage gpart # Partition table rescue/guessing tool
 AddPackage findutils # GNU utilities to locate files
+AddPackage screen # Full-screen window manager that multiplexes a physical terminal
+AddPackage fwupd # Simple daemon to allow session software to update firmware
+AddPackage inetutils # A collection of common network programs
+AddPackage iperf3 # TCP, UDP, and SCTP network bandwidth measurement tool
+AddPackage iproute2 # IP Routing Utilities
+AddPackage iputils # Network monitoring tools, including ping
+AddPackage lvm2 # Logical Volume Manager 2 utilities
+AddPackage man-db # A utility for reading man pages
+AddPackage man-pages # Linux man pages
+AddPackage pciutils # PCI bus configuration space access library and tools
+AddPackage tree # A directory listing program displaying a depth indented list of files
 
 
 # shell upgrade pack :)
@@ -76,10 +89,13 @@ AddPackage fzf # Command-line fuzzy finder
 AddPackage iwd # Internet Wireless Daemon
 AddPackage reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
 AddPackage logrotate # Rotates system logs automatically
-AddPackage powertop # A tool to diagnose issues with power consumption and power management
+AddPackage gammastep # Adjust the color temperature of your screen according to your surroundings.
+
 AddPackage bitwarden-cli # The command line vault
 AddPackage smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
 AddPackage openbsd-netcat # TCP/IP swiss army knife. OpenBSD variant.
+AddPackage xdg-user-dirs # Manage user directories like ~/Desktop and ~/Music
+AddPackage wpa_supplicant # A utility providing key negotiation for WPA wireless networks
 
 # cli utils
 AddPackage rar # A command-line port of the rar compression utility
@@ -89,6 +105,7 @@ AddPackage downgrade # Bash script for downgrading one or more packages to a ver
 AddPackage gettext # GNU internationalization library
 AddPackage ibus # Next Generation Input Bus for Linux
 AddPackage highlight # Fast and flexible source code highlighter (CLI version)
+AddPackage acpi # Client for battery, power, and thermal readings
 
 # firmware
 AddPackage linux-firmware # Firmware files for Linux
@@ -117,6 +134,7 @@ AddPackage earlyoom # Early OOM Daemon for Linux
 CreateLink /etc/systemd/system/dbus-org.freedesktop.oom1.service /usr/lib/systemd/system/systemd-oomd.service
 CreateLink /etc/systemd/system/multi-user.target.wants/systemd-oomd.service /usr/lib/systemd/system/systemd-oomd.service
 CreateLink /etc/systemd/system/multi-user.target.wants/earlyoom.service /usr/lib/systemd/system/earlyoom.service
+
 
 # openssh
 AddPackage openssh
@@ -155,13 +173,23 @@ CopyFile /etc/pacman.conf
 CopyFile /etc/pacman.d/mirrorlist
 
 # sysctl
-CopyFile /etc/sysctl.d/10-network.conf
+CopyFile /etc/sysctl.d/10-network-tuning.conf
+CopyFile /etc/sysctl.d/20-ping.conf
 
 # fancy issue
 CopyFile /etc/issue
 
 # basic shit
 CopyFile /etc/vconsole.conf
+
+CopyFile /etc/skel/.bashrc
+CopyFile /etc/skel/.config/dconf/user
+CopyFile /etc/skel/.config/gtk-3.0/bookmarks
+CopyFile /etc/skel/.config/gtk-3.0/settings.ini
+CopyFile /etc/skel/.config/terminator/config
+CopyFile /etc/skel/.face
+CopyFile /etc/skel/.xinitrc
+CopyFile /etc/skel/.zshrc
 
 CopyFile /etc/locale.conf
 CopyFile /etc/locale.gen

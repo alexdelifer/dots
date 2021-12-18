@@ -5,7 +5,6 @@
 #   \/_____/   \/_/ \/_/   \/_____/   \/_/  \/_/   \/_____/
 
 CheckConfig gnome || return 0
-
 AddPackage gnome-backgrounds # Background images and data for GNOME
 AddPackage gnome-books # Access and organize your e-books on GNOME
 AddPackage gnome-boxes # Simple GNOME application to access virtual systems
@@ -79,6 +78,44 @@ AddPackage tumbler # D-Bus service for applications to request thumbnails
 AddPackage libdbusmenu-gtk3 # Library for passing menus over DBus (GTK+ 3 library)
 AddPackage grilo-plugins # A collection of plugins for the Grilo framework
 AddPackage gimp # GNU Image Manipulation Program
+AddPackage vinagre # A VNC Client for the GNOME desktop
+AddPackage polari # An IRC Client for GNOME
+AddPackage gnome-builder # An IDE for writing GNOME-based software
+AddPackage gnome-chess # Play the classic two-player boardgame of chess
+AddPackage gnome-code-assistance # Code assistance services for GNOME
+AddPackage gnome-devel-docs # Developer documentation for GNOME
+AddPackage gnome-documents # A document manager application for GNOME
+AddPackage gnome-klotski # Slide blocks to solve the puzzle
+AddPackage gnome-mahjongg # Disassemble a pile of tiles by removing matching pairs
+AddPackage gnome-meta # Meta package for installing the gnome group
+AddPackage gnome-mines # Clear hidden mines from a minefield
+AddPackage gnome-multi-writer # Write an ISO file to multiple USB devices at once
+AddPackage gnome-nettool # Graphical interface for various networking tools
+AddPackage gnome-nibbles # Guide a worm around a maze
+AddPackage gnome-recipes # Recipe management application for GNOME
+AddPackage gnome-robots # Avoid the robots and make them crash into each other
+AddPackage gnome-shell-extension-pop-shell # Pop Shell - Tiling window management in Gnome (WIP)
+AddPackage gnome-sound-recorder # A utility to make simple audio recording from your GNOME desktop
+AddPackage gnome-sudoku # Test your logic skills in this number grid puzzle
+AddPackage gnome-taquin # Move tiles so that they reach their places
+AddPackage gnome-terminal # The GNOME Terminal Emulator
+AddPackage gnome-tetravex # Complete the puzzle by matching numbered tiles
+AddPackage gnome-todo # Task manager for GNOME
+AddPackage gnome-usage # GNOME application to view information about use of system resources
+AddPackage accerciser # Interactive Python accessibility explorer for the GNOME desktop
+AddPackage devhelp # API documentation browser for GNOME
+AddPackage albert # A sophisticated standalone keyboard launcher
+AddPackage five-or-more # Remove colored balls from the board by forming lines
+AddPackage four-in-a-row # Make lines of the same color to win
+AddPackage gsmartcontrol # A graphical user interface for the smartctl hard disk drive health inspection tool.
+AddPackage hitori # GTK+ application to generate and let you play games of Hitori
+AddPackage iagno # Dominate the board in a classic version of Reversi
+AddPackage lightsoff # Turn off all the lights
 
 
-#CopyFile /etc/gdm/custom.conf
+AddPackage qgnomeplatform # QPlatformTheme for a better Qt5 application inclusion in GNOME
+AddPackage qt5ct # Qt5 Configuration Utility
+
+CreateLink /etc/systemd/system/display-manager.service /usr/lib/systemd/system/gdm.service
+CopyFile /etc/gdm/custom.conf
+

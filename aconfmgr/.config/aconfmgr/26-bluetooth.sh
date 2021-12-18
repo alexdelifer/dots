@@ -1,6 +1,7 @@
 CheckConfig bluetooth || return 0
 
 # bluetooth
+AddPackage bluez # Daemons for the bluetooth protocol stack
 AddPackage blueman # GTK+ Bluetooth Manager
 AddPackage bluetooth-support # Metapkg containing needed packages for using Bluetooth
 AddPackage bluez-hid2hci # Put HID proxying bluetooth HCI's into HCI mode

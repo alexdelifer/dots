@@ -8,3 +8,4 @@ RemovePackage thunar-volman
 RemovePackage tumbler
 RemovePackage delifer-base
 RemovePackage delifer-work
+RemovePackage ttc-iosevka

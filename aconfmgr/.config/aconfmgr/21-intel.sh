@@ -12,3 +12,5 @@ AddPackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPU
 AddPackage libva-intel-driver # VA-API implementation for Intel G45 and HD Graphics family
 AddPackage libva-utils # Intel VA-API Media Applications and Scripts for libva
 AddPackage xf86-video-intel # X.org Intel i810/i830/i915/945G/G965+ video drivers
+
+CopyFile /etc/modprobe.d/i915.conf
