@@ -1,6 +1,8 @@
 theme = "plain"
+#theme = "space-villain"
 icons = "awesome"
 #icons_format = "<span font_family='NotoSans Nerd Font'>{icon}</span>"
+#icons_format = "{icon}"
 #icons = "material"
 
 [[block]]
@@ -111,9 +113,6 @@ warning_updates_regex = "(linux|linux-lts|linux-zen)"
 # If ZFS is available, we know that we can and should do an upgrade, so we show
 # the status as critical.
 critical_updates_regex = "(zfs|zfs-lts|zfs-linux-zen)"
-
-[[block]]
-block = "kdeconnect"
 
 [[block]]
 block = "time"

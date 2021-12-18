@@ -4,15 +4,15 @@ env:
   TERM: xterm-256color
 font:
   bold:
-    family: 'CaskaydiaCove Nerd Font'
+    family: 'Iosevka Nerd Font'
   bold_italic:
-    family: 'CaskaydiaCove Nerd Font'
+    family: 'Iosevka Nerd Font'
   italic:
-    family: 'CaskaydiaCove Nerd Font'
+    family: 'Iosevka Nerd Font'
   normal:
-    family: 'CaskaydiaCove Nerd Font'
+    family: 'Iosevka Nerd Font'
     style: Book
-  size: 18.0
+  size: 16.0
 key_bindings:
   - action: ToggleFullscreen
     key: F11
@@ -26,12 +26,13 @@ window:
     y: 8
   title: Terminal
 
-background_opacity: 0.8
+#background_opacity: 0.9
 # Colors (iTerm 2 default theme)
 colors:
   # Default colors
   primary:
-    background: '0x101420'
+    #background: '0x101420'
+    background: '0x000000'
     foreground: '0xfffbf6'
 
   # Normal colors

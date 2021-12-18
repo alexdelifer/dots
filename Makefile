@@ -18,7 +18,7 @@ help:
 	@echo "  $$(tput setaf 2)$$(tput bold)aconfmgr$$(tput sgr0)"
 	@echo "    install, save, diff, apply, check, find-old"
 	@echo "  $$(tput setaf 2)$$(tput bold)git$$(tput sgr0)"
-	@echo "    status, add, commit, push"
+	@echo "    status, add, add-all, commit, push"
 
 install: 
 	$(DOTFILES)/install.sh $(ALLPKGS)
@@ -40,6 +40,9 @@ status:
 
 add:
 	@git add -i .
+
+add-all:
+	@git add .
 
 commit:
 	@git commit -m "Auto: $(DATE)"

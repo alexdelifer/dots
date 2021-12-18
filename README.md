@@ -7,6 +7,7 @@ git clone https://github.com/alexdelifer/dots ~/dots
 cd ~/dots 
 ./install.sh bin i3 zsh
 ```
+
 or
 
 ```bash
@@ -32,3 +33,10 @@ make apply
 
 You can enable or disable different configs from the `02-config.sh` file.
 Use `01-default.sh` as a template.
+
+## TODO
+
+- unified colors
+- fix nvim up
+- fix tmux up
+- unified theme

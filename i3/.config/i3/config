@@ -2,7 +2,7 @@
 
 force-xinerama yes
 
-set $WALLPAPER ~/Pictures//The_Verge_Hysteresis_Wallpaper_Landscape.0.png
+#set $WALLPAPER ~/Pictures//The_Verge_Hysteresis_Wallpaper_Landscape.0.png
 
 
 #set exec_always --no-startup-id pkill -9 	exec_always --no-startup-id pkill -9
@@ -39,7 +39,8 @@ set $WS10 "0"
 
 
 # Always set wallpaper :)
-exec_always --no-startup-id hsetroot -full $WALLPAPER
+#exec_always --no-startup-id hsetroot -full $WALLPAPER
+exec_always --no-startup-id hsetroot -solid '#ffffff'
 
 # OneShot
 exec --no-startup-id xsetroot -cursor_name left_ptr
@@ -60,7 +61,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec_always --no-startup-id pkill -9 redshift; redshift &
 #exec_always --no-startup-id pkill -9 picom; sleep 1; picom &
 exec_always --no-startup-id pkill -9 dunst; dunst &
-exec_always --no-startup-id pkill -9 flashfocus; flashfocus &
+#exec_always --no-startup-id pkill -9 flashfocus; flashfocus &
 #exec_always --no-startup-id pkill -9 libinput-gestures; libinput-gestures-setup start &
 exec_always --no-startup-id pkill -9 devmon; devmon &
 #exec_always --no-startup-id pkill -9 deadd-notification-center; deadd-notification-center &
@@ -85,8 +86,8 @@ exec --no-startup-id mkfifo $I3SOCK.xob && tail -f $I3SOCK.xob | xob
 # Aesthetics
 font pango:CaskaydiaCove Nerd Font Mono 10
 #smart_gaps off
-gaps inner 24
-gaps outer 6
+gaps inner 10
+#gaps outer 6
 new_window pixel 4
 new_float pixel 4
 
@@ -261,12 +262,12 @@ bindsym $mod+Shift+r exec autorandr -c; restart
 # Floating
 #for_window [class="Plank"] gaps inner set 0 gaps outer set 0
 
-for_window [class="Alacritty"] border pixel 4
-for_window [class="floaterm" instance="floaterm"] floating enable border pixel 4
-for_window [class="floaterm"] floating enable border pixel 4
-for_window [instance="floaterm"] floating enable border pixel 4
-for_window [title="floaterm"] floating enable border pixel 4
-for_window [instance="termite"] border pixel 4
+#for_window [class="Alacritty"] border pixel 4
+for_window [class="floaterm" instance="floaterm"] floating enable #border pixel 4
+for_window [class="floaterm"] floating enable #border pixel 4
+for_window [instance="floaterm"] floating enable #border pixel 4
+for_window [title="floaterm"] floating enable #border pixel 4
+#for_window [instance="termite"] border pixel 4
 for_window [class="Clock-applet"] floating enable
 for_window [class="Adobe Photoshop CS6"] floating enable
 for_window [instance="keybase"] floating enable
@@ -346,8 +347,9 @@ mode "$mode_gaps_outer" {
 
 bar {
         status_command i3status-rs
-        position top
-        font pango:CaskaydiaCove Nerd Font Mono 10
+        position bottom
+        #font pango:CaskaydiaCove Nerd Font Mono 10
+        font pango:Iosevka Nerd Font, FontAwesome 11
 
         colors {
         background #000000
@@ -363,7 +365,7 @@ bar {
 exec --no-startup-id i3-msg "workspace $WS1"
 exec --no-startup-id nvidia-settings --load-config-only
 exec --no-startup-id autorandr -c
-exec --no-startup-id autotiling
+exec_always --no-startup-id autotiling
 #restart
 workspace $WS1 output DP-2
 workspace $WS2 output DP-0
@@ -371,3 +373,5 @@ workspace $WS3 output DP-4
 workspace $WS4 output DP1
 workspace $WS5 output HDMI1
 
+default_border none
+default_floating_border pixel 1

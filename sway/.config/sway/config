@@ -70,7 +70,7 @@ exec_always pkill wayvnc;		exec wayvnc 127.0.0.1
 exec_always pkill mpris-proxy;		exec mpris-proxy
 exec_always pkill ydotoold;		exec ydotoold
 #exec_always pkill waybar; 		exec waybar
-exec_always pkill flashfocus;		exec flashfocus
+#exec_always pkill flashfocus;		exec flashfocus
 exec_always pkill nm-applet;		exec nm-applet --indicator
 exec_always pkill mconnectd;		exec mconnect -d
 exec_always pkill blueman-applet;	exec blueman-applet
