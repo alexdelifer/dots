@@ -1,7 +1,7 @@
 DOTFILES := $(shell pwd)
 ALLPKGS := $(shell find $$DOTFILES -maxdepth 1 -not -path '*/\.*' -not -path '.' -type d -printf '%f\n' )
 
-.PHONY: install save diff apply check
+.PHONY: install save diff apply check status
 
 default: install
 
@@ -20,8 +20,20 @@ save:
 diff:
 	aconfmgr --skip-checksums diff /
 
-apply: install
+apply:
 	aconfmgr --skip-checksums apply
 
 check:
 	aconfmgr check
+
+status:
+	git status
+
+add:
+	git add -i .
+
+commit:
+	git commit -m "Auto: $(date)"
+
+push:
+	git push
