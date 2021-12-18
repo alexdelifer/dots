@@ -41,7 +41,7 @@ add:
 	git add -i .
 
 commit:
-	git commit -m "Auto: $(date)"
+	git commit -m "Auto: $$(date)"
 
 push:
 	git push
