@@ -180,6 +180,9 @@ CopyFile /etc/sysctl.d/20-ping.conf
 CopyFile /etc/issue
 
 # basic shit
+CopyFileTo /etc/hostname-$(cat /etc/hostname) /etc/hostname
+CopyFileTo /etc/hosts-$(cat /etc/hostname) /etc/hosts
+
 CopyFile /etc/vconsole.conf
 
 CopyFile /etc/skel/.bashrc

@@ -9,9 +9,9 @@
 IgnorePath '**.pacnew'
 IgnorePath '**.pacsave'
 
-IgnorePath '/etc/hostname'
+#IgnorePath '/etc/hostname'
 IgnorePath '/etc/machine-id'
-IgnorePath '/etc/hosts'
+#IgnorePath '/etc/hosts'
 IgnorePath '/etc/ld.so.cache'
 
 IgnorePath '/.snapshots/*'
@@ -49,13 +49,13 @@ IgnorePath '/etc/xml/catalog'
 
 IgnorePath '/etc/pacman.d/blackarch-mirrorlist'
 
-IgnorePath '/etc/systemd/system/hibernate.target'
-IgnorePath '/etc/systemd/system/suspend.target'
+#IgnorePath '/etc/systemd/system/hibernate.target'
+#IgnorePath '/etc/systemd/system/suspend.target'
 
-IgnorePath '/etc/systemd/system/sponsorblockcast.service.d'
-IgnorePath '/etc/systemd/system/sponsorblockcast.service.d/*'
-IgnorePath '/etc/systemd/system/\\x2esnapshots.mount.wants'
-IgnorePath '/etc/systemd/system/\\x2esnapshots.mount.wants/grub-btrfs.path'
+#IgnorePath '/etc/systemd/system/sponsorblockcast.service.d'
+#IgnorePath '/etc/systemd/system/sponsorblockcast.service.d/*'
+#IgnorePath '/etc/systemd/system/\\x2esnapshots.mount.wants'
+#IgnorePath '/etc/systemd/system/\\x2esnapshots.mount.wants/grub-btrfs.path'
 
 IgnorePath '/usr/bin/*'
 IgnorePath '/opt/*'

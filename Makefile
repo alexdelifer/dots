@@ -55,4 +55,5 @@ pull:
 
 find-old:
 	@echo "$$(tput setaf 1)$$(tput bold)Unused Files:$$(tput sgr0)"
-	@aconfmgr check 2>&1 | grep Unused | cut -d':' -f 6 | sed 's/^ //g'
+	@echo "$$(tput setaf 3)NOTE: All modules are enabled for find-old but not all hostname cases are covered.$$(tput sgr0)"
+	@aconfmgr check 2>&1 | grep Unused | cut -d':' -f 6 | sed 's/^ //g' | grep -v bepis | grep -v dank

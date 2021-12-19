@@ -15,3 +15,6 @@ CreateLink /etc/systemd/system/timers.target.wants/snapper-cleanup.timer /usr/li
 CreateLink /etc/systemd/system/timers.target.wants/snapper-timeline.timer /usr/lib/systemd/system/snapper-timeline.timer
 CopyFile /etc/snapper/configs/root
 CopyFile /etc/conf.d/snapper
+
+CreateLink /etc/systemd/system/\\x2esnapshots.mount.wants/grub-btrfs.path /usr/lib/systemd/system/grub-btrfs.path
+

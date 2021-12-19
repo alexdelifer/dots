@@ -1,3 +1,5 @@
+DOTFILES=$(cd $(readlink -f $config_dir); git rev-parse --show-toplevel)
+
 PrintConfig () {
     echo -n "$(tput setaf 4)$(tput bold)"
     echo -n "::: DESKTOP: "
