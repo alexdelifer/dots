@@ -31,7 +31,7 @@ AddPackage protontricks # A simple wrapper that does winetricks things for Proto
 AddPackage lib32-gst-plugins-base # GStreamer Multimedia Framework Base Plugins (32-bit)
 AddPackage lib32-gst-plugins-good # GStreamer Multimedia Framework Good Plugins (32-bit)
 AddPackage lib32-gstreamer # GStreamer open-source multimedia framework core library (32-bit)
-AddPackage lib32-libglvnd-git # The GL Vendor-Neutral Dispatch library
+AddPackage lib32-libglvnd # The GL Vendor-Neutral Dispatch library
 AddPackage lib32-libxslt # XML stylesheet transformation library (32-bit)
 AddPackage lib32-openal # Cross-platform 3D audio library, software implementation (32-bit)
 AddPackage vulkan-headers # Vulkan header files

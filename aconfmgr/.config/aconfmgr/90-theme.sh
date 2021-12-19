@@ -18,13 +18,11 @@ AddPackage ttf-ubuntu-font-family # Ubuntu font family
 AddPackage ttf-iosevka-nerd # Typeface family designed for coding, terminal use and technical documents (Nerd Fonts)
 AddPackage noto-color-emoji-fontconfig # Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed
 AddPackage noto-fonts-emoji # Google Noto emoji fonts
-AddPackage ttc-iosevka # Typeface family designed for coding, terminal use and technical documents.
 AddPackage nerd-fonts-cascadia-code # Patched Cascadia Code font with extra glyphs
 AddPackage noto-fonts-cjk # Google Noto CJK fonts
 AddPackage noto-fonts-extra # Google Noto TTF fonts - additional variants
 AddPackage ttf-dejavu # Font family based on the Bitstream Vera Fonts with a wider range of characters
 AddPackage ttf-ms-fonts # Core TTF Fonts from Microsoft
-AddPackage --foreign fonts-meta-extended-lt # Extended font collection meta package, ported from Infinality (lite version).
 
 # infinality mode!
 CopyFile /etc/profile.d/freetype2.sh

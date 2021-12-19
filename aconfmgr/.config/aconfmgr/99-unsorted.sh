@@ -6,39 +6,3 @@
 
 
 
-# Fri Dec 17 03:19:52 AM EST 2021 - Missing packages
-
-
-# Fri Dec 17 06:01:06 PM EST 2021 - New / changed files
-
-
-
-
-# Fri Dec 17 07:31:06 PM EST 2021 - Unknown packages
-
-
-AddPackage tree # A directory listing program displaying a depth indented list of files
-
-
-# Sat Dec 18 12:45:17 AM EST 2021 - Unknown packages
-
-
-
-
-# Sat Dec 18 12:52:13 AM EST 2021 - Missing packages
-
-
-
-# Sat Dec 18 12:58:33 AM EST 2021 - Missing packages
-
-
-
-
-
-# Sat Dec 18 12:58:33 AM EST 2021 - Extra files
-
-
-
-# Sat Dec 18 12:58:33 AM EST 2021 - New / changed files
-
-

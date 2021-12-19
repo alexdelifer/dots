@@ -118,6 +118,7 @@ AddPackage minicom # A serial communication program
 AddPackage mosh # Mobile shell, surviving disconnects with local echo and line editing
 AddPackage lynx # A text browser for the World Wide Web
 AddPackage pacman-contrib # Contributed scripts and tools for pacman systems
+AddPackage caffeine-ng # Status bar application able to temporarily inhibit the screensaver and sleep mode.
 
 # services
 AddPackage sponsorblockcast-git # Skip Youtube sponsor segments on all LAN Chromecasts
