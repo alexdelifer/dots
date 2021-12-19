@@ -1,0 +1,41 @@
+output DP-1
+off
+output DP-3
+off
+output DP-5
+off
+output HDMI2
+off
+output VIRTUAL1
+off
+output DP-4
+crtc 2
+mode 1920x1080
+pos 4480x0
+rate 60.00
+output HDMI1
+crtc 4
+mode 1920x1080
+pos 8960x0
+rate 60.00
+output HDMI-0
+crtc 3
+mode 3840x2160
+pos 0x360
+rate 59.94
+output DP-2
+crtc 1
+mode 2560x1440
+pos 3840x1080
+rate 143.86
+output DP-0
+crtc 0
+mode 2560x1440
+pos 6400x1080
+primary
+rate 165.00
+output DP1
+crtc 5
+mode 1920x1080
+pos 8960x1080
+rate 60.00

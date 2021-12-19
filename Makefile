@@ -15,12 +15,14 @@ K := $(foreach exec,$(EXECUTABLES),\
 help:
 	@echo "$$(tput setaf 4)$$(tput bold)delifer dotfiles$$(tput sgr0)"
 	@echo "$$(tput bold)Commands:$$(tput sgr0)"
+	@echo "  $$(tput setaf 2)$$(tput bold)dotfiles$$(tput sgr0)"
+	@echo "    stow"
 	@echo "  $$(tput setaf 2)$$(tput bold)aconfmgr$$(tput sgr0)"
-	@echo "    install, save, diff, apply, check, find-old"
+	@echo "    save, diff, apply, check, find-old"
 	@echo "  $$(tput setaf 2)$$(tput bold)git$$(tput sgr0)"
-	@echo "    status, add, add-all, commit, push"
+	@echo "    status, add, add-all, commit, push, pull"
 
-install: 
+stow: 
 	$(DOTFILES)/install.sh $(ALLPKGS)
 
 save:
