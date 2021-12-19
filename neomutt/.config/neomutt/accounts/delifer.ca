@@ -1,0 +1,18 @@
+#unmailboxes *
+
+set from = "alex@delifer.ca"
+set sendmail = "~/.config/neomutt/scripts/send-mail.sh gmail"
+set folder = "~/Mail/alex@delifer.ca/"
+set spoolfile = "+mail"
+set postponed = "+Drafts"
+set record = "+Sent"
+set trash = "+Junk"
+
+alias me "Alex Delifer" "alex@delifer.ca"
+
+set mbox_type = Maildir
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+#mailboxes "+-- My mailbox -----------" 
+#mailboxes =mail

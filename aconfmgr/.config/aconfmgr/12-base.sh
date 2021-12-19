@@ -106,6 +106,7 @@ AddPackage gettext # GNU internationalization library
 AddPackage ibus # Next Generation Input Bus for Linux
 AddPackage highlight # Fast and flexible source code highlighter (CLI version)
 AddPackage acpi # Client for battery, power, and thermal readings
+AddPackage ranger # Simple, vim-like file manager
 
 # firmware
 AddPackage linux-firmware # Firmware files for Linux

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="smb://192.168.226.128/" added="2021-09-30T01:51:02.455433Z" modified="2021-09-30T01:51:02.455436Z" visited="2021-09-30T01:51:02.455434Z">
+    <title>Windows shares on 192.168.226.128</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-09-30T01:51:02.455435Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="ftp://10.201.110.165/" added="2021-10-27T18:26:14.215462Z" modified="2021-12-14T21:03:12.936844Z" visited="2021-12-14T21:03:12.936842Z">
+    <title>/ on 10.201.110.165</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-12-14T21:03:12.936843Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://10.201.110.24/" added="2021-10-28T14:03:28.123042Z" modified="2021-12-13T16:34:54.540996Z" visited="2021-12-13T16:34:54.540990Z">
+    <title>Windows shares on 10.201.110.24</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-12-13T16:34:54.540993Z" count="6"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://srv-nas2.zimmercas.com/" added="2021-11-03T18:46:02.083144Z" modified="2021-11-24T14:34:49.317494Z" visited="2021-11-24T14:34:49.317491Z">
+    <title>Windows shares on srv-nas2.zimmercas.com</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-11-24T14:34:49.317492Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://srv-nas2.zimmercas.com/users/delifera" added="2021-11-03T21:57:55.653859Z" modified="2021-11-03T21:57:55.653863Z" visited="2021-11-03T21:57:55.653860Z">
+    <title>delifera</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-11-03T21:57:55.653861Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://root@10.201.110.14/" added="2021-11-25T16:19:34.322415Z" modified="2021-11-25T16:19:34.322418Z" visited="2021-11-25T16:19:34.322416Z">
+    <title>/ on 10.201.110.14</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-11-25T16:19:34.322417Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

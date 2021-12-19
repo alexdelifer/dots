@@ -1,0 +1,30 @@
+# cancel theme colors
+color index color223 default ~Q
+color index color223 default ~P
+color index color223 default ~T
+color index color223 default ~O
+color index color223 default ~F
+color index color223 default ~N
+
+# add some nice custom coloring to the message list
+# thanks to new neomutt features
+# http://www.mutt.org/doc/manual/#patterns
+# https://neomutt.org/feature/index-color
+color index_subject color109 default "~P !~T !~D"
+color index_author color109 default "~P !~T !~D"
+color index_subject color243 default "~Q !~T !~D"
+color index_author color243 default "~Q !~T !~D"
+color index_subject brightcolor142 default "~N !~T !~D"
+color index_author  brightcolor142 default "~N !~T !~D"
+color index_subject color142 default "~O !~T !~D"
+color index_author color142 default "~O !~T !~D"
+color index_subject color214 default "~F !~T !~D"
+color index_author color214 default "~F !~T !~D"
+color index_subject brightcolor214 default "~F ~N !~T !~D"
+color index_author  brightcolor214 default "~F ~N !~T !~D"
+color index_subject color167 default "~= !~T !~D"
+color index_author color167 default "~= !~T !~D"
+color index_subject brightcolor109 default "~P ~N !~T !~D"
+color index_author brightcolor109 default "~P ~N !~T !~D"
+color index default color223 "~T"
+color index color229 color124 "~D"

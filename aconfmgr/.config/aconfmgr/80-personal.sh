@@ -99,7 +99,6 @@ AddPackage perl-image-exiftool # Reader and rewriter of EXIF informations that s
 AddPackage odt2txt # extracts the text out of OpenDocument Texts
 AddPackage cava # Console-based Audio Visualizer for Alsa
 AddPackage corrupter-git # Simple image glitcher suitable for producing nice looking i3lock backgrounds
-AddPackage ranger # Simple, vim-like file manager
 AddPackage toilet # Free replacement for the FIGlet utility.
 AddPackage cht.sh-git # The only cheat sheet you need (command line client for cheat.sh)
 AddPackage mediainfo # Supplies technical and tag information about a video or audio file (CLI interface)

@@ -1,0 +1,8 @@
+#macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/delifer.ca<enter><change-folder>!<enter>;<check-stats>'
+#macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/zimmerbiomet.com<enter><change-folder>!<enter>;<check-stats>'
+
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/delifer.ca<enter>'
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/zimmerbiomet.com<enter>'
+
+
+source ~/.config/neomutt/accounts/delifer.ca

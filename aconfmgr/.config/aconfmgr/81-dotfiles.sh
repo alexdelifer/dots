@@ -1,22 +1,15 @@
 PrintConfig
 
-if [ ! $aconfmgr_action == "apply" ]; then
-    echo "Not Applying"
-    return
-fi
 
 DOTFILES=$(cd $(readlink -f $config_dir); git rev-parse --show-toplevel)
 echo "$(tput setaf 4)$(tput bold):: DOTFILES$(tput sgr0)"
-
-#DotfileLink "i3" ".config/i3"
-#DotfileLink "i3" ".config/i3status"
-#DotfileLink "i3" ".config/i3status-rust"
 
 i3wm=(
     i3
     dunst
     picom
     xob
+    autorandr
 )
 
 sway=(
@@ -33,6 +26,9 @@ base=(
     terminfo
     tmux
     zsh
+    btop
+    cava
+    ranger
 )
 
 graphical=(
@@ -49,8 +45,12 @@ personal=(
     git
     bin
     ncmpcpp
-    ranger
 )
+
+if [ ! $aconfmgr_action == "apply" ]; then
+    echo "Not Applying"
+    return
+fi
 
 # if any wm is enabled
 echo "$(tput setaf 4)$(tput bold)::: GRAPHICAL$(tput sgr0)"
