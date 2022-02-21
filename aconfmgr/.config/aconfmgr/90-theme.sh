@@ -86,4 +86,6 @@ CreateLink /etc/fonts/conf.d/70-noto-cjk.conf /usr/share/fontconfig/conf.default
 CreateLink /etc/fonts/conf.d/80-delicious.conf /usr/share/fontconfig/conf.default/80-delicious.conf
 CreateLink /etc/fonts/conf.d/81-ubuntu.conf /usr/share/fontconfig/conf.default/81-ubuntu.conf
 CreateLink /etc/fonts/conf.d/90-synthetic.conf /usr/share/fontconfig/conf.default/90-synthetic.conf
+CreateLink /etc/fonts/conf.d/48-spacing.conf /usr/share/fontconfig/conf.default/48-spacing.conf
+
 CopyFile /etc/fonts/local.conf

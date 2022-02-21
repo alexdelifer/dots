@@ -66,9 +66,9 @@ AddPackage arp-scan # A tool that uses ARP to discover and fingerprint IP hosts 
 AddPackage aircrack-ng # Key cracker for the 802.11 WEP and WPA-PSK protocols
 
 AddPackage dislocker # Read BitLocker encrypted volumes under Linux.
+AddPackage recon-ng # A full-featured Web Reconnaissance framework written in Python.
 
 # dkms
-AddPackage pfring-dkms # Linux kernel module for packet capture at wirespeed.
 AddPackage rtl88xxau-aircrack-dkms-git # Aircrack-ng kernel module for Realtek 88XXau (USB adapters only) network cards (8811au, 8812au and 8821au chipsets) with monitor mode and injection support
 
 AddPackage veil # A tool designed to generate metasploit payloads that bypass common anti-virus solutions.

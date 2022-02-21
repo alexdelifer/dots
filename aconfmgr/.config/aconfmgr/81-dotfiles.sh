@@ -10,6 +10,7 @@ i3wm=(
     picom
     xob
     autorandr
+    flashfocus
 )
 
 sway=(
@@ -29,13 +30,14 @@ base=(
     btop
     cava
     ranger
+    zathura
 )
 
 graphical=(
     alacritty
     firefox
     fonts
-    gtk-3.0
+    gtk
     icons
     mpv
     rofi
@@ -45,6 +47,7 @@ personal=(
     git
     bin
     ncmpcpp
+    cloudflare
 )
 
 if [ ! $aconfmgr_action == "apply" ]; then

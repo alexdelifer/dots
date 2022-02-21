@@ -22,7 +22,6 @@ AddPackage lutris # Open Gaming Platform
 AddPackage mangohud # A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more
 AddPackage mangohud-common # Common files for mangohud and lib32-mangohud
 AddPackage lib32-mangohud # A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)
-AddPackage gamescope # The micro-compositor formerly known as steamcompmgr
 AddPackage parsec-bin # Remotely connect to a gaming pc for a low latency remote computing experience
 
 # drivers
@@ -43,6 +42,8 @@ AddPackage lib32-libglvnd # The GL Vendor-Neutral Dispatch library
 AddPackage lib32-libxslt # XML stylesheet transformation library (32-bit)
 AddPackage lib32-openal # Cross-platform 3D audio library, software implementation (32-bit)
 AddPackage vulkan-headers # Vulkan header files
+
+AddPackage steam-native-runtime # Native replacement for the Steam runtime using system libraries
 
 # configs
 CopyFile /etc/udev/rules.d/51-gcadapter.rules

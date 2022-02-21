@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>chromecast-ssdp</short>
+  <description>Chromecast SSDP</description>
+  <port port="1900" protocol="udp"/>
+  <destination ipv4="239.255.255.250/32"/>
+</service>

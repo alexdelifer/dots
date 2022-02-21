@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>chromecast</short>
+  <description>Chromecast</description>
+  <port port="32768-61000" protocol="udp"/>
+  <port port="8008-8009" protocol="tcp"/>
+  <source-port port="32768-61000" protocol="udp"/>
+</service>

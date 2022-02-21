@@ -77,7 +77,6 @@ AddPackage rclone # Sync files to and from Google Drive, S3, Swift, Cloudfiles, 
 AddPackage ripgrep # A search tool that combines the usability of ag with the raw speed of grep
 AddPackage the_silver_searcher # Code searching tool similar to Ack, but faster
 AddPackage pv # A terminal-based tool for monitoring the progress of data through a pipeline.
-AddPackage atool # A script for managing file archives of various types
 AddPackage paru # Feature packed AUR helper
 AddPackage mtr # Combines the functionality of traceroute and ping into one tool (CLI version)
 AddPackage fd # Simple, fast and user-friendly alternative to find
@@ -90,7 +89,7 @@ AddPackage iwd # Internet Wireless Daemon
 AddPackage reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
 AddPackage logrotate # Rotates system logs automatically
 AddPackage gammastep # Adjust the color temperature of your screen according to your surroundings.
-
+AddPackage cloudflared # Argo Tunnel client
 AddPackage bitwarden-cli # The command line vault
 AddPackage smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
 AddPackage openbsd-netcat # TCP/IP swiss army knife. OpenBSD variant.

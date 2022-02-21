@@ -9,6 +9,8 @@
 IgnorePath '**.pacnew'
 IgnorePath '**.pacsave'
 
+IgnorePath '**/dkms.conf'
+
 #IgnorePath '/etc/hostname'
 IgnorePath '/etc/machine-id'
 #IgnorePath '/etc/hosts'

@@ -30,7 +30,9 @@ AddPackage discord # All-in-one voice and text chat for gamers that's free and s
 
 # browser
 AddPackage firefox # Standalone web browser from mozilla.org
+AddPackage firefox-nightly # Standalone Web Browser from Mozilla — Nightly build (en-US)
 AddPackage google-chrome # The popular and trusted web browser by Google (Stable Channel)
+AddPackage ungoogled-chromium # A lightweight approach to removing Google web service dependency
 
 # media
 AddPackage mpv # a free, open source, and cross-platform media player
@@ -41,6 +43,7 @@ AddPackage spotify # A proprietary music streaming service
 AddPackage spotify-tui # Spotify client for the terminal written in Rust
 AddPackage projectm # Music visualizer which uses 3D accelerated iterative image based rendering
 AddPackage projectm-pulseaudio # Music visualizer which uses 3D accelerated iterative image based rendering (pulseaudio)
+AddPackage gimp # GNU Image Manipulation Program
 
 # torrent
 AddPackage transmission-cli # Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
@@ -51,9 +54,9 @@ AddPackage wine # A compatibility layer for running Windows programs
 AddPackage crossover # Run Windows Programs on Linux
 
 # obs
+AddPackage obs-studio # Free, open source software for live streaming and recording
 AddPackage obs-backgroundremoval # Background removal plugin for OBS studio (precomopiled onnxruntime)
 AddPackage obs-streamfx # Bring your stream back to life with modern effects!
-AddPackage obs-studio-browser # Free and open source software for video recording and live streaming. Built with browser, vst plugins.
 AddPackage obs-vkcapture-git # OBS Linux Vulkan/OpenGL game capture
 
 # kdeconnect
@@ -78,6 +81,9 @@ CreateLink /etc/systemd/system/multi-user.target.wants/nxserver.service /usr/lib
 #mkdir -p /cloud/Plex
 CopyFile /etc/systemd/system/rclone-plex.service '' alex alex
 CreateLink /etc/systemd/system/default.target.wants/rclone-plex.service /etc/systemd/system/rclone-plex.service
+CopyFile /etc/systemd/system/rclone-plex.service
+SetFileProperty /etc/systemd/system/rclone-plex.service group ''
+SetFileProperty /etc/systemd/system/rclone-plex.service owner ''
 
 # modem
 AddPackage usb_modeswitch # Activating switchable USB devices on Linux.
@@ -85,6 +91,13 @@ AddPackage modem-manager-gui # Frontend for ModemManager daemon able to control 
 AddPackage modemmanager # Mobile broadband modem management service
 CreateLink /etc/systemd/system/dbus-org.freedesktop.ModemManager1.service /usr/lib/systemd/system/ModemManager.service
 CreateLink /etc/systemd/system/multi-user.target.wants/ModemManager.service /usr/lib/systemd/system/ModemManager.service
+
+# gvfs
+AddPackage gigolo # Frontend to manage connections to remote filesystems using GIO/GVFS
+AddPackage gvfs-afc # Virtual filesystem implementation for GIO (AFC backend; Apple mobile devices)
+AddPackage gvfs-mtp # Virtual filesystem implementation for GIO (MTP backend; Android, media player)
+AddPackage gvfs-nfs # Virtual filesystem implementation for GIO (NFS backend)
+AddPackage gvfs-smb # Virtual filesystem implementation for GIO (SMB/CIFS backend; Windows client)
 
 
 # cli tools
@@ -117,11 +130,17 @@ AddPackage minicom # A serial communication program
 AddPackage mosh # Mobile shell, surviving disconnects with local echo and line editing
 AddPackage lynx # A text browser for the World Wide Web
 AddPackage pacman-contrib # Contributed scripts and tools for pacman systems
-AddPackage caffeine-ng # Status bar application able to temporarily inhibit the screensaver and sleep mode.
+AddPackage debootstrap # Bootstrap a basic Debian system
+AddPackage caffeine # Prevents the desktop becoming idle in full-screen mode.
+AddPackage curlie # The power of curl, the ease of use of httpie.
+AddPackage httpie # human-friendly CLI HTTP client for the API era
+AddPackage hping # A command-line oriented TCP/IP packet assembler/analyzer.
+AddPackage ipython # An enhanced Interactive Python shell.
+AddPackage killcast # Manipulate Chromecast Devices in your Network.
+AddPackage lftp # Sophisticated command line based FTP client
+AddPackage jdownloader2 # Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.
 
 # services
-AddPackage sponsorblockcast-git # Skip Youtube sponsor segments on all LAN Chromecasts
-CreateLink /etc/systemd/system/multi-user.target.wants/sponsorblockcast.service /usr/lib/systemd/system/sponsorblockcast.service
 AddPackage packagekit # A system designed to make installation and updates of packages easier
 AddPackage syncthing # Open Source Continuous Replication / Cluster Synchronization Thing
 AddPackage mconnect-git # KDE Connect protocol implementation in Vala/C for non-KDE desktops
@@ -177,10 +196,13 @@ AddPackage udftools # Linux tools for UDF filesystems and DVD/CD-R(W) drives
 AddPackage fuseiso # FUSE module to mount ISO filesystem images
 AddPackage ifuse # A fuse filesystem to access the contents of an iPhone or iPod Touch
 AddPackage hfsprogs # User space utils for create and check Apple HFS/HFS+ filesystem
-AddPackage ntfs3-dkms # NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1.
 AddPackage e2fsprogs # Ext2/3/4 filesystem utilities
 AddPackage dosfstools # DOS filesystem utilities
 AddPackage darling-dmg-git # FUSE module for .dmg files (containing an HFS+ filesystem)
+AddPackage rpi-imager # Raspberry Pi Imaging Utility
+AddPackage pulsemixer # CLI and curses mixer for pulseaudio
+AddPackage python-updog # A replacement for Python's SimpleHTTPServer
+AddPackage godot # Advanced cross-platform 2D and 3D game engine
 
 # mutt
 AddPackage neomutt # A version of mutt with added features
@@ -189,7 +211,7 @@ AddPackage offlineimap # Synchronizes emails between two repositories
 AddPackage notmuch # Notmuch is not much of an email program
 AddPackage notmuch-mutt # The mail indexer
 AddPackage notmuch-vim # Vim plugins for notmuch
-AddPackage gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
+AddPackage --foreign gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
 AddPackage afew # Initial tagging script for notmuch mail
 AddPackage alot # Terminal-based MUA for the notmuch mail system
 AddPackage davmail # a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service
@@ -201,29 +223,33 @@ CreateLink /etc/systemd/system/multi-user.target.wants/smb.service /usr/lib/syst
 CreateLink /etc/systemd/system/multi-user.target.wants/nmb.service /usr/lib/systemd/system/nmb.service
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# unsorted
 
 AddPackage chaotic-keyring # Chaotic-AUR PGP keyring
 AddPackage chaotic-mirrorlist # Chaotic-AUR mirrorlist to use with Pacman
 
 
+AddPackage --foreign atool # A script for managing file archives of various types
+AddPackage --foreign broadcom-bt-firmware-git # Broadcom bluetooth firmware.
+AddPackage --foreign clrmamepro # A ROM manager for MAME.
+AddPackage --foreign flips # Floating IPS - Applies and creates IPS and BPS patches
+AddPackage --foreign mkchromecast # Cast Audio/Video to your Google Cast and Sonos Devices
+AddPackage --foreign mpv-shim-default-shaders # Preconfigured set of MPV shaders and configurations for MPV Shim media clients.
+AddPackage --foreign plex-mpv-shim # Cast media from Plex Mobile and Web apps to MPV
+AddPackage --foreign pyload-ng # The free and open-source Download Manager written in pure Python
+AddPackage --foreign wiibafu # Fork of Wii Backup Fusion fixing the bug with game spliting. The complete and simple to use backup solution for your Wii games
+AddPackage --foreign xdelta # Binary file delta generator
+
+AddPackage powertop # A tool to diagnose issues with power consumption and power management
+AddPackage python-plyvel # A fast and feature-rich Python interface to LevelDB
+AddPackage scanmem # Memory scanner designed to isolate the address of an arbitrary variable in an executing process
+AddPackage vbam-wx # Nintendo GameBoy Advance emulator
+AddPackage wit # Wiimms ISO Tools
+AddPackage xdelta3 # Diff utility for binary files
 
 
+CreateLink /etc/systemd/system/dbus-org.freedesktop.Avahi.service /usr/lib/systemd/system/avahi-daemon.service
+CreateLink /etc/systemd/system/multi-user.target.wants/avahi-daemon.service /usr/lib/systemd/system/avahi-daemon.service
+CreateLink /etc/systemd/system/sockets.target.wants/avahi-daemon.socket /usr/lib/systemd/system/avahi-daemon.socket
 
 

@@ -6,9 +6,14 @@
 
 CheckConfig i3wm || return 0
 
-AddPackage gdm # Display manager and login screen
+AddPackage lightdm # Display manager and login screen
+AddPackage lightdm-gtk-greeter # GTK+ greeter for LightDM
+CreateLink /etc/systemd/system/display-manager.service /usr/lib/systemd/system/lightdm.service
 
-AddPackage i3-gaps # A fork of i3wm tiling window manager with more features, including gaps
+AddPackage appmenu-gtk-module # Application Menu GTK+ Module
+
+AddPackage i3-wm # Improved dynamic tiling window manager
+
 AddPackage i3status # Generates status bar to use with i3bar, dzen2 or xmobar
 AddPackage i3status-rust # Resourcefriendly and feature-rich replacement for i3status, written in pure Rust
 
@@ -45,6 +50,14 @@ AddPackage flashfocus # Simple Xorg window focus animations for tiling window ma
 AddPackage pasystray # PulseAudio system tray (a replacement for padevchooser)
 AddPackage xcolor # Lightweight color picker for X11
 AddPackage slop # Utility to query the user for a selection and print the region to stdout
+AddPackage zathura # Minimalistic document viewer
+AddPackage zathura-pdf-mupdf # PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)
+AddPackage file-roller # Create and modify archives
+AddPackage filezilla # Fast and reliable FTP, FTPS and SFTP client
+AddPackage gnome-control-center # GNOME's main interface to configure various aspects of the desktop
+AddPackage maim # Utility to take a screenshot using imlib2
+AddPackage nautilus # Default file manager for GNOME
+AddPackage vinagre # A VNC Client for the GNOME desktop
 
 
 AddPackage xorg-bdftopcf # Convert X font from Bitmap Distribution Format to Portable Compiled Format

@@ -14,7 +14,7 @@ MODULES=(
     ## functions
     gaming
     work
-    pipewire
+    #pipewire
     bluetooth
 
     ## desktop environment

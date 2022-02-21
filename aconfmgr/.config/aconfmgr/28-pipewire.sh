@@ -3,8 +3,10 @@ CheckConfig pipewire || return 0
 AddPackage alsa-card-profiles # Low-latency audio/video router and processor - ALSA card profiles
 AddPackage alsa-utils # Advanced Linux Sound Architecture - Utilities
 AddPackage pamixer # Pulseaudio command-line mixer like amixer
+AddPackage easyeffects # Audio Effects for Pipewire applications
 
 AddPackage helvum # GTK patchbay for PipeWire
+AddPackage lib32-pipewire-jack # lib32 jack compat
 AddPackage libpipewire02 # Low-latency audio/video router and processor - legacy client library
 AddPackage pipewire-alsa # Low-latency audio/video router and processor - ALSA configuration
 AddPackage pipewire-media-session # Example session manager for PipeWire
@@ -19,3 +21,6 @@ CreateLink /etc/systemd/user/pipewire.service.wants/pipewire-media-session.servi
 CopyFile /etc/pipewire/media-session.d/alsa-monitor.conf
 CopyFile /etc/pipewire/media-session.d/bluez-monitor.conf
 CopyFile /etc/pipewire/media-session.d/media-session.conf
+
+AddPackage rtkit # Realtime Policy and Watchdog Daemon
+CreateLink /etc/systemd/system/multi-user.target.wants/rtkit-daemon.service /usr/lib/systemd/system/rtkit-daemon.service

@@ -13,12 +13,12 @@ AddPackage freerdp # Free implementation of the Remote Desktop Protocol (RDP)
 # gui apps
 AddPackage evolution # Manage your email, contacts and schedule
 AddPackage evolution-ews # MS Exchange integration through Exchange Web Services
-AddPackage teams # Microsoft Teams for Linux is your chat-centered workspace in Office 365
 AddPackage webex-bin # Webex for Linux
 AddPackage onlyoffice-bin # An office suite that combines text, spreadsheet and presentation editors
 AddPackage remmina # remote desktop client written in GTK+
 AddPackage microsoft-edge-stable-bin # A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
 AddPackage libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
+AddPackage --foreign teams-insiders # Microsoft Teams for Linux is your chat-centered workspace in Office 365 - Insiders Version
 
 # Ansible
 AddPackage python-pywinrm # Python library for Windows Remote Management

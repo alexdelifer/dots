@@ -1,0 +1,11 @@
+[Unit]
+Description=Restart LightDM Once on Boot
+After=lightdm.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/restart-lightdm
+
+[Install]
+WantedBy=multi-user.target
