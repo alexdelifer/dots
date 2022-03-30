@@ -23,22 +23,22 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="smb://10.201.110.24/" added="2021-10-28T14:03:28.123042Z" modified="2022-02-21T18:01:05.154286Z" visited="2022-02-21T18:01:05.154284Z">
+  <bookmark href="smb://10.201.110.24/" added="2021-10-28T14:03:28.123042Z" modified="2022-03-11T19:29:10.505100Z" visited="2022-03-11T19:29:10.505099Z">
     <title>Windows shares on 10.201.110.24</title>
     <info>
       <metadata owner="http://freedesktop.org">
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-02-21T18:01:05.154285Z" count="7"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-03-11T19:29:10.505099Z" count="9"/>
         </bookmark:applications>
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="smb://srv-nas2.zimmercas.com/" added="2021-11-03T18:46:02.083144Z" modified="2021-11-24T14:34:49.317494Z" visited="2021-11-24T14:34:49.317491Z">
+  <bookmark href="smb://srv-nas2.zimmercas.com/" added="2021-11-03T18:46:02.083144Z" modified="2022-03-08T19:28:04.879632Z" visited="2022-03-08T19:28:04.879630Z">
     <title>Windows shares on srv-nas2.zimmercas.com</title>
     <info>
       <metadata owner="http://freedesktop.org">
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-11-24T14:34:49.317492Z" count="2"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-03-08T19:28:04.879631Z" count="3"/>
         </bookmark:applications>
       </metadata>
     </info>
@@ -59,6 +59,26 @@
       <metadata owner="http://freedesktop.org">
         <bookmark:applications>
           <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-11-25T16:19:34.322417Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://10.201.110.24/r&amp;d/" added="2022-03-11T19:29:31.545318Z" modified="2022-03-11T19:29:31.545321Z" visited="2022-03-11T19:29:31.545319Z">
+    <title>r&amp;d on 10.201.110.24</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-03-11T19:29:31.545320Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://10.201.110.24/commun/" added="2022-03-11T19:29:44.209221Z" modified="2022-03-11T19:29:44.209225Z" visited="2022-03-11T19:29:44.209222Z">
+    <title>commun on 10.201.110.24</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-03-11T19:29:44.209223Z" count="1"/>
         </bookmark:applications>
       </metadata>
     </info>
