@@ -26,6 +26,7 @@ AddPackage termshark # Terminal UI for tshark, inspired by Wireshark
 AddPackage impacket # Collection of classes for working with network protocols
 AddPackage torbrowser-launcher # Securely and easily download, verify, install, and launch Tor Browser in Linux
 AddPackage blackarch-keyring # BlackArch Linux PGP keyring.
+CopyFile /etc/pacman.d/hooks/blackarch-key.hook
 
 AddPackage macchanger # A small utility to change your NIC's MAC address
 AddPackage wifite # Tool to attack multiple WEP and WPA encrypted networks at the same time
@@ -43,7 +44,7 @@ AddPackage bully # Retrieve WPA/WPA2 passphrase from a WPS enabled access point
 AddPackage python-crcmod # Cyclic Redundancy Check (CRC) implementation in Python.
 AddPackage python-pyserial # Multiplatform Serial Port Module for Python
 AddPackage python-requests-credssp # HTTPS CredSSP authentication with the requests library
-AddPackage python-requests-kerberos # A kerberos of useful classes and functions to be used with python-requests.
+#AddPackage python-requests-kerberos # A kerberos of useful classes and functions to be used with python-requests.
 
 AddPackage bettercap # Swiss army knife for network attacks and monitoring
 AddPackage bettercap-caplets # Bettercap scripts (caplets) and proxy modules

@@ -21,7 +21,8 @@ AddPackage python-pynvim # Python client for Neovim
 AddPackage python-lockfile # Platform-independent file locking module
 
 # rust
-AddPackage rust # Systems programming language focused on safety, speed and concurrency
+AddPackage rustup # The Rust toolchain installer
+#AddPackage rust # Systems programming language focused on safety, speed and concurrency
 
 # java :(
 AddPackage jdk8-openjdk # OpenJDK Java 8 development kit
@@ -43,3 +44,11 @@ AddPackage shellcheck-bin # Shell script analysis tool (binary release)
 
 # android
 AddPackage android-tools # Android platform tools
+
+# cpp
+AddPackage cmake # A cross-platform open-source make system
+AddPackage cppcheck # A tool for static C/C++ code analysis
+AddPackage flawfinder # Searches through source code for potential security flaws
+AddPackage git-lfs # Git extension for versioning large files
+AddPackage gitlab-runner # The official GitLab CI runner written in Go
+

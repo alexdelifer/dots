@@ -26,7 +26,7 @@ AddPackage obsidian # Obsidian is a powerful knowledge base that works on top of
 
 # chat
 AddPackage signal-desktop # Signal Private Messenger for Linux
-AddPackage discord # All-in-one voice and text chat for gamers that's free and secure.
+#AddPackage discord # All-in-one voice and text chat for gamers that's free and secure.
 
 # browser
 AddPackage firefox # Standalone web browser from mozilla.org
@@ -39,11 +39,15 @@ AddPackage mpv # a free, open source, and cross-platform media player
 AddPackage vlc # Multi-platform MPEG, VCD/DVD, and DivX player
 AddPackage plex-media-player # Next generation Plex Desktop Client
 AddPackage plexamp-appimage # Modern music client for Plex
-AddPackage spotify # A proprietary music streaming service
+#AddPackage spotify # A proprietary music streaming service
 AddPackage spotify-tui # Spotify client for the terminal written in Rust
 AddPackage projectm # Music visualizer which uses 3D accelerated iterative image based rendering
 AddPackage projectm-pulseaudio # Music visualizer which uses 3D accelerated iterative image based rendering (pulseaudio)
 AddPackage gimp # GNU Image Manipulation Program
+AddPackage bitwig-studio # Digital audio workstation for music production, remixing and live performance
+AddPackage qjackctl # A Qt front-end for the JACK low-latency audio server
+AddPackage yoshimi # A sophisticated soft-synth originally forked from ZynAddSubFX
+AddPackage zynaddsubfx # Opensource software synthesizer capable of making a countless number of instruments.
 
 # torrent
 AddPackage transmission-cli # Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
@@ -56,8 +60,9 @@ AddPackage crossover # Run Windows Programs on Linux
 # obs
 AddPackage obs-studio # Free, open source software for live streaming and recording
 AddPackage obs-backgroundremoval # Background removal plugin for OBS studio (precomopiled onnxruntime)
-AddPackage obs-streamfx # Bring your stream back to life with modern effects!
+#AddPackage obs-streamfx # Bring your stream back to life with modern effects!
 AddPackage obs-vkcapture-git # OBS Linux Vulkan/OpenGL game capture
+AddPackage --foreign obs-streamfx # Bring your stream back to life with modern effects!
 
 # kdeconnect
 AddPackage kdeconnect # Adds communication between KDE and your smartphone
@@ -101,6 +106,7 @@ AddPackage gvfs-smb # Virtual filesystem implementation for GIO (SMB/CIFS backen
 
 
 # cli tools
+AddPackage iotop # View I/O usage of processes
 AddPackage btop # A monitor of system resources, bpytop ported to C++
 AddPackage youtube-dl # A command-line program to download videos from YouTube.com and a few more sites
 AddPackage yt-dlp # A youtube-dl fork with additional features and fixes
@@ -139,6 +145,7 @@ AddPackage ipython # An enhanced Interactive Python shell.
 AddPackage killcast # Manipulate Chromecast Devices in your Network.
 AddPackage lftp # Sophisticated command line based FTP client
 AddPackage jdownloader2 # Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.
+AddPackage tigervnc # Suite of VNC servers and clients. Based on the VNC 4 branch of TightVNC.
 
 # services
 AddPackage packagekit # A system designed to make installation and updates of packages easier
@@ -211,7 +218,8 @@ AddPackage offlineimap # Synchronizes emails between two repositories
 AddPackage notmuch # Notmuch is not much of an email program
 AddPackage notmuch-mutt # The mail indexer
 AddPackage notmuch-vim # Vim plugins for notmuch
-AddPackage --foreign gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
+#AddPackage --foreign gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
+AddPackage gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
 AddPackage afew # Initial tagging script for notmuch mail
 AddPackage alot # Terminal-based MUA for the notmuch mail system
 AddPackage davmail # a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service

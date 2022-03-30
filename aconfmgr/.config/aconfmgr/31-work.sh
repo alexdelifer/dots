@@ -18,7 +18,7 @@ AddPackage onlyoffice-bin # An office suite that combines text, spreadsheet and 
 AddPackage remmina # remote desktop client written in GTK+
 AddPackage microsoft-edge-stable-bin # A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
 AddPackage libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
-AddPackage --foreign teams-insiders # Microsoft Teams for Linux is your chat-centered workspace in Office 365 - Insiders Version
+#AddPackage --foreign teams-insiders # Microsoft Teams for Linux is your chat-centered workspace in Office 365 - Insiders Version
 
 # Ansible
 AddPackage python-pywinrm # Python library for Windows Remote Management
@@ -39,7 +39,11 @@ AddPackage nodejs-gitlab-ci-lint # GitLab CI/CD cli to lint .gitlab-ci.yml files
 AddPackage nfs-utils # Support programs for Network File Systems
 
 # vmware
+AddPackage vagrant # Build and distribute virtualized development environments
 AddPackage vmware-workstation # The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
+AddPackage --foreign vagrant-vmware-utility # Plugin for vagrant vmware provider.
+CreateLink /etc/systemd/system/multi-user.target.wants/vagrant-vmware-utility.service /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility.service
+CreateLink /etc/systemd/system/vagrant-vmware-utility.service /opt/vagrant-vmware-desktop/bin/vagrant-vmware-utility.service
 CreateLink /etc/systemd/system/multi-user.target.wants/vmware-networks.service /usr/lib/systemd/system/vmware-networks.service
 CreateLink /etc/systemd/system/multi-user.target.wants/vmware-usbarbitrator.service /usr/lib/systemd/system/vmware-usbarbitrator.service
 

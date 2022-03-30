@@ -1,11 +1,60 @@
 [user]
-	name = Alex Delifer
-	email = alex.delifer@zimmerbiomet.com
-[color]
-	diff = auto
-	status = auto
-    branch = auto
-    ui = auto
+	name = Alex
+	email = alex@delifer.ca
 
-[credential "https://gitlab.zimmercas.com"]
-	username = delifera
+# I found myself occasionally confused by the command-line colorings, so I tweaked the colors and styles so they're more distinct and so that certain colors are only used for specific purposes.
+# @note: I use terminal colorings of white text on black background (with distinct shades of gray for black/dark-gray ('0;30m'), bold-black/mid-gray ('1;30m'), and non-bold-white/light-gray ('0;37m')), so YMMV.
+[color]
+    ui = auto # (Git w/o any color is cruel and unusual punishment)
+[color "branch"]
+    current = bold reverse red
+    local = reverse green
+    remote = reverse cyan
+    plain = reverse white
+[color "diff"]
+    plain = white
+    meta = dim reverse white
+    frag = reverse yellow
+    func = cyan
+    old = red
+    new = green
+    commit = ul yellow
+    whitespace = black white
+[color "decorate"]
+    branch = reverse green
+    remoteBranch = reverse cyan
+    tag = reverse yellow
+    stash = reverse yellow
+    HEAD = bold reverse red
+[color "status"]
+    header = dim reverse white
+    updated = bold yellow # AKA added
+    changed = bold magenta
+    untracked = bold cyan
+    unmerged = bold blue
+    nobranch = bold reverse blink red
+
+
+# handy variants
+[alias]
+    lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%cr)%C(reset) %C(white)%s%C(reset) %C(bold white)— %cn%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cD%C(reset) %C(bold green)(%cr)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %cn%C(reset)' --abbrev-commit
+    snatch = cherry-pick # because “snatch” sounds more sexy (and is easier to type)
+
+[includeIf "gitdir:~/dots/**"]
+    path = ~/.personal.gitconfig
+
+[includeIf "gitdir:/media/SSD/src/**"]
+    path = ~/.personal.gitconfig
+
+[includeIf "gitdir:/media/SSD/work/**"]
+    path = ~/.work.gitconfig
+
+[includeIf "gitdir:~/src/**"]
+    path = ~/.personal.gitconfig
+
+[includeIf "gitdir:~/work/**"]
+    path = ~/.work.gitconfig
+
+[credential]
+    helper = store

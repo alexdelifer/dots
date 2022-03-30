@@ -9,13 +9,13 @@ CheckConfig gaming || return 0
 # kernels
 AddPackage linux-xanmod-tt # The Linux kernel and modules with Xanmod patches
 AddPackage linux-xanmod-tt-headers # Headers and scripts for building modules for the Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri kernel
-AddPackage linux-zen # The Linux ZEN kernel and modules
-AddPackage linux-zen-headers # Headers and scripts for building modules for the Linux ZEN kernel
+#AddPackage linux-zen # The Linux ZEN kernel and modules
+#AddPackage linux-zen-headers # Headers and scripts for building modules for the Linux ZEN kernel
 CopyFile /etc/mkinitcpio.d/linux-xanmod-tt.preset
-CopyFile /etc/mkinitcpio.d/linux-zen.preset
+#CopyFile /etc/mkinitcpio.d/linux-zen.preset
 
 # apps
-AddPackage steam # Valve's digital software delivery system
+#AddPackage steam # Valve's digital software delivery system
 AddPackage lutris # Open Gaming Platform
 
 # tools
@@ -23,6 +23,7 @@ AddPackage mangohud # A Vulkan overlay layer for monitoring FPS, temperatures, C
 AddPackage mangohud-common # Common files for mangohud and lib32-mangohud
 AddPackage lib32-mangohud # A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)
 AddPackage parsec-bin # Remotely connect to a gaming pc for a low latency remote computing experience
+AddPackage realtime-privileges # Realtime privileges for users
 
 # drivers
 AddPackage vkd3d # Direct3D 12 to Vulkan translation library By WineHQ
@@ -43,7 +44,8 @@ AddPackage lib32-libxslt # XML stylesheet transformation library (32-bit)
 AddPackage lib32-openal # Cross-platform 3D audio library, software implementation (32-bit)
 AddPackage vulkan-headers # Vulkan header files
 
-AddPackage steam-native-runtime # Native replacement for the Steam runtime using system libraries
+AddPackage gamemode # A daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS
+#AddPackage steam-native-runtime # Native replacement for the Steam runtime using system libraries
 
 # configs
 CopyFile /etc/udev/rules.d/51-gcadapter.rules

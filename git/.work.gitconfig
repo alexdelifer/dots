@@ -1,0 +1,7 @@
+[user]
+    name = Alex Delifer
+    email = alex.delifer@zimmerbiomet.com
+[credential "https://gitlab.zimmercas.com"]
+    username = delifera
+[credential]
+    helper = store

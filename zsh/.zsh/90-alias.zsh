@@ -10,6 +10,9 @@
 alias vi="nvim"
 alias vim="nvim"
 
+alias cat="bat --style snip"
+alias c="cat"
+
 alias ssh="TERM=xterm-256color ssh"
 alias ghetto-ssh="TERM=xterm ssh -oKexAlgorithms=+diffie-hellman-group1-sha1"
 

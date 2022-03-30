@@ -93,3 +93,6 @@ CopyFile /etc/sysctl.d/54-dmesg-restrict.conf
 # hidepid
 CopyFile /etc/systemd/system/systemd-logind.service.d/hidepid.conf
 
+# limits
+CopyFile /etc/security/limits.conf
+

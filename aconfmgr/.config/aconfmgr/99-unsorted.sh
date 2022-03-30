@@ -5,11 +5,14 @@
 #   \/_____/   \/_/ \/_/   \/_____/   \/_____/   \/_/ /_/     \/_/   \/_____/   \/____/
 
 
+# unsorted
+
 CopyFile /etc/pacman.d/delifer
 CopyFile /etc/.updated
 CopyFile /etc/hosts
 CopyFile /etc/pacman.d/mirrorlist
 
-CopyFile /etc/.updated
-CopyFile /etc/pacman.d/mirrorlist
-CopyFile /etc/proxychains.conf
+# systemd
+CopyFile /etc/systemd/system.conf
+CopyFile /etc/systemd/user.conf
+

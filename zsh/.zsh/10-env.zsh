@@ -4,6 +4,9 @@
 #  \ \_____\  \ \_\\"\_\  \ \__|
 #   \/_____/   \/_/ \/_/   \/_/
 #
+#
+
+export VAGRANT_HOME=/media/SSD/vagranthome
 
 # Paths
 PATH=$PATH:~/bin

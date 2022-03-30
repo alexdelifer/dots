@@ -177,7 +177,8 @@ CopyFile /etc/sysctl.d/10-network-tuning.conf
 CopyFile /etc/sysctl.d/20-ping.conf
 
 # fancy issue
-CopyFile /etc/issue
+#CopyFile /etc/issue
+
 
 # basic shit
 CopyFileTo /etc/hostname-$(cat /etc/hostname) /etc/hostname

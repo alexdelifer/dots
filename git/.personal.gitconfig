@@ -1,0 +1,7 @@
+[user]
+    name = Alex Delifer
+    email = alex@delifer.ca
+[credential "https://git.delifer.ca"]
+    username = alex
+[credential]
+    helper = store
