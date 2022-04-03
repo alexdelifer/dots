@@ -25,7 +25,7 @@ export TERMINAL_COMMAND="alacritty -e"
 export PAGER=less
 
 # Fix Alacritty?
-export MESA_LOADER_DRIVER_OVERRIDE=i965 # Iris is a buggy mess
+#export MESA_LOADER_DRIVER_OVERRIDE=i965 # Iris is a buggy mess
 
 # Enable firefox multitouch
 export MOZ_USE_XINPUT2=1
