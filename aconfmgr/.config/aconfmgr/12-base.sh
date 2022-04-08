@@ -169,10 +169,11 @@ CopyFile /etc/fuse.conf
 CopyFile /etc/fuse.original.conf
 
 # pacman
-CopyFile /etc/pacman.conf
 CopyFile /etc/pacman.d/mirrorlist
+CopyFile /etc/pacman.d/delifer
 CopyFile /etc/pacman.d/chaotic-mirrorlist
 CopyFile /etc/pacman.d/blackarch-mirrorlist
+CopyFile /etc/pacman.conf
 
 # sysctl
 CopyFile /etc/sysctl.d/10-network-tuning.conf
