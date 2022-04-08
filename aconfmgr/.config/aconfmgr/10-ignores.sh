@@ -49,7 +49,7 @@ IgnorePath '/etc/zcasos-info'
 IgnorePath '/etc/spacefm/*'
 IgnorePath '/etc/xml/catalog'
 
-IgnorePath '/etc/pacman.d/blackarch-mirrorlist'
+#IgnorePath '/etc/pacman.d/blackarch-mirrorlist'
 
 #IgnorePath '/etc/systemd/system/hibernate.target'
 #IgnorePath '/etc/systemd/system/suspend.target'

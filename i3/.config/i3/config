@@ -284,6 +284,8 @@ for_window [class="Microsoft Teams - Preview"] move container to workspace $WS5
 for_window [class="Steam"] move container to workspace $WS7
 for_window [class="steam_app*"] move container to workspace $WS7
 for_window [class="Spotify"] move container to workspace $WS8
+for_window [class="easyeffects"] move container to workspace $WS10
+for_window [class="pavucontrol"] move container to workspace $WS10
 
 
 # Modes
@@ -377,6 +379,7 @@ exec --no-startup-id i3-msg "workspace $WS1"
 exec --no-startup-id nvidia-settings --load-config-only
 exec --no-startup-id autorandr -c
 exec_always --no-startup-id autotiling
+exec_always --no-startup-id easyeffects -q; sleep 0.5; easyeffects
 #restart
 workspace $WS1 output DP-2
 workspace $WS2 output DP-0
