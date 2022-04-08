@@ -93,22 +93,10 @@ CopyFile /etc/.updated
 # Fri Apr  8 07:39:12 PM EDT 2022 - New / changed files
 
 
-CreateFile /etc/pacman.d/gnupg/.gpg-v21-migrated > /dev/null
-CopyFile /etc/pacman.d/gnupg/crls.d/DIR.txt
-CopyFile /etc/pacman.d/gnupg/gpg-agent.conf
-CopyFile /etc/pacman.d/gnupg/gpg.conf
-CopyFile /etc/pacman.d/gnupg/openpgp-revocs.d/DA6476052541196B46CB41B314650D7CDFE59073.rev 600
-CopyFile /etc/pacman.d/gnupg/private-keys-v1.d/C395A3E9D1D2C919B3C139D773FE7B1B080D9F41.key 600
-CopyFile /etc/pacman.d/gnupg/pubring.gpg
-CopyFile /etc/pacman.d/gnupg/pubring.gpg~
-CreateFile /etc/pacman.d/gnupg/secring.gpg 600 > /dev/null
-CopyFile /etc/pacman.d/gnupg/tofu.db
-CopyFile /etc/pacman.d/gnupg/trustdb.gpg
+
 
 
 # Fri Apr  8 07:39:12 PM EDT 2022 - New file properties
 
 
-SetFileProperty /etc/pacman.d/gnupg/crls.d mode 700
-SetFileProperty /etc/pacman.d/gnupg/openpgp-revocs.d mode 700
-SetFileProperty /etc/pacman.d/gnupg/private-keys-v1.d mode 700
+
