@@ -222,7 +222,6 @@ AddPackage notmuch # Notmuch is not much of an email program
 AddPackage notmuch-mutt # The mail indexer
 AddPackage notmuch-vim # Vim plugins for notmuch
 AddPackage --foreign gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
-AddPackage gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
 AddPackage afew # Initial tagging script for notmuch mail
 AddPackage alot # Terminal-based MUA for the notmuch mail system
 AddPackage --foreign davmail # a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service

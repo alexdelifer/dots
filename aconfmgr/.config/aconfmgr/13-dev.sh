@@ -55,7 +55,6 @@ AddPackage --foreign codeclimate # Command line interface for the Code Climate a
 
 AddPackage aspnet-runtime # The ASP.NET Core runtime
 AddPackage aspnet-targeting-pack # The ASP.NET Core targeting pack
-AddPackage atool # A script for managing file archives of various types
 AddPackage gitleaks # Audit Git repos for secrets and keys.
 AddPackage jupyterlab # JupyterLab computational environment
 AddPackage linux-zen-headers # Headers and scripts for building modules for the Linux ZEN kernel
