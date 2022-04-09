@@ -8,6 +8,7 @@ CheckConfig nvidia || return 0
 CheckNvidiaGPU nvidia || return 0
 
 # Drivers
+AddPackage nvidia-settings # Tool for configuring the NVIDIA graphics driver
 AddPackage nvidia-dkms # NVIDIA drivers - module sources
 AddPackage nvidia-utils # NVIDIA drivers utilities
 AddPackage opencl-nvidia # OpenCL implemention for NVIDIA

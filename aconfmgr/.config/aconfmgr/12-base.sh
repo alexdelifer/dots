@@ -12,10 +12,10 @@ AddPackage base # Minimal package set to define a basic Arch Linux installation
 AddPackage pacman # A library-based package manager with dependency support
 
 # Hooks
-AddPackage pacman-cleanup-hook # hook to cleanup pacman cache keeping only the installed plus next most recent packages
-AddPackage grub-hook # Pacman hook to update GRUB after a kernel update
+AddPackage --foreign pacman-cleanup-hook # hook to cleanup pacman cache keeping only the installed plus next most recent packages
+AddPackage --foreign grub-hook # Pacman hook to update GRUB after a kernel update
 AddPackage kernel-modules-hook # Keeps your system fully functional after a kernel upgrade
-AddPackage needrestart # Restart daemons after library updates.
+AddPackage --foreign needrestart # Restart daemons after library updates.
 AddPackage etc-update # CLI to interactively merge .pacnew configuration files
 CreateLink /etc/systemd/system/basic.target.wants/linux-modules-cleanup.service /usr/lib/systemd/system/linux-modules-cleanup.service
 
@@ -33,7 +33,7 @@ AddPackage cmatrix # A curses-based scrolling 'Matrix'-like screen
 
 # cheat
 AddPackage tealdeer # A fast tldr client in Rust
-AddPackage cheat # Allows you to create and view interactive cheatsheets on the command-line
+AddPackage --foreign cheat # Allows you to create and view interactive cheatsheets on the command-line
 
 # why wouldnt this be here?
 AddPackage stow # Manage installation of multiple softwares in the same directory tree
@@ -97,7 +97,7 @@ AddPackage xdg-user-dirs # Manage user directories like ~/Desktop and ~/Music
 AddPackage wpa_supplicant # A utility providing key negotiation for WPA wireless networks
 
 # cli utils
-AddPackage rar # A command-line port of the rar compression utility
+AddPackage --foreign rar # A command-line port of the rar compression utility
 AddPackage xdg-user-dirs-gtk # Creates user dirs and asks to relocalize them
 AddPackage dmidecode # Desktop Management Interface table related utilities
 AddPackage downgrade # Bash script for downgrading one or more packages to a version in your cache or the A.L.A.
@@ -125,7 +125,7 @@ CreateLink /etc/systemd/system/multi-user.target.wants/zerotier-one.service /etc
 CopyFile /etc/systemd/system/zerotier-one.service
 
 # ZRam
-AddPackage zramd # Automatically setup swap on zram ✨
+AddPackage --foreign zramd # Automatically setup swap on zram ✨
 CreateLink /etc/systemd/system/multi-user.target.wants/zramd.service /usr/lib/systemd/system/zramd.service
 CopyFile /etc/systemd/zram-generator.conf
 

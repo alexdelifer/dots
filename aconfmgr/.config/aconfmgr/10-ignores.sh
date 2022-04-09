@@ -48,7 +48,7 @@ IgnorePath '/usr/LICENSE'
 IgnorePath '/etc/zcasos-info'
 IgnorePath '/etc/spacefm/*'
 IgnorePath '/etc/xml/catalog'
-
+IgnorePath '/etc/.updated'
 #IgnorePath '/etc/pacman.d/blackarch-mirrorlist'
 
 #IgnorePath '/etc/systemd/system/hibernate.target'

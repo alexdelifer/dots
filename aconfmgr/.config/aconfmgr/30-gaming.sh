@@ -22,18 +22,18 @@ AddPackage lutris # Open Gaming Platform
 AddPackage mangohud # A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more
 AddPackage mangohud-common # Common files for mangohud and lib32-mangohud
 AddPackage lib32-mangohud # A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)
-AddPackage parsec-bin # Remotely connect to a gaming pc for a low latency remote computing experience
+AddPackage --foreign parsec-bin # Remotely connect to a gaming pc for a low latency remote computing experience
 AddPackage realtime-privileges # Realtime privileges for users
 
 # drivers
 AddPackage vkd3d # Direct3D 12 to Vulkan translation library By WineHQ
-AddPackage wii-u-gc-adapter # Tool for using the Wii U GameCube Adapter on Linux
+AddPackage --foreign wii-u-gc-adapter # Tool for using the Wii U GameCube Adapter on Linux
 AddPackage mesa # An open-source implementation of the OpenGL specification
 
 # proton
 AddPackage proton-caller # Run any Windows program through Proton
 AddPackage proton-ge-custom-bin # A fancy custom distribution of Valves Proton with various patches
-AddPackage protontricks # A simple wrapper that does winetricks things for Proton enabled games.
+AddPackage --foreign protontricks # A simple wrapper that does winetricks things for Proton enabled games.
 
 # libs
 AddPackage lib32-gst-plugins-base # GStreamer Multimedia Framework Base Plugins (32-bit)

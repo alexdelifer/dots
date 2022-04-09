@@ -6,7 +6,7 @@
 
 CheckConfig personal || return 0
 
-AddPackage delifer-repo # Pacman repo delifer systems
+#AddPackage delifer-repo # Pacman repo delifer systems
 
 # gui apps
 AddPackage dolphin-emu # A Gamecube / Wii / Triforce emulator
@@ -24,6 +24,10 @@ AddPackage veracrypt # Disk encryption with strong security based on TrueCrypt
 AddPackage visual-studio-code-bin # Visual Studio Code (vscode)
 AddPackage obsidian # Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
 
+AddPackage --foreign udevil # Mount and unmount without password
+AddPackage --foreign autorestic-bin # High level CLI utility for restic
+
+
 # chat
 AddPackage signal-desktop # Signal Private Messenger for Linux
 #AddPackage discord # All-in-one voice and text chat for gamers that's free and secure.
@@ -38,7 +42,7 @@ AddPackage ungoogled-chromium # A lightweight approach to removing Google web se
 AddPackage mpv # a free, open source, and cross-platform media player
 AddPackage vlc # Multi-platform MPEG, VCD/DVD, and DivX player
 AddPackage plex-media-player # Next generation Plex Desktop Client
-AddPackage plexamp-appimage # Modern music client for Plex
+AddPackage --foreign plexamp-appimage # Modern music client for Plex
 #AddPackage spotify # A proprietary music streaming service
 AddPackage spotify-tui # Spotify client for the terminal written in Rust
 AddPackage projectm # Music visualizer which uses 3D accelerated iterative image based rendering
@@ -68,8 +72,8 @@ AddPackage --foreign obs-streamfx # Bring your stream back to life with modern e
 AddPackage kdeconnect # Adds communication between KDE and your smartphone
 
 # syncing
-AddPackage syncthing-gtk-python3 # GTK3 based GUI and notification area icon for Syncthing. Python 3 port with Debian sources.
-AddPackage rslsync # Resilio Sync (ex
+AddPackage --foreign syncthing-gtk-python3 # GTK3 based GUI and notification area icon for Syncthing. Python 3 port with Debian sources.
+AddPackage --foreign rslsync # Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology
 CopyFile /etc/systemd/system/rslsync.service
 CopyFile /etc/rslsync.conf 600 rslsync rslsync
 SetFileProperty /etc/rslsync.conf group rslsync
@@ -116,14 +120,14 @@ AddPackage pigz # Parallel implementation of the gzip file compressor
 AddPackage sl # Steam Locomotive runs across your terminal when you type "sl" as you meant to type "ls".
 AddPackage perl-image-exiftool # Reader and rewriter of EXIF informations that supports raw files
 AddPackage odt2txt # extracts the text out of OpenDocument Texts
-AddPackage cava # Console-based Audio Visualizer for Alsa
-AddPackage corrupter-git # Simple image glitcher suitable for producing nice looking i3lock backgrounds
+AddPackage --foreign bitwarden-rofi # Wrapper for Bitwarden and Rofi
+AddPackage --foreign corrupter-git # Simple image glitcher suitable for producing nice looking i3lock backgrounds
 AddPackage toilet # Free replacement for the FIGlet utility.
 AddPackage cht.sh-git # The only cheat sheet you need (command line client for cheat.sh)
 AddPackage mediainfo # Supplies technical and tag information about a video or audio file (CLI interface)
 AddPackage util-linux # Miscellaneous system utilities for Linux
 AddPackage usbutils # A collection of USB tools to query connected USB devices
-AddPackage woeusb-ng # Simple tool that enable you to create your own usb stick with Windows installer.
+AddPackage --foreign woeusb-ng # Simple tool that enable you to create your own usb stick with Windows installer.
 AddPackage sysprof # Kernel based performance profiler
 AddPackage speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
 AddPackage socat # Multipurpose relay
@@ -150,7 +154,7 @@ AddPackage tigervnc # Suite of VNC servers and clients. Based on the VNC 4 branc
 # services
 AddPackage packagekit # A system designed to make installation and updates of packages easier
 AddPackage syncthing # Open Source Continuous Replication / Cluster Synchronization Thing
-AddPackage mconnect-git # KDE Connect protocol implementation in Vala/C for non-KDE desktops
+AddPackage --foreign mconnect-git # KDE Connect protocol implementation in Vala/C for non-KDE desktops
 
 # docker
 AddPackage docker # Pack, ship and run any application as a lightweight container
@@ -158,7 +162,7 @@ AddPackage docker-compose # Fast, isolated development environments using Docker
 CreateLink /etc/systemd/system/multi-user.target.wants/docker.service /usr/lib/systemd/system/docker.service
 
 # postmarketos
-AddPackage pmbootstrap # Sophisticated chroot/build/flash tool to develop and install postmarketOS
+AddPackage --foreign pmbootstrap # Sophisticated chroot/build/flash tool to develop and install postmarketOS
 
 # gpg
 AddPackage seahorse # GNOME application for managing PGP keys.
@@ -193,9 +197,9 @@ AddPackage udevil # Mount and unmount without password
 AddPackage exfat-utils # Utilities for exFAT file system
 AddPackage f2fs-tools # Tools for Flash-Friendly File System (F2FS)
 AddPackage curlftpfs # A filesystem for acessing FTP hosts based on FUSE and libcurl.
-AddPackage gphotofs # FUSE filesystem module to mount your camera as a filesystem on Linux.
+AddPackage --foreign gphotofs # FUSE filesystem module to mount your camera as a filesystem on Linux.
 AddPackage jfsutils # JFS filesystem utilities
-AddPackage jmtpfs # FUSE and libmtp based filesystem for accessing MTP (Media Transfer Protocol) devices
+AddPackage --foreign jmtpfs # FUSE and libmtp based filesystem for accessing MTP (Media Transfer Protocol) devices
 AddPackage nilfs-utils # A log-structured file system supporting continuous snapshotting (userspace utils)
 AddPackage ntfs-3g # NTFS filesystem driver and utilities
 AddPackage reiserfsprogs # Reiserfs utilities
@@ -205,10 +209,10 @@ AddPackage ifuse # A fuse filesystem to access the contents of an iPhone or iPod
 AddPackage hfsprogs # User space utils for create and check Apple HFS/HFS+ filesystem
 AddPackage e2fsprogs # Ext2/3/4 filesystem utilities
 AddPackage dosfstools # DOS filesystem utilities
-AddPackage darling-dmg-git # FUSE module for .dmg files (containing an HFS+ filesystem)
+AddPackage --foreign darling-dmg-git # FUSE module for .dmg files (containing an HFS+ filesystem)
 AddPackage rpi-imager # Raspberry Pi Imaging Utility
 AddPackage pulsemixer # CLI and curses mixer for pulseaudio
-AddPackage python-updog # A replacement for Python's SimpleHTTPServer
+AddPackage --foreign python-updog # A replacement for Python's SimpleHTTPServer
 AddPackage godot # Advanced cross-platform 2D and 3D game engine
 
 # mutt
@@ -218,11 +222,11 @@ AddPackage offlineimap # Synchronizes emails between two repositories
 AddPackage notmuch # Notmuch is not much of an email program
 AddPackage notmuch-mutt # The mail indexer
 AddPackage notmuch-vim # Vim plugins for notmuch
-#AddPackage --foreign gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
+AddPackage --foreign gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
 AddPackage gmailieer # Fast fetch and two-way tag synchronization between notmuch and GMail
 AddPackage afew # Initial tagging script for notmuch mail
 AddPackage alot # Terminal-based MUA for the notmuch mail system
-AddPackage davmail # a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service
+AddPackage --foreign davmail # a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service
 
 # smb
 AddPackage samba # SMB Fileserver and AD Domain server

@@ -23,7 +23,7 @@ AddPackage alacritty # A cross-platform, GPU-accelerated terminal emulator
 AddPackage autorandr # Auto-detect connected display hardware and load appropiate X11 setup using xrandr
 AddPackage autotiling # Script for sway and i3 to automatically switch the horizontal / vertical window split orientation
 AddPackage betterlockscreen # A simple, minimal lockscreen
-AddPackage bitwarden-rofi # Wrapper for Bitwarden and Rofi
+AddPackage --foreign bitwarden-rofi # Wrapper for Bitwarden and Rofi
 AddPackage dmenu # Generic menu for X
 AddPackage j4-dmenu-desktop # A much faster replacement for i3-dmenu-desktop. Its purpose is to find .desktop files and offer you a menu to start an application using dmenu.
 AddPackage lxappearance # Feature-rich GTK+ theme switcher of the LXDE Desktop
@@ -38,7 +38,7 @@ AddPackage thunar-volman # Automatic management of removeable devices in Thunar
 AddPackage ueberzug # Command line util which allows to display images in combination with X11
 AddPackage xdotool # Command-line X11 automation tool
 AddPackage xclip # Command line interface to the X11 clipboard
-AddPackage xob # A lightweight volume (or anything) bar for the X Window System
+AddPackage --foreign xob # A lightweight volume (or anything) bar for the X Window System
 AddPackage xorg-xev # Print contents of X events
 AddPackage xorg-xinit # X.Org initialisation program
 AddPackage xorg-xkill # Kill a client by its X resource
@@ -46,7 +46,7 @@ AddPackage xss-lock # Use external locker as X screen saver
 AddPackage picom-ibhagwan-git # iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners
 AddPackage playerctl # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
 AddPackage polybar # A fast and easy-to-use status bar
-AddPackage flashfocus # Simple Xorg window focus animations for tiling window managers
+AddPackage --foreign flashfocus # Simple Xorg window focus animations for tiling window managers
 AddPackage pasystray # PulseAudio system tray (a replacement for padevchooser)
 AddPackage xcolor # Lightweight color picker for X11
 AddPackage slop # Utility to query the user for a selection and print the region to stdout

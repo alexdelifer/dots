@@ -10,7 +10,7 @@ CheckConfig harden || return 0
 AddPackage intel-ucode # Microcode update files for Intel CPUs
 
 # aide
-AddPackage aide # A file integrity checker and intrusion detection program.
+AddPackage --foreign aide # A file integrity checker and intrusion detection program.
 CopyFile /etc/aide.conf
 CopyFile /etc/systemd/system/aidecheck.service
 CopyFile /etc/systemd/system/aidecheck.timer
@@ -55,11 +55,11 @@ CopyFile /etc/security/pwquality.conf
 
 # clamav
 AddPackage clamav # Anti-virus toolkit for Unix
-CreateLink /etc/systemd/system/multi-user.target.wants/clamav-clamonacc.service /usr/lib/systemd/system/clamav-clamonacc.service
-CreateLink /etc/systemd/system/multi-user.target.wants/clamav-daemon.service /usr/lib/systemd/system/clamav-daemon.service
-CreateLink /etc/systemd/system/multi-user.target.wants/clamav-freshclam.service /usr/lib/systemd/system/clamav-freshclam.service
-CreateLink /etc/systemd/system/multi-user.target.wants/iptables.service /usr/lib/systemd/system/iptables.service
-CreateLink /etc/systemd/system/sockets.target.wants/clamav-daemon.socket /usr/lib/systemd/system/clamav-daemon.socket
+#CreateLink /etc/systemd/system/multi-user.target.wants/clamav-clamonacc.service /usr/lib/systemd/system/clamav-clamonacc.service
+#CreateLink /etc/systemd/system/multi-user.target.wants/clamav-daemon.service /usr/lib/systemd/system/clamav-daemon.service
+#CreateLink /etc/systemd/system/multi-user.target.wants/clamav-freshclam.service /usr/lib/systemd/system/clamav-freshclam.service
+#CreateLink /etc/systemd/system/multi-user.target.wants/iptables.service /usr/lib/systemd/system/iptables.service
+#CreateLink /etc/systemd/system/sockets.target.wants/clamav-daemon.socket /usr/lib/systemd/system/clamav-daemon.socket
 
 # firewall
 AddPackage firewalld # Firewall daemon with D-Bus interface

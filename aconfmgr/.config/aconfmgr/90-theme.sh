@@ -10,7 +10,7 @@ AddPackage papirus-icon-theme # Papirus icon theme
 AddPackage --foreign sweet-folders-icons-git # Folder icons from the Sweet GTK Theme for Linux desktop environments
 AddPackage sweet-gtk-theme-dark # Light and dark colorful Gtk3.20+ theme
 AddPackage elementary-icon-theme # Named, vector icons for elementary OS
-AddPackage xcursor-openzone # OpenZone X11 cursor theme
+AddPackage --foreign xcursor-openzone # OpenZone X11 cursor theme
 AddPackage arc-gtk-theme # A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell
 
 AddPackage ttf-font-awesome # Iconic font designed for Bootstrap
@@ -18,7 +18,7 @@ AddPackage ttf-ubuntu-font-family # Ubuntu font family
 AddPackage ttf-iosevka-nerd # Typeface family designed for coding, terminal use and technical documents (Nerd Fonts)
 AddPackage noto-color-emoji-fontconfig # Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed
 AddPackage noto-fonts-emoji # Google Noto emoji fonts
-AddPackage nerd-fonts-cascadia-code # Patched Cascadia Code font with extra glyphs
+AddPackage --foreign nerd-fonts-cascadia-code # Patched Cascadia Code font with extra glyphs
 AddPackage noto-fonts-cjk # Google Noto CJK fonts
 AddPackage noto-fonts-extra # Google Noto TTF fonts - additional variants
 AddPackage ttf-dejavu # Font family based on the Bitstream Vera Fonts with a wider range of characters

@@ -55,7 +55,7 @@ AddPackage hcxdumptool # Small tool to capture packets from wlan devices
 AddPackage hcxtools # Portable solution for capturing wlan traffic and conversion to hashcat and John the Ripper formats
 AddPackage pixiewps # Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs
 
-AddPackage gss-ntlmssp # A GSSAPI Mechanism that implements NTLMSSP
+AddPackage --foreign gss-ntlmssp # A GSSAPI Mechanism that implements NTLMSSP
 AddPackage cowpatty # Wireless WPA/WPA2 PSK handshake cracking utility
 
 AddPackage armitage # A graphical cyber attack management tool for Metasploit.

@@ -13,7 +13,7 @@ AddPackage freerdp # Free implementation of the Remote Desktop Protocol (RDP)
 # gui apps
 AddPackage evolution # Manage your email, contacts and schedule
 AddPackage evolution-ews # MS Exchange integration through Exchange Web Services
-AddPackage webex-bin # Webex for Linux
+AddPackage --foreign webex-bin # Webex for Linux
 AddPackage onlyoffice-bin # An office suite that combines text, spreadsheet and presentation editors
 AddPackage remmina # remote desktop client written in GTK+
 AddPackage microsoft-edge-stable-bin # A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
@@ -29,13 +29,13 @@ AddPackage python-passlib # A password hashing library for Python
 AddPackage ansible-bender # Build container images using Ansible playbooks
 
 # dev tools
-AddPackage ccollab-client10 # Collaborator Client
+#AddPackage --foreign ccollab-client10 # Collaborator Client
 AddPackage rpm-tools # RPM Package Manager - RPM.org fork, used in major RPM distros
-AddPackage powershell-bin # A cross-platform automation and configuration tool/framework (binary package)
+#AddPackage powershell-bin # A cross-platform automation and configuration tool/framework (binary package)
 AddPackage conan # A distributed, open source, C/C++ package manager.
 AddPackage tk # A windowing toolkit for use with tcl
 AddPackage nodejs # Evented I/O for V8 javascript
-AddPackage nodejs-gitlab-ci-lint # GitLab CI/CD cli to lint .gitlab-ci.yml files
+AddPackage --foreign nodejs-gitlab-ci-lint # GitLab CI/CD cli to lint .gitlab-ci.yml files
 AddPackage nfs-utils # Support programs for Network File Systems
 
 # vmware
