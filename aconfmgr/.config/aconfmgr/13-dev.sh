@@ -51,7 +51,7 @@ AddPackage cppcheck # A tool for static C/C++ code analysis
 AddPackage flawfinder # Searches through source code for potential security flaws
 AddPackage git-lfs # Git extension for versioning large files
 AddPackage gitlab-runner # The official GitLab CI runner written in Go
-AddPackage --foreign codeclimate # Command line interface for the Code Climate analysis platform. It allows you to run Code Climate engines on your local machine inside of Docker containers. Make sure that your current user belongs to docker group and that docker is running.
+#AddPackage --foreign codeclimate # Command line interface for the Code Climate analysis platform. It allows you to run Code Climate engines on your local machine inside of Docker containers. Make sure that your current user belongs to docker group and that docker is running.
 
 AddPackage aspnet-runtime # The ASP.NET Core runtime
 AddPackage aspnet-targeting-pack # The ASP.NET Core targeting pack
