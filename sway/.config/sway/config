@@ -51,22 +51,22 @@ input type:keyboard {
 #input 1386:20915:Wacom_Pen_and_multitouch_sensor_Pen    map_to_output eDP-1
 
 
-set $WS1 "1:term"
-set $WS2 "2:web"
-set $WS3 "3:code"
-set $WS4 "4:work"
-set $WS5 "5:music"
-set $WS6 "6:docs"
-set $WS7 "7:7"
-set $WS8 "8:8"
-set $WS9 "9:9"
-set $WS10 "10:10"
+set $WS1 "1"
+set $WS2 "2"
+set $WS3 "3"
+set $WS4 "4"
+set $WS5 "5"
+set $WS6 "6"
+set $WS7 "7"
+set $WS8 "8"
+set $WS9 "9"
+set $WS10 "10"
 
 # Autostarts
 # kill then exec to restart when $mod+Shift+r for reload 
 exec_always pkill swayidle;		exec ~/.config/sway/locker -w
 exec_always pkill mako;			exec mako
-exec_always pkill wayvnc;		exec wayvnc 127.0.0.1
+#exec_always pkill wayvnc;		exec wayvnc 127.0.0.1
 exec_always pkill mpris-proxy;		exec mpris-proxy
 exec_always pkill ydotoold;		exec ydotoold
 #exec_always pkill waybar; 		exec waybar
@@ -107,8 +107,8 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Terminal
-bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec alacritty -t floaterm -d 80 24
+bindsym $mod+Return 		exec alacritty
+bindsym $mod+Shift+Return 	exec alacritty -t floaterm
 #bindsym $mod+Return exec kitty
 #bindsym $mod+Shift+Return exec kitty -T floaterm --class floaterm 
 
@@ -264,7 +264,11 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
     floating enable, move position 877 450, sticky enable
 
-for_window [title="floaterm"] resize set 640 480, floating enable
+#for_window [class="Alacritty"] border pixel 4
+for_window [class="floaterm" instance="floaterm"] floating enable #border pixel 4
+for_window [class="floaterm"] floating enable #border pixel 4
+for_window [instance="floaterm"] floating enable #border pixel 4
+for_window [title="floaterm"] floating enable #border pixel 4
 
 #for_window [instance="termite"] border pixel 3
 for_window [class="Clock-applet"] floating enable
