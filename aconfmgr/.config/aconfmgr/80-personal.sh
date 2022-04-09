@@ -193,7 +193,6 @@ AddPackage keybase-gui # GUI frontend for GPG with keybase.io
 AddPackage kbfs # The Keybase filesystem
 
 # filesystems
-AddPackage udevil # Mount and unmount without password
 AddPackage exfat-utils # Utilities for exFAT file system
 AddPackage f2fs-tools # Tools for Flash-Friendly File System (F2FS)
 AddPackage curlftpfs # A filesystem for acessing FTP hosts based on FUSE and libcurl.
