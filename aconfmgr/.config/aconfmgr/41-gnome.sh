@@ -59,7 +59,7 @@ AddPackage mutter # A window manager for GNOME
 AddPackage totem # Movie player for the GNOME desktop based on GStreamer
 AddPackage vino # A VNC server for the GNOME desktop
 AddPackage yelp # Get help with GNOME
-AddPackage --foreign gnome-shell-extension-gsconnect-git # KDE Connect implementation with GNOME Shell integration
+#AddPackage --foreign gnome-shell-extension-gsconnect-git # KDE Connect implementation with GNOME Shell integration
 AddPackage evince # Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)
 AddPackage seahorse-nautilus # PGP encryption and signing for nautilus
 AddPackage file-roller # Create and modify archives
@@ -94,7 +94,7 @@ AddPackage gnome-nettool # Graphical interface for various networking tools
 AddPackage gnome-nibbles # Guide a worm around a maze
 AddPackage gnome-recipes # Recipe management application for GNOME
 AddPackage gnome-robots # Avoid the robots and make them crash into each other
-AddPackage gnome-shell-extension-pop-shell # Pop Shell - Tiling window management in Gnome (WIP)
+#AddPackage gnome-shell-extension-pop-shell # Pop Shell - Tiling window management in Gnome (WIP)
 AddPackage gnome-sound-recorder # A utility to make simple audio recording from your GNOME desktop
 AddPackage gnome-sudoku # Test your logic skills in this number grid puzzle
 AddPackage gnome-taquin # Move tiles so that they reach their places
@@ -116,6 +116,6 @@ AddPackage lightsoff # Turn off all the lights
 AddPackage qgnomeplatform # QPlatformTheme for a better Qt5 application inclusion in GNOME
 AddPackage qt5ct # Qt5 Configuration Utility
 
-CreateLink /etc/systemd/system/display-manager.service /usr/lib/systemd/system/gdm.service
+#CreateLink /etc/systemd/system/display-manager.service /usr/lib/systemd/system/gdm.service
 CopyFile /etc/gdm/custom.conf
 
