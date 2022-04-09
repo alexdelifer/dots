@@ -12,7 +12,7 @@ AddPackage swaylock # Screen locker for Wayland
 AddPackage kanshi # Dynamic output configuration for Wayland WMs
 #AddPackage sway-git # Tiling Wayland compositor and replacement for the i3 window manager
 AddPackage xorg-xwayland-git # Run X clients under Wayland (git version)
-AddPackage ydotool-git # Generic command-line automation tool (no X!), works on Wayland
+AddPackage --foreign ydotool-git # Generic command-line automation tool (no X!), works on Wayland
 AddPackage wl-clipboard # Command-line copy/paste utilities for Wayland
 AddPackage wob # A lightweight overlay volume/backlight/progress/anything bar for Wayland
 AddPackage waybar # Highly customizable Wayland bar for Sway and Wlroots based compositors
