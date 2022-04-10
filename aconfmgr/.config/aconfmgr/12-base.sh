@@ -109,6 +109,7 @@ AddPackage ranger # Simple, vim-like file manager
 
 # firmware
 AddPackage linux-firmware # Firmware files for Linux
+AddPackage sof-firmware # Firmware files for Linux
 AddPackage mkinitcpio-firmware # Optional firmware for the default linux kernel to get rid of the annoying 'WARNING
 
 # Network Manager

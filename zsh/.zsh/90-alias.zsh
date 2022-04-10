@@ -10,6 +10,8 @@
 alias vi="nvim"
 alias vim="nvim"
 
+alias pwsh="pwsh /nologo"
+
 alias cat="bat --style snip"
 alias c="cat"
 
@@ -18,6 +20,7 @@ alias ghetto-ssh="TERM=xterm ssh -oKexAlgorithms=+diffie-hellman-group1-sha1"
 
 # Sane Defaults :)
 alias rdp="xfreerdp /dynamic-resolution /h:800 /w:1280"
+alias hirdp="xfreerdp /dynamic-resolution /h:1600 /w:2560 /scale:180 /scale-desktop:200"
 alias fj="firejail --apparmor --env=LD_PRELOAD='/usr/lib/libhardened_malloc.so'"
 alias dig="dig +nocookie +noedns"
 alias ls="ls -hF --color=auto"

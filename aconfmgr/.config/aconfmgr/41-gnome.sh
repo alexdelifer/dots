@@ -84,10 +84,10 @@ AddPackage gnome-builder # An IDE for writing GNOME-based software
 AddPackage gnome-chess # Play the classic two-player boardgame of chess
 AddPackage gnome-code-assistance # Code assistance services for GNOME
 AddPackage gnome-devel-docs # Developer documentation for GNOME
-AddPackage gnome-documents # A document manager application for GNOME
+#AddPackage gnome-documents # A document manager application for GNOME
 AddPackage gnome-klotski # Slide blocks to solve the puzzle
 AddPackage gnome-mahjongg # Disassemble a pile of tiles by removing matching pairs
-AddPackage gnome-meta # Meta package for installing the gnome group
+#AddPackage gnome-meta # Meta package for installing the gnome group
 AddPackage gnome-mines # Clear hidden mines from a minefield
 AddPackage gnome-multi-writer # Write an ISO file to multiple USB devices at once
 AddPackage gnome-nettool # Graphical interface for various networking tools
