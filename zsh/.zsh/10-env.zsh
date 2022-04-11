@@ -23,6 +23,7 @@ export BROWSER=firefox-nightly
 export TERMINAL=alacritty
 export TERMINAL_COMMAND="alacritty -e"
 export PAGER=less
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Fix Alacritty?
 #export MESA_LOADER_DRIVER_OVERRIDE=i965 # Iris is a buggy mess

@@ -59,13 +59,13 @@ Set-PSReadlineOption -EditMode Windows
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-#Set-PSReadLineOption -PredictionSource History
-#Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -HistoryNoDuplicates
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+#Set-PSReadLineKeyHandler -Key 'Ctrl+Spacebar' -Function MenuComplete
 
+# Theme
+#
 #oh-my-posh init pwsh --config /home/alex/.cache/oh-my-posh/themes/tonybaloney.omp.json | Invoke-Expression
 oh-my-posh init pwsh --config /home/alex/.cache/oh-my-posh/themes/pure.omp.json | Invoke-Expression
-
-Import-Module Az.Tools.Predictor
-Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+#oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/dracula.omp.json" | Invoke-Expression

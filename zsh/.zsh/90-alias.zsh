@@ -36,6 +36,14 @@ alias ovpn='openvpn'
 alias lsblk='lsblk -o NAME,PARTLABEL,RO,TYPE,SIZE,FSUSE%,MOUNTPOINT'
 alias kali='sudo arch-chroot /kali su - kali'
 
+function batdiff {
+    git diff --name-only --diff-filter=d | xargs bat --diff
+}
+
+function batail {
+    tail -f "$1" | bat --paging=never -l log
+}
+
 
 # Proxychains
 function p {
@@ -155,6 +163,10 @@ alias rmrf="rm -rf"
 alias psef="ps -ef"
 
 alias -g F="| fzf"
+
+alias f="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+
+alias fe='$EDITOR $(find . -type f | f)'
 
 alias zt="sudo zerotier-cli"
 alias ztr='sudo systemctl restart zerotier-one'
