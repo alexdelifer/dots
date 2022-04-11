@@ -1,0 +1,110 @@
+#!/bin/sh
+
+RDP_CMD="xfreerdp /dynamic-resolution /h:1600 /w:2560"
+HIDPI_RDP_CMD="/scale:180 /scale-desktop:200"
+SSH_CMD="ssh"
+OLD_SSH_CMD="-o HostKeyAlgorithms=ssh-rsa \
+    -o FingerprintHash=md5 \
+    -o KexAlgorithms=+diffie-hellman-group1-sha1"
+
+# A POSIX variable
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
+
+# Initialize our own variables:
+VERBOSE=false
+HIDPI=false
+OLD_SSH=false
+RDP=false
+SSH=false
+HOST=""
+USER=""
+PORT=""
+
+show_help() { 
+echo -e "\nUsage: $0 [-r|-s] [arguments] -u USER HOST
+# General
+  -u USER [mandatory]
+  -v verbose
+# RDP
+  -r RDP mode
+  -d HiDPI mode
+# SSH
+  -s SSH mode
+  -o enable old ssh flags
+" 
+}
+
+# use the sacred getopts to parse cli args
+while getopts "h:?dvsoru:p:" opt; do
+  case "$opt" in
+    h|\?)
+      show_help
+      exit 0
+      ;;
+    v)  VERBOSE=true
+      ;;
+    u)  USER="${OPTARG}"
+      ;;
+    p)  PORT="${OPTARG}"
+      ;;
+    d)  HIDPI=true
+      ;;
+    o)  OLD_SSH=true
+      ;;
+    r)  RDP=true
+      ;;
+    s)  SSH=true
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+[ "${1:-}" = "--" ] && shift
+
+# whatever is left, is the host
+HOST="$@"
+
+# complain about missing mandatory vars
+if [[ $HOST == "" ]]; then
+    echo "HOST is not optional"
+    show_help
+    exit 1
+elif [[ $USER == "" ]]; then
+    echo "USER is not optional"
+    show_help
+    exit 2
+fi
+
+# print the vars for debugging
+$VERBOSE && echo "VERBOSE: $VERBOSE"
+$VERBOSE && echo "USER: $USER"
+$VERBOSE && echo "HIDPI: $HIDPI"
+$VERBOSE && echo "OLD_SSH: $OLD_SSH"
+$VERBOSE && echo "RDP: $RDP"
+$VERBOSE && echo "SSH: $SSH"
+$VERBOSE && echo "LEFTOVER: $*"
+$VERBOSE && echo "HOST: $HOST"
+$VERBOSE && echo "PORT: $PORT"
+
+# compose the cmdline
+if $SSH; then
+    # SSH
+    CMD="${SSH_CMD}"
+    $OLD_SSH && CMD="${CMD} ${OLD_SSH_CMD}"
+    [ ! -z $PORT ] && CMD="${CMD} -p ${PORT}"
+    CMD="${CMD} ${USER}@${HOST}"
+elif $RDP; then
+    # RDP
+    CMD="${RDP_CMD}"
+    $HIDPI && CMD="${CMD} ${HIDPI_RDP_CMD}"
+    [ ! -z $PORT ] && CMD="${CMD} /port:${PORT}"
+    CMD="${CMD} /v:${HOST} /u:${USER}"
+fi
+
+$VERBOSE && echo "${CMD}"
+echo ""
+# do the thing
+$CMD
+
+exit 0
