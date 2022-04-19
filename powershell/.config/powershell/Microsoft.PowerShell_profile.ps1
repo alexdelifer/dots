@@ -13,22 +13,25 @@ try {
 # list modules to be loaded here
 $MODULES = (
     "Microsoft.PowerShell.UnixCompleters",
+    "Microsoft.PowerShell.SecretManagement",
+    "Microsoft.PowerShell.ConsoleGuiTools",
     "PSReadLine",
     "oh-my-posh",
     "Az.Accounts",
     "Az.Tools.Predictor",
-    "Microsoft.PowerShell.SecretManagement",
     "SecretManagement.BitWarden",
     "VMware.PowerCLI"
 )
 
 $AUTOLOAD = (
     "Microsoft.PowerShell.UnixCompleters",
+    "Microsoft.PowerShell.SecretManagement",
+    "Microsoft.PowerShell.ConsoleGuiTools",
     "PSReadLine",
     "oh-my-posh",
     "Az.Accounts",
     "Az.Tools.Predictor",
-    "Microsoft.PowerShell.SecretManagement",
+    "Az.Tools.Predictor",
     "SecretManagement.BitWarden"
 )
 
