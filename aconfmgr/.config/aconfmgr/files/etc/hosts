@@ -2,7 +2,6 @@
 ::1         localhost
 127.0.1.1   dank.localdomain   dank
 
-10.205.10.48 ezcollab.zimmer.com
+10.201.110.113 srv-build-dw3.zimmercas.com
 
-#10.210.49.55 srv-squish4.zimmercas.com
-10.210.49.62 srv-squish1.zimmercas.com
+#176.9.146.49 dvb.0xde.ca

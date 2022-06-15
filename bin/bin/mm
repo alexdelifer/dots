@@ -1,5 +1,6 @@
 #!/bin/sh
 
+VNC_CMD="vncviewer"
 RDP_CMD="xfreerdp /dynamic-resolution /h:1600 /w:2560"
 HIDPI_RDP_CMD="/scale:180 /scale-desktop:200"
 SSH_CMD="ssh"
@@ -16,6 +17,7 @@ HIDPI=false
 OLD_SSH=false
 RDP=false
 SSH=false
+VNC=false
 HOST=""
 USER=""
 PORT=""
@@ -35,7 +37,7 @@ echo -e "\nUsage: $0 [-r|-s] [arguments] -u USER HOST
 }
 
 # use the sacred getopts to parse cli args
-while getopts "h:?dvsoru:p:" opt; do
+while getopts "h:?dvsoVru:p:" opt; do
   case "$opt" in
     h|\?)
       show_help
@@ -54,6 +56,9 @@ while getopts "h:?dvsoru:p:" opt; do
     r)  RDP=true
       ;;
     s)  SSH=true
+      ;;
+    V)  VNC=true
+        USER=vnc
       ;;
   esac
 done
@@ -83,6 +88,7 @@ $VERBOSE && echo "HIDPI: $HIDPI"
 $VERBOSE && echo "OLD_SSH: $OLD_SSH"
 $VERBOSE && echo "RDP: $RDP"
 $VERBOSE && echo "SSH: $SSH"
+$VERBOSE && echo "VNC: $VNC"
 $VERBOSE && echo "LEFTOVER: $*"
 $VERBOSE && echo "HOST: $HOST"
 $VERBOSE && echo "PORT: $PORT"
@@ -100,6 +106,11 @@ elif $RDP; then
     $HIDPI && CMD="${CMD} ${HIDPI_RDP_CMD}"
     [ ! -z $PORT ] && CMD="${CMD} /port:${PORT}"
     CMD="${CMD} /v:${HOST} /u:${USER}"
+elif $VNC; then
+    # VNC
+    CMD="${VNC_CMD}"
+    CMD="${CMD} ${HOST}"
+    [ ! -z $PORT ] && CMD="${CMD}::${PORT}"
 fi
 
 $VERBOSE && echo "${CMD}"
