@@ -46,7 +46,6 @@ zinit snippet \
 # General
 zinit wait lucid for \
 	mafredri/zsh-async \
-	liangguohuan/fzf-extends \
 	supercrabtree/k
 
 	#zdharma-continuum/history-search-multi-word \
@@ -78,7 +77,6 @@ zinit light olets/zsh-window-title
 
 # Zinit Packages
 zinit pack for \
-	fzf \
 	ls_colors
 
 autoload -Uz compinit

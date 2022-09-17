@@ -82,7 +82,7 @@ AddPackage mtr # Combines the functionality of traceroute and ping into one tool
 AddPackage fd # Simple, fast and user-friendly alternative to find
 AddPackage duf # Disk Usage/Free Utility
 AddPackage exa # ls replacement
-AddPackage fzf # Command-line fuzzy finder
+#AddPackage fzf # Command-line fuzzy finder
 
 # services
 AddPackage iwd # Internet Wireless Daemon

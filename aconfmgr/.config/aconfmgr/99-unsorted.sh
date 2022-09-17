@@ -183,7 +183,7 @@ AddPackage --foreign code-marketplace # Enable vscode marketplace in Code OSS
 AddPackage --foreign dxvk-mingw # Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version
 AddPackage --foreign exodus # Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet
 AddPackage --foreign gdm-settings # A settings app for Gnome's Login Manager (GDM)
-AddPackage --foreign libva-vdpau-driver-chromium # VDPAU backend for VA API. (special version for chromium)
+#AddPackage --foreign libva-vdpau-driver-chromium # VDPAU backend for VA API. (special version for chromium)
 AddPackage --foreign posy-cursors # Port of Posy's improved cursors
 AddPackage --foreign proton-ge-custom-bin # A fancy custom distribution of Valves Proton with various patches
 AddPackage --foreign rockyou # The popular "rockyou" password list from OWASP SecLists project

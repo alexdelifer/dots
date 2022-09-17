@@ -12,7 +12,7 @@ AddPackage pipewire-alsa # Low-latency audio/video router and processor - ALSA c
 AddPackage pipewire-media-session # Example session manager for PipeWire
 AddPackage pipewire-pulse # Low-latency audio/video router and processor - PulseAudio replacement
 AddPackage pipewire-jack # Low-latency audio/video router and processor - JACK support
-AddPackage --foreign pipewire-jack-dropin # Use pipewire as drop-in replacement for JACK
+#AddPackage --foreign pipewire-jack-dropin # Use pipewire as drop-in replacement for JACK
 CreateLink /etc/systemd/user/sockets.target.wants/pipewire.socket /usr/lib/systemd/user/pipewire.socket
 CreateLink /etc/systemd/user/sockets.target.wants/pipewire-pulse.socket /usr/lib/systemd/user/pipewire-pulse.socket
 CreateLink /etc/systemd/user/pipewire-session-manager.service /usr/lib/systemd/user/pipewire-media-session.service

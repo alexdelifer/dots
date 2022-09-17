@@ -13,7 +13,7 @@ AddPackageGroup base-devel
 # arch
 AddPackage asp # Arch Linux build source file management tool
 AddPackage archiso # Tools for creating Arch Linux live and install iso images
-AddPackage --foreign aurto # A simple aur tool for managing a local 'aurto' repository
+#AddPackage --foreign aurto # A simple aur tool for managing a local 'aurto' repository
 
 # python
 AddPackage python-pip # The PyPA recommended tool for installing Python packages

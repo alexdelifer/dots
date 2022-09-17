@@ -10,12 +10,12 @@ CheckConfig harden || return 0
 AddPackage intel-ucode # Microcode update files for Intel CPUs
 
 # aide
-AddPackage --foreign aide # A file integrity checker and intrusion detection program.
-CopyFile /etc/aide.conf
-CopyFile /etc/systemd/system/aidecheck.service
-CopyFile /etc/systemd/system/aidecheck.timer
-CreateLink /etc/systemd/system/multi-user.target.wants/aidecheck.service /etc/systemd/system/aidecheck.service
-CreateLink /etc/systemd/system/multi-user.target.wants/aidecheck.timer /etc/systemd/system/aidecheck.timer
+#AddPackage --foreign aide # A file integrity checker and intrusion detection program.
+#CopyFile /etc/aide.conf
+#CopyFile /etc/systemd/system/aidecheck.service
+#CopyFile /etc/systemd/system/aidecheck.timer
+#CreateLink /etc/systemd/system/multi-user.target.wants/aidecheck.service /etc/systemd/system/aidecheck.service
+#CreateLink /etc/systemd/system/multi-user.target.wants/aidecheck.timer /etc/systemd/system/aidecheck.timer
 
 
 # audit
