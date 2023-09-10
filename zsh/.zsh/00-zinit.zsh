@@ -32,8 +32,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
 zinit load docker/compose
 
-
-
 zinit ice mv"httpstat.sh -> httpstat" \
         pick"httpstat" as"program"
 zinit snippet \
@@ -55,7 +53,7 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 	zsh-users/zsh-completions
 
 zinit wait lucid as"completion" for \
-	OMZ::plugins/docker/_docker \
+		OMZ::plugins/docker/_docker \
     	OMZ::plugins/adb/_adb \
     	OMZ::plugins/ripgrep/_ripgrep \
 

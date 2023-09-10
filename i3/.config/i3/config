@@ -122,7 +122,8 @@ bindsym $mod+d 		exec --no-startup-id rofi -show drun
 #bindsym $mod+d exec --no-startup-id alacritty -t alalauncher -e $HOME/.config/i3/i3-launcher.sh
 #bindsym $mod+d exec --no-startup-id alacritty -t alalauncher -e "bash -c ~/.config/i3/i3-launcher.sh && sleep 100"
 
-bindsym $mod+Tab 	exec --no-startup-id rofi -show window
+#bindsym $mod+Tab 	exec --no-startup-id rofi -show window
+
 bindsym $mod+q 		exec --no-startup-id loginctl lock-session
 
 bindsym $mod+e exec --no-startup-id rofimoji

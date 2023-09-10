@@ -6,7 +6,8 @@
 #
 #
 
-export VAGRANT_HOME=/media/SSD/vagranthome
+export VAGRANT_HOME=/games/Vagrant
+export WLR_NO_HARDWARE_CURSORS=1
 
 # Paths
 PATH=$PATH:~/bin

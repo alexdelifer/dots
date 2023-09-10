@@ -1,2 +1,3 @@
 # ALIASES
-Set-Alias -Name 'ls' -Value 'gci'
+$null = Set-Alias -Name 'ls' -Value 'get-childitem'
+$null = Set-Alias -Name 'sort' -Value 'sort-object'

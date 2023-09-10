@@ -1,6 +1,6 @@
 [user]
-	name = Alex
-	email = alex@delifer.ca
+	name = Alex Delifer
+	email = alex.delifer@zimmerbiomet.com
 
 # I found myself occasionally confused by the command-line colorings, so I tweaked the colors and styles so they're more distinct and so that certain colors are only used for specific purposes.
 # @note: I use terminal colorings of white text on black background (with distinct shades of gray for black/dark-gray ('0;30m'), bold-black/mid-gray ('1;30m'), and non-bold-white/light-gray ('0;37m')), so YMMV.
@@ -58,3 +58,5 @@
 
 [credential]
     helper = store
+[init]
+	defaultBranch = main

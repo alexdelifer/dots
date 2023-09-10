@@ -32,12 +32,15 @@ $Modules | ForEach-Object {
     if (!(Get-Module -ListAvailable -Name $_.Name )) {
         Write-Host -ForegroundColor Red -NoNewLine "Missing: "
         Write-Host $_.Name
-        Install-Module -AllowPrerelease -Force $_.Name
+        Install-Module -AllowPrerelease -Force $_.Name -ErrorAction Stop -SkipPublisherCheck -AllowClobber
+        Write-Host -ForegroundColor Cyan -NoNewLine "Installed: "
+        Write-Host $_.Name
     }
     # load module if autoload = true
-    if ($_.AutoLoad) {
-        Import-Module $_.Name
+    if ($_.AutoLoad -eq $True) {
+        Import-Module $_.Name -DisableNameChecking
+        Write-Host -ForegroundColor Green -NoNewLine "Loaded: "
+        Write-Host $_.Name
     }
-    Write-Host -ForegroundColor Green -NoNewLine "Loaded: "
-    Write-Host $_.Name
+
 }

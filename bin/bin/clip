@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if ! xset q &>/dev/null; then
+    echo "No X server at \$DISPLAY [$DISPLAY]" >&2
+    exit 1
+fi
+
+# check if stdin is set
+[ -t 0 ] && action='-o' || action='-i'
+
+while getopts ':i:o' flag
+do
+    case "${flag}" in
+        i) action='-i';;
+        o) action='-o';;
+    esac
+done
+
+
+
+# if [[ $@ == "" ]]; then
+#     echo "no args"
+#     action='-o'
+# fi
+
+xclip -selection clipboard $action $@

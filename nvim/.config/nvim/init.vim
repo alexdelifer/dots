@@ -1,6 +1,10 @@
-" Source dotfiles
+" Source vimscript
 for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
     exe 'source' f
+endfor
+" Source lua files
+for f in split(glob('~/.config/nvim/lua/*.lua'), '\n')
+   lua require('f') 
 endfor
 
 " Variables & Settings
@@ -12,13 +16,14 @@ set autoindent " Copy indent from last line when starting new line
 set autoread " Set to auto read when a file is changed from the outside
 set backspace=indent,eol,start
 set cursorline " Highlight current line
+set cmdheight=1
 set expandtab " Expand tabs to spaces
-set foldcolumn=0 " Column to show folds
-set foldenable " Enable folding
-set foldlevel=0 " Close all folds by default
-set foldmethod=syntax " Syntax are used to specify folds
-set foldminlines=0 " Allow folding single lines
-set foldnestmax=5 " Set max fold nesting level
+"set foldcolumn=0 " Column to show folds
+" set foldenable " Enable folding
+"set foldlevel=0 " Close all folds by default
+"set foldmethod=syntax " Syntax are used to specify folds
+"set foldminlines=0 " Allow folding single lines
+"set foldnestmax=5 " Set max fold nesting level
 set formatoptions=
 set formatoptions+=c " Format comments
 set formatoptions+=r " Continue comments by default
@@ -50,14 +55,15 @@ set noshowmode " Don't show the current mode (airline.vim takes care of us)
 set nostartofline " Don't reset cursor to start of line when moving around
 set nowrap " Do not wrap lines
 set ofu=syntaxcomplete#Complete " Set omni-completion method
+let netrw_silent = 1
 set regexpengine=1 " Use the old regular expression engine (it's faster for certain language syntaxes)
 set report=0 " Show all changes
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window
-set shell=/bin/sh " Use /bin/sh for executing shell commands
+set shell=/usr/bin/zsh " Use /bin/sh for executing shell commands
 set shiftwidth=4 " The # of spaces for indenting
 set softtabstop=4
-set shortmess=atI " Don't show the intro message when starting vim
+set shortmess=atIT " Don't show the intro message when starting vim
 "set showtabline=2 " Always show tab bar
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters

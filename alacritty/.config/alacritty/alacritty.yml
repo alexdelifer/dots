@@ -25,6 +25,7 @@ window:
     x: 8
     y: 8
   title: Terminal
+  opacity: 0.5
 
 #background_opacity: 0.9
 # Colors (iTerm 2 default theme)

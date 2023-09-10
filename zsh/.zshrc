@@ -22,7 +22,7 @@ for z in "$HOME"/.zsh/*.zsh; do
 done
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 # tabtab source for packages
@@ -44,3 +44,6 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX=''
 POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX=''
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX=''
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+
+# Added by ProtonUp-Qt on 15-11-2022 20:03:57
+if [ -d "/home/alex/stl/prefix" ]; then export PATH="$PATH:/home/alex/stl/prefix"; fi
