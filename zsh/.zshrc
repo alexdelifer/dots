@@ -5,14 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
 # ______     ______     __  __     ______     ______    
 #/\___  \   /\  ___\   /\ \_\ \   /\  == \   /\  ___\   
 #\/_/  /__  \ \___  \  \ \  __ \  \ \  __<   \ \ \____  
 #  /\_____\  \/\_____\  \ \_\ \_\  \ \_\ \_\  \ \_____\ 
 #  \/_____/   \/_____/   \/_/\/_/   \/_/ /_/   \/_____/ 
 #                sourcer of .zsh/* 
-
 
 ZSH_DISABLE_COMPFIX=true
 GOPATH=~/.go
@@ -21,9 +19,7 @@ for z in "$HOME"/.zsh/*.zsh; do
         source "$z"
 done
 
-
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -44,6 +40,3 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX=''
 POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX=''
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX=''
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-
-# Added by ProtonUp-Qt on 15-11-2022 20:03:57
-if [ -d "/home/alex/stl/prefix" ]; then export PATH="$PATH:/home/alex/stl/prefix"; fi

@@ -1,7 +1,55 @@
 127.0.0.1   localhost
 ::1         localhost
-127.0.1.1   dank.localdomain   dank
+127.0.1.1   mele.localdomain   mele backend
 
 10.201.110.113 srv-build-dw3.zimmercas.com
 
 #176.9.146.49 dvb.0xde.ca
+
+192.168.211.172 pshome-test01.zmr.zimmer.com 
+10.205.10.124 pshome-stable01.zmr.zimmer.com 
+10.205.10.125 pshome-stable02.zmr.zimmer.com
+
+# 165.227.87.62 bastard.0xde.ca
+
+10.201.110.1 zimmercas.com
+
+10.201.191.212 livelink.nam.zimmer.com
+
+10.201.110.121 srv-gitlab.zimmercas.com gitlab.zimmercas.com registry.zimmercas.com pages.zimmercas.com psi1.pages.zimmercas.com projects.pages.zimmercas.com gameofbones.pages.zimmercas.com athos.pages.zimmercas.com
+10.201.110.123 dev-gitlab.zimmercas.com
+10.201.110.207 srv-go.zimmercas.com
+10.201.191.34 s1search.nam.zimmer.com
+
+10.205.10.124 pshome-stable01.zmr.zimmer.com
+10.201.110.7 srv-vcenter.zimmercas.com
+10.201.110.58 srv-tenablesc.zimmercas.com
+
+10.201.110.95 accounts.zimmercas.com srv-terminal3.zimmercas.com
+
+10.201.110.175 source.zimmercas.com
+10.201.110.220 glpi2.zimmercas.com
+10.201.110.183 srv-vmhost4.zimmercas.com
+10.201.110.230 srv-review.zimmercas.com
+
+192.168.211.42 edgeappsdev.zimmerbiomet.com
+10.201.110.14 pshome-dist-qa.zimmercas.com
+10.201.191.180 dev-pmp.zimmerbiomet.com
+
+10.10.10.4 pve-dank pve-dank.delifer.ca
+10.10.10.15 pve-alien pve-alien.delifer.ca
+10.10.10.34 pve-nuc pve-nuc.delifer.ca
+10.10.10.16 pve-opti pve-opti.delifer.ca
+10.10.10.8 pve-vmhost8 pve-vmhost8.delifer.ca
+10.10.10.9 pve-vmhost9 pve-vmhost9.delifer.ca
+
+10.10.10.6 truenas truenas.delifer.ca
+
+
+172.64.80.1 sonarr.delifer.ca radarr.delifer.ca plex.delifer.ca bazarr.delifer.ca org.delifer.ca
+
+172.64.80.1 delifer.ca
+10.210.49.57 ML350G-U767052
+
+#209.226.72.196 gitlab.zimmercas.com
+#207.107.199.41 gitlab.zimmercas.com

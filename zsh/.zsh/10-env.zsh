@@ -36,7 +36,7 @@ export MOZ_USE_XINPUT2=1
 export MOZ_X11_EGL=1
 
 # QT Platform Theme
-export QT_QPA_PLATFORMTHEME=gnome
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 
 # FASD

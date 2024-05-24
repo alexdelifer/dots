@@ -1,0 +1,38 @@
+[Unit]
+Description=RClone Service - Plex
+AssertPathIsDirectory=/cloud/Plex
+After=plexdrive.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount Crypto-Plex: /cloud/Plex \
+   --allow-other \
+   --dir-cache-time=1440m \
+   --vfs-cache-mode=full \
+   --vfs-cache-max-age=72h \
+   --vfs-cache-max-size=500G \
+   --vfs-read-chunk-size-limit=off \
+   --vfs-read-chunk-size=128M \
+   --cache-chunk-size=10M \
+   --cache-info-age=168h \
+   --cache-workers=5 \
+   --buffer-size=1024M \
+   --attr-timeout=1s \
+   --syslog \
+   --umask 002 \
+   --uid=1000 \
+   --gid=1000 \
+   --timeout=1h \
+   --tpslimit=10 \
+   --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36" \
+   --rc \
+   --rc-addr=:5572 \
+   --rc-no-auth \
+   --log-level INFO
+ExecStop=/usr/bin/fusermount -uz /cloud/Plex
+Restart=on-abort
+User=rclone
+
+[Install]
+WantedBy=default.target

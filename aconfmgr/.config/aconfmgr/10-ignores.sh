@@ -76,6 +76,14 @@ IgnorePath '/usr/lib32/*'
 
 IgnorePath '/cloud/*'
 IgnorePath '/kali/*'
+IgnorePath '/data/*'
+IgnorePath '/homes/*'
+IgnorePath '/games/*'
+IgnorePath '/smb/*'
+IgnorePath '/appdata/*'
+IgnorePath '/backup/*'
+IgnorePath '/caca/*'
+IgnorePath '/propagated-mount/*'
 
 IgnorePath '/etc/brlapi.key'
 IgnorePath '/etc/crypttab'
@@ -83,3 +91,10 @@ IgnorePath '/etc/crypttab'
 IgnorePath '/etc/ipsec.secrets'
 IgnorePath '/lost+found'
 IgnorePath 'mnt_uefi'
+
+IgnorePath /etc/pacman.d/gnupg/S.dirmngr
+IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.browser
+IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.extra
+IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.ssh
+IgnorePath /etc/pacman.d/gnupg/S.gpg-agent
+IgnorePath /etc/pacman.d/gnupg/S.keyboxd

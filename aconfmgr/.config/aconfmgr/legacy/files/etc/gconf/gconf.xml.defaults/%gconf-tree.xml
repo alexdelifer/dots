@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<gconf>
+	<dir name="schemas">
+		<dir name="apps">
+			<dir name="gksu">
+			</dir>
+		</dir>
+	</dir>
+	<dir name="apps">
+		<dir name="gksu">
+		</dir>
+	</dir>
+</gconf>
