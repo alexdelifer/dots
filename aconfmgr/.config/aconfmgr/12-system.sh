@@ -24,8 +24,7 @@ CreateLink /etc/localtime ../usr/share/zoneinfo/America/Toronto
 AddPackage os-prober # Utility to detect other OSes on a set of drives
 AddPackage packagekit # A system designed to make installation and updates of packages easier
 
-AddPackage alhp-keyring # ALHP PGP keyring
-AddPackage alhp-mirrorlist # ALHP mirror list for use by pacman
+
 AddPackage chaotic-keyring # Chaotic-AUR PGP keyring
 AddPackage chaotic-mirrorlist # Chaotic-AUR mirrorlist to use with Pacman
 CopyFile /etc/pacman.conf

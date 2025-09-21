@@ -47,3 +47,29 @@ CheckConfig () {
         echo "::: ${NAME}: CONFIG: $(tput setaf 2)$(tput bold)ENABLED$(tput sgr0)"
     fi
 }
+
+AddALHPRepo () {
+    pushd /tmp
+
+    if ! pacman -Q alhp-keyring &>/dev/null; then
+        echo "alhp-keyring is NOT installed"
+        gpg --recv-keys 8CA32F8BF3BC8088
+        git clone https://aur.archlinux.org/alhp-keyring.git
+        pushd alhp-keyring
+        makepkg -si
+        popd
+    fi
+
+    if ! pacman -Q alhp-mirrorlist &>/dev/null; then
+        echo "alhp-mirrorlist is NOT installed"
+        git clone https://aur.archlinux.org/alhp-mirrorlist.git
+        pushd alhp-mirrorlist
+        makepkg -si
+        popd
+    fi
+
+    popd
+}
+
+AddPackage alhp-keyring # ALHP PGP keyring
+AddPackage alhp-mirrorlist # ALHP mirror list for use by pacman
