@@ -24,7 +24,7 @@ if lspci | grep -qi "VGA.*Intel"; then
 fi
 
 # AMD GPU
-if lspci | grep -qi "VGA.*AMD\|VGA.*ATI"; then
+if lspci | grep -qi "VGA.*AMD"; then
     echo "AMD GPU detected"
     AddPackage xf86-video-amdgpu # X.org amdgpu video driver
     AddPackage lib32-vulkan-radeon # Open-source Vulkan driver for AMD GPUs - 32-bit
