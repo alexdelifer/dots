@@ -104,7 +104,6 @@ IgnorePath /etc/pacman.d/gnupg/S.gpg-agent
 IgnorePath /etc/pacman.d/gnupg/S.keyboxd
 
 IgnorePath /etc/hostname
-IgnorePath /etc/
 
 IgnorePath /etc/sgml/*
 

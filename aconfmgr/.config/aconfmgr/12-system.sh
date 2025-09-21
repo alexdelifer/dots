@@ -27,8 +27,10 @@ AddPackage packagekit # A system designed to make installation and updates of pa
 
 AddPackage chaotic-keyring # Chaotic-AUR PGP keyring
 AddPackage chaotic-mirrorlist # Chaotic-AUR mirrorlist to use with Pacman
-CopyFile /etc/pacman.conf
 CopyFile /etc/pacman.d/blackarch-mirrorlist
+CopyFile /etc/pacman.d/alhp-mirrorlist
+CopyFile /etc/pacman.conf
+
 CreateFile /etc/pacman.d/gnupg/.gpg-v21-migrated > /dev/null
 CopyFile /etc/pacman.d/gnupg/crls.d/DIR.txt
 CopyFile /etc/pacman.d/gnupg/gpg-agent.conf
