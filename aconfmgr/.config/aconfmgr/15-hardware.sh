@@ -35,6 +35,7 @@ if lspci | grep -qi "VGA.*AMD"; then
     AddPackage rocm-hip-sdk # Develop applications using HIP and libraries for AMD platforms
     AddPackage vulkan-radeon # Open-source Vulkan driver for AMD GPUs
     AddPackage radeontop # View GPU utilization for total activity percent and individual blocks
+    AddPackage python-pytorch-opt-rocm # Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCm and AVX2 CPU optimizations)
 
     AddPackage --foreign amd-vulkan-prefixes # Select needed vulkan implementation with vk_radv, vk_amdvlk or vk_pro prefix
     AddPackage --foreign zluda # A drop-in replacement for CUDA on non-NVIDIA GPUs

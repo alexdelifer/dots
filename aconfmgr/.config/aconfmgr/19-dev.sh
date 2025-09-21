@@ -24,7 +24,6 @@ AddPackage python-pyproject-api # API to interact with the python pyproject.toml
 AddPackage python-pyproject-metadata # PEP 621 metadata parsing
 AddPackage python-pyproject-parser # Parser for pyproject.toml
 AddPackage python-pyserial # Multiplatform Serial Port Module for Python
-AddPackage python-pytorch-opt-rocm # Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCm and AVX2 CPU optimizations)
 AddPackage python-pywinrm # Python library for Windows Remote Management
 AddPackage python-ratelimit # API rate limit decorator.
 AddPackage python-requests-credssp # HTTPS CredSSP authentication with the requests library
