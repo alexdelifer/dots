@@ -1,0 +1,25 @@
+# -*- conf -*-
+    [colors]
+    cursor=000000 FFFFFF
+    background=000000
+    foreground=fffbf6
+
+    # Normal/regular colors (color palette 0-7)
+    regular0=565656 # black
+    regular1=ec5357 # red
+    regular2=c0e17d # green
+    regular3=f9da6a # yellow
+    regular4=49a4f8 # blue
+    regular5=a47de9 # magenta
+    regular6=99faf2 # cyan
+    regular7=ffffff # white
+
+    # Bright colors (color palette 8-15)
+    bright0=565656 # black
+    bright1=ec5357 # red
+    bright2=c0e17d # green
+    bright3=f9da6a # yellow
+    bright4=49a4f8 # blue
+    bright5=a47de9 # magenta
+    bright6=99faf2 # cyan
+    bright7=ffffff # white
