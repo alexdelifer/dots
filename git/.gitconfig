@@ -60,3 +60,5 @@
     helper = store
 [init]
 	defaultBranch = main
+[safe]
+	directory = /mnt/GAMES/PANDA-CUSTOM-ISO/DeployRoot

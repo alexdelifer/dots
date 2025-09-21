@@ -41,7 +41,7 @@
 # Germany
 #Server = https://mirrors.dr460nf1r3.org/repos/blackarch/$repo/os/$arch
 #Server = http://ftp.halifax.rwth-aachen.de/blackarch/$repo/os/$arch
-Server = https://ftp.halifax.rwth-aachen.de/blackarch/$repo/os/$arch
+#Server = https://ftp.halifax.rwth-aachen.de/blackarch/$repo/os/$arch
 #Server = ftp://ftp.halifax.rwth-aachen.de/blackarch/$repo/os/$arch
 #Server = http://blackarch.unixpeople.org/$repo/os/$arch
 #Server = https://blackarch.unixpeople.org/$repo/os/$arch
@@ -125,7 +125,7 @@ Server = https://ftp.halifax.rwth-aachen.de/blackarch/$repo/os/$arch
 # USA
 #Server = http://blackarch.pr0s3c.nl/blackarch/$repo/os/$arch
 #Server = https://blackarch.pr0s3c.nl/blackarch/$repo/os/$arch
-#Server = http://mirror.math.princeton.edu/pub/blackarch/$repo/os/$arch
+Server = http://mirror.math.princeton.edu/pub/blackarch/$repo/os/$arch
 #Server = http://distro.ibiblio.org/blackarch/$repo/os/$arch
 #Server = ftp://distro.ibiblio.org/blackarch/$repo/os/$arch
 #Server = https://deadbeef.ninja/blackarch/$repo/os/$arch

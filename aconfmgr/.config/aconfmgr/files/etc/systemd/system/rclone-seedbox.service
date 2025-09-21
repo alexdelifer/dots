@@ -1,0 +1,34 @@
+[Unit]
+Description=RClone Service - SEEDBOX
+AssertPathIsDirectory=/mnt/SEEDBOX
+After=plexdrive.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount seedbox: /mnt/SEEDBOX \
+   --allow-other \
+   --dir-cache-time=1m \
+   --vfs-cache-mode=minimal \
+   --vfs-cache-max-age=72h \
+   --vfs-cache-max-size=50G \
+   --vfs-read-chunk-size-limit=off \
+   --vfs-read-chunk-size=128M \
+   --attr-timeout=1s \
+   --syslog \
+   --umask 002 \
+   --uid=1000 \
+   --gid=1000 \
+   --timeout=1h \
+   --tpslimit=10 \
+   --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36" \
+   --rc \
+   --rc-addr=:5572 \
+   --rc-no-auth \
+   --log-level INFO
+ExecStop=/usr/bin/fusermount -uz /mnt/SEEDBOX
+Restart=on-abort
+User=alex
+
+[Install]
+WantedBy=default.target

@@ -49,6 +49,10 @@ IgnorePath '/etc/zcasos-info'
 IgnorePath '/etc/spacefm/*'
 IgnorePath '/etc/xml/catalog'
 IgnorePath '/etc/.updated'
+
+IgnorePath '/nix/*'
+IgnorePath '/usr/pwntools-doc/*'
+
 #IgnorePath '/etc/pacman.d/blackarch-mirrorlist'
 
 #IgnorePath '/etc/systemd/system/hibernate.target'
@@ -98,3 +102,33 @@ IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.extra
 IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.ssh
 IgnorePath /etc/pacman.d/gnupg/S.gpg-agent
 IgnorePath /etc/pacman.d/gnupg/S.keyboxd
+
+IgnorePath /etc/hostname
+IgnorePath /etc/
+
+IgnorePath /etc/sgml/*
+
+IgnorePath /appdata
+IgnorePath /games
+IgnorePath /data
+IgnorePath /homes
+IgnorePath /smb
+IgnorePath /net-data
+
+IgnorePackage grub
+IgnorePath /etc/default/grub
+IgnorePackage samba
+IgnorePath /etc/samba
+
+IgnorePath '/etc/adjtime/*'
+IgnorePath '/etc/adjtime'
+
+IgnorePath '/etc/dconf/*'
+IgnorePath '/etc/gconf/*'
+IgnorePath '/etc/ipsec.d/*'
+IgnorePath '/etc/java-jdk/*'
+IgnorePath '/etc/multipath/*'
+IgnorePath '/etc/cni/*'
+IgnorePath '/etc/flatpak/*'
+IgnorePath '/etc/flatpak'
+IgnorePath '/etc/java-jdk/*'

@@ -1,0 +1,13 @@
+[Unit]
+Description=Force LAN route before Tailscale
+After=network-online.target tailscaled.service
+Requires=tailscaled.service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ip route add 10.10.10.0/24 dev enp11s0f1np1 metric 1
+ExecStart=/sbin/ip rule add to 10.10.10.0/24 lookup main priority 50
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
