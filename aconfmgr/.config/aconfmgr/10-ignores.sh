@@ -132,3 +132,6 @@ IgnorePath '/etc/cni/*'
 IgnorePath '/etc/flatpak/*'
 IgnorePath '/etc/flatpak'
 IgnorePath '/etc/java-jdk/*'
+
+IgnorePath '/opt/*'
+IgnorePath '/var/lib/flatpak/*'
