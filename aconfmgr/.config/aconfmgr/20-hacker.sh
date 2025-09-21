@@ -1,3 +1,6 @@
+CheckConfig hacker || return 0
+
+
 AddPackage blackarch-keyring # BlackArch Linux PGP keyring.
 
 
@@ -83,7 +86,21 @@ AddPackage zaproxy # Integrated penetration testing tool for finding vulnerabili
 AddPackage netdiscover # An active/passive address reconnaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks.
 AddPackage websockify # WebSocket to TCP proxy/bridge.
 AddPackage uefitool-git # UEFI firmware image viewer and editor and utilities
+AddPackage metasploit-autopwn # db_autopwn plugin of metasploit.
+AddPackage msfdb # Manage the metasploit framework database.
+AddPackage msfenum # A Metasploit auto auxiliary script.
+AddPackage dhcp # A DHCP server, client, and relay agent
+AddPackage ps1encode # A tool to generate and encode a PowerShell based Metasploit payloads.
+AddPackage reglookup # Command line utility for reading and querying Windows NT registries
+AddPackage rpctools # Contains three separate tools for obtaining information from a system that is running RPC services
+AddPackage veil # None
+AddPackage openssl-1.1 # The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
+AddPackage autonessus # This script communicates with the Nessus API in an attempt to help with automating scans.
+AddPackage cabextract # A program to extract Microsoft cabinet (.CAB) files
+AddPackage sleuthkit # File system and media management forensic analysis tools
 
+AddPackage --foreign nessus # Nessus vulnerability scanner
+AddPackage --foreign rtl88xxau-aircrack-dkms-git # Aircrack-ng kernel module for Realtek 88XXau (USB adapters only) network cards (8811au, 8812au and 8821au chipsets) with monitor mode and injection support
 
 AddPackage --foreign ruby-evil-winrm # Evil-WinRM
 AddPackage --foreign rockyou # The popular "rockyou" password list from OWASP SecLists project

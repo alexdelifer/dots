@@ -1,3 +1,6 @@
+CheckConfig gui || return 0
+
+
 AddPackage audacity # A program that lets you manipulate digital audio waveforms
 AddPackage blender # A fully integrated 3D graphics creation suite
 AddPackage bless # High-quality, full-featured hex editor
@@ -36,10 +39,13 @@ AddPackage openrgb # Open source RGB lighting control that doesn't depend on man
 AddPackage sqlitebrowser # A light GUI editor for SQLite databases, built on top of Qt
 AddPackage syncthing-gtk # GTK3 based GUI and notification area icon for Syncthing.
 
+AddPackage simple-scan # Simple scanning utility
 
 
 AddPackage virt-manager # Desktop user interface for managing virtual machines
 AddPackage virtualbox # Powerful x86 virtualization for enterprise as well as home use
+AddPackage virtualbox-guest-iso # None
+AddPackage virtualbox-host-dkms # None
 
 AddPackage ferdium-nightly-bin # A messaging browser that allows you to combine your favorite messaging services into one application (nightly binary release).
 AddPackage google-chrome # The popular web browser by Google (Stable Channel)

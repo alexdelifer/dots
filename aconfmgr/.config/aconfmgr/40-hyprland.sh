@@ -1,36 +1,5 @@
-# foot
-# thunar
-# rofi
-# make
-# hyprlock
-# hyprwidgets
-# hypridle
-# sway-audio-idle-inhibit
-# wob
-# pactl
-# polkit-gnome
-# swayrd
-# wl-paste
-# cliphist
-# spice-vdagent
-# hyprpaper
-# Kali theme
-# sweet
-# posys
-# kwalletmanager5
-# corectl
-# firefox
-# easyeffects
-# clipse
-# waybar
-# alacritty
-# light
-# playerctl
-# wofi-emoji
-# hyprpicker
-# hypr-fix-special
-# grimblast
-# xorg-xrandr
+CheckConfig hyprland || return 0
+
 
 AddPackage hypridle # hyprland’s idle daemon
 AddPackage hyprland # a highly customizable dynamic tiling Wayland compositor

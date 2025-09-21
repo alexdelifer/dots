@@ -1,3 +1,6 @@
+CheckConfig dev || return 0
+
+
 # ASP + Dotnet
 AddPackage aspnet-runtime # The ASP.NET Core runtime
 AddPackage aspnet-targeting-pack # The ASP.NET Core targeting pack
@@ -27,6 +30,8 @@ AddPackage python-ratelimit # API rate limit decorator.
 AddPackage python-requests-credssp # HTTPS CredSSP authentication with the requests library
 AddPackage python-tokenizers # Fast State-of-the-Art Tokenizers optimized for Research and Production
 AddPackage python2-pip # The PyPA recommended tool for installing Python packages.
+AddPackage python-service-identity # Service identity verification for pyOpenSSL
+AddPackage python-updog # A replacement for Python's SimpleHTTPServer.
 
 # Other
 AddPackage gettext # GNU internationalization library

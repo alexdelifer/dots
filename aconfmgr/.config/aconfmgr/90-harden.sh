@@ -1,3 +1,6 @@
+CheckConfig harden || return 0
+
+
 CreateFile /etc/at.allow 600 > /dev/null
 CreateFile /etc/cron.allow 600 > /dev/null
 

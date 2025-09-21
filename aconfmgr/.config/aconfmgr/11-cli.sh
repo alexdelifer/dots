@@ -1,3 +1,6 @@
+CheckConfig cli || return 0
+
+
 AddPackage aconfmgr-git # A configuration manager for Arch Linux
 AddPackage acpi # Client for battery, power, and thermal readings
 AddPackage android-sdk-platform-tools # Platform-Tools for Google Android SDK (adb and fastboot)
@@ -135,6 +138,12 @@ AddPackage subversion # A Modern Concurrent Version Control System
 AddPackage traceroute # Tracks the route taken by packets over an IP network
 AddPackage pdftk # Command-line tool for working with PDFs
 AddPackage perl-image-exiftool # Reader and rewriter of EXIF information that supports raw files
+AddPackage jq # Command-line JSON processor
+AddPackage less # A terminal based program for viewing text files
+AddPackage 7zip # File archiver for extremely high compression
+AddPackage unrar # The RAR uncompression program
+AddPackage vim-runtime # None
+AddPackage rsync # A fast and versatile file copying tool for remote and local files
 
 AddPackage pacman # A library-based package manager with dependency support
 AddPackage pacman-contrib # Contributed scripts and tools for pacman systems

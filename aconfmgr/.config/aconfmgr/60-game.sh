@@ -1,3 +1,6 @@
+CheckConfig game || return 0
+
+
 # clients
 AddPackage steam # Valve's digital software delivery system
 AddPackage steamcmd # Steam Command Line Tools

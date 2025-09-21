@@ -1,3 +1,4 @@
+CheckConfig xorg || return 0
 
 
 AddPackage xorg-bdftopcf # Convert X font from Bitmap Distribution Format to Portable Compiled Format
@@ -57,3 +58,4 @@ AddPackage hsetroot # Tool which allows you to compose wallpapers ("root pixmaps
 AddPackage i3-wm # Improved dynamic tiling window manager
 AddPackage i3status # Generates status bar to use with i3bar, dzen2 or xmobar
 AddPackage i3status-rust # Resourcefriendly and feature-rich replacement for i3status, written in pure Rust
+AddPackage xf86-input-libinput # None

@@ -1,8 +1,11 @@
+CheckConfig fonts || return 0
+
+
 AddPackage noto-color-emoji-fontconfig # Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed
 AddPackage noto-fonts-cjk # Google Noto CJK fonts
 AddPackage noto-fonts-emoji # Google Noto Color Emoji font
 AddPackage noto-fonts-extra # Google Noto TTF fonts - additional variants
-
+AddPackage ttf-cascadia-mono-nerd # Patched font Cascadia Mono (Caskaydia) from nerd fonts library
 AddPackage ttf-cascadia-code-nerd # Patched font Cascadia Code (Caskaydia) from nerd fonts library
 AddPackage ttf-dejavu # Font family based on the Bitstream Vera Fonts with a wider range of characters
 AddPackage ttf-iosevka-nerd # Patched font Iosevka from nerd fonts library

@@ -1,4 +1,8 @@
+CheckConfig system || return 0
+
+
 AddPackage base # Minimal package set to define a basic Arch Linux installation
+AddPackage base-devel # Basic tools to build Arch Linux packages
 AddPackage fakeroot # Tool for simulating superuser privileges
 
 AddPackage linux # The Linux kernel and modules
@@ -63,6 +67,7 @@ AddPackage realtime-privileges # Realtime privileges for users
 AddPackage libdbusmenu-gtk3 # Library for passing menus over DBus (GTK+ 3 library)
 AddPackage grilo-plugins # A collection of plugins for the Grilo framework
 AddPackage groff # GNU troff text-formatting system
+AddPackage cpio # A tool to copy files into or out of a cpio or tar archive
 
 # gui toolkit
 AddPackage qt5ct # Qt5 Configuration Utility
@@ -70,6 +75,8 @@ AddPackage qt6-base # A cross-platform application and UI framework
 AddPackage qt6-wayland # Provides APIs for Wayland
 AddPackage qt6ct # Qt 6 Configuration Utility
 AddPackage tk # A windowing toolkit for use with tcl
+AddPackage qt5-wayland # Provides APIs for Wayland
+AddPackage qt6-scxml # None
 
 AddPackage syncthing # Open Source Continuous Replication / Cluster Synchronization Thing
 
