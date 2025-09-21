@@ -2,6 +2,7 @@ CheckConfig hardware || return 0
 
 
 AddPackage mesa # Open-source OpenGL drivers
+AddPackage mesa-utils # Essential Mesa utilities
 AddPackage vulkan-headers # Vulkan header files and API registry
 AddPackage vulkan-tools # Vulkan tools and utilities
 
@@ -24,6 +25,10 @@ if lspci | grep -qi "VGA.*Intel"; then
     AddPackage intel-gpu-tools # Tools for development and testing of the Intel DRM driver
     AddPackage libva-intel-driver # VA-API implementation for Intel G45 and HD Graphics family
     AddPackage libva-utils # Intel VA-API Media Applications and Scripts for libva
+    AddPackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
+    AddPackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
+    AddPackage lib32-vulkan-intel # Open-source Vulkan driver for Intel GPUs - 32-bit
+
 fi
 
 # AMD GPU
@@ -45,6 +50,15 @@ fi
 # NVIDIA GPU
 if lspci | grep -qi "VGA.*NVIDIA"; then
     DeliferPrint "NVIDIA GPU detected"
+    AddPackage cuda # NVIDIA's GPU programming toolkit
+    AddPackage nvidia-dkms # NVIDIA kernel modules - module sources
+    AddPackage switcheroo-control # D-Bus service to check the availability of dual-GPU
+    CreateLink /etc/systemd/system/graphical.target.wants/switcheroo-control.service /usr/lib/systemd/system/switcheroo-control.service
+    CreateLink /etc/systemd/system/multi-user.target.wants/nvidia-persistenced.service /usr/lib/systemd/system/nvidia-persistenced.service
+    CreateLink /etc/systemd/system/systemd-hibernate.service.wants/nvidia-hibernate.service /usr/lib/systemd/system/nvidia-hibernate.service
+    CreateLink /etc/systemd/system/systemd-hibernate.service.wants/nvidia-resume.service /usr/lib/systemd/system/nvidia-resume.service
+    CreateLink /etc/systemd/system/systemd-suspend.service.wants/nvidia-resume.service /usr/lib/systemd/system/nvidia-resume.service
+    CreateLink /etc/systemd/system/systemd-suspend.service.wants/nvidia-suspend.service /usr/lib/systemd/system/nvidia-suspend.service
 fi
 
 # Bluetooth support
@@ -104,3 +118,4 @@ AddPackage fuseiso # FUSE module to mount ISO filesystem images
 AddPackage --foreign jmtpfs # FUSE and libmtp based filesystem for accessing MTP (Media Transfer Protocol) devices
 AddPackage mtools # A collection of utilities to access MS-DOS disks
 AddPackage squashfs-tools # Tools for squashfs, a highly compressed read-only filesystem for Linux
+AddPackage exfatprogs # exFAT filesystem userspace utilities for the Linux Kernel exfat driver

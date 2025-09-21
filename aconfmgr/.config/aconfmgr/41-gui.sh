@@ -38,6 +38,7 @@ AddPackage mpv-shim-default-shaders # Preconfigured set of MPV shaders and confi
 AddPackage openrgb # Open source RGB lighting control that doesn't depend on manufacturer software
 AddPackage sqlitebrowser # A light GUI editor for SQLite databases, built on top of Qt
 AddPackage syncthing-gtk # GTK3 based GUI and notification area icon for Syncthing.
+AddPackage freerdp2 # Free implementation of the Remote Desktop Protocol (RDP)
 
 AddPackage simple-scan # Simple scanning utility
 

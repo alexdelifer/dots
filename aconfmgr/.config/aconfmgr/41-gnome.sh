@@ -1,6 +1,8 @@
 CheckConfig gnome || return 0
 
 AddPackage gdm # Display manager and login screen
+CopyFile /etc/gdm/custom.conf
+
 AddPackage gnome-backgrounds # Background images and data for GNOME
 AddPackage gnome-calculator # GNOME Scientific calculator
 AddPackage gnome-calendar # Simple and beautiful calendar application designed to perfectly fit the GNOME desktop
@@ -12,6 +14,7 @@ AddPackage gnome-console # A simple user-friendly terminal emulator for the GNOM
 AddPackage gnome-contacts # Contacts Manager for GNOME
 AddPackage gnome-control-center # GNOME's main interface to configure various aspects of the desktop
 AddPackage gnome-disk-utility # Disk Management Utility for GNOME
+AddPackage gnome-firmware # Manage firmware on devices supported by fwupd
 AddPackage gnome-font-viewer # A font viewer utility for GNOME
 AddPackage gnome-keyring # Stores passwords and encryption keys
 AddPackage gnome-logs # A log viewer for the systemd journal

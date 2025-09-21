@@ -69,6 +69,11 @@ AddPackage libdbusmenu-gtk3 # Library for passing menus over DBus (GTK+ 3 librar
 AddPackage grilo-plugins # A collection of plugins for the Grilo framework
 AddPackage groff # GNU troff text-formatting system
 AddPackage cpio # A tool to copy files into or out of a cpio or tar archive
+AddPackage dkms # Dynamic Kernel Modules System
+AddPackage arch-install-scripts # Scripts to aid in installing Arch Linux
+AddPackage acpi_call # A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
+AddPackage systemd-resolvconf # systemd resolvconf replacement (for use with systemd-resolved)
+AddPackage xdg-utils # Command line tools that assist applications with a variety of desktop integration tasks
 
 # gui toolkit
 AddPackage qt5ct # Qt5 Configuration Utility
@@ -96,7 +101,7 @@ AddPackage tor # Anonymizing overlay network.
 AddPackage ntp # Network Time Protocol reference implementation
 CopyFile /etc/ntp.conf
 
-AddPackage --foreign cloudflared-bin # Cloudflare Tunnel client (formerly Argo Tunnel)
+AddPackage cloudflared # Command-line client for Cloudflare Tunnel
 AddPackage --foreign vpn-slice # vpnc-script replacement for easy and secure split-tunnel VPN setup
 AddPackage proton-vpn-gtk-app # ProtonVPN GTK app, Maintained by Community
 
@@ -117,6 +122,7 @@ CopyFile /etc/systemd/system/rclone-seedbox.service
 CopyFile /etc/systemd/system/local-lan-priority.service
 CopyFile /etc/systemd/system/docker.service.d/override.conf
 
+CreateLink /etc/systemd/system/timers.target.wants/fstrim.timer /usr/lib/systemd/system/fstrim.timer
 CreateLink /etc/systemd/system/basic.target.wants/linux-modules-cleanup.service /usr/lib/systemd/system/linux-modules-cleanup.service
 CreateLink /etc/systemd/system/bluetooth.service.wants/bluetooth-autoconnect.service /usr/lib/systemd/system/bluetooth-autoconnect.service
 CreateLink /etc/systemd/system/bluetooth.target.wants/bluetooth.service /usr/lib/systemd/system/bluetooth.service

@@ -98,6 +98,19 @@ AddPackage openssl-1.1 # The Open Source toolkit for Secure Sockets Layer and Tr
 AddPackage autonessus # This script communicates with the Nessus API in an attempt to help with automating scans.
 AddPackage cabextract # A program to extract Microsoft cabinet (.CAB) files
 AddPackage sleuthkit # File system and media management forensic analysis tools
+AddPackage ettercap-gtk # Network sniffer/interceptor/logger for ethernet LANs - GTK frontend
+AddPackage airgeddon # Multi-use bash script for Linux systems to audit wireless networks.
+AddPackage angryoxide # 802.11 Attack Tool
+AddPackage asleap # Actively recover LEAP/PPTP passwords.
+AddPackage crunch # A wordlist generator for all combinations/permutations of a given character set.
+AddPackage freeradius # The premier open source RADIUS server
+AddPackage hostapd # IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
+AddPackage hostapd-wpe # Modified hostapd to facilitate AP impersonation attacks.
+AddPackage hulk # A webserver DoS tool (Http Unbearable Load King) ported to Go with some additional features.
+AddPackage mdk4 # A tool to exploit common IEEE 802.11 protocol weaknesses
+AddPackage python-pypykatz # Python implementation of Mimikatz.
+AddPackage rdesktop-brute # It connects to windows terminal servers - Bruteforce patch included.
+AddPackage ubertooth # A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only.
 
 AddPackage --foreign nessus # Nessus vulnerability scanner
 AddPackage --foreign rtl88xxau-aircrack-dkms-git # Aircrack-ng kernel module for Realtek 88XXau (USB adapters only) network cards (8811au, 8812au and 8821au chipsets) with monitor mode and injection support
@@ -109,3 +122,5 @@ AddPackage --foreign objconv # Object file converter and disassembler
 AddPackage --foreign burpsuite-pro # An integrated platform for performing security testing of web applications (professional edition)
 
 CopyFile /etc/proxychains.conf
+CopyFile /etc/ettercap/etter.conf
+CopyFile /etc/dhcpd.conf

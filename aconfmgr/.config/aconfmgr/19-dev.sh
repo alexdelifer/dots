@@ -31,11 +31,15 @@ AddPackage python-tokenizers # Fast State-of-the-Art Tokenizers optimized for Re
 AddPackage python2-pip # The PyPA recommended tool for installing Python packages.
 AddPackage python-service-identity # Service identity verification for pyOpenSSL
 AddPackage python-updog # A replacement for Python's SimpleHTTPServer.
+AddPackage python-qtpy # Provides an uniform layer to support PyQt5 and PySide2 with a single codebase
+AddPackage python-loguru # Python logging made (stupidly) simple
+AddPackage python-netifaces # Portable module to access network interface information in Python
 
 # Other
 AddPackage gettext # GNU internationalization library
 AddPackage go # Core compiler tools for the Go programming language
 AddPackage --foreign shellcheck-bin # Shell script analysis tool (binary release, static)
+AddPackage openocd # Debugging, in-system programming and boundary-scan testing for embedded target devices
 
 # Java
 AddPackage gradle # Powerful build system for the JVM

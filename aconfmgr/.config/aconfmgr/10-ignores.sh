@@ -136,3 +136,7 @@ IgnorePath '/opt/*'
 IgnorePath '/var/lib/flatpak/*'
 IgnorePath '/usr/src/'
 IgnorePath '/usr/src/*'
+
+IgnorePath '/etc/raddb/'
+IgnorePath '/etc/raddb/*'
+
