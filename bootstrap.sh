@@ -67,12 +67,26 @@ if ! run_archinstall; then
   die "Could not run archinstall with a PTY."
 fi
 
-# 4) Place dots into the new system for the non-root user
+# 4) Put dots into the new system for the non-root user (numeric ownership)
+TARGET_PASSWD="$MNT/etc/passwd"
+[[ -f "$TARGET_PASSWD" ]] || die "Missing $TARGET_PASSWD (did archinstall finish?)"
 [[ -d "$MNT/home/$USERNAME" ]] || die "User home not found: $MNT/home/$USERNAME (did archinstall create '$USERNAME'?)"
 
-log "Copying dots → $MNT/home/$USERNAME/dots"
-rsync -a "$DOTS_DIR" "$MNT/home/$USERNAME/dots"
-chown -R "$USERNAME:$USERNAME" "$MNT/home/$USERNAME/dots"
+# Parse UID:GID from /mnt/etc/passwd
+UID_GID="$(awk -F: -v u="$USERNAME" '$1==u{print $3 ":" $4}' "$TARGET_PASSWD")"
+[[ -n "$UID_GID" ]] || die "User '$USERNAME' not found in $TARGET_PASSWD"
+UID_NUM="${UID_GID%%:*}"
+GID_NUM="${UID_GID##*:}"
+
+log "Copying dots → $MNT/home/$USERNAME/dots (uid:gid ${UID_NUM}:${GID_NUM})"
+
+# Prefer rsync --chown if supported (Arch ISO rsync usually supports it)
+if rsync --help | grep -q -- '--chown'; then
+  rsync -a --chown="${UID_NUM}:${GID_NUM}" "$DOTS_DIR" "$MNT/home/$USERNAME/dots"
+else
+  rsync -a "$DOTS_DIR" "$MNT/home/$USERNAME/dots"
+  chown -R --numeric-uid-gid "${UID_NUM}:${GID_NUM}" "$MNT/home/$USERNAME/dots"
+fi
 
 # 5) Chroot and install aconfmgr from your prebuilt package
 PKG=$(ls "$MNT/home/$USERNAME/dots/packages"/aconfmgr-*.pkg.tar.* 2>/dev/null | head -n1 || true)
