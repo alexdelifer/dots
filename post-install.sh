@@ -5,18 +5,18 @@ set -Eeuo pipefail
 : "${WORK:=/tmp/postinstall}"            # temp dir
 : "${ADD_BLACKARCH:=1}"                  # set 0 to skip
 : "${ADD_CHAOTIC:=1}"                    # set 0 to skip
-# Optional: if you want to enforce strap.sh verification, set SHA1 here
-# (Check the current value on blackarch.org/downloads.html before using.)
+
+# (Optional) Verify BlackArch strap.sh. Look up the current SHA1 on their site.
 : "${BLACKARCH_STRAP_SHA1:=}"            # e.g. "bbf0a0b838aed0ec05fff2d375dd17591cbdf8aa"
 
-# Chaotic-AUR primary key (as per official docs)
+# Chaotic-AUR key + keyservers
 CHAOTIC_KEY="3056513887B78AEB"
 CHAOTIC_KEYSRV_DEFAULT="keyserver.ubuntu.com"
 CHAOTIC_KEYSRV_FALLBACK="keys.openpgp.org"
 
-log() { printf "\e[1;34m[repos]\e[0m %s\n" "$*"; }
-warn(){ printf "\e[1;33m[repos]\e[0m %s\n" "$*"; }
-die() { printf "\e[1;31m[repos]\e[0m %s\n" "$*" >&2; exit 1; }
+log()  { printf "\e[1;34m[repos]\e[0m %s\n" "$*"; }
+warn() { printf "\e[1;33m[repos]\e[0m %s\n" "$*"; }
+die()  { printf "\e[1;31m[repos]\e[0m %s\n" "$*" >&2; exit 1; }
 
 [[ $EUID -eq 0 ]] || die "Run as root (inside the target system or arch-chroot)."
 mkdir -p "$WORK"
@@ -24,25 +24,45 @@ mkdir -p "$WORK"
 # Ensure basics
 pacman -Sy --noconfirm --needed curl gnupg sed grep awk >/dev/null
 
-pacman_conf_has() {
-  # $1 = repo header, e.g. "[chaotic-aur]"
-  grep -q "^\s*${1//[/\[/\\[}" /etc/pacman.conf
-}
+# Initialize pacman-key if needed
+if [[ ! -s /etc/pacman.d/gnupg/pubring.gpg ]]; then
+  log "Initializing pacman keyring…"
+  pacman-key --init
+fi
 
-append_repo_block() {
-  # $1 = repo header, $2 = block text to append
-  local header="$1"
-  local block="$2"
-  if pacman_conf_has "$header"; then
-    log "Repo $header already present; skipping append."
+# --- Helpers ---------------------------------------------------------------
+
+# Usage: pacman_conf_has chaotic-aur   (no brackets)
+pacman_conf_has() {
+  local repo="$1"
+  if command -v pacman-conf >/dev/null 2>&1; then
+    pacman-conf --repo-list | grep -qx "$repo"
   else
-    printf "\n%s\n%s\n" "$header" "$block" >> /etc/pacman.conf
-    log "Appended $header to /etc/pacman.conf"
+    grep -Eqs "^[[:space:]]*\[$repo\][[:space:]]*(#.*)?$" /etc/pacman.conf
   fi
 }
 
+# Usage: append_repo_block chaotic-aur "Include = /etc/pacman.d/chaotic-mirrorlist"
+append_repo_block() {
+  local repo="$1" block="$2"
+  if pacman_conf_has "$repo"; then
+    log "Repo [$repo] already present; skipping append."
+  else
+    printf "\n[%s]\n%s\n" "$repo" "$block" >> /etc/pacman.conf
+    log "Appended [$repo] to /etc/pacman.conf"
+  fi
+}
+
+recv_and_lsign_key() {
+  # $1 keyid, $2 keyserver
+  local key="$1" ks="$2"
+  pacman-key --recv-key "$key" --keyserver "hkp://${ks}:80" \
+    || pacman-key --recv-key "$key" --keyserver "$ks"
+  pacman-key --lsign-key "$key"
+}
+
 add_blackarch() {
-  if pacman_conf_has "[blackarch]"; then
+  if pacman_conf_has "blackarch"; then
     log "BlackArch already configured."
     return 0
   fi
@@ -59,23 +79,13 @@ add_blackarch() {
   fi
 
   chmod +x "$strap"
-  "$strap"     # modifies pacman.conf, installs keyring/mirrorlist
-
-  # Sync databases after adding repo
+  "$strap"   # modifies pacman.conf, installs keyring/mirrorlist
   pacman -Sy --noconfirm
   log "BlackArch repo added."
 }
 
-recv_and_lsign_key() {
-  # $1 keyid, $2 keyserver
-  local key="$1" ks="$2"
-  pacman-key --recv-key "$key" --keyserver "hkp://${ks}:80" \
-    || pacman-key --recv-key "$key" --keyserver "$ks"
-  pacman-key --lsign-key "$key"
-}
-
 add_chaotic() {
-  if pacman_conf_has "[chaotic-aur]"; then
+  if pacman_conf_has "chaotic-aur"; then
     log "Chaotic-AUR already configured."
     return 0
   fi
@@ -86,17 +96,16 @@ add_chaotic() {
     recv_and_lsign_key "$CHAOTIC_KEY" "$CHAOTIC_KEYSRV_FALLBACK" || die "Failed to import Chaotic key."
   fi
 
-  log "Installing chaotic keyring + mirrorlist packages…"
+  # Install keyring & mirrorlist (idempotent: pacman -U will skip if same version installed)
+  log "Installing chaotic keyring + mirrorlist…"
   pacman -U --noconfirm \
     'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' \
     'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
-  log "Adding [chaotic-aur] repo to pacman.conf…"
-  append_repo_block "[chaotic-aur]" "Include = /etc/pacman.d/chaotic-mirrorlist"
+  append_repo_block "chaotic-aur" "Include = /etc/pacman.d/chaotic-mirrorlist"
 
-  # Optional: multilib note (some Chaotic packages rely on it)
-  if ! pacman_conf_has "[multilib]"; then
-    warn "multilib is disabled. Some Chaotic packages may require it. Enable if needed."
+  if ! pacman_conf_has "multilib"; then
+    warn "multilib disabled. Some Chaotic packages may need it. Enable [multilib] if required."
   fi
 
   pacman -Sy --noconfirm
