@@ -82,9 +82,9 @@ log "Copying dots → $MNT/home/$USERNAME/dots (uid:gid ${UID_NUM}:${GID_NUM})"
 
 # Prefer rsync --chown if supported (Arch ISO rsync usually supports it)
 if rsync --help | grep -q -- '--chown'; then
-  rsync -a --chown="${UID_NUM}:${GID_NUM}" "$DOTS_DIR" "$MNT/home/$USERNAME/dots"
+  rsync -a --chown="${UID_NUM}:${GID_NUM}" "$DOTS_DIR/" "$MNT/home/$USERNAME/dots/"
 else
-  rsync -a "$DOTS_DIR" "$MNT/home/$USERNAME/dots"
+  rsync -a "$DOTS_DIR/" "$MNT/home/$USERNAME/dots/"
   chown -R --numeric-uid-gid "${UID_NUM}:${GID_NUM}" "$MNT/home/$USERNAME/dots"
 fi
 
