@@ -10,6 +10,25 @@ log(){ printf "\e[1;34m[bootstrap]\e[0m %s\n" "$*"; }
 warn(){ printf "\e[1;33m[bootstrap]\e[0m %s\n" "$*"; }
 die(){ printf "\e[1;31m[bootstrap]\e[0m %s\n" "$*" >&2; exit 1; }
 
+# 4) let the user edit the config before installing (works under curl|bash)
+open_in_editor() {
+  local file="$1"
+  local ed="${EDITOR:-vim}"
+
+  # Prefer vim/nano flags that don't use stdin if available
+  if [[ "$ed" =~ (^|/)vim$ ]]; then
+    # -u NONE = no vimrc; -n = no swap; --not-a-term is NOT needed if we give it a TTY
+    exec </dev/tty >/dev/tty 2>&1 || true
+    "$ed" -u NONE -n "$file"
+  else
+    # nano (or anything else): just bind stdio to the tty
+    exec </dev/tty >/dev/tty 2>&1 || true
+    "$ed" "$file"
+  fi
+}
+
+
+
 [[ $EUID -eq 0 ]] || die "Run as root from the Arch ISO."
 
 # 0) prereqs kept tiny
@@ -68,9 +87,9 @@ JSON
   sed -i 's,//.*$,,' "$CFG_JSON"
 fi
 
-# 4) let the user edit the config before installing
+# 4) allow user to edit
 log "Opening archinstall config for edits: $CFG_JSON"
-$EDITOR "$CFG_JSON"
+open_in_editor "$CFG_JSON"
 
 # 5) run archinstall with the edited config
 log "Running: archinstall --config $CFG_JSON"
