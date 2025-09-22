@@ -10,22 +10,7 @@ log(){ printf "\e[1;34m[bootstrap]\e[0m %s\n" "$*"; }
 warn(){ printf "\e[1;33m[bootstrap]\e[0m %s\n" "$*"; }
 die(){ printf "\e[1;31m[bootstrap]\e[0m %s\n" "$*" >&2; exit 1; }
 
-# 4) let the user edit the config before installing (works under curl|bash)
-open_in_editor() {
-  local file="$1"
-  local ed="${EDITOR:-vim}"
 
-  # Prefer vim/nano flags that don't use stdin if available
-  if [[ "$ed" =~ (^|/)vim$ ]]; then
-    # -u NONE = no vimrc; -n = no swap; --not-a-term is NOT needed if we give it a TTY
-    exec </dev/tty >/dev/tty 2>&1 || true
-    "$ed" -u NONE -n "$file"
-  else
-    # nano (or anything else): just bind stdio to the tty
-    exec </dev/tty >/dev/tty 2>&1 || true
-    "$ed" "$file"
-  fi
-}
 
 
 
@@ -87,7 +72,29 @@ JSON
   sed -i 's,//.*$,,' "$CFG_JSON"
 fi
 
-# 4) allow user to edit
+# 4) let the user edit the config before installing (works under curl|bash)
+open_in_editor() {
+  local file="$1"
+  local ed="${EDITOR:-nano}"
+
+  # 1) Preferred: run editor under a PTY via `script`
+  if command -v script >/dev/null 2>&1; then
+    # -q quiet, -f flush, -c "cmd", log to /dev/null (no typescript file)
+    script -qfc "$ed '$file'" /dev/null
+    return
+  fi
+
+  # 2) Fallback: detach a session + bind stdio to the controlling TTY
+  if [[ -e /dev/tty ]]; then
+    setsid -w sh -c "exec </dev/tty >/dev/tty 2>&1; '$ed' '$file'"
+    return
+  fi
+
+  # 3) Last resort
+  echo "[edit] No TTY available for interactive editor. Set NO_EDIT=1 to skip." >&2
+  return 1
+}
+
 log "Opening archinstall config for edits: $CFG_JSON"
 open_in_editor "$CFG_JSON"
 
