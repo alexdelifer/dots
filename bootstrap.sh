@@ -29,19 +29,19 @@ CFG="$DOTS_DIR/archinstall/user_configuration.json"
 run_archinstall() {
   export TERM=${TERM:-xterm-256color}
 
-  # Preferred: util-linux `script` gives us a PTY reliably
-  if command -v script >/dev/null 2>&1; then
-    log "Starting archinstall via 'script' PTY…"
-    script -qfec "archinstall --config '$CFG'" /dev/null && return 0
-    log "archinstall via 'script' returned non-zero."
-  fi
+#   # Preferred: util-linux `script` gives us a PTY reliably
+#   if command -v script >/dev/null 2>&1; then
+#     log "Starting archinstall via 'script' PTY…"
+#     script -qfec "archinstall --config '$CFG'" /dev/null && return 0
+#     log "archinstall via 'script' returned non-zero."
+#   fi
 
-  # Fallback 1: systemd-run with a pty
-  if command -v systemd-run >/dev/null 2>&1; then
-    log "Trying archinstall via 'systemd-run --pty'…"
-    systemd-run --quiet --pipe --pty --same-dir --wait bash -lc "archinstall --config '$CFG'" && return 0
-    log "archinstall via 'systemd-run' returned non-zero."
-  fi
+#   # Fallback 1: systemd-run with a pty
+#   if command -v systemd-run >/dev/null 2>&1; then
+#     log "Trying archinstall via 'systemd-run --pty'…"
+#     systemd-run --quiet --pipe --pty --same-dir --wait bash -lc "archinstall --config '$CFG'" && return 0
+#     log "archinstall via 'systemd-run' returned non-zero."
+#   fi
 
   # Fallback 2: tmux, if present
   if command -v tmux >/dev/null 2>&1; then
