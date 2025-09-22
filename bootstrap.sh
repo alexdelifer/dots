@@ -1,168 +1,52 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+# --- Variables you can set ---
 : "${DOTS_REPO:=https://github.com/alexdelifer/dots.git}"
-: "${WORK:=/dev/shm/archmini}"
 : "${MNT:=/mnt}"
-: "${EDITOR:=vim}"  # change to nano if you prefer
+: "${USERNAME:=alex}"   # <-- Set your username here
 
-log(){ printf "\e[1;34m[bootstrap]\e[0m %s\n" "$*"; }
-warn(){ printf "\e[1;33m[bootstrap]\e[0m %s\n" "$*"; }
-die(){ printf "\e[1;31m[bootstrap]\e[0m %s\n" "$*" >&2; exit 1; }
-
-
-
-
+log() { printf "\e[1;34m[bootstrap]\e[0m %s\n" "$*"; }
+die() { printf "\e[1;31m[bootstrap]\e[0m %s\n" "$*" >&2; exit 1; }
 
 [[ $EUID -eq 0 ]] || die "Run as root from the Arch ISO."
 
-# 0) prereqs kept tiny
-pacman -Sy --noconfirm --needed git stow rsync arch-install-scripts archinstall >/dev/null
+# 1) Install needed tools
+pacman -Sy --noconfirm --needed git rsync arch-install-scripts archinstall
 
-# 1) workspace in RAM
-DOTS_DIR="$WORK/dots"
-POST="$WORK/99-post-chroot.sh"
-CFG_DIR="$WORK/archinstall"
-CFG_JSON="$CFG_DIR/user_config.json"
-mkdir -p "$WORK" "$CFG_DIR"
+# 2) Clone dots repo into /dev/shm
+WORK=/dev/shm/bootstrap
+DOTS_DIR=$WORK/dots
+rm -rf "$WORK"
+mkdir -p "$WORK"
+log "Cloning dots repo into /dev/shm…"
+git clone --depth=1 "$DOTS_REPO" "$DOTS_DIR"
 
-# 2) clone dots (aconfmgr config & prebuilt pkg live here)
-if [[ -d "$DOTS_DIR/.git" ]]; then
-  log "Updating dots in RAM…"
-  git -C "$DOTS_DIR" pull --ff-only || warn "Non-FF; keeping current."
-else
-  log "Cloning dots → $DOTS_DIR"
-  git clone --depth=1 "$DOTS_REPO" "$DOTS_DIR"
+# 3) Run archinstall with user_configuration.json
+CFG="$DOTS_DIR/archinstall/user_configuration.json"
+if [[ ! -f "$CFG" ]]; then
+  die "Config file not found: $CFG"
 fi
 
-# 3) archinstall config: use repo copy if present, else make a tiny template
-REPO_CFG="$DOTS_DIR/archinstall/user_config.json"
-if [[ -f "$REPO_CFG" ]]; then
-  cp -f "$REPO_CFG" "$CFG_JSON"
-else
-  cat >"$CFG_JSON" <<'JSON'
-{
-  "version": 1,
-  "profile": "minimal",                  // e.g. "minimal" or "desktop"
-  "hostname": "arch",
-  "locale": "en_US.UTF-8",
-  "keyboard-layout": "us",
-  "timezone": "America/Toronto",
-  "mirror-region": ["Canada","United States"],
-  "bootloader": "grub",                  // or "systemd-boot"
-  "root-password": "CHANGE_ME",          // recommend: set blank, archinstall will prompt
-  "users": [
-    { "username": "alex", "password": "CHANGE_ME", "sudo": true }
-  ],
-  "packages": ["base","linux","linux-firmware","networkmanager","git","stow"],
-  "services": ["NetworkManager"],
-  "disk-config": {
-    "device": "/dev/nvme0n1",
-    "partitions": [
-      { "type": "efi",  "size": "512M", "mountpoint": "/boot" },
-      { "type": "swap", "size": "8G" },
-      { "type": "btrfs","size": "100%", "mountpoint": "/", "subvolumes": ["@","@home","@pkg"] }
-    ],
-    "erase": true,                       // DANGER: wipes the disk if true
-    "encrypt": false
-  }
-}
-JSON
-  # remove comments (archinstall expects pure JSON)
-  sed -i 's,//.*$,,' "$CFG_JSON"
+log "Launching archinstall with config: $CFG"
+archinstall --config "$CFG"
+
+# 4) Copy dots repo into the new system under the non-root user's home
+if [[ ! -d "$MNT/home/$USERNAME" ]]; then
+  die "User home not found in /mnt: $MNT/home/$USERNAME"
 fi
 
-# 4) let the user edit the config before installing (works under curl|bash)
-open_in_editor() {
-  local file="$1"
-  local ed="${EDITOR:-nano}"
+log "Copying dots into $MNT/home/$USERNAME/dots"
+rsync -a "$DOTS_DIR" "$MNT/home/$USERNAME/dots"
+chown -R "$USERNAME:$USERNAME" "$MNT/home/$USERNAME/dots"
 
-  # 1) Preferred: run editor under a PTY via `script`
-  if command -v script >/dev/null 2>&1; then
-    # -q quiet, -f flush, -c "cmd", log to /dev/null (no typescript file)
-    script -qfc "$ed '$file'" /dev/null
-    return
-  fi
-
-  # 2) Fallback: detach a session + bind stdio to the controlling TTY
-  if [[ -e /dev/tty ]]; then
-    setsid -w sh -c "exec </dev/tty >/dev/tty 2>&1; '$ed' '$file'"
-    return
-  fi
-
-  # 3) Last resort
-  echo "[edit] No TTY available for interactive editor. Set NO_EDIT=1 to skip." >&2
-  return 1
-}
-
-log "Opening archinstall config for edits: $CFG_JSON"
-open_in_editor "$CFG_JSON"
-
-# 5) run archinstall with the edited config
-log "Running: archinstall --config $CFG_JSON"
-archinstall --config "$CFG_JSON"
-
-# 6) after archinstall, /mnt should be mounted; stage dots + post-chroot
-if mountpoint -q "$MNT"; then
-  log "Staging repo and post-chroot into $MNT…"
-  install -d -m 0755 "$MNT/root"
-  rsync -a --delete "$DOTS_DIR" "$MNT/root/.dotfiles"
-else
-  warn "$MNT is not mounted by archinstall? If you used a different mount path, adjust below."
-  die "Cannot continue without a mounted target at $MNT."
+# 5) Chroot to install aconfmgr from packages folder
+PKG=$(ls "$MNT/home/$USERNAME/dots/packages"/aconfmgr-*.pkg.tar.* 2>/dev/null | head -n1)
+if [[ -z "$PKG" ]]; then
+  die "aconfmgr package not found in packages/"
 fi
 
-# 7) tiny post-chroot to install your prebuilt aconfmgr and apply config, then stow
-cat > "$POST" <<'EOS'
-#!/usr/bin/env bash
-set -Eeuo pipefail
-log(){ printf "\e[1;32m[post-chroot]\e[0m %s\n" "$*"; }
-die(){ printf "\e[1;31m[post-chroot]\e[0m %s\n" "$*" >&2; exit 1; }
+log "Chrooting into $MNT to install aconfmgr…"
+arch-chroot "$MNT" pacman -U --noconfirm "/home/$USERNAME/dots/packages/$(basename "$PKG")"
 
-DOTS_DIR=/root/.dotfiles
-ACONF_PKG="$(ls -1 "$DOTS_DIR"/packages/aconfmgr-*.pkg.tar.* 2>/dev/null | head -n1)"
-ACONF_DIR="$DOTS_DIR/aconfmgr"
-
-# a) install your prebuilt aconfmgr package
-if [[ -n "$ACONF_PKG" && -f "$ACONF_PKG" ]]; then
-  pacman -U --noconfirm "$ACONF_PKG"
-else
-  die "Prebuilt aconfmgr package not found under $DOTS_DIR/packages/"
-fi
-
-# b) apply aconfmgr config
-if [[ -d "$ACONF_DIR" ]]; then
-  log "Applying aconfmgr config…"
-  aconfmgr -c "$ACONF_DIR" apply -y
-else
-  die "aconfmgr config dir not found at $ACONF_DIR"
-fi
-
-# c) stow dotfiles (skip non-stow dirs)
-log "Stowing dotfiles…"
-cd "$DOTS_DIR"
-mapfile -t PKGS < <(find . -mindepth 1 -maxdepth 1 -type d \
-  ! -name '.git' ! -name 'packages' ! -name 'aconfmgr' ! -name 'archinstall' -printf '%P\n')
-if ((${#PKGS[@]})); then
-  stow -t / -v "${PKGS[@]}"
-else
-  log "No stow packages detected; skipping."
-fi
-
-log "All done. You can reboot."
-EOS
-install -m 0755 "$POST" "$MNT/root/99-post-chroot.sh"
-
-cat <<EOF
-
-===============================================================================
-Install steps complete.
-
-Next (inside the ISO still):
-  arch-chroot $MNT /root/99-post-chroot.sh
-
-Then reboot.
-===============================================================================
-EOF
-
-log "Finished."
+log "aconfmgr installed. Stopping here as requested."
