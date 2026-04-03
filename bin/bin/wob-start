@@ -1,0 +1,6 @@
+#!/bin/bash
+# Start wob (window overlay bar) with a guaranteed FIFO socket.
+# Called from hyprland autostart. Safe to re-run: recreates the FIFO if missing.
+socket="$XDG_RUNTIME_DIR/wob.sock"
+[[ -p "$socket" ]] || mkfifo "$socket"
+tail -f "$socket" | wob
