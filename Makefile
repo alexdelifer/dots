@@ -47,7 +47,7 @@ add-all:
 	@git add .
 
 commit:
-	@git commit -m "Auto: $(DATE)"
+	@git commit
 
 push:
 	@git push

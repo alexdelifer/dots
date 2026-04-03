@@ -1,1 +1,0 @@
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", MODE="0640", OWNER="alex"

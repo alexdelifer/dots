@@ -16,8 +16,12 @@
 /nvim/.config/nvim/undo/*
 /nvim/.config/nvim/autoload/plug.vim.old
 *.swp
+*.bak
+*.old
 *.tar.xz
 *.pkg.tar.xz
+*.pkg.tar.zst
 *.tar.gz
 *.log
 **.uuid
+/zsh/.zsh/cache/
