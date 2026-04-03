@@ -1,0 +1,5 @@
+#!/bin/bash
+# Move the focused window to/from the Hyprland special workspace (scratchpad).
+# Super+Shift+Minus → send focused window to special workspace
+# Super+Minus       → toggle special workspace visibility (handled by hyprland directly)
+hyprctl dispatch movetoworkspace special

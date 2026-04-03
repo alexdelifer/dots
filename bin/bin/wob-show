@@ -1,0 +1,4 @@
+#!/bin/bash
+# Write a value (0-100) to the wob overlay socket.
+# Usage: wob-show <value>
+echo "$1" > "$XDG_RUNTIME_DIR/wob.sock"

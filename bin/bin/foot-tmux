@@ -1,0 +1,4 @@
+#!/bin/bash
+# Open a foot terminal connected to a persistent tmux session.
+# The foot server is expected to already be running (started by hyprland autostart).
+footclient -t xterm-256color -e tmux new-session -A -s main
