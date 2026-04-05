@@ -70,13 +70,41 @@ stow -d ~/dots -t ~ -n -v <package>
 
 ## CLI Tool Preferences
 
-Prefer: `rg` over grep, `fd` over find, `bat` over cat, `eza` over ls, `fzf` for narrowing, `jq`/`yq` for structured data, `xh` for HTTP, `lazygit` for git TUI.
+- search: `rg` over `grep`, `fd` over `find`, `rga` for non-plain-text search
+- viewing: `bat` over `cat`, `eza` over `ls`, `tree` for small recursive overviews
+- interactive narrowing: `fzf`
+- structured data: `jq` for JSON, `yq` for YAML/TOML/XML
+- HTTP: `xh` for exploratory, `curl` for scripted
+- disk/system: `duf`, `dust`, `ncdu`, `btop`, `procs`, `lnav`
+- code/migration: `sd`, `difft` (difftastic), `just`, `watchexec`, `hyperfine`
+- shell workflow: `direnv`, `zoxide`
+- git TUI: `lazygit`
+- markdown/Obsidian: `zk`
+
+Notes: `difftastic` is invoked as `difft`; `ripgrep-all` as `rga`.
+
+## Key Working Paths
+
+- `~/src -> /mnt/DEV/src`
+- `~/lab -> /mnt/DEV/lab/ansible`
+- `~/ansible -> /mnt/DEV/work/ansible`
+- `~/Obsidian/DELIFER` — canonical Obsidian knowledge base
+- `~/Obsidian/DELIFER/skills` — canonical shared custom skills (source of truth for Claude and Codex)
+- `/mnt/HACK` — canonical pentest root
 
 ## Storage Context (relevant to this repo)
 
 - `/` — system config and packages (tracked by aconfmgr)
 - `~/dots` — user config (tracked by Stow in this repo)
+- `/mnt/DEV` — active work, repos, build trees
+- `/mnt/STORAGE` — archive, ISOs, firmware, bulk (also `/data`)
+- `/mnt/HACK` — pentest artifacts, loot, reports
 - When adding a config: user-space → new Stow package here; system-space → aconfmgr module
+- When unsure: active and edited soon → DEV; archival → STORAGE; pentest artifacts → HACK
+
+## Hardware Notes
+
+- `aconfmgr` `15-hardware.sh` module auto-detects GPU/CPU/bluetooth/wifi and desktop vs laptop — keep conditionals in that module rather than hardcoding per-machine values elsewhere.
 
 ## Change Rule
 
