@@ -1,0 +1,14 @@
+[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+Environment="PATH=/home/alex/.zinit/snippets/https--github.com--Valodim--zsh-capture-completion--blob--master/capture.zsh:/home/alex/.zinit/snippets/https--github.com--b4b4r07--httpstat--blob--master/httpstat.sh:/home/alex/.zinit/plugins/docker---compose:/home/alex/.zinit/polaris/bin:/home/alex/.cargo/bin:/home/alex/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/opt/jython/bin/:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/usr/lib/jvm/default/bin:/opt/nessus/bin:/opt/nessus/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/rocm/bin:/usr/lib/rustup/bin:/home/alex/bin:/home/alex/.npm-global:/home/alex/.fzf/bin:/home/alex/.local/bin"
+
+[Install]
+WantedBy=default.target

@@ -120,6 +120,8 @@ AddPackage --foreign rockyou # The popular "rockyou" password list from OWASP Se
 AddPackage --foreign readpe # PE file analysis toolkit
 AddPackage --foreign objconv # Object file converter and disassembler
 AddPackage --foreign burpsuite-pro # An integrated platform for performing security testing of web applications (professional edition)
+AddPackage python-frida # Dynamic instrumentation toolkit for Python
+AddPackage python-frida-tools # Frida CLI tools (frida, frida-ps, frida-trace, frida-discover)
 
 CopyFile /etc/proxychains.conf
 CopyFile /etc/ettercap/etter.conf

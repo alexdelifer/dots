@@ -3,6 +3,7 @@ MODULES=(
     system
     hardware
     pipewire
+    ai
     dev
     hacker
     xorg

@@ -40,6 +40,10 @@ AddPackage gettext # GNU internationalization library
 AddPackage go # Core compiler tools for the Go programming language
 AddPackage --foreign shellcheck-bin # Shell script analysis tool (binary release, static)
 AddPackage openocd # Debugging, in-system programming and boundary-scan testing for embedded target devices
+AddPackage deno # JavaScript/TypeScript runtime
+AddPackage android-apktool # APK decompiler and recompiler
+AddPackage android-sdk-build-tools # Android SDK build tools (apksigner, aapt, zipalign)
+AddPackage dotnet-runtime-9.0 # The .NET 9 runtime
 
 # Java
 AddPackage gradle # Powerful build system for the JVM

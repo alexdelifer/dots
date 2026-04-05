@@ -11,6 +11,7 @@ AddPackage ttf-dejavu # Font family based on the Bitstream Vera Fonts with a wid
 AddPackage ttf-iosevka-nerd # Patched font Iosevka from nerd fonts library
 AddPackage ttf-ms-fonts # Core TTF Fonts from Microsoft
 AddPackage ttf-ubuntu-font-family # Ubuntu font family
+AddPackage otf-opendyslexic-nerd # OpenDyslexic Nerd Font
 
 AddPackage woff2-font-awesome # Iconic font designed for Bootstrap - woff2 format
 
@@ -30,7 +31,6 @@ CreateLink /etc/fonts/conf.d/30-win32-aliases.conf /usr/share/fontconfig/conf.de
 CreateLink /etc/fonts/conf.d/40-nonlatin.conf /usr/share/fontconfig/conf.default/40-nonlatin.conf
 CreateLink /etc/fonts/conf.d/45-generic.conf /usr/share/fontconfig/conf.default/45-generic.conf
 CreateLink /etc/fonts/conf.d/45-latin.conf /usr/share/fontconfig/conf.default/45-latin.conf
-CreateLink /etc/fonts/conf.d/46-noto-mono.conf /usr/share/fontconfig/conf.default/46-noto-mono.conf
 CreateLink /etc/fonts/conf.d/46-noto-sans.conf /usr/share/fontconfig/conf.default/46-noto-sans.conf
 CreateLink /etc/fonts/conf.d/46-noto-serif.conf /usr/share/fontconfig/conf.default/46-noto-serif.conf
 CreateLink /etc/fonts/conf.d/48-spacing.conf /usr/share/fontconfig/conf.default/48-spacing.conf
@@ -53,7 +53,6 @@ CreateLink /etc/fonts/conf.d/65-droid-sans.conf /usr/share/fontconfig/conf.defau
 CreateLink /etc/fonts/conf.d/65-droid-serif.conf /usr/share/fontconfig/conf.default/65-droid-serif.conf
 CreateLink /etc/fonts/conf.d/65-fonts-persian.conf /usr/share/fontconfig/conf.default/65-fonts-persian.conf
 CreateLink /etc/fonts/conf.d/65-nonlatin.conf /usr/share/fontconfig/conf.default/65-nonlatin.conf
-CreateLink /etc/fonts/conf.d/66-noto-mono.conf /usr/share/fontconfig/conf.default/66-noto-mono.conf
 CreateLink /etc/fonts/conf.d/66-noto-sans.conf /usr/share/fontconfig/conf.default/66-noto-sans.conf
 CreateLink /etc/fonts/conf.d/66-noto-serif.conf /usr/share/fontconfig/conf.default/66-noto-serif.conf
 CreateLink /etc/fonts/conf.d/69-unifont.conf /usr/share/fontconfig/conf.default/69-unifont.conf

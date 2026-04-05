@@ -7,7 +7,7 @@
 #
 
 export VAGRANT_HOME=/games/Vagrant
-export WLR_NO_HARDWARE_CURSORS=1
+
 
 # Paths
 PATH=$PATH:~/bin
@@ -20,29 +20,36 @@ fi
 
 # Enviroment Variables
 export EDITOR="nvim"
-export BROWSER=firefox-nightly
-export TERMINAL=alacritty
-export TERMINAL_COMMAND="alacritty -e"
+export BROWSER=firefox
+export TERMINAL=foot
+export TERMINAL_COMMAND="foot -e"
 export PAGER=less
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Fix Alacritty?
 #export MESA_LOADER_DRIVER_OVERRIDE=i965 # Iris is a buggy mess
 
-# Enable firefox multitouch
-export MOZ_USE_XINPUT2=1
-
-# VA-API X11
-export MOZ_X11_EGL=1
-
 # QT Platform Theme
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+
+# AI / LLM tooling
+export ANTHROPIC_API_KEY=meridian   # dummy key — real auth via Meridian proxy (Claude Max OAuth)
+export ANTHROPIC_BASE_URL=http://127.0.0.1:3456
 
 # FASD
 export _Z_DATA=~/.fasd
 export FZF_DEFAULT_OPTS='--height 40% --reverse --exact'
 export FZF_CTRL_T_COMMAND='ag --hidden -g "" --nocolor'
+
+# Modern shell helpers
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+fi
 
 
 # Settings
@@ -80,6 +87,5 @@ setopt always_to_end
 
 # AppIndicator Support 
 # export XDG_CURRENT_DESKTOP=Unity
-
 
 

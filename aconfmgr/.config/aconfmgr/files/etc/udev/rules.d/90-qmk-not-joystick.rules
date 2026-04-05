@@ -1,0 +1,3 @@
+# Don't treat qmk keyboard as a joystick
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{idVendor}=="320f", ATTRS{idProduct}=="5044", ENV{ID_INPUT_JOYSTICK}=""
+

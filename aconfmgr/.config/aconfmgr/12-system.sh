@@ -49,6 +49,7 @@ CopyFile /etc/locale.gen
 
 AddPackage apparmor # Mandatory Access Control (MAC) using Linux Security Module (LSM)
 AddPackage earlyoom # Early OOM Daemon for Linux
+AddPackage irqbalance # IRQ balancing daemon for SMP systems
 AddPackage etc-update # CLI to interactively merge .pacnew configuration files
 AddPackage fwupd # Simple daemon to allow session software to update firmware
 AddPackage gksu # A graphical frontend for su.
@@ -146,6 +147,9 @@ CreateLink /etc/systemd/system/multi-user.target.wants/nmb.service /usr/lib/syst
 CreateLink /etc/systemd/system/multi-user.target.wants/remote-fs.target /usr/lib/systemd/system/remote-fs.target
 CreateLink /etc/systemd/system/multi-user.target.wants/rtkit-daemon.service /usr/lib/systemd/system/rtkit-daemon.service
 CreateLink /etc/systemd/system/multi-user.target.wants/smb.service /usr/lib/systemd/system/smb.service
+CreateLink /etc/systemd/system/multi-user.target.wants/earlyoom.service /usr/lib/systemd/system/earlyoom.service
+CreateLink /etc/systemd/system/multi-user.target.wants/irqbalance.service /usr/lib/systemd/system/irqbalance.service
+CreateLink /etc/systemd/system/multi-user.target.wants/proton.VPN.service /usr/lib/systemd/system/proton.VPN.service
 CreateLink /etc/systemd/system/multi-user.target.wants/sshd.service /usr/lib/systemd/system/sshd.service
 CreateLink /etc/systemd/system/multi-user.target.wants/sssd.service /usr/lib/systemd/system/sssd.service
 CreateLink /etc/systemd/system/multi-user.target.wants/synergy.service /usr/lib/systemd/system/synergy.service
@@ -161,7 +165,7 @@ CreateLink /etc/systemd/system/sysinit.target.wants/systemd-resolved.service /us
 CreateLink /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service /usr/lib/systemd/system/systemd-timesyncd.service
 CreateLink /etc/systemd/system/timers.target.wants/logrotate.timer /usr/lib/systemd/system/logrotate.timer
 CreateLink /etc/systemd/system/timers.target.wants/snapper-cleanup.timer /usr/lib/systemd/system/snapper-cleanup.timer
-CreateLink /etc/systemd/user/default.target.wants/xdg-user-dirs-update.service /usr/lib/systemd/user/xdg-user-dirs-update.service
+CreateLink /etc/systemd/user/graphical-session-pre.target.wants/xdg-user-dirs.service /usr/lib/systemd/user/xdg-user-dirs.service
 CreateLink /etc/systemd/user/pipewire-session-manager.service /usr/lib/systemd/user/wireplumber.service
 CreateLink /etc/systemd/user/pipewire.service.wants/wireplumber.service /usr/lib/systemd/user/wireplumber.service
 CreateLink /etc/systemd/user/pulseaudio.service.wants/pulseaudio-bluetooth-autoconnect.service /usr/lib/systemd/user/pulseaudio-bluetooth-autoconnect.service
@@ -186,6 +190,9 @@ CreateLink /etc/resolv.conf /run/systemd/resolve/stub-resolv.conf
 
 CopyFile /etc/udisks2/mount_options.conf
 CopyFile /etc/vconsole.conf
+
+CopyFile /etc/sysctl.d/99-memory-tuning.conf
+CopyFile /etc/systemd/zram-generator.conf
 
 CopyFile /etc/skel/.bashrc
 CopyFile /etc/skel/.config/dconf/user

@@ -123,10 +123,7 @@
 #Server = https://mirrors.gethosted.online/blackarch/$repo/os/$arch
 
 # USA
-#Server = http://blackarch.pr0s3c.nl/blackarch/$repo/os/$arch
-#Server = https://blackarch.pr0s3c.nl/blackarch/$repo/os/$arch
-Server = http://mirror.math.princeton.edu/pub/blackarch/$repo/os/$arch
-#Server = http://distro.ibiblio.org/blackarch/$repo/os/$arch
+Server = http://distro.ibiblio.org/blackarch/$repo/os/$arch
 #Server = ftp://distro.ibiblio.org/blackarch/$repo/os/$arch
 #Server = https://deadbeef.ninja/blackarch/$repo/os/$arch
 #Server = http://mirror.team-cymru.com/blackarch/$repo/os/$arch

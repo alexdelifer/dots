@@ -2,8 +2,10 @@
 
 #ALL_config="/etc/mkinitcpio.conf"
 ALL_kver="/boot/vmlinuz-linux-zen"
+#ALL_kerneldest="/boot/vmlinuz-linux-zen"
 
-PRESETS=('default' 'fallback')
+PRESETS=('default')
+#PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
 default_image="/boot/initramfs-linux-zen.img"
@@ -11,6 +13,6 @@ default_image="/boot/initramfs-linux-zen.img"
 #default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
 
 #fallback_config="/etc/mkinitcpio.conf"
-fallback_image="/boot/initramfs-linux-zen-fallback.img"
+#fallback_image="/boot/initramfs-linux-zen-fallback.img"
 #fallback_uki="/efi/EFI/Linux/arch-linux-zen-fallback.efi"
-fallback_options="-S autodetect"
+#fallback_options="-S autodetect"

@@ -91,6 +91,15 @@ fi
 
 
 AddPackage qmk # CLI tool for customizing supported mechanical keyboards.
+CopyFile /etc/udev/rules.d/90-qmk-not-joystick.rules
+
+AddPackage --foreign input-remapper-git # An easy to use tool to change the mapping of your input device buttons
+CreateLink /etc/systemd/system/default.target.wants/input-remapper.service /usr/lib/systemd/system/input-remapper.service
+
+AddPackage power-profiles-daemon # Makes power profiles handling available over D-Bus
+AddPackage crossmacro # A daemon to run macros on key press events
+CreateLink /etc/systemd/system/graphical.target.wants/power-profiles-daemon.service /usr/lib/systemd/system/power-profiles-daemon.service
+CreateLink /etc/systemd/system/multi-user.target.wants/crossmacro.service /usr/lib/systemd/system/crossmacro.service
 
 # network
 AddPackage network-manager-applet # Applet for managing network connections

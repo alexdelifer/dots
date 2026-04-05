@@ -151,3 +151,24 @@ AddPackage reflector # A Python 3 module and script to retrieve and filter the l
 
 AddPackage paru # Feature packed AUR helper
 AddPackage yay # Yet another yogurt. Pacman wrapper and AUR helper written in go.
+
+# Modern CLI tools
+AddPackage lazygit # Simple terminal UI for git commands
+AddPackage difftastic # Syntax-aware structural diff tool
+AddPackage dust # du replacement written in Rust
+AddPackage hyperfine # Command-line benchmarking tool
+AddPackage watchexec # Executes commands in response to file modifications
+AddPackage doggo # Command-line DNS client
+AddPackage xh # Friendly and fast HTTP client (httpie alternative)
+AddPackage sd # Intuitive find-and-replace (sed alternative)
+AddPackage procs # Modern replacement for ps
+AddPackage lnav # Log file navigator
+AddPackage just # Command runner (Makefile alternative)
+AddPackage direnv # Unclutter your .profile by loading/unloading env vars
+AddPackage zoxide # Smarter cd command inspired by z and autojump
+AddPackage yq # YAML/JSON/XML/TOML processor
+AddPackage ripgrep-all # rga: ripgrep, but also search in PDFs, E-Books, Office documents
+AddPackage dtrx # Intelligent archive extractor
+AddPackage zk # Plain text note-taking assistant (Zettelkasten)
+AddPackage marksman # Markdown language server
+AddPackage markdown-oxide # Markdown language server (PKM-oriented)

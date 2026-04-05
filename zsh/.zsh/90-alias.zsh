@@ -14,6 +14,10 @@ alias pwsh="pwsh /nologo"
 
 alias cat="bat --style snip"
 alias c="cat"
+alias ls="eza -hF --color=auto"
+alias ll="eza -lahF --color=always --group-directories-first"
+alias l="eza -lahF --color=always --group-directories-first"
+alias lsl="eza -lhF --color=always --group-directories-first"
 
 alias ssh="TERM=xterm-256color ssh"
 alias ghetto-ssh="TERM=xterm ssh -oKexAlgorithms=+diffie-hellman-group1-sha1"
@@ -23,7 +27,6 @@ alias rdp="xfreerdp /dynamic-resolution /h:800 /w:1280"
 alias hirdp="xfreerdp /dynamic-resolution /h:1600 /w:2560 /scale:180 /scale-desktop:200"
 alias fj="firejail --apparmor --env=LD_PRELOAD='/usr/lib/libhardened_malloc.so'"
 alias dig="dig +nocookie +noedns"
-alias ls="ls -hF --color=auto"
 alias watch="watch -c"
 alias cp="cp -r"
 alias scp="scp -r"
@@ -154,9 +157,6 @@ alias gco="git checkout"
 alias gcs="git commit -S -m"
 alias gsn="gitlab-snippet"
 
-alias ll="ls -lahF --color=auto"
-alias l="ls -lahF --color=auto"
-alias lsl="ls -lhF --color=auto"
 alias "cd.."="cd ../"
 alias up="cd ../"
 alias rmrf="rm -rf"
@@ -186,6 +186,17 @@ alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙──�
 alias record="ffmpeg -f x11grab -s 3200x1800 -an -r 16 -loglevel quiet -i :0.0 -b:v 5M -y" #pass a filename
 
 alias juket="curl -fsSL https://0xde.ca/tlist.txt | tail"
+alias duf="duf -hide special"
+alias dust="dust -r"
+alias psf="procs"
+alias lg="lazygit"
+alias jj="just"
+alias bench="hyperfine"
+alias dns="doggo"
+alias http="xh"
+alias yaml="yq"
+alias rga="rga --hidden"
+alias diff-syntax="difft"
 
 # check if im tmux
 if [[ -n $TMUX ]]; then
@@ -207,6 +218,16 @@ function fman() {
 
 }
 
+function ff() {
+    fd . "${1:-.}"
+}
+
+function cdf() {
+    local dir
+    dir=$(fd . "${1:-.}" -t d | fzf) || return
+    cd "$dir"
+}
+
 alias fzf-install="yay -Slq \
 	| fzf -m --preview 'yay -Si {1}'\
 	| xargs -ro yay -S"
@@ -215,4 +236,3 @@ alias fzf-remove="yay -Qeq \
 	| xargs -ro yay -Rs"
 
 alias showcerts="openssl s_client -showcerts -connect"
-

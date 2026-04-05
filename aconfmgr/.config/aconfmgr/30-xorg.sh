@@ -11,7 +11,6 @@ AddPackage xorg-setxkbmap # Set the keyboard using the X Keyboard Extension
 AddPackage xorg-smproxy # Allows X applications that do not support X11R6 session management to participate in an X11R6 session
 AddPackage xorg-x11perf # Simple X server performance benchmarker
 AddPackage xorg-xauth # X.Org authorization settings program
-AddPackage xorg-xbacklight # RandR-based backlight control application
 AddPackage xorg-xcmsdb # Device Color Characterization utility for X Color Management System
 AddPackage xorg-xcursorgen # Create an X cursor file from PNG images
 AddPackage xorg-xdpyinfo # Display information utility for X
@@ -39,23 +38,4 @@ AddPackage xorg-xvinfo # Prints out the capabilities of any video adaptors assoc
 AddPackage xorg-xwd # X Window System image dumping utility
 AddPackage xorg-xwininfo # Command-line utility to print information about windows on an X server
 AddPackage xorg-xwud # X Window System image undumping utility
-AddPackage xdotool # Command-line X11 automation tool
-AddPackage wmctrl # Control your EWMH compliant window manager from command line
-
-AddPackage arandr # Provide a simple visual front end for XRandR 1.2.
-
-AddPackage xclip # Command line interface to the X11 clipboard
-AddPackage xcolor # Lightweight color picker for X11
-
-AddPackage xterm # X Terminal Emulator
-AddPackage scrot # Simple command-line screenshot utility for X
-AddPackage polybar # A fast and easy-to-use status bar
-AddPackage dmenu # Generic menu for X
-
-
-AddPackage hsetroot # Tool which allows you to compose wallpapers ("root pixmaps") for X. Fork by Hyriand
-
-AddPackage i3-wm # Improved dynamic tiling window manager
-AddPackage i3status # Generates status bar to use with i3bar, dzen2 or xmobar
-AddPackage i3status-rust # Resourcefriendly and feature-rich replacement for i3status, written in pure Rust
 AddPackage xf86-input-libinput # None
