@@ -1,0 +1,48 @@
+# See https://wiki.hyprland.org/Configuring/Monitors/
+#
+# GPU layout note (2026-06-21):
+#   card1 symlink -> PCI 03:00.0 = AMD RX 7900 XTX (amdgpu)  <- primary renderer
+#   card0 symlink -> PCI 00:02.0 = Intel UHD 770 (i915)      <- iGPU, drives BenQ only
+# AMD listed first = AMD is the primary render device (correct).
+#
+# *** RDNA3 hard limit: 4 simultaneous display pipes on the AMD card. ***
+# Active AMD heads must stay <= 4. The two new Dells came in over an MST hub
+# and now enumerate as DP-5 / DP-6 (the old DP-1/DP-2 names are dead).
+# The TV (HDMI-A-3) software-mirror is DISABLED because it would be a 5th pipe
+# and steal the CRTC the second Dell needs. Plan: feed the TV from a Dell via a
+# hardware HDMI splitter (0 pipe cost) instead of a software mirror.
+env = WLR_DRM_DEVICES,$HOME/.config/hypr/card1:$HOME/.config/hypr/card0
+
+# --- AMD card0 (4 pipes) ---
+# Physical arrangement:
+#     [Dell DP-5]                      [BenQ HDMI-A-2]
+#     [Acer DP-4 ][Asus DP-3 ][Dell DP-6]
+# If the two Dells look swapped in real life, exchange DP-5 <-> DP-6 below.
+monitor=DP-4,preferred,0x1080,1          # Acer XG270HU   (bottom-left)
+monitor=DP-5,preferred,0x0,1             # Dell P2419H    (above Acer)
+monitor=DP-3,2560x1440@60,2560x1080,1    # ROG/Asus PG279Q (right of Acer; 144Hz panel, switch to highrr when ready)
+monitor=DP-6,preferred,5120x1080,1       # Dell P2419H    (right of Asus)
+
+# TV: software mirror disabled to stay within the 4-pipe budget.
+# Re-enable ONLY if you free a pipe (e.g. unplug a Dell), or replace with a
+# hardware splitter off DP-6 and delete this line entirely.
+monitor=HDMI-A-3,disable
+# monitor=HDMI-A-3, preferred, auto, 1, mirror, DP-6
+
+# --- Intel iGPU (BenQ) ---
+# Source of the cross-GPU copy overhead. Drop this line + unplug the BenQ to go
+# fully single-GPU and eliminate the mixed-GPU contention.
+monitor=HDMI-A-2,preferred,5120x0,1      # BenQ GL2460 (i915)
+
+# Dead connectors from the pre-MST layout, kept disabled so stray rules don't fire:
+monitor=DP-1,disable
+monitor=DP-2,disable
+
+workspace=1,monitor:DP-5
+workspace=2,monitor:DP-4
+workspace=4,monitor:DP-3
+workspace=3,monitor:DP-6
+workspace=8,monitor:HDMI-A-2
+
+# for xorg games to have correct default display
+exec-once = xrandr --output DP-3 --primary
