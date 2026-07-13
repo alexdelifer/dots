@@ -26,3 +26,4 @@ AddPackage pavucontrol # PulseAudio Volume Control
 CopyFile /etc/pipewire/media-session.d/alsa-monitor.conf
 CopyFile /etc/pipewire/media-session.d/bluez-monitor.conf
 CopyFile /etc/pipewire/media-session.d/media-session.conf
+CopyFile /etc/pipewire/pipewire.conf.d/99-quantum.conf
