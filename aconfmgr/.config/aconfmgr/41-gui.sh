@@ -19,6 +19,7 @@ AddPackage onlyoffice-bin # An office suite that combines text, spreadsheet and 
 AddPackage parsec-bin # Remotely connect to a gaming pc for a low latency remote computing experience
 AddPackage rdesktop # An open source client for Windows Remote Desktop Services
 AddPackage remmina # Remote desktop client written in GTK+
+AddPackage rustdesk-bin # Yet another remote desktop software, written in Rust. Works out of the box, no configuration required.
 AddPackage scrcpy # Display and control your Android device
 AddPackage terminator # Terminal emulator that supports tabs and grids
 AddPackage tigervnc # Suite of VNC servers and clients based on the VNC 4 branch of TightVNC
