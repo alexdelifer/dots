@@ -16,6 +16,7 @@ AddPackage nemo # Cinnamon file manager (Nautilus fork)
 
 AddPackage obsidian # A powerful knowledge base that works on top of a local folder of plain text Markdown files
 AddPackage onlyoffice-bin # An office suite that combines text, spreadsheet and presentation editors
+AddPackage typst # A markup-based typesetting system (CV build: ~/src/delifer-cv)
 AddPackage parsec-bin # Remotely connect to a gaming pc for a low latency remote computing experience
 AddPackage rdesktop # An open source client for Windows Remote Desktop Services
 AddPackage remmina # Remote desktop client written in GTK+
