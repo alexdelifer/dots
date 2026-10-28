@@ -34,8 +34,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 
 # AI / LLM tooling
-export ANTHROPIC_API_KEY=meridian   # dummy key — real auth via Meridian proxy (Claude Max OAuth)
-export ANTHROPIC_BASE_URL=http://127.0.0.1:3456
+# (Meridian proxy removed — using Claude Max OAuth directly via Claude Code)
+# No GitHub token in the environment: `gh` keeps its own login. For a tool that needs one:
+#   GITHUB_TOKEN=$(gh auth token) <cmd>
 
 # FASD
 export _Z_DATA=~/.fasd
