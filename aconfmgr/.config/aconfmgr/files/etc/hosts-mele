@@ -48,9 +48,9 @@
 10.10.10.6 truenas truenas.delifer.ca
 
 
-172.64.80.1 sonarr.delifer.ca radarr.delifer.ca plex.delifer.ca bazarr.delifer.ca org.delifer.ca
-
-172.64.80.1 delifer.ca
+# delifer.ca services resolve via DNS now (Pi-hole -> Traefik SSO edge .40 / Cloudflare).
+# Removed stale 172.64.80.1 CF pins (radarr/sonarr/bazarr/plex/org/apex) 2026-06-05 — all dead
+# origins, and the *.delifer.ca cert caused HTTP/2 coalescing that broke the internal services.
 10.210.49.57 ML350G-U767052
 
 10.201.110.121 srv-gitlab.zimmercas.com gitlab.zimmercas.com registry.zimmercas.com pages.zimmercas.com psi1.pages.zimmercas.com projects.pages.zimmercas.com gameofbones.pages.zimmercas.com athos.pages.zimmercas.com
