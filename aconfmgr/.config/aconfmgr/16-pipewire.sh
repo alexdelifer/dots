@@ -19,6 +19,7 @@ AddPackage wireplumber # Session / policy manager implementation for PipeWire
 
 AddPackage projectm # Music visualizer which uses 3D accelerated iterative image based rendering
 AddPackage projectm-pulseaudio # Music visualizer which uses 3D accelerated iterative image based rendering (pulseaudio)
+AddPackage --foreign lactea-bin # MilkDrop 2/3 + projectM-compatible visualizer (wgpu, PipeWire capture); presets in ~/.local/share/projectM
 AddPackage pulsemixer # CLI and curses mixer for pulseaudio
 AddPackage helvum # GTK patchbay for PipeWire
 AddPackage pavucontrol # PulseAudio Volume Control
