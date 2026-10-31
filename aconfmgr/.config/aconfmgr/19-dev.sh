@@ -39,6 +39,7 @@ AddPackage python-netifaces # Portable module to access network interface inform
 AddPackage gettext # GNU internationalization library
 AddPackage go # Core compiler tools for the Go programming language
 AddPackage --foreign shellcheck-bin # Shell script analysis tool (binary release, static)
+AddPackage gitleaks # Secret scanner for git repos and directories
 AddPackage openocd # Debugging, in-system programming and boundary-scan testing for embedded target devices
 AddPackage deno # JavaScript/TypeScript runtime
 AddPackage android-apktool # APK decompiler and recompiler
