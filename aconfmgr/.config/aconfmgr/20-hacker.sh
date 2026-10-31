@@ -123,6 +123,34 @@ AddPackage --foreign burpsuite-pro # An integrated platform for performing secur
 AddPackage python-frida # Dynamic instrumentation toolkit for Python
 AddPackage python-frida-tools # Frida CLI tools (frida, frida-ps, frida-trace, frida-discover)
 
+# Recon / enumeration
+AddPackage amass # In-depth attack surface mapping and asset discovery
+AddPackage rustscan # Fast port scanner
+AddPackage fierce # DNS reconnaissance tool
+AddPackage dnsenum # Multithreaded DNS enumeration
+AddPackage enum4linux # Enumerate SMB shares on Windows/Samba systems
+AddPackage gobuster # URI and DNS subdomain brute-forcer
+AddPackage wafw00f # Web Application Firewall detection
+AddPackage dirsearch # Web path scanner
+
+# Web testing
+AddPackage nikto # Web server scanner
+AddPackage wpscan # WordPress vulnerability scanner
+# netexec: uv-managed, NOT pacman. The AUR PyInstaller bundle ships broken
+# (ModuleNotFoundError: nxc.helpers.path). Install via:
+#   uv tool install "git+https://github.com/Pennyw0rth/NetExec" --python 3.12
+# Removed 2026-10-05.
+
+# Password / brute force
+AddPackage hydra # Online password brute-forcer
+AddPackage medusa # Parallel network login auditor
+
+# Cloud / container
+AddPackage trivy # Vulnerability scanner for containers, filesystems, and IaC
+
+# Forensics
+AddPackage volatility3 # Memory forensics framework
+
 CopyFile /etc/proxychains.conf
 CopyFile /etc/ettercap/etter.conf
 CopyFile /etc/dhcpd.conf
