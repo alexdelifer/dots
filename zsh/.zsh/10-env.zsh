@@ -64,7 +64,7 @@ setopt print_exit_value
 setopt no_flow_control
 unsetopt beep
 unsetopt bg_nice
-unsetopt clobber
+setopt clobber   # was: unsetopt clobber (disabled — no more > redirect errors)
 unsetopt hist_beep
 # unsetopt hup                  
 unsetopt ignore_eof

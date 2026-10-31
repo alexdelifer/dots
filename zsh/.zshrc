@@ -42,4 +42,4 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX=''
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
 . "$HOME/.cargo/env"
-PATH=$PATH:/home/alex/.local/bin
+PATH=$PATH:/home/alex/.local/bin:/home/alex/go/bin
