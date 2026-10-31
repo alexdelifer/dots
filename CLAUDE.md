@@ -6,6 +6,7 @@ Path: `~/dots` — path-stable, do not relocate.
 ## Repo Layout
 
 - **Stow packages**: each top-level directory (e.g. `zsh/`, `hyprland/`, `nvim/`) is a GNU Stow package symlinked into `~/`.
+- `opencode/` — OpenCode user-level customizations (skills, agents, commands, tools); stow with `--no-folding` because live `~/.config/opencode` also contains unmanaged runtime files.
 - **aconfmgr**: `aconfmgr/.config/aconfmgr/` — declarative system-level package and config management.
 - `Makefile` / `bootstrap.sh` / `install.sh` / `post-install.sh` — provisioning entrypoints.
 
@@ -108,4 +109,4 @@ Notes: `difftastic` is invoked as `difft`; `ripgrep-all` as `rga`.
 
 ## Change Rule
 
-If a task changes how this repo works (new module, new Stow package, provisioning change), update this file and the relevant `900 Misc/AI/SYSTEM_MAP.md` note in `~/Obsidian/DELIFER` in the same task.
+If a task changes how this repo works (new module, new Stow package, provisioning change), update this file and the relevant `🤖 AI/SYSTEM_MAP.md` note in `~/Obsidian/DELIFER` in the same task.
