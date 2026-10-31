@@ -1,0 +1,12 @@
+[Unit]
+Description=sched_ext userspace scheduler (scx_lavd)
+# Only starts on kernels with sched_ext (linux-cachyos); no-op on zen/stock
+ConditionPathIsDirectory=/sys/kernel/sched_ext
+
+[Service]
+ExecStart=/usr/bin/scx_lavd
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

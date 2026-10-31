@@ -1,0 +1,5 @@
+#!/bin/sh
+# Shadows /usr/bin/gamemoderun via /usr/local/bin PATH precedence so a single
+# Steam launch option — gamemoderun %command% — gets GameMode + MangoHud.
+# Managed by aconfmgr (60-game.sh). Bypass: use /usr/bin/gamemoderun directly.
+exec /usr/bin/mangohud /usr/bin/gamemoderun "$@"

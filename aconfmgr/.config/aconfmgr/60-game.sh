@@ -73,3 +73,11 @@ AddPackage --foreign pokemmo # MMO based on the Pokémon Universe
 AddPackage --foreign prismlauncher-qt5-bin # Minecraft launcher with ability to manage multiple instances
 AddPackage --foreign gcadapter-oc-dkms # Kernel module for overclocking the Nintendo Wii U/Mayflash GameCube adapter
 AddPackage --foreign steamtinkerlaunch-git # Wrapper script for Steam custom launch options
+
+# gamemoderun wrapper: single Steam launch option gets GameMode + MangoHud
+CopyFile /usr/local/bin/gamemoderun 755
+
+# sched_ext gaming scheduler (active only on linux-cachyos kernel)
+AddPackage scx-scheds # sched_ext schedulers and tools
+CopyFile /etc/systemd/system/scx.service
+CreateLink /etc/systemd/system/multi-user.target.wants/scx.service /etc/systemd/system/scx.service
