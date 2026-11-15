@@ -1,37 +1,14 @@
-#! /bin/bash
+#!/usr/bin/env bash
+# nvim: install binary + build deps if missing, then sync plugins headlessly.
+# lazy.nvim bootstraps itself; mason installs LSP servers on first real start.
 
-if [[ $(id -u) -gt 0 ]]; then
-	SUDO='sudo'
-else
-	SUDO=''
-fi
+case "$(uname -s)" in
+Darwin)
+	for p in neovim tree-sitter-cli; do brew list "$p" >/dev/null 2>&1 || brew install "$p"; done
+	;;
+Linux)
+	sudo pacman -S --needed neovim tree-sitter-cli
+	;;
+esac
 
-# install vim package
-if [[ $(uname) == 'Linux' ]]; then
-
-	if ! command -v nvim >/dev/null 2>&1; then
-		if [[ $(uname) =~ (.*)Debian(.*) ]]; then
-			$SUDO apt-get install -y neovim
-		elif [[ $(uname) =~ (.*)Ubuntu(.*) ]]; then
-			$SUDO apt-get install -y neovim
-		elif [[ $(uname) =~ (.*)Linux(.*) ]]; then
-			$SUDO pacman -S neovim
-		fi
-	fi
-
-elif [[ $(uname) == 'Darwin' ]] && ! brew list | grep -q vim; then
-	brew install vim
-fi
-
-# retrieve the Vundle submodule
-git submodule update --init nvim/.config/nvim/autoload
-
-# install vim plugins with Vundle
-if [[ $? -eq 0 ]]; then
-	# if either stdin or stdout is missing, redirect output
-	if [[ ! -t 0 || ! -t 1 ]]; then
-		nvim +PlugUpdate +qall &>/dev/null
-	else
-		nvim +PlugUpdate +qall
-	fi
-fi
+nvim --headless "+Lazy! sync" +qa >/dev/null 2>&1 || true

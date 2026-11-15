@@ -1,0 +1,34 @@
+# Atuin: shell history in SQLite, fuzzy search on Ctrl-R.
+# Local-only until you run `atuin register` / `atuin login` (E2E-encrypted sync).
+# Full option list: `atuin default-config`
+
+## search
+search_mode = "fuzzy"
+filter_mode = "global"
+filter_mode_shell_up_key_binding = "session"   # Up arrow is left to zsh (see 16-atuin.zsh)
+style = "compact"
+inline_height = 25
+show_preview = true
+show_help = true
+enter_accept = false        # Enter/Tab put the command on the line to edit, never run it blind
+keymap_mode = "emacs"
+
+## behaviour
+update_check = false
+secrets_filter = true       # don't record AWS/GitHub/Slack/Stripe tokens
+# Also drop anything that looks like it carries a password on the command line
+history_filter = [
+  "(?i)(password|passwd|secret|token)=\\S+",
+  "^\\s*export\\s+\\w*(KEY|TOKEN|SECRET|PASS)\\w*=",
+  "sshpass\\s+-p",
+]
+
+## sync (only active after login)
+auto_sync = true
+sync_frequency = "10m"
+
+[sync]
+records = true
+
+[theme]
+name = "night-owl"

@@ -1,45 +1,34 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# ______     ______     __  __     ______     ______    
-#/\___  \   /\  ___\   /\ \_\ \   /\  == \   /\  ___\   
-#\/_/  /__  \ \___  \  \ \  __ \  \ \  __<   \ \ \____  
-#  /\_____\  \/\_____\  \ \_\ \_\  \ \_\ \_\  \ \_____\ 
-#  \/_____/   \/_____/   \/_/\/_/   \/_/ /_/   \/_____/ 
-#                sourcer of .zsh/* 
+# ______     ______     __  __     ______     ______
+#/\___  \   /\  ___\   /\ \_\ \   /\  == \   /\  ___\
+#\/_/  /__  \ \___  \  \ \  __ \  \ \  __<   \ \ \____
+#  /\_____\  \/\_____\  \ \_\ \_\  \ \_\ \_\  \ \_____\
+#  \/_____/   \/_____/   \/_/\/_/   \/_/ /_/   \/_____/
+#                sourcer of .zsh/*
+#
+# Portable across macOS and Linux. OS-specific bits live in
+# ~/.zsh/05-darwin.zsh and ~/.zsh/05-linux.zsh (each returns early elsewhere).
+# Machine-local, untracked overrides go in ~/.zshrc.local.
 
 ZSH_DISABLE_COMPFIX=true
 GOPATH=~/.go
 
 for z in "$HOME"/.zsh/*.zsh; do
-        source "$z"
+	source "$z"
 done
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh
 
 # Source bw env if exists
-[[ ! -f ~/.bw ]] || source ~/.bw
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ -f ~/.bw ]] && source ~/.bw
 
 unset KITTY_SHELL_INTEGRATION
-ITERM_SHELL_INTEGRATION_INSTALLED=Yes
 
-POWERLEVEL9K_SHOW_RULER=false
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR=' '
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX=''
-POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX=''
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX=''
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+path=("$HOME/.dotnet/tools" $path)
 
-. "$HOME/.cargo/env"
-PATH=$PATH:/home/alex/.local/bin:/home/alex/go/bin
+# Claude Code profiles: pick a config dir per context
+alias claude-delifer="CLAUDE_CONFIG_DIR=$HOME/.claude-delifer claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+alias claude-solasec="CLAUDE_CONFIG_DIR=$HOME/.claude-solasec claude --allow-dangerously-skip-permissions --dangerously-skip-permissions"
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+true

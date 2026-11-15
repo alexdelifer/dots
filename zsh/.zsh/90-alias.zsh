@@ -9,35 +9,58 @@
 #alias nvim="em"
 alias vi="nvim"
 alias vim="nvim"
+alias v="nvim"
+alias vd="nvim -d"                    # diff two files
+
+# tmux: inside → session picker, outside → attach last session or start "main"
+function t() {
+	if [[ -n $TMUX ]]; then
+		~/.config/tmux/scripts/session-picker
+	elif tmux has-session 2>/dev/null; then
+		tmux attach
+	else
+		tmux new-session -s main
+	fi
+}
 
 alias pwsh="pwsh /nologo"
 
 alias cat="bat --style snip"
 alias c="cat"
-alias ls="eza -hF --color=auto"
-alias ll="eza -lahF --color=always --group-directories-first"
-alias l="eza -lahF --color=always --group-directories-first"
+alias ls="eza -hF --color=auto --icons=auto"
+alias ll="eza -lahF --color=always --icons=auto --git --group-directories-first"
+alias l="ll"
+alias lt="eza --tree --level=2 --icons=auto --git-ignore"
 alias lsl="eza -lhF --color=always --group-directories-first"
 
 alias ssh="TERM=xterm-256color ssh"
 alias ghetto-ssh="TERM=xterm ssh -oKexAlgorithms=+diffie-hellman-group1-sha1"
 
 # Sane Defaults :)
-alias rdp="xfreerdp /dynamic-resolution /h:800 /w:1280"
-alias hirdp="xfreerdp /dynamic-resolution /h:1600 /w:2560 /scale:180 /scale-desktop:200"
-alias fj="firejail --apparmor --env=LD_PRELOAD='/usr/lib/libhardened_malloc.so'"
-alias dig="dig +nocookie +noedns"
 alias watch="watch -c"
 alias cp="cp -r"
 alias scp="scp -r"
 alias mkdir="mkdir -p"
 alias grep='grep --color=auto'
-alias systemctl='sudo systemctl'
-alias userctl='/usr/bin/systemctl --user'
 alias openvpn='sudo openvpn'
 alias ovpn='openvpn'
-alias lsblk='lsblk -o NAME,PARTLABEL,RO,TYPE,SIZE,FSUSE%,MOUNTPOINT'
-alias kali='sudo arch-chroot /kali su - kali'
+
+# Local LLM
+alias ollama-start='OLLAMA_CONTEXT_LENGTH=32768 ollama serve &>/tmp/ollama.log & echo "Ollama started (PID $!)"'
+alias ollama-stop='pkill -f "ollama serve" && echo "Ollama stopped"'
+alias ollama-models='ollama list'
+alias oc='opencode'                        # OpenCode agent (code/pentest editing)
+alias goose-pentest='goose session'        # Goose agentic session
+
+function ollama-ctx {
+    # Show current num_ctx for a model: ollama-ctx qwen3:14b
+    ollama show "${1:-qwen25-14b-pentest}" --parameters | grep num_ctx
+}
+
+function ollama-pentest {
+    # Quick one-shot pentest query: ollama-pentest "explain this output: ..."
+    ollama run qwen25-14b-pentest "$@"
+}
 
 function batdiff {
     git diff --name-only --diff-filter=d | xargs bat --diff
@@ -169,7 +192,6 @@ alias f="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
 alias fe='$EDITOR $(find . -type f | f)'
 
 alias zt="sudo zerotier-cli"
-alias ztr='sudo systemctl restart zerotier-one'
 
 alias fsSL="curl -fsSL"
 alias mp="mpv --input-ipc-server=/tmp/mpvsocket"
@@ -179,11 +201,8 @@ alias r="whence -pm '*' | fzf | sh"
 # alias fuck='sudo $(fc -ln -1)'
 alias ag="ag --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
 alias tree='tree -CAFa -I "CVS|*.*.package|.svn|.git|.hg|node_modules|bower_components" --dirsfirst'
-alias pacman="sudo pacman"
 alias mutt="neomutt"
 alias lol="base64 </dev/urandom | lolcat"
-alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
-alias record="ffmpeg -f x11grab -s 3200x1800 -an -r 16 -loglevel quiet -i :0.0 -b:v 5M -y" #pass a filename
 
 alias juket="curl -fsSL https://0xde.ca/tlist.txt | tail"
 alias duf="duf -hide special"
@@ -200,7 +219,7 @@ alias diff-syntax="difft"
 
 # check if im tmux
 if [[ -n $TMUX ]]; then
-        alias fzf="fzf-tmux"
+        # (fzf widgets open as tmux popups via FZF_TMUX_OPTS in 15-fzf.zsh)
         alias tsad="printf '\033k┐(T_T)┌\033\\'"
         alias tshrug="printf '\033k┐(\`-\`)┌\033\\'"
         alias tlol="printf '\033k┐(^0^)┌\033\\'"
@@ -208,7 +227,6 @@ fi
 
 #alias ig="lftp ftp://install:weasel@ftp.installgentoo.com"
 
-export MANPATH=/usr/share/man
 function man-find() {
     f=$(fd . $MANPATH/man${1:-1} -t f -x echo {/.} | fzf) && man $f
 }
@@ -222,17 +240,21 @@ function ff() {
     fd . "${1:-.}"
 }
 
+# yazi file manager; quitting with `q` leaves you in the dir you browsed to
+# (`Q` quits without cd)
+function y() {
+	local tmp="$(mktemp -t yazi-cwd.XXXXXX)" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[[ -n $cwd && $cwd != $PWD ]] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
+
 function cdf() {
     local dir
     dir=$(fd . "${1:-.}" -t d | fzf) || return
     cd "$dir"
 }
 
-alias fzf-install="yay -Slq \
-	| fzf -m --preview 'yay -Si {1}'\
-	| xargs -ro yay -S"
-alias fzf-remove="yay -Qeq \
-	| fzf -m --preview 'yay -Qi {1}' \
-	| xargs -ro yay -Rs"
 
 alias showcerts="openssl s_client -showcerts -connect"

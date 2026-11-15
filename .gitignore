@@ -3,18 +3,6 @@
 /doom/.emacs.d/*
 /zsh/.zgen/*
 /zsh/.zplug/*
-/tmux/.tmux/plugins/*
-!/tmux/.tmux/plugins/tpm
-!/tmux/.tmux/plugins/tpm/*
-/nvim/.config/nvim/plugged/*
-/nvim/.vim/plugged/*
-/nvim/.vim/.netrwhist
-/nvim/.vim/undo/*
-/nvim/.vim/autoload/plug.vim.old
-/nvim/.config/nvim/plugged/*
-/nvim/.config/nvim/.netrwhist
-/nvim/.config/nvim/undo/*
-/nvim/.config/nvim/autoload/plug.vim.old
 *.swp
 *.bak
 *.old
@@ -25,3 +13,4 @@
 *.log
 **.uuid
 /zsh/.zsh/cache/
+.DS_Store

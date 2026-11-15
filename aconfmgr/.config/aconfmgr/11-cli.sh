@@ -10,6 +10,7 @@ AddPackage ansible-bender # Build container images using Ansible playbooks
 AddPackage ansible-lint # Checks playbooks for practices and behaviour that could potentially be improved.AddPackage aria2 # Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink
 AddPackage archiso # Tools for creating Arch Linux live and install iso images
 AddPackage atool # A script for managing file archives of various types
+AddPackage atuin # Magical shell history (zsh: 16-atuin.zsh)
 AddPackage autoconf # A GNU tool for automatically configuring source code
 AddPackage automake # A GNU tool for automatically creating Makefiles
 AddPackage autorandr # Auto-detect connected display hardware and load appropiate X11 setup using xrandr
@@ -43,11 +44,13 @@ AddPackage fd # Simple, fast and user-friendly alternative to find
 AddPackage figlet # A program for making large letters out of ordinary text
 AddPackage file # File type identification utility
 AddPackage findutils # GNU utilities to locate files
+AddPackage fzf # Command-line fuzzy finder (zsh: 15-fzf.zsh, fzf-tab)
 AddPackage fq # Tool, language and decoders for inspecting binary data
 AddPackage gawk # GNU version of awk
 AddPackage gcc # The GNU Compiler Collection - C and C++ frontends
 AddPackage git # the fast distributed version control system
 AddPackage git-lfs # Git extension for versioning large files
+AddPackage git-delta # Syntax-highlighting pager for git (config: delta stow package)
 AddPackage glab # Cli tool to help work seamlessly with GitLab from the command line
 AddPackage grep # A string search utility
 AddPackage gzip # GNU compression utility
@@ -111,6 +114,7 @@ AddPackage the_silver_searcher # Code searching tool similar to Ack, but faster
 AddPackage tmux # Terminal multiplexer
 AddPackage toilet # Free replacement for the FIGlet utility
 AddPackage tree # A directory listing program displaying a depth indented list of files
+AddPackage tree-sitter-cli # Builds nvim-treesitter parsers (main branch)
 AddPackage ueberzug # Command line util which allows to display images in combination with X11
 AddPackage upx # Extendable, high-performance executable packer for several executable formats
 AddPackage usbutils # A collection of USB tools to query connected USB devices
@@ -119,6 +123,7 @@ AddPackage w3m # Text-based Web browser as well as pager
 AddPackage wget # Network utility to retrieve files from the web
 AddPackage which # A utility to show the full path of commands
 AddPackage whois # Intelligent WHOIS client
+AddPackage yazi # Blazing fast terminal file manager (zsh: y wrapper)
 AddPackage yt-dlp # A youtube-dl fork with additional features and fixes
 AddPackage zsh # A very advanced and programmable command interpreter (shell) for UNIX
 AddPackage binutils # A set of programs to assemble and manipulate binary and object files

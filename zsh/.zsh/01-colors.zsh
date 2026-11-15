@@ -13,6 +13,10 @@ export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 [ -f /usr/bin/source-highlight-esc.sh ] && export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS='-R '
 
-eval $(dircolors -b $HOME/.dircolors)
+if (( $+commands[dircolors] )); then
+	eval $(dircolors -b $HOME/.dircolors)
+elif (( $+commands[gdircolors] )); then # macOS (brew coreutils)
+	eval $(gdircolors -b $HOME/.dircolors)
+fi
 
 export CLICOLOR=1

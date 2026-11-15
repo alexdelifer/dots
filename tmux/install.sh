@@ -1,28 +1,18 @@
-#! /bin/bash
-
-if [[ $(uname) == 'Darwin' ]]; then
-	# I don't use tmux on OSX
-	return
-fi
-
-if [[ $(id -u) -gt 0 ]]; then
-	SUDO='sudo'
-else
-	SUDO=''
-fi
+#!/usr/bin/env bash
+# tmux: install the binary if missing, then bootstrap tpm + plugins into
+# ~/.local/share/tmux/plugins (outside the repo). Portable: macOS + Arch.
 
 if ! command -v tmux >/dev/null 2>&1; then
-
-	# install tmux package
-	if [[ $(uname) == 'Linux' ]]; then
-		if [[ $(id -u) -gt 0 ]]; then
-			$SUDO pacman -S tmux
-		else
-			pacman -S tmux
-		fi
-	fi
+	case "$(uname -s)" in
+	Darwin) brew install tmux ;;
+	Linux)  sudo pacman -S --needed tmux ;;
+	esac
 fi
 
-nohup script -q -O /dev/null tmux -f tmux/.tmux.conf new-session \
-	"tmux run-shell tmux/.tmux/plugins/tpm/bindings/install_plugins" \
-	</dev/null >/dev/null 2>&1 & 
+TPM="$HOME/.local/share/tmux/plugins/tpm"
+mkdir -p "$HOME/tmux-logs"
+if [[ ! -d $TPM ]]; then
+	git clone --depth 1 https://github.com/tmux-plugins/tpm "$TPM"
+fi
+# install_plugins reads the plugin list from the stowed tmux.conf
+TMUX_PLUGIN_MANAGER_PATH="$HOME/.local/share/tmux/plugins/" "$TPM/bin/install_plugins" >/dev/null 2>&1 || true

@@ -6,31 +6,21 @@
 #
 #
 
-export VAGRANT_HOME=/games/Vagrant
+# OS-specific env lives in 05-darwin.zsh / 05-linux.zsh
 
-
-# Paths
-PATH=$PATH:~/bin
+# Paths (portable)
+typeset -U path fpath            # dedupe PATH/fpath entries
+path+=(~/bin ~/.local/bin ~/go/bin)
+[[ -f $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
 fpath=(~/.zsh/completion $fpath)
-
-# Fix TERM
-if [ "$TERM" = "xterm-termite" ]; then
-    export TERM=xterm-256color
-fi 
 
 # Enviroment Variables
 export EDITOR="nvim"
-export BROWSER=firefox
-export TERMINAL=foot
-export TERMINAL_COMMAND="foot -e"
 export PAGER=less
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# Fix Alacritty?
-#export MESA_LOADER_DRIVER_OVERRIDE=i965 # Iris is a buggy mess
-
-# QT Platform Theme
-export QT_QPA_PLATFORMTHEME=qt5ct
+export BAT_THEME=ansi            # follow the terminal palette (Night Owl)
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 
 # AI / LLM tooling
@@ -38,10 +28,17 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # No GitHub token in the environment: `gh` keeps its own login. For a tool that needs one:
 #   GITHUB_TOKEN=$(gh auth token) <cmd>
 
-# FASD
-export _Z_DATA=~/.fasd
-export FZF_DEFAULT_OPTS='--height 40% --reverse --exact'
-export FZF_CTRL_T_COMMAND='ag --hidden -g "" --nocolor'
+# Ollama — local LLM
+export OLLAMA_CONTEXT_LENGTH=32768          # override Ollama's default 2048 context
+export OLLAMA_HOST=http://127.0.0.1:11434  # keep on loopback only (CVE-2026-7482)
+
+# Goose — agentic loop frontend
+export GOOSE_PROVIDER=ollama
+export GOOSE_MODEL=qwen3:14b
+export GOOSE_TOOLSHIM=true      # fallback parser for models that emit prose tool calls
+export GOOSE_INPUT_LIMIT=32768
+
+# fzf config lives in 15-fzf.zsh
 
 # Modern shell helpers
 if command -v direnv >/dev/null 2>&1; then

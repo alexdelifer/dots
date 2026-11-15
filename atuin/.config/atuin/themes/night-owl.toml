@@ -1,0 +1,13 @@
+[theme]
+name = "night-owl"
+parent = "default"
+
+[colors]
+AlertInfo  = "#7fdbca"
+AlertWarn  = "#ecc48d"
+AlertError = "#ef5350"
+Annotation = "#637777"
+Base       = "#d6deeb"
+Guidance   = "#82aaff"
+Important  = "#c792ea"
+Title      = "#addb67"

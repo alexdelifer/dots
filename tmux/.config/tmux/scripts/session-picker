@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# prefix s: fuzzy-pick a tmux session to switch to, or a zoxide directory to
+# start a new session in (named after the folder). C-x kills the highlighted session.
+
+list() {
+	tmux list-sessions -F '#{?session_attached,●,○} #S' 2>/dev/null
+	if command -v zoxide >/dev/null 2>&1; then
+		zoxide query -l 2>/dev/null | head -100 | sed "s|^$HOME|~|; s|^|  |"
+	fi
+}
+
+preview='l={}; if [[ $l == [●○]* ]]; then tmux capture-pane -ep -t "${l:2}" 2>/dev/null; else d=${l:2}; eza --tree --level=1 --color=always --icons=always "${d/#\~/$HOME}" 2>/dev/null; fi'
+
+choice=$(list | fzf --reverse --no-sort --prompt='session Δ ' \
+	--header='enter: switch/create  C-x: kill session' \
+	--preview "$preview" --preview-window=right:55% \
+	--bind "ctrl-x:execute-silent(l={}; [[ \$l == [●○]* ]] && tmux kill-session -t \"\${l:2}\")+reload(bash -c '$(declare -f list); list')")
+[[ -z $choice ]] && exit 0
+
+if [[ $choice == [●○]* ]]; then
+	tmux switch-client -t "${choice:2}"
+else
+	dir=${choice:2}
+	dir=${dir/#\~/$HOME}
+	name=$(basename "$dir" | tr '.:' '__')
+	tmux has-session -t "=$name" 2>/dev/null || tmux new-session -ds "$name" -c "$dir"
+	tmux switch-client -t "$name"
+fi
