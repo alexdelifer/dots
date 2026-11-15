@@ -74,3 +74,4 @@ AddPackage texlive-music # TeX Live - Music packages
 AddPackage texlive-pictures # TeX Live - Graphics, pictures, diagrams
 AddPackage texlive-pstricks # TeX Live - PSTricks
 AddPackage texlive-publishers # TeX Live - Publisher styles, theses, etc.
+AddPackage zbar # QR/barcode reader (zbarimg)

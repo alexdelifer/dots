@@ -81,3 +81,4 @@ CopyFile /usr/local/bin/gamemoderun 755
 AddPackage scx-scheds # sched_ext schedulers and tools
 CopyFile /etc/systemd/system/scx.service
 CreateLink /etc/systemd/system/multi-user.target.wants/scx.service /etc/systemd/system/scx.service
+AddPackage azahar-git # 3DS emulator (chaotic-aur; 3dssh iterative testing)

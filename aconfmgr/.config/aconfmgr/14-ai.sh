@@ -6,4 +6,4 @@ CreateLink /etc/systemd/system/default.target.wants/ollama.service /etc/systemd/
 
 # AI coding tools
 AddPackage --foreign claude-code # Anthropic Claude CLI coding agent
-AddPackage opencode-desktop-bin # OpenCode desktop client
+AddPackage opencode # OpenCode coding agent
