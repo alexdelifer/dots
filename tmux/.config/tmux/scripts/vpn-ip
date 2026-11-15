@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Status-bar helper: IPv4 of the first VPN tunnel (OpenVPN/WireGuard/HTB tun0),
+# printed as "⇄ 10.10.14.3 ". Prints nothing when no tunnel is up.
+# Tailscale (100.64.0.0/10, tailscale0) is ignored: it's always on.
+
+case "$(uname -s)" in
+Darwin)
+	ip=$(ifconfig 2>/dev/null | awk '
+		/^[a-z]/ { iface = $1 }
+		/inet / && iface ~ /^(utun|tun|tap|wg|ppp|ipsec)/ {
+			split($2, o, ".")
+			if (!(o[1] == 100 && o[2] >= 64 && o[2] <= 127)) { print $2; exit }
+		}')
+	;;
+Linux)
+	ip=$(ip -4 -o addr show 2>/dev/null | awk '
+		$2 ~ /^(tun|tap|wg|ppp)/ { split($4, a, "/"); print a[1]; exit }')
+	;;
+esac
+
+[[ -n $ip ]] && printf '⇄ %s ' "$ip"
+exit 0

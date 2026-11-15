@@ -1,6 +1,0 @@
-[submodule "nvim/.config/nvim/autoload"]
-	path = nvim/.config/nvim/autoload
-	url = https://github.com/junegunn/vim-plug
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm

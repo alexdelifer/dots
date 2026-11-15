@@ -1,0 +1,39 @@
+# delta pager, Night Owl. XDG git config: read *before* ~/.gitconfig, so
+# per-machine identity/credentials in ~/.gitconfig still win. Portable.
+# Tips: `n`/`N` jump between files in a diff, `git diff | delta -s` side-by-side.
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[diff]
+	colorMoved = default
+
+[merge]
+	conflictStyle = zdiff3
+
+[delta]
+	navigate = true
+	line-numbers = true
+	hyperlinks = true
+	syntax-theme = ansi
+	file-style = bold "#82aaff"
+	file-decoration-style = "#5f7e97" ul
+	hunk-header-style = file line-number syntax
+	hunk-header-decoration-style = "#5f7e97" box
+	hunk-header-file-style = "#c792ea"
+	hunk-header-line-number-style = "#ecc48d"
+	minus-style = syntax "#3b1a24"
+	minus-emph-style = syntax "#6e2130"
+	plus-style = syntax "#15301f"
+	plus-emph-style = syntax "#24542f"
+	line-numbers-minus-style = "#ef5350"
+	line-numbers-plus-style = "#addb67"
+	line-numbers-zero-style = "#4b6479"
+	line-numbers-left-style = "#4b6479"
+	line-numbers-right-style = "#4b6479"
+	commit-decoration-style = "#c792ea" box
+	blame-palette = "#011627 #0b2942 #13344f"
+	map-styles = bold purple => syntax "#2a1f3d", bold cyan => syntax "#0f3340"

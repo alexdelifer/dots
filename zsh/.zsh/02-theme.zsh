@@ -1,12 +1,9 @@
-# Pure
-#export PURE_PROMPT_SYMBOL=Δ
-export PURE_PROMPT_SYMBOL="λ »"
-# Spaceship
-export SPACESHIP_VI_MODE_SHOW=false
+#  Prompt: Starship (config: ~/.config/starship.toml, stow package `starship`).
+#  Falls back to a plain Δ prompt if starship isn't installed yet.
 
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION="$PURE_PROMPT_SYMBOL"
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION="$PURE_PROMPT_SYMBOL"
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION="$PURE_PROMPT_SYMBOL"
-
-
-
+if (( $+commands[starship] )); then
+	eval "$(starship init zsh)"
+else
+	PROMPT='%F{blue}%~%f
+%(?.%F{magenta}.%F{red})Δ%f '
+fi

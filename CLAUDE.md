@@ -1,7 +1,42 @@
 # CLAUDE.md — dots repo
 
-This is the canonical dotfiles repo for Alex Delifer's Arch Linux / Hyprland workstation.
+This is the canonical dotfiles repo for Alex Delifer's Arch Linux / Hyprland workstation and macOS laptop.
 Path: `~/dots` — path-stable, do not relocate.
+
+## Portability (macOS + Linux)
+
+Shared config must work on both. Gate anything OS-specific:
+
+- zsh: OS-only env/aliases/functions go in `zsh/.zsh/05-darwin.zsh` or `zsh/.zsh/05-linux.zsh`; each starts with an `$OSTYPE` check and `return 0` elsewhere. They export `IS_MAC` / `IS_LINUX` and `CLIP_COPY` / `CLIP_PASTE` (pbcopy vs wl-copy) for use in shared fragments.
+- `zsh/.zprofile`: OS bits in a `case "$OSTYPE"` block (Homebrew `shellenv` on darwin).
+- Guard tool use with `(( $+commands[tool] ))` rather than assuming it is installed.
+- Machine-local, untracked overrides: `~/.zshrc.local`.
+- System packages: aconfmgr on Arch; Homebrew on macOS (not tracked yet).
+
+## Shell Stack
+
+- Plugin manager: zinit (`zsh/.zsh/00-zinit.zsh`). `compinit` runs exactly once, in `93-style.zsh`, followed by `fzf-tab`; autosuggestions and fast-syntax-highlighting load in turbo mode after it.
+- Prompt: Starship, config in the `starship` stow package (`~/.config/starship.toml`), Night Owl palette, `Δ` prompt char. `.p10k.zsh` is legacy and no longer sourced.
+- fzf: `zsh/.zsh/15-fzf.zsh` (`fzf --zsh` bindings, fd sources, bat/eza previews, Night Owl colors). Owns Ctrl-T and Alt-C.
+- atuin: `zsh/.zsh/16-atuin.zsh` owns Ctrl-R (Up arrow stays zsh prefix search). Config in the `atuin` stow package; `ATUIN_CONFIG_DIR` points there because newer atuin defaults to `~/.atuin`. History DB stays in `~/.atuin/data` (untracked). Sync is off until `atuin login`.
+- yazi: `y` wrapper in `90-alias.zsh` (cd to last dir on quit).
+
+## Editor + Multiplexer
+
+- **nvim** (`nvim/.config/nvim/`): Lua, lazy.nvim, Night Owl (`oxfist/night-owl.nvim`, transparent bg). Layout: `lua/config/{options,keymaps,autocmds,lazy}.lua`, `lua/plugins/{ui,editor,coding,hacker}.lua`. `lazy-lock.json` is committed (pinned plugin versions; update with `:Lazy update` then commit the lockfile). LSP: mason + nvim-lspconfig with `vim.lsp.config`/automatic enable; servers listed in `coding.lua`. Treesitter is the `main` branch and needs `tree-sitter-cli`. Finder is fzf-lua (shares FZF_DEFAULT_OPTS colours). Use `\u{XXXX}` escapes for Nerd Font icons in Lua files (raw private-use glyphs get stripped by some editors/tools).
+- **tmux** (`tmux/.config/tmux/`): XDG config, prefix `C-a`, Night Owl status bar at top, helper scripts in `scripts/` (`session-picker`, `vpn-ip`). tpm + plugins live in `~/.local/share/tmux/plugins` (outside the repo, bootstrapped by the config or `tmux/install.sh`). Pane logs go to `~/tmux-logs`.
+- zsh glue: `t` (tmux attach/picker), `v` (nvim); inside tmux, fzf widgets and fzf-tab open as popups (`15-fzf.zsh`).
+- Stow these with `--ignore=install.sh` when stowing by hand (the Makefile/installer already does).
+
+## Other Stow Packages (cross-platform)
+
+| Package | Target | Notes |
+|---------|--------|-------|
+| `starship` | `~/.config/starship.toml` | prompt |
+| `atuin` | `~/.config/atuin/` | history search + Night Owl theme |
+| `delta` | `~/.config/git/config` | git pager; XDG git config so per-machine `~/.gitconfig` (identity, creds) still wins. On macOS the `git` package is not stowed. |
+| `ghostty` | `~/.config/ghostty/config.ghostty` | macOS terminal; the `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty` file must stay empty (it loads last and overrides) |
+| `brew` | `~/.Brewfile` | macOS packages, `brew bundle --global` |
 
 ## Repo Layout
 
