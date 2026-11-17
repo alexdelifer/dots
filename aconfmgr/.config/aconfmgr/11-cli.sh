@@ -60,7 +60,6 @@ AddPackage httpie # human-friendly CLI HTTP client for the API era
 AddPackage iotop # View I/O usage of processes
 AddPackage iperf3 # TCP, UDP, and SCTP network bandwidth measurement tool
 AddPackage iproute2 # IP Routing Utilities
-AddPackage iptables-nft # Linux kernel packet control tool (using nft interface)
 AddPackage iputils # Network monitoring tools, including ping
 AddPackage ipython # Enhanced Interactive Python shell
 AddPackage lftp # Sophisticated command line based FTP client
@@ -177,3 +176,17 @@ AddPackage dtrx # Intelligent archive extractor
 AddPackage zk # Plain text note-taking assistant (Zettelkasten)
 AddPackage marksman # Markdown language server
 AddPackage markdown-oxide # Markdown language server (PKM-oriented)
+
+# synced from mele 2026-11-17
+AddPackage age # A simple, modern and secure file encryption tool
+AddPackage bc # An arbitrary precision calculator language
+AddPackage busybox # Utilities for rescue and embedded systems
+AddPackage github-cli # The GitHub CLI
+AddPackage parallel # A shell tool for executing jobs in parallel
+AddPackage zip # Compressor/archiver for creating and modifying zipfiles
+AddPackage sops # Editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats
+AddPackage minio-client # Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage
+AddPackage pandoc-cli # Conversion between documentation formats
+
+AddPackage --foreign megatools # CLI for MEGA
+AddPackage --foreign dtrx # An intelligent archive extraction tool

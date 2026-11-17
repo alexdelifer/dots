@@ -44,7 +44,6 @@ AddPackage openocd # Debugging, in-system programming and boundary-scan testing 
 AddPackage deno # JavaScript/TypeScript runtime
 AddPackage android-apktool # APK decompiler and recompiler
 AddPackage android-sdk-build-tools # Android SDK build tools (apksigner, aapt, zipalign)
-AddPackage dotnet-runtime-9.0 # The .NET 9 runtime
 
 # Java
 AddPackage gradle # Powerful build system for the JVM
@@ -56,7 +55,6 @@ AddPackage jre8-openjdk # OpenJDK Java 8 full runtime environment
 AddPackage jre8-openjdk-headless # OpenJDK Java 8 headless runtime environment
 
 # QEMU
-AddPackage qemu-block-gluster # QEMU Gluster block driver
 AddPackage qemu-block-iscsi # QEMU iSCSI block driver
 AddPackage qemu-emulators-full # All QEMU user mode and system emulators
 
@@ -75,3 +73,13 @@ AddPackage texlive-pictures # TeX Live - Graphics, pictures, diagrams
 AddPackage texlive-pstricks # TeX Live - PSTricks
 AddPackage texlive-publishers # TeX Live - Publisher styles, theses, etc.
 AddPackage zbar # QR/barcode reader (zbarimg)
+
+# synced from mele 2026-11-17
+AddPackage meson # High productivity build system
+AddPackage hyprwayland-scanner # A Hyprland implementation of wayland-scanner, in and for C++
+AddPackage valkey # An in-memory database that persists on disk
+AddPackage aarch64-linux-gnu-glibc # GNU C Library ARM64 target
+AddPackage python-websockets # Python implementation of the WebSocket Protocol (RFC 6455)
+AddPackage shellcheck-bin # Shell script analysis tool (binary release, static)
+
+AddPackage --foreign python-pyproject-parser # Parser for pyproject.toml

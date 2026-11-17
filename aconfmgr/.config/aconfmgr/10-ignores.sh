@@ -33,7 +33,6 @@ IgnorePath '/etc/passwd-'
 IgnorePath '/etc/zfs/*'
 IgnorePath '/etc/systemd/system/zfs-*'
 IgnorePath '/etc/X11/*'
-#IgnorePath '/etc/pacman.d/gnupg/*'
 IgnorePath '/etc/pulse/*'
 IgnorePath '/etc/NX/*'
 IgnorePath '/etc/vmware/*'
@@ -96,12 +95,6 @@ IgnorePath '/etc/ipsec.secrets'
 IgnorePath '/lost+found'
 IgnorePath 'mnt_uefi'
 
-IgnorePath /etc/pacman.d/gnupg/S.dirmngr
-IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.browser
-IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.extra
-IgnorePath /etc/pacman.d/gnupg/S.gpg-agent.ssh
-IgnorePath /etc/pacman.d/gnupg/S.gpg-agent
-IgnorePath /etc/pacman.d/gnupg/S.keyboxd
 
 IgnorePath /etc/hostname
 
@@ -164,3 +157,18 @@ IgnorePath '**/fstab.bak*'
 IgnorePath '/etc/audit/plugins.d'
 IgnorePath '/etc/audit/plugins.d/*'
 
+
+# Per-machine state: never sync between hosts
+IgnorePath '/etc/pacman.d/gnupg'
+IgnorePath '/etc/pacman.d/gnupg/*'
+IgnorePath '/etc/hosts'          # written per-host by ~/.local/bin/tailnet-hosts
+IgnorePath '/etc/hosts.*'
+IgnorePath '/etc/opencode/*'     # secrets (API keys) - never commit
+IgnorePath '/etc/opencode'
+IgnorePath '/etc/sudoers.d/10-*' # bootstrap NOPASSWD drop-ins; %wheel rule in /etc/sudoers covers it
+IgnorePath '**/*.bak*'
+IgnorePath '**/*-backup'
+IgnorePath '/usr/include/*'
+IgnorePath '/etc/tpm2-tss/*'
+IgnorePath '/etc/kernel/*'       # kernel cmdline (UKI/limine) is per-host
+IgnorePath '/etc/sddm.conf.d/*'

@@ -17,13 +17,8 @@ CopyFile /etc/authselect/postlogin
 CopyFile /etc/authselect/smartcard-auth
 CopyFile /etc/authselect/system-auth
 
-CreateLink /etc/pam.d/fingerprint-auth /etc/authselect/fingerprint-auth
 CopyFile /etc/pam.d/login
 CopyFile /etc/pam.d/passwd
-CreateLink /etc/pam.d/password-auth /etc/authselect/password-auth
-CreateLink /etc/pam.d/postlogin /etc/authselect/postlogin
-CreateLink /etc/pam.d/smartcard-auth /etc/authselect/smartcard-auth
-CreateLink /etc/pam.d/system-auth /etc/authselect/system-auth
 
 CopyFile /etc/security/limits.conf
 CopyFile /etc/security/limits.d/01-coredump.conf

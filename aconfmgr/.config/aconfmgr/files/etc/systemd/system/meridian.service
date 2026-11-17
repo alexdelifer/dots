@@ -1,0 +1,20 @@
+[Unit]
+Description=Meridian Claude Max proxy
+After=network.target
+Before=opencode.service
+
+[Service]
+Type=simple
+User=alex
+Group=users
+ExecStart=/home/alex/.npm-global/bin/meridian
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/alex
+Environment=XDG_CONFIG_HOME=/home/alex/.config
+Environment=XDG_DATA_HOME=/home/alex/.local/share
+Environment=XDG_CACHE_HOME=/home/alex/.cache
+Environment=PATH=/home/alex/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=multi-user.target

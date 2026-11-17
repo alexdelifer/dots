@@ -70,15 +70,25 @@ AddPackage --foreign slippi-launcher # The way to play Slippi Online and watch r
 AddPackage --foreign rimpy-bin # Mod manager for Rimworld game
 AddPackage --foreign runelite # Open source Old School RuneScape client.
 AddPackage --foreign pokemmo # MMO based on the Pokémon Universe
-AddPackage --foreign prismlauncher-qt5-bin # Minecraft launcher with ability to manage multiple instances
 AddPackage --foreign gcadapter-oc-dkms # Kernel module for overclocking the Nintendo Wii U/Mayflash GameCube adapter
 AddPackage --foreign steamtinkerlaunch-git # Wrapper script for Steam custom launch options
 
 # gamemoderun wrapper: single Steam launch option gets GameMode + MangoHud
-CopyFile /usr/local/bin/gamemoderun 755
 
 # sched_ext gaming scheduler (active only on linux-cachyos kernel)
 AddPackage scx-scheds # sched_ext schedulers and tools
+AddPackage azahar-git # 3DS emulator (chaotic-aur; 3dssh iterative testing)
+
+# synced from mele 2026-11-17
+AddPackage gamescope # SteamOS session compositing window manager
+AddPackage prismlauncher # Minecraft launcher with ability to manage multiple instances
+AddPackage proton-cachyos-slr # A compatibility tool for Steam Play based on Wine and additional components, experimental branch with extra CachyOS flavour (Steam Linux Runtime build)
+AddPackage protontricks # Run Winetricks commands for Steam Play/Proton games among other common Wine features
+AddPackage winetricks # Script to install various redistributable runtime libraries in Wine.
+AddPackage lib32-attr # Extended attribute support library for ACL support (32-bit)
+
+AddPackage --foreign lib32-libwebp # WebP library (32-bit)
+AddPackage --foreign lib32-sdl2-compat # An SDL2 compatibility layer that uses SDL3 behind the scenes - 32-bit
+AddPackage --foreign libretro-bsnes2014 # Super Nintendo Entertainment System cores
 CopyFile /etc/systemd/system/scx.service
 CreateLink /etc/systemd/system/multi-user.target.wants/scx.service /etc/systemd/system/scx.service
-AddPackage azahar-git # 3DS emulator (chaotic-aur; 3dssh iterative testing)

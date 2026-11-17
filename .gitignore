@@ -14,3 +14,4 @@
 **.uuid
 /zsh/.zsh/cache/
 .DS_Store
+/hyprland/.config/hypr/hardware.d/host.conf

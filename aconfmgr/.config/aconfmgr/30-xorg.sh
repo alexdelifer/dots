@@ -39,3 +39,21 @@ AddPackage xorg-xwd # X Window System image dumping utility
 AddPackage xorg-xwininfo # Command-line utility to print information about windows on an X server
 AddPackage xorg-xwud # X Window System image undumping utility
 AddPackage xf86-input-libinput # None
+
+# synced from mele 2026-11-17
+AddPackage arandr # Provide a simple visual front end for XRandR 1.2.
+AddPackage dmenu # Generic menu for X
+AddPackage hsetroot # Tool which allows you to compose wallpapers ("root pixmaps") for X. Fork by Hyriand
+AddPackage i3-wm # Improved dynamic tiling window manager
+AddPackage i3status # Generates status bar to use with i3bar, dzen2 or xmobar
+AddPackage i3status-rust # Resourcefriendly and feature-rich replacement for i3status, written in pure Rust
+AddPackage maim # Utility to take a screenshot using imlib2
+AddPackage polybar # A fast and easy-to-use status bar
+AddPackage scrot # Simple command-line screenshot utility for X
+AddPackage slop # Utility to query the user for a selection and print the region to stdout
+AddPackage wmctrl # Control your EWMH compliant window manager from command line
+AddPackage xclip # Command line interface to the X11 clipboard
+AddPackage xcolor # Lightweight color picker for X11
+AddPackage xdotool # Command-line X11 automation tool
+AddPackage xorg-xbacklight # RandR-based backlight control application
+AddPackage xterm # X Terminal Emulator

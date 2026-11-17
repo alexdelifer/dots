@@ -113,7 +113,6 @@ AddPackage rdesktop-brute # It connects to windows terminal servers - Bruteforce
 AddPackage ubertooth # A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only.
 
 AddPackage --foreign nessus # Nessus vulnerability scanner
-AddPackage --foreign rtl88xxau-aircrack-dkms-git # Aircrack-ng kernel module for Realtek 88XXau (USB adapters only) network cards (8811au, 8812au and 8821au chipsets) with monitor mode and injection support
 
 AddPackage --foreign ruby-evil-winrm # Evil-WinRM
 AddPackage --foreign rockyou # The popular "rockyou" password list from OWASP SecLists project
@@ -154,3 +153,15 @@ AddPackage volatility3 # Memory forensics framework
 CopyFile /etc/proxychains.conf
 CopyFile /etc/ettercap/etter.conf
 CopyFile /etc/dhcpd.conf
+
+# synced from mele 2026-11-17
+AddPackage arjun # HTTP parameter discovery suite.
+AddPackage bloodhound-python # Python data collector for Bloodhound legcacy (v4)
+AddPackage certipy # Active Directory Certificate Services enumeration and abuse.
+AddPackage dnsrecon # Python script for enumeration of hosts, subdomains and emails from a given domain using google.
+AddPackage exploitdb # Offensive Security’s Exploit Database Archive
+AddPackage oscanner # An Oracle assessment framework developed in Java.
+AddPackage tnscmd # A lame tool to prod the oracle tnslsnr process (1521/tcp).
+
+AddPackage --foreign ldid # Put real or fake signatures in Darwin binaries - Procursus fork
+AddPackage --foreign uefitool-git # UEFI firmware image viewer and editor and utilities

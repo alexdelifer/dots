@@ -1,0 +1,23 @@
+[Unit]
+Description=OpenCode Web Server
+Documentation=https://opencode.ai/docs
+After=network.target meridian.service
+Requires=meridian.service
+
+[Service]
+Type=simple
+User=alex
+Group=users
+WorkingDirectory=/home/alex
+EnvironmentFile=/etc/opencode/opencode.env
+ExecStart=/usr/bin/opencode serve --port 3000 --hostname 0.0.0.0 --print-logs
+Restart=on-failure
+RestartSec=5
+# Give alex's environment a chance to be useful
+Environment=HOME=/home/alex
+Environment=XDG_CONFIG_HOME=/home/alex/.config
+Environment=XDG_DATA_HOME=/home/alex/.local/share
+Environment=XDG_CACHE_HOME=/home/alex/.cache
+
+[Install]
+WantedBy=multi-user.target

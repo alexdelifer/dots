@@ -13,7 +13,6 @@ AddPackage --foreign hyprland-contrib # Community scripts for Hyprland (includes
 AddPackage greetd # Generic greeter daemon
 AddPackage greetd-gtkgreet # GTK based greeter for greetd
 AddPackage greetd-tuigreet # A console UI greeter for greetd
-CopyFile /etc/greetd/config.toml
 
 AddPackage foot # Fast, lightweight, and minimalistic Wayland terminal emulator
 AddPackage alacritty # A cross-platform, GPU-accelerated terminal emulator
@@ -60,3 +59,22 @@ AddPackage xdg-desktop-portal-gtk # A backend implementation for xdg-desktop-por
 AddPackage xdg-desktop-portal-hyprland # xdg-desktop-portal backend for hyprland
 
 AddPackage --foreign xwaylandvideobridge # Utility to allow streaming Wayland windows to X applications
+
+# synced from mele 2026-11-17
+AddPackage cage # A kiosk compositor for Wayland
+AddPackage sway # Tiling Wayland compositor and replacement for the i3 window manager
+AddPackage sway-audio-idle-inhibit-git # Prevents swayidle from sleeping while any application is outputting or receiving audio
+AddPackage swaybg # Wallpaper tool for Wayland compositors
+AddPackage swayidle # Idle management daemon for Wayland
+AddPackage swayimg # A lightweight image viewer for Wayland display servers
+AddPackage swaylock # Screen locker for Wayland
+AddPackage swayr # Swayr is a window switcher (and more) for sway
+AddPackage wofi # launcher for wlroots-based wayland compositors
+
+AddPackage --foreign wofi-calc # A simple calculator for wofi, inspired in rofi-calc.
+AddPackage --foreign wofi-emoji # Emoji picker for Wayland using wofi and wtype
+AddPackage --foreign flashfocus # Simple focus animations for tiling window managers
+
+# Greeter: greetd + tuigreet on every host (replaces tty1 login)
+CopyFile /etc/greetd/config.toml
+CreateLink /etc/systemd/system/display-manager.service /usr/lib/systemd/system/greetd.service

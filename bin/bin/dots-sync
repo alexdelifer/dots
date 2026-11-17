@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# dots-sync: bring this Linux box in line with ~/dots (shared by mele, p14s, degen).
+#   dots-sync            pull + stow user config + plugins
+#   dots-sync --system   ...and aconfmgr apply (packages + /etc), asks before acting
+#   dots-sync --system --yes   same, non-interactive
+set -Eeuo pipefail
+DOTS="$HOME/dots"
+HOST=$(cat /etc/hostname 2>/dev/null || hostname)
+SYSTEM=0; YES=()
+for a in "$@"; do case $a in
+    --system) SYSTEM=1 ;;
+    --yes|-y) YES=(--yes) ;;
+    -h|--help) sed -n '2,6p' "$0"; exit 0 ;;
+    *) echo "unknown arg: $a" >&2; exit 1 ;;
+esac; done
+
+say(){ printf '\e[1;35mΔ\e[0m \e[1m%s\e[0m\n' "$*"; }
+
+# Same stow set everywhere; mele adds its gaming bits.
+PKGS=(aconfmgr alacritty atuin bin delta figlet foot git hyprland icons mako nvim rofi starship terminfo tmux waybar zsh)
+[[ $HOST == mele ]] && PKGS+=(gamemode mangohud)
+
+say "pull ($HOST)"
+git -C "$DOTS" pull --ff-only --quiet || say "pull skipped (local changes or offline)"
+
+say "stow: ${PKGS[*]}"
+stow -d "$DOTS" -t "$HOME" --ignore=install.sh --ignore='\.bak' -R "${PKGS[@]}"
+
+# Hyprland per-host monitor/input file
+hyprhw="$DOTS/hyprland/.config/hypr/hardware.d"
+if [[ -f $hyprhw/hosts/$HOST.conf ]]; then
+    ln -sfn "hosts/$HOST.conf" "$hyprhw/host.conf"
+else
+    say "no hyprland hosts/$HOST.conf - using shared defaults"
+    [[ -e $hyprhw/host.conf ]] || : > "$hyprhw/host.conf"
+fi
+
+# Plugins (idempotent)
+if command -v nvim >/dev/null; then
+    say "nvim plugins"; nvim --headless "+Lazy! restore" +qa >/dev/null 2>&1 || true
+fi
+tpm="$HOME/.local/share/tmux/plugins/tpm"
+if command -v tmux >/dev/null; then
+    [[ -d $tpm ]] || git clone -q --depth 1 https://github.com/tmux-plugins/tpm "$tpm"
+    say "tmux plugins"; TMUX_PLUGIN_MANAGER_PATH="$HOME/.local/share/tmux/plugins/" "$tpm/bin/install_plugins" >/dev/null || true
+fi
+[[ $(getent passwd "$USER" | cut -d: -f7) == */zsh ]] || say "login shell is not zsh: run  chsh -s /usr/bin/zsh"
+
+if (( SYSTEM )); then
+    say "aconfmgr apply"
+    aconfmgr --skip-checksums "${YES[@]}" apply
+fi
+say "done"

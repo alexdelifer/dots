@@ -1,0 +1,3 @@
+# Lovense HID dongle (1a86:e429) — let dialout group read/write the hidraw node
+# so intiface-engine can run as a normal user without root.
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="e429", MODE="0660", GROUP="dialout", TAG+="uaccess"

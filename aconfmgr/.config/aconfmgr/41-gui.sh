@@ -40,7 +40,6 @@ AddPackage mpv-shim-default-shaders # Preconfigured set of MPV shaders and confi
 AddPackage openrgb # Open source RGB lighting control that doesn't depend on manufacturer software
 AddPackage sqlitebrowser # A light GUI editor for SQLite databases, built on top of Qt
 AddPackage syncthing-gtk # GTK3 based GUI and notification area icon for Syncthing.
-AddPackage freerdp2 # Free implementation of the Remote Desktop Protocol (RDP)
 
 AddPackage simple-scan # Simple scanning utility
 
@@ -62,3 +61,18 @@ AddPackage obs-vkcapture-git # OBS Linux Vulkan/OpenGL game capture
 AddPackage --foreign obs-pipewire-audio-capture-bin # Audio device and application capture for OBS Studio using PipeWire
 AddPackage v4l2loopback-dkms # v4l2-loopback device – module sources
 AddPackage v4l2loopback-utils # v4l2-loopback device – utilities only
+
+# synced from mele 2026-11-17
+AddPackage anydesk-bin # The Fast Remote Desktop Application
+AddPackage digikam # An advanced digital photo management application
+AddPackage kdeconnect # Adds communication between KDE and your smartphone
+AddPackage krita # Edit and paint images
+AddPackage spotify # A proprietary music streaming service
+AddPackage vapoursynth-plugin-mvtools # MVTools plugin for VapourSynth
+
+AddPackage --foreign harbor-stremio-bin # A Stremio client built for adventure (binary release)
+AddPackage --foreign tsukimi-git # A simple third-party Emby client
+AddPackage --foreign intiface-central-bin # Frontend application for the Buttplug Sex Toy Control Library
+AddPackage --foreign cheese # Take photos and videos with your webcam, with fun graphical effects
+AddPackage --foreign icaclient # Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)
+AddPackage --foreign vapoursynth-plugin-rife-ncnn-vulkan # Plugin for Vapoursynth: Real-Time Intermediate Flow Estimation for Video Frame Interpolation

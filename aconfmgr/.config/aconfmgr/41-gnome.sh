@@ -1,7 +1,6 @@
 CheckConfig gnome || return 0
 
 AddPackage gdm # Display manager and login screen
-CopyFile /etc/gdm/custom.conf
 
 AddPackage gnome-backgrounds # Background images and data for GNOME
 AddPackage gnome-calculator # GNOME Scientific calculator

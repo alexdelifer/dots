@@ -36,29 +36,41 @@ if lspci | grep -qi "VGA.*AMD"; then
     DeliferPrint "AMD GPU detected"
     AddPackage xf86-video-amdgpu # X.org amdgpu video driver
     AddPackage lib32-vulkan-radeon # Open-source Vulkan driver for AMD GPUs - 32-bit
-    AddPackage opencl-amd # ROCm components repackaged from AMD's Ubuntu releases (ROCr runtime, ROCm runtime, HIP runtime) - This package is intended to work along with the free amdgpu stack.
     AddPackage rocm-hip-sdk # Develop applications using HIP and libraries for AMD platforms
     AddPackage vulkan-radeon # Open-source Vulkan driver for AMD GPUs
     AddPackage radeontop # View GPU utilization for total activity percent and individual blocks
     AddPackage python-pytorch-opt-rocm # Tensors and Dynamic neural networks in Python with strong GPU acceleration (with ROCm and AVX2 CPU optimizations)
 
     AddPackage --foreign amd-vulkan-prefixes # Select needed vulkan implementation with vk_radv, vk_amdvlk or vk_pro prefix
-    AddPackage --foreign zluda # A drop-in replacement for CUDA on non-NVIDIA GPUs
+    AddPackage zluda # A drop-in replacement for CUDA on non-NVIDIA GPUs
+    AddPackage rocm-hip-runtime # Packages to run HIP applications on the AMD platform
+    AddPackage rocm-language-runtime # ROCm runtime
+    AddPackage rocm-opencl-runtime # OpenCL implementation for AMD
+    AddPackage rocminfo # ROCm Application for Reporting System Info
+    AddPackage corectrl # Control AMD GPU and CPU parameters
 
 fi
 
-# NVIDIA GPU
-if lspci | grep -qi "VGA.*NVIDIA"; then
+# NVIDIA GPU (laptops show it as "3D controller", desktops as "VGA")
+# The kernel module package is per-host (95-hosts.sh): nvidia-open-dkms on Arch,
+# linux-cachyos-nvidia-open on CachyOS. Userland is shared here.
+if lspci | grep -qiE "(VGA|3D controller).*NVIDIA"; then
     DeliferPrint "NVIDIA GPU detected"
-    AddPackage cuda # NVIDIA's GPU programming toolkit
-    AddPackage nvidia-dkms # NVIDIA kernel modules - module sources
+    HAS_NVIDIA=1
+    AddPackage nvidia-utils # NVIDIA drivers utilities
+    AddPackage lib32-nvidia-utils # NVIDIA drivers utilities (32-bit)
+    AddPackage nvidia-settings # Tool for configuring the NVIDIA graphics driver
+    AddPackage nvidia-prime # NVIDIA Prime Render Offload configuration and utilities
+    AddPackage libva-nvidia-driver # VA-API implementation that uses NVDEC as a backend
+    AddPackage opencl-nvidia # OpenCL implemention for NVIDIA
     AddPackage switcheroo-control # D-Bus service to check the availability of dual-GPU
+    CheckConfig ai >/dev/null && AddPackage cuda # NVIDIA's GPU programming toolkit
     CreateLink /etc/systemd/system/graphical.target.wants/switcheroo-control.service /usr/lib/systemd/system/switcheroo-control.service
-    CreateLink /etc/systemd/system/multi-user.target.wants/nvidia-persistenced.service /usr/lib/systemd/system/nvidia-persistenced.service
     CreateLink /etc/systemd/system/systemd-hibernate.service.wants/nvidia-hibernate.service /usr/lib/systemd/system/nvidia-hibernate.service
     CreateLink /etc/systemd/system/systemd-hibernate.service.wants/nvidia-resume.service /usr/lib/systemd/system/nvidia-resume.service
     CreateLink /etc/systemd/system/systemd-suspend.service.wants/nvidia-resume.service /usr/lib/systemd/system/nvidia-resume.service
     CreateLink /etc/systemd/system/systemd-suspend.service.wants/nvidia-suspend.service /usr/lib/systemd/system/nvidia-suspend.service
+    CopyFile /etc/modprobe.d/nvidia.conf
 fi
 
 # Bluetooth support
@@ -69,6 +81,7 @@ if [[ -n "$(ls /sys/class/bluetooth 2>/dev/null)" ]]; then
     AddPackage bluez-hid2hci # Put HID proxying bluetooth HCI's into HCI mode
     AddPackage bluez-tools # A set of tools to manage Bluetooth devices for Linux
     AddPackage bluez-utils # Development and debugging utilities for the bluetooth protocol stack
+    CopyFile /etc/bluetooth/main.conf
 fi
 
 # WiFi
@@ -80,8 +93,18 @@ if ls /sys/class/net/*/wireless >/dev/null 2>&1; then
 
 fi
 
+# Laptop only
+if (( IS_LAPTOP )); then
+    DeliferPrint "Laptop detected"
+    AddPackage acpi # Client for battery, power, and thermal readings
+    AddPackage powertop # A tool to diagnose issues with power consumption and power management
+    AddPackage thermald # The Linux Thermal Daemon program from 01.org
+    AddPackage sof-firmware # Sound Open Firmware
+    CreateLink /etc/systemd/system/multi-user.target.wants/thermald.service /usr/lib/systemd/system/thermald.service
+fi
+
 # Desktop Only
-if [ ! -d /sys/class/power_supply/BAT0 ]; then
+if (( ! IS_LAPTOP )); then
     DeliferPrint "Desktop detected"
     CreateLink /etc/systemd/system/suspend.target /dev/null
     CopyFile /etc/profile.d/multi-gpu.sh
@@ -99,7 +122,6 @@ CreateLink /etc/systemd/system/default.target.wants/input-remapper.service /usr/
 AddPackage power-profiles-daemon # Makes power profiles handling available over D-Bus
 AddPackage crossmacro # A daemon to run macros on key press events
 CreateLink /etc/systemd/system/graphical.target.wants/power-profiles-daemon.service /usr/lib/systemd/system/power-profiles-daemon.service
-CreateLink /etc/systemd/system/multi-user.target.wants/crossmacro.service /usr/lib/systemd/system/crossmacro.service
 
 # network
 AddPackage network-manager-applet # Applet for managing network connections
@@ -128,3 +150,15 @@ AddPackage --foreign jmtpfs # FUSE and libmtp based filesystem for accessing MTP
 AddPackage mtools # A collection of utilities to access MS-DOS disks
 AddPackage squashfs-tools # Tools for squashfs, a highly compressed read-only filesystem for Linux
 AddPackage exfatprogs # exFAT filesystem userspace utilities for the Linux Kernel exfat driver
+
+# synced from mele 2026-11-17
+AddPackage xpadneo-dkms # Advanced Linux Driver for Xbox One Wireless Gamepad
+AddPackage input-remapper-git # A tool to change and program the mapping of your input device buttons.
+AddPackage flashrom # Utility for reading, writing, erasing and verifying flash ROM chips
+AddPackage ipmitool # Command-line interface to IPMI-enabled devices
+AddPackage gphoto2 # A digital camera download and access program.
+
+AddPackage --foreign crossmacro # Cross-platform mouse and keyboard macro automation tool
+AddPackage --foreign ideviceinstaller # Manage Applications of an iPhone or iPod Touch
+
+CopyFile /etc/udev/rules.d/52-lovense-dongle.rules
