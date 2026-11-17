@@ -8,7 +8,7 @@ AddPackage hyprpaper # a blazing fast wayland wallpaper utility with IPC control
 AddPackage hyprutils # Hyprland utilities library used across the ecosystem
 AddPackage hyprpicker # A no-nonsense Wayland color picker
 AddPackage hyprsunset # Blue-light filter / gamma adjuster for Hyprland
-AddPackage --foreign hyprland-contrib # Community scripts for Hyprland (includes grimblast)
+AddPackage grimblast-git # Screenshot helper for Hyprland (replaces hyprland-contrib, gone from AUR)
 
 AddPackage greetd # Generic greeter daemon
 AddPackage greetd-gtkgreet # GTK based greeter for greetd
