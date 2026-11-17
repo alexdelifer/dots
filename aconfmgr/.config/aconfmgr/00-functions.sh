@@ -1,9 +1,9 @@
 DOTFILES=$(cd $(readlink -f $config_dir); git rev-parse --show-toplevel)
 
 DeliferPrint () {
-    echo -n "$(tput setaf 4)$(tput bold)"
+    echo -n "$(tput setaf 4 2>/dev/null || true)$(tput bold 2>/dev/null || true)"
     echo -n "===> $*"
-    echo "$(tput sgr0)"
+    echo "$(tput sgr0 2>/dev/null || true)"
 }
 
 PrintConfig () {
@@ -16,12 +16,12 @@ DotfileLink () {
 
     NAME="$1"
     DOTPATH="$2"
-    #echo "::: ${NAME}: DOTFILES: $(tput setaf 1)$(tput bold)${DOTPATH}$(tput sgr0)"
+    #echo "::: ${NAME}: DOTFILES: $(tput setaf 1 2>/dev/null || true)$(tput bold 2>/dev/null || true)${DOTPATH}$(tput sgr0 2>/dev/null || true)"
 
     if [[ ! " ${MODULES[*]} " =~ "${NAME}" ]]; then
-        echo "::: ${NAME}: DOTFILES: $(tput setaf 1)$(tput bold)DISABLED$(tput sgr0)"
+        echo "::: ${NAME}: DOTFILES: $(tput setaf 1 2>/dev/null || true)$(tput bold 2>/dev/null || true)DISABLED$(tput sgr0 2>/dev/null || true)"
     else
-        echo "::: ${NAME}: DOTFILES: $(tput setaf 2)$(tput bold)${DOTPATH}$(tput sgr0)"
+        echo "::: ${NAME}: DOTFILES: $(tput setaf 2 2>/dev/null || true)$(tput bold 2>/dev/null || true)${DOTPATH}$(tput sgr0 2>/dev/null || true)"
         CreateLink "${DOTFILES}/${NAME}/${DOTPATH}" "${HOME}/${DOTPATH}" 
     fi
 
@@ -40,10 +40,10 @@ DotfileInstall () {
 CheckConfig () {
     NAME="$1"
     if [[ ! " ${MODULES[*]} " =~ "${NAME}" ]]; then
-        echo "::: ${NAME}: CONFIG: $(tput setaf 1)$(tput bold)DISABLED$(tput sgr0)"
+        echo "::: ${NAME}: CONFIG: $(tput setaf 1 2>/dev/null || true)$(tput bold 2>/dev/null || true)DISABLED$(tput sgr0 2>/dev/null || true)"
         return 1
         echo "goodbye!"
     else
-        echo "::: ${NAME}: CONFIG: $(tput setaf 2)$(tput bold)ENABLED$(tput sgr0)"
+        echo "::: ${NAME}: CONFIG: $(tput setaf 2 2>/dev/null || true)$(tput bold 2>/dev/null || true)ENABLED$(tput sgr0 2>/dev/null || true)"
     fi
 }
