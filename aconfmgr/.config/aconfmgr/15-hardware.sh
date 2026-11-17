@@ -122,7 +122,6 @@ AddPackage --foreign input-remapper-git # An easy to use tool to change the mapp
 CreateLink /etc/systemd/system/default.target.wants/input-remapper.service /usr/lib/systemd/system/input-remapper.service
 
 AddPackage power-profiles-daemon # Makes power profiles handling available over D-Bus
-AddPackage crossmacro # A daemon to run macros on key press events
 CreateLink /etc/systemd/system/graphical.target.wants/power-profiles-daemon.service /usr/lib/systemd/system/power-profiles-daemon.service
 
 # network
@@ -155,7 +154,6 @@ AddPackage exfatprogs # exFAT filesystem userspace utilities for the Linux Kerne
 
 # synced from mele 2026-11-17
 AddPackage xpadneo-dkms # Advanced Linux Driver for Xbox One Wireless Gamepad
-AddPackage input-remapper-git # A tool to change and program the mapping of your input device buttons.
 AddPackage flashrom # Utility for reading, writing, erasing and verifying flash ROM chips
 AddPackage ipmitool # Command-line interface to IPMI-enabled devices
 AddPackage gphoto2 # A digital camera download and access program.

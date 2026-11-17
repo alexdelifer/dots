@@ -39,7 +39,7 @@ AddPackage evince # Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr,
 AddPackage gvfs # Virtual filesystem implementation for GIO
 AddPackage gvfs-afc # Virtual filesystem implementation for GIO - AFC backend (Apple mobile devices)
 AddPackage gvfs-goa # Virtual filesystem implementation for GIO - Gnome Online Accounts backend (e.g. OwnCloud)
-AddPackage gvfs-google # Virtual filesystem implementation for GIO - Google Drive backend
+AddPackage --foreign gvfs-google # Virtual filesystem implementation for GIO - Google Drive backend
 AddPackage gvfs-gphoto2 # Virtual filesystem implementation for GIO - gphoto2 backend (PTP camera, MTP media player)
 AddPackage gvfs-mtp # Virtual filesystem implementation for GIO - MTP backend (Android, media player)
 AddPackage gvfs-nfs # Virtual filesystem implementation for GIO - NFS backend
@@ -55,7 +55,7 @@ AddPackage sushi # A quick previewer for Nautilus
 AddPackage tecla # Keyboard layout viewer
 AddPackage wayland-protocols # None
 AddPackage rygel # UPnP AV MediaServer and MediaRenderer
-AddPackage wpebackend-fdo # None
+AddPackage --foreign wpebackend-fdo # None
 AddPackage malcontent # Parental control support for applications
 AddPackage localsearch # Filesystem indexer and metadata extractor
 AddPackage baobab # A graphical directory tree analyzer

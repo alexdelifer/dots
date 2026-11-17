@@ -22,7 +22,6 @@ AddPackage python-pyclip # Cross-platform clipboard utilities supporting both bi
 AddPackage python-pynvim # Python client for Neovim
 AddPackage python-pyproject-api # API to interact with the python pyproject.toml based projects
 AddPackage python-pyproject-metadata # PEP 621 metadata parsing
-AddPackage python-pyproject-parser # Parser for pyproject.toml
 AddPackage python-pyserial # Multiplatform Serial Port Module for Python
 AddPackage python-pywinrm # Python library for Windows Remote Management
 AddPackage python-ratelimit # API rate limit decorator.
@@ -80,7 +79,6 @@ AddPackage hyprwayland-scanner # A Hyprland implementation of wayland-scanner, i
 AddPackage valkey # An in-memory database that persists on disk
 AddPackage aarch64-linux-gnu-glibc # GNU C Library ARM64 target
 AddPackage python-websockets # Python implementation of the WebSocket Protocol (RFC 6455)
-AddPackage shellcheck-bin # Shell script analysis tool (binary release, static)
 
 AddPackage --foreign python-pyproject-parser # Parser for pyproject.toml
 

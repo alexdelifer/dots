@@ -66,13 +66,8 @@ AddPackage qt6-scxml # None
 AddPackage syncthing # Open Source Continuous Replication / Cluster Synchronization Thing
 
 # lib32 shit
-AddPackage lib32-gst-plugins-base # Multimedia graph framework (32-bit) - base plugins
-AddPackage lib32-gst-plugins-good # Multimedia graph framework (32-bit) - good plugins
-AddPackage lib32-gstreamer # Multimedia graph framework (32-bit) - core
-AddPackage lib32-gtk2 # GObject-based multi-platform GUI toolkit (legacy, 32-bit)
+AddPackage --foreign lib32-gstreamer # Multimedia graph framework (32-bit) - core
 AddPackage lib32-libglvnd # The GL Vendor-Neutral Dispatch library
-AddPackage lib32-libxslt # XML stylesheet transformation library (32-bit)
-AddPackage lib32-openal # Cross-platform 3D audio library, software implementation (32-bit)
 
 # network
 AddPackage tailscale # A mesh VPN that makes it easy to connect your devices, wherever they are.

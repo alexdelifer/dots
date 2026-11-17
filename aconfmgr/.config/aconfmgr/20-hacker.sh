@@ -85,7 +85,6 @@ AddPackage uefi-firmware-parser # Parse BIOS/Intel ME/UEFI firmware related stru
 AddPackage zaproxy # Integrated penetration testing tool for finding vulnerabilities in web applications
 AddPackage netdiscover # An active/passive address reconnaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks.
 AddPackage websockify # WebSocket to TCP proxy/bridge.
-AddPackage uefitool-git # UEFI firmware image viewer and editor and utilities
 AddPackage metasploit-autopwn # db_autopwn plugin of metasploit.
 AddPackage msfdb # Manage the metasploit framework database.
 AddPackage msfenum # A Metasploit auto auxiliary script.

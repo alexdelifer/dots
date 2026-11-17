@@ -28,7 +28,6 @@ AddPackage libretro-beetle-supergrafx # NEC SuperGrafx core
 AddPackage libretro-blastem # Sega Mega Drive core
 AddPackage libretro-bsnes # Super Nintendo Entertainment System cores
 AddPackage libretro-bsnes-hd # Super Nintendo Entertainment System core
-AddPackage libretro-bsnes2014 # Super Nintendo Entertainment System cores
 AddPackage libretro-desmume # Nintendo DS core
 AddPackage libretro-dolphin # Nintendo GC/Wii core
 AddPackage libretro-flycast # Sega Dreamcast core

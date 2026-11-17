@@ -172,7 +172,6 @@ AddPackage direnv # Unclutter your .profile by loading/unloading env vars
 AddPackage zoxide # Smarter cd command inspired by z and autojump
 AddPackage yq # YAML/JSON/XML/TOML processor
 AddPackage ripgrep-all # rga: ripgrep, but also search in PDFs, E-Books, Office documents
-AddPackage dtrx # Intelligent archive extractor
 AddPackage zk # Plain text note-taking assistant (Zettelkasten)
 AddPackage marksman # Markdown language server
 AddPackage markdown-oxide # Markdown language server (PKM-oriented)

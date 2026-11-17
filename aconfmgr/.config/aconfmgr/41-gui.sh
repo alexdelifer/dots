@@ -4,7 +4,6 @@ CheckConfig gui || return 0
 AddPackage audacity # A program that lets you manipulate digital audio waveforms
 AddPackage blender # A fully integrated 3D graphics creation suite
 AddPackage bless # High-quality, full-featured hex editor
-AddPackage cheese # Take photos and videos with your webcam, with fun graphical effects
 AddPackage cool-retro-term # A good looking terminal emulator which mimics the old cathode display
 AddPackage file-roller # Create and modify archives
 AddPackage filezilla # Fast and reliable FTP, FTPS and SFTP client
@@ -34,7 +33,6 @@ AddPackage vlc # Free and open source cross-platform multimedia player and frame
 AddPackage freerdp # Free implementation of the Remote Desktop Protocol (RDP)
 AddPackage caffeine # Keep your computer awake
 AddPackage j4-dmenu-desktop # Find .desktop files and offer you a menu to start an application using dmenu
-AddPackage icaclient # Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)
 AddPackage mpv # a free, open source, and cross-platform media player
 AddPackage mpv-shim-default-shaders # Preconfigured set of MPV shaders and configurations for MPV Shim media clients
 AddPackage openrgb # Open source RGB lighting control that doesn't depend on manufacturer software

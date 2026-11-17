@@ -8,7 +8,6 @@ AddPackage --foreign claude-code # Anthropic Claude CLI coding agent
 AddPackage opencode # OpenCode coding agent
 
 # synced from mele 2026-11-17
-AddPackage claude-code # An agentic coding tool that lives in your terminal
 AddPackage claude-desktop # Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code
 AddPackage ollama # Create, run and share large language models (LLMs)
 AddPackage openai-codex # OpenAIs lightweight coding agent that runs in your terminal
