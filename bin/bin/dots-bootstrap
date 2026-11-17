@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# dots-bootstrap: first run on a new Arch/CachyOS box (needs sudo).
+#   adds chaotic-aur + blackarch, installs the base tools, clones ~/dots,
+#   switches the login shell to zsh, then runs dots-sync (user config).
+#   Follow with:  dots-sync --system   (packages + /etc via aconfmgr)
+set -Eeuo pipefail
+DOTS="$HOME/dots"; REPO=https://github.com/alexdelifer/dots.git
+say(){ printf '\e[1;35mΔ\e[0m \e[1m%s\e[0m\n' "$*"; }
+
+if [[ ! -d $DOTS/.git ]]; then
+    sudo pacman -S --noconfirm --needed git
+    say "clone dots"; git clone -q "$REPO" "$DOTS"
+fi
+
+if ! pacman-conf --repo-list | grep -qx chaotic-aur || ! pacman-conf --repo-list | grep -qx blackarch; then
+    say "repos: chaotic-aur + blackarch"; sudo bash "$DOTS/post-install.sh"
+fi
+
+say "base tools"
+sudo pacman -S --noconfirm --needed stow zsh tmux neovim aconfmgr-git starship atuin fzf eza bat fd ripgrep zoxide git-delta yazi tree-sitter-cli lazygit
+
+if [[ $(getent passwd "$USER" | cut -d: -f7) != */zsh ]]; then
+    say "login shell -> zsh"; sudo chsh -s /usr/bin/zsh "$USER"
+fi
+
+"$DOTS/bin/bin/dots-sync"
+say "next: dots-sync --system"
