@@ -24,7 +24,15 @@ say "pull ($HOST)"
 git -C "$DOTS" pull --ff-only --quiet || say "pull skipped (local changes or offline)"
 
 say "stow: ${PKGS[*]}"
-stow -d "$DOTS" -t "$HOME" --ignore=install.sh --ignore='\.bak' -R "${PKGS[@]}"
+STOW=(stow -d "$DOTS" -t "$HOME" --ignore=install.sh --ignore='\.bak' -R)
+# Real files in the way get moved to a dated backup instead of failing.
+conflicts=$("${STOW[@]}" -n "${PKGS[@]}" 2>&1 | sed -nE 's/.*existing target (is not owned by stow: |)([^ ]+)( since.*)?$/\2/p' | sort -u)
+if [[ -n $conflicts ]]; then
+    bk="$HOME/.dots-backup/$(date +%F-%H%M%S)"; say "backing up conflicts -> $bk"
+    while read -r f; do [[ -e $HOME/$f || -L $HOME/$f ]] || continue
+        mkdir -p "$bk/$(dirname "$f")"; mv "$HOME/$f" "$bk/$f"; echo "   $f"; done <<<"$conflicts"
+fi
+"${STOW[@]}" "${PKGS[@]}"
 
 # Hyprland per-host monitor/input file
 hyprhw="$DOTS/hyprland/.config/hypr/hardware.d"
