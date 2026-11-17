@@ -43,6 +43,12 @@ else
     [[ -e $hyprhw/host.conf ]] || : > "$hyprhw/host.conf"
 fi
 
+# mele's Hyprland env points at GPU symlinks (WLR_DRM_DEVICES in hosts/mele.conf)
+if [[ $HOST == mele ]]; then
+    ln -sfn /dev/dri/by-path/pci-0000:00:02.0-card "$DOTS/hyprland/.config/hypr/card0"
+    ln -sfn /dev/dri/by-path/pci-0000:03:00.0-card "$DOTS/hyprland/.config/hypr/card1"
+fi
+
 # Plugins (idempotent)
 if command -v nvim >/dev/null; then
     say "nvim plugins"; nvim --headless "+Lazy! restore" +qa >/dev/null 2>&1 || true

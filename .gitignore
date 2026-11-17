@@ -15,3 +15,5 @@
 /zsh/.zsh/cache/
 .DS_Store
 /hyprland/.config/hypr/hardware.d/host.conf
+/hyprland/.config/hypr/card0
+/hyprland/.config/hypr/card1
