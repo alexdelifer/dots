@@ -35,8 +35,8 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "default
 
 -- GTK / cursor theme (re-applied on every config load)
 local schema = "org.gnome.desktop.interface"
-hl.exec_cmd("gsettings set " .. schema .. " gtk-theme '" .. P.gtk_theme .. "'")
-hl.exec_cmd("gsettings set " .. schema .. " icon-theme '" .. P.icon_theme .. "'")
 hl.on("hyprland.start", function()
+    hl.exec_cmd("gsettings set " .. schema .. " gtk-theme '" .. P.gtk_theme .. "'")
+    hl.exec_cmd("gsettings set " .. schema .. " icon-theme '" .. P.icon_theme .. "'")
     hl.exec_cmd("hyprctl setcursor \"" .. P.cursor_theme .. "\" " .. P.cursor_size)
 end)

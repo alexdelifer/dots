@@ -17,7 +17,7 @@ esac; done
 say(){ printf '\e[1;35mΔ\e[0m \e[1m%s\e[0m\n' "$*"; }
 
 # Same stow set everywhere; mele adds its gaming bits.
-PKGS=(aconfmgr alacritty atuin bin delta figlet foot git hyprland icons mako nvim rofi starship terminfo tmux waybar zsh)
+PKGS=(aconfmgr alacritty atuin bin delta figlet foot git hyprland icons kitty mako nvim rofi starship terminfo tmux waybar zsh)
 [[ $HOST == mele ]] && PKGS+=(gamemode mangohud)
 
 say "pull ($HOST)"

@@ -1,26 +1,28 @@
 -- Program shortcuts (was aliases.d/system.conf + programs.conf)
 local P = {}
 
-P.term                    = "footclient -t xterm-256color"
-P.term_scratch            = "footclient -t xterm-256color -a scratchpad"
-P.term_scratch_standalone = "foot -a scratchpad"
-P.tmux                    = "foot-tmux"
-P.foot_server             = "foot --server"
+-- kitty is the terminal everywhere; foot server stays up for footclient users (ranger TERMCMD)
+P.term          = "kitty"
+P.term_scratch  = "kitty --class scratchpad"
+P.term_float    = "kitty --class floatterm"
+P.tmux          = "kitty --title tmux tmux new-session -A -s main"
+P.foot_server   = "foot --server"
+local function titled(title, cmd) return "kitty --title '" .. title .. "' " .. cmd end
 
 P.launcher      = "rofi -show drun"
 P.menu          = "rofi -show drun"
 P.shutdown      = "~/.config/rofi/powermenu/powermenu.sh"
-P.task_manager  = "pkill -9 fkill; " .. P.term_scratch .. " -T 'Task Killer - fkill' ~/bin/fzf-kill"
+P.task_manager  = "pkill -9 fkill; " .. P.term_scratch .. " --title 'Task Killer - fkill' ~/bin/fzf-kill"
 P.notifications = "mako"
 P.locking       = "hyprlock"
 P.idle          = "hypridle"
 
-P.tui_file_browser = "TERMCMD=\"foot -a 'scratchpad'\" " .. P.term_scratch_standalone .. " -T 'Ranger - File Manager' ranger"
+P.tui_file_browser = "TERMCMD='kitty --class scratchpad' " .. P.term_scratch .. " --title 'Ranger - File Manager' ranger"
 P.gui_file_browser = "thunar"
-P.nvim             = P.term .. " -T 'NVIM - Editor' nvim"
-P.nvim_backlog     = P.term .. " -T 'NVIM - Backlog' nvim ~/Documents/backlog.md"
+P.nvim             = titled("NVIM - Editor", "nvim")
+P.nvim_backlog     = titled("NVIM - Backlog", "nvim ~/Documents/backlog.md")
 P.calc             = "qalculate-gtk"
-P.update_packages  = P.term .. " -T 'Update Packages' -e yay"
+P.update_packages  = titled("Update Packages", "yay")
 
 -- Volume / brightness -> wob overlay
 P.wob_socket   = "$XDG_RUNTIME_DIR/wob.sock"

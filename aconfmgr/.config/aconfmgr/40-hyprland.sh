@@ -14,6 +14,7 @@ AddPackage greetd # Generic greeter daemon
 AddPackage greetd-gtkgreet # GTK based greeter for greetd
 AddPackage greetd-tuigreet # A console UI greeter for greetd
 
+AddPackage kitty # Modern, hackable, featureful, OpenGL-based terminal emulator (default terminal)
 AddPackage foot # Fast, lightweight, and minimalistic Wayland terminal emulator
 AddPackage alacritty # A cross-platform, GPU-accelerated terminal emulator
 AddPackage thunar # Modern, fast and easy-to-use file manager for Xfce

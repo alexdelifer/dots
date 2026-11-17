@@ -1,13 +1,11 @@
 local P = require("conf.programs")
 
--- every config load (was `exec =`)
-hl.exec_cmd("systemctl --user import-environment")
-hl.exec_cmd("dbus-update-activation-environment --systemd --all")
-hl.exec_cmd("flatpak override -u")
-hl.exec_cmd(P.foot_server)
-
--- once per session (was `exec-once =`)
+-- once per session (top-level exec_cmd during config load doesn't fire, so everything lives here)
 hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user import-environment")
+    hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+    hl.exec_cmd("flatpak override -u")
+    hl.exec_cmd(P.foot_server)
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("waybar")
     hl.exec_cmd(P.gnome_polkit)
