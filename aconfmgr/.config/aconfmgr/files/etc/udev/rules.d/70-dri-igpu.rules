@@ -1,0 +1,3 @@
+# Stable, colon-free name for the Intel iGPU (00:02.0) so AQ_DRM_DEVICES can point at it
+# regardless of card0/card1 enumeration order. Used by Hyprland host files on laptops.
+SUBSYSTEM=="drm", KERNEL=="card[0-9]*", KERNELS=="0000:00:02.0", SYMLINK+="dri/igpu"

@@ -1,0 +1,18 @@
+[Unit]
+Description=Prefer the local LAN (10.10.10.0/24) over the tailnet's subnet route
+Documentation=man:ip-rule(8)
+# The tailnet advertises 10.10.10.0/24 and tailscaled's rule 5270 (table 52) beats main.
+# Rule 50 makes LAN traffic use the main table first; off-LAN there is no 10.10.10 route in
+# main, so lookups fall through to table 52 and go over Tailscale as before.
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStartPre=-/usr/bin/ip rule del to 10.10.10.0/24 lookup main priority 50
+ExecStart=/usr/bin/ip rule add to 10.10.10.0/24 lookup main priority 50
+ExecStop=-/usr/bin/ip rule del to 10.10.10.0/24 lookup main priority 50
+
+[Install]
+WantedBy=multi-user.target

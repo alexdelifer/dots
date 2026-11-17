@@ -27,6 +27,7 @@ if lspci | grep -qi "VGA.*Intel"; then
     AddPackage libva-utils # Intel VA-API Media Applications and Scripts for libva
     AddPackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
     AddPackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
+    CopyFile /etc/udev/rules.d/70-dri-igpu.rules
     AddPackage vpl-gpu-rt # Intel oneVPL GPU runtime (QSV video on Tiger Lake+)
     AddPackage lib32-vulkan-intel # Open-source Vulkan driver for Intel GPUs - 32-bit
 
@@ -103,6 +104,7 @@ if (( IS_LAPTOP )); then
     AddPackage thermald # The Linux Thermal Daemon program from 01.org
     AddPackage sof-firmware # Sound Open Firmware
     CreateLink /etc/systemd/system/multi-user.target.wants/thermald.service /usr/lib/systemd/system/thermald.service
+    if (( ${HAS_NVIDIA:-0} )); then CopyFile /etc/udev/rules.d/80-nvidia-pm.rules; fi
 fi
 
 # Desktop Only

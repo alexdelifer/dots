@@ -34,11 +34,9 @@ mele)
     AddPackage --foreign python-pyproject-parser # circular AUR dep chain
     # desktop-only services
     CopyFile /etc/systemd/system/rclone-seedbox.service
-    CopyFile /etc/systemd/system/local-lan-priority.service
     CopyFile /etc/systemd/system/meridian.service
     CopyFile /etc/systemd/system/opencode.service
     CreateLink /etc/systemd/system/default.target.wants/rclone-plex.service /etc/systemd/system/rclone-plex.service
-    CreateLink /etc/systemd/system/multi-user.target.wants/local-lan-priority.service /etc/systemd/system/local-lan-priority.service
     CreateLink /etc/systemd/system/multi-user.target.wants/synergy.service /usr/lib/systemd/system/synergy.service
     ;;
 p14s)

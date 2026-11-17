@@ -177,3 +177,8 @@ CopyFile /etc/udev/rules.d/60-nvme-scheduler.rules
 CreateLink /etc/systemd/system/autovt@.service /usr/lib/systemd/system/getty@.service
 
 AddPackage networkmanager-openvpn # NetworkManager VPN plugin for OpenVPN
+
+# Tailscale on every host (tailnet delifer.io): `tailscale up --accept-routes --accept-dns --ssh --operator=alex`
+CreateLink /etc/systemd/system/multi-user.target.wants/tailscaled.service /usr/lib/systemd/system/tailscaled.service
+CopyFile /etc/systemd/system/tailnet-lan-priority.service
+CreateLink /etc/systemd/system/multi-user.target.wants/tailnet-lan-priority.service /etc/systemd/system/tailnet-lan-priority.service
