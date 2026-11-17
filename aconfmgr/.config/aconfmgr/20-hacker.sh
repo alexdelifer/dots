@@ -162,5 +162,4 @@ AddPackage exploitdb # Offensive Security’s Exploit Database Archive
 AddPackage oscanner # An Oracle assessment framework developed in Java.
 AddPackage tnscmd # A lame tool to prod the oracle tnslsnr process (1521/tcp).
 
-AddPackage --foreign ldid # Put real or fake signatures in Darwin binaries - Procursus fork
 AddPackage --foreign uefitool-git # UEFI firmware image viewer and editor and utilities

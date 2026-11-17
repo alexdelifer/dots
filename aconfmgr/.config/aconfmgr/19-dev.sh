@@ -80,6 +80,5 @@ AddPackage valkey # An in-memory database that persists on disk
 AddPackage aarch64-linux-gnu-glibc # GNU C Library ARM64 target
 AddPackage python-websockets # Python implementation of the WebSocket Protocol (RFC 6455)
 
-AddPackage --foreign python-pyproject-parser # Parser for pyproject.toml
 
 AddPackage uv # Python package and project manager (projects/tools; pacman for system)

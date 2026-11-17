@@ -27,6 +27,11 @@ mele)
     AddPackage os-prober # Utility to detect other OSes on a set of drives
     AddPackage --foreign grub-hook # Pacman hook to update GRUB after a kernel update
     CopyFile /etc/profile.d/multi-gpu.sh
+    # AUR packages that no longer build from source (2026-11-17); mele keeps its old builds
+    AddPackage --foreign icaclient # Citrix Workspace (needs manual tarball download)
+    AddPackage --foreign ldid # Darwin binary signer (fails with current OpenSSL)
+    AddPackage --foreign tsukimi-git # Emby client (build broken upstream)
+    AddPackage --foreign python-pyproject-parser # circular AUR dep chain
     # desktop-only services
     CopyFile /etc/systemd/system/rclone-seedbox.service
     CopyFile /etc/systemd/system/local-lan-priority.service

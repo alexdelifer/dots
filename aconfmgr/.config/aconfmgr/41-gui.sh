@@ -69,8 +69,6 @@ AddPackage spotify # A proprietary music streaming service
 AddPackage vapoursynth-plugin-mvtools # MVTools plugin for VapourSynth
 
 AddPackage --foreign harbor-stremio-bin # A Stremio client built for adventure (binary release)
-AddPackage --foreign tsukimi-git # A simple third-party Emby client
 AddPackage --foreign intiface-central-bin # Frontend application for the Buttplug Sex Toy Control Library
 AddPackage --foreign cheese # Take photos and videos with your webcam, with fun graphical effects
-AddPackage --foreign icaclient # Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)
 AddPackage --foreign vapoursynth-plugin-rife-ncnn-vulkan # Plugin for Vapoursynth: Real-Time Intermediate Flow Estimation for Video Frame Interpolation
