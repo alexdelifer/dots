@@ -42,6 +42,7 @@ mele)
 p14s)
     # systemd-boot (entries live in /boot, ignored); Turing T550 runs the open module
     AddPackage nvidia-open-dkms # NVIDIA open kernel modules - module sources
+    CopyFileTo /etc/environment-p14s /etc/environment   # AQ_DRM_DEVICES=/dev/dri/igpu (Hyprland on iGPU only)
     ;;
 degen)
     CopyFileTo /etc/pacman.conf-degen /etc/pacman.conf

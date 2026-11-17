@@ -1,0 +1,4 @@
+# p14s (aconfmgr 95-hosts.sh). Read by pam_env at login, before Hyprland starts:
+# every output on this ThinkPad is on the Intel iGPU, so Hyprland only opens that one
+# (/dev/dri/igpu from udev 70-dri-igpu.rules). Setting it in hyprland.lua is too late.
+AQ_DRM_DEVICES=/dev/dri/igpu
