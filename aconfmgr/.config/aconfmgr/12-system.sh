@@ -66,7 +66,6 @@ AddPackage qt6-scxml # None
 AddPackage syncthing # Open Source Continuous Replication / Cluster Synchronization Thing
 
 # lib32 shit
-AddPackage --foreign lib32-gstreamer # Multimedia graph framework (32-bit) - core
 AddPackage lib32-libglvnd # The GL Vendor-Neutral Dispatch library
 
 # network
