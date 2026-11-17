@@ -17,6 +17,7 @@ AddPackage packagekit # A system designed to make installation and updates of pa
 
 AddPackage chaotic-keyring # Chaotic-AUR PGP keyring
 AddPackage chaotic-mirrorlist # Chaotic-AUR mirrorlist to use with Pacman
+IgnorePackage blackarch-mirrorlist # owned by the package on some hosts, a plain file on mele
 CopyFile /etc/pacman.d/blackarch-mirrorlist
 
 CopyFile /etc/pacman.d/mirrorlist
