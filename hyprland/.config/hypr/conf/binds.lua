@@ -58,6 +58,7 @@ bind(mod .. " + CTRL", "e", exec("rofimoji"))
 bind(mod .. " + CTRL", "b", exec(P.update_packages))
 bind(mod .. " + CTRL", "l", exec(P.locking))
 bind(mod .. " + SHIFT", "C", exec("hyprpicker | wl-copy -n"))
+bind(mod, "P", exec("hypr-display"))   -- extend / mirror / external / laptop
 bind(mod .. " + SHIFT", "x", exec(P.task_manager))
 bind(mod, "tab",             exec(P.task_manager))
 bind(mod .. " + SHIFT", "g", exec("pkill -x steam; sleep 2 && gamescope -W 1920 -H 1080 -r 60 -f -e -- steam -gamepadui"))
