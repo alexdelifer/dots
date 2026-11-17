@@ -27,6 +27,7 @@ if lspci | grep -qi "VGA.*Intel"; then
     AddPackage libva-utils # Intel VA-API Media Applications and Scripts for libva
     AddPackage intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
     AddPackage vulkan-intel # Open-source Vulkan driver for Intel GPUs
+    AddPackage vpl-gpu-rt # Intel oneVPL GPU runtime (QSV video on Tiger Lake+)
     AddPackage lib32-vulkan-intel # Open-source Vulkan driver for Intel GPUs - 32-bit
 
 fi
@@ -58,6 +59,7 @@ if lspci | grep -qiE "(VGA|3D controller).*NVIDIA"; then
     DeliferPrint "NVIDIA GPU detected"
     HAS_NVIDIA=1
     AddPackage nvidia-utils # NVIDIA drivers utilities
+    AddPackage egl-wayland # EGLStream-based Wayland platform for NVIDIA
     AddPackage lib32-nvidia-utils # NVIDIA drivers utilities (32-bit)
     AddPackage nvidia-settings # Tool for configuring the NVIDIA graphics driver
     AddPackage nvidia-prime # NVIDIA Prime Render Offload configuration and utilities

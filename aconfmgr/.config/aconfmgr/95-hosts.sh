@@ -65,5 +65,7 @@ degen)
     AddPackage linux-cachyos-lts-headers # Headers for linux-cachyos-lts
     AddPackage linux-cachyos-lts-nvidia-open # Prebuilt NVIDIA open modules for linux-cachyos-lts
     AddPackage linux-firmware-nvidia # Firmware for NVIDIA GPUs
+    AddPackage mkinitcpio # initramfs builder (limine hook depends on it; keep explicit)
+    AddPackage cryptsetup # LUKS root - keep explicit
     ;;
 esac

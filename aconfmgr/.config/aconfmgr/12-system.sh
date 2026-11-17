@@ -180,3 +180,5 @@ CopyFile /etc/sysctl.d/99-network-perf.conf
 CopyFile /etc/sysctl.d/99-swappiness.conf
 CopyFile /etc/udev/rules.d/60-nvme-scheduler.rules
 CreateLink /etc/systemd/system/autovt@.service /usr/lib/systemd/system/getty@.service
+
+AddPackage networkmanager-openvpn # NetworkManager VPN plugin for OpenVPN

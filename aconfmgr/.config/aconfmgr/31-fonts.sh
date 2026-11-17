@@ -77,3 +77,5 @@ CreateLink /etc/fonts/conf.d/81-ubuntu.conf /usr/share/fontconfig/conf.default/8
 CreateLink /etc/fonts/conf.d/90-synthetic.conf /usr/share/fontconfig/conf.default/90-synthetic.conf
 CopyFile /etc/fonts/local.conf
 CopyFile /etc/profile.d/freetype2.sh
+
+AddPackage noto-fonts # Google Noto TTF fonts

@@ -83,3 +83,5 @@ AddPackage python-websockets # Python implementation of the WebSocket Protocol (
 AddPackage shellcheck-bin # Shell script analysis tool (binary release, static)
 
 AddPackage --foreign python-pyproject-parser # Parser for pyproject.toml
+
+AddPackage uv # Python package and project manager (projects/tools; pacman for system)

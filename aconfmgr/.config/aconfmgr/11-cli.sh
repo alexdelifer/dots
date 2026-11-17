@@ -190,3 +190,7 @@ AddPackage pandoc-cli # Conversion between documentation formats
 
 AddPackage --foreign megatools # CLI for MEGA
 AddPackage --foreign dtrx # An intelligent archive extraction tool
+
+# kept from degen 2026-11-17
+AddPackage hledger # Command-line plain text accounting (DELIFER books)
+AddPackage unzip # For extracting and viewing files in .zip archives
